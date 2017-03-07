@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping>
+    <class name="model.Product" table="tb_product">
+    	<id name="id" column="ID" type="java.lang.Integer" length="8">
+    		<generator class="native"/>
+    	</id>
+    	<property name="proName" column="PRO_NAME" type="java.lang.String" length="50"/>
+    	<property name="proPicture" column="PRO_PICTURE" type="java.lang.String" length="256"/>	
+    	<property name="proPrice" column="PRO_PRICE" type="java.lang.Double" length="16"/>	
+    	<property name="createTime" column="CREATE_TIME" type="java.util.Date"/>	
+    	<property name="proHassum" column="PRO_HASSUM" type="java.lang.Integer" length="8"/>
+    	<property name="proClicknum" column="PRO_CLICKNUM" type="java.lang.Integer" length="8"/>
+    	<property name="creatorId" column="CREATOR_ID" type="java.lang.Integer" length="8"/>
+    	<property name="classifyId" column="CLASSIFY_ID" type="java.lang.Integer" length="8"/>
+    	<property name="proDesc" column="PRO_DESC" type="java.lang.String" length="200"/>	
+    	<property name="type" column="TYPE" type="java.lang.Integer" length="8"/>		
+    </class>
+    </hibernate-mapping>

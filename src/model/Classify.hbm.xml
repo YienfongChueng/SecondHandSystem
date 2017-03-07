@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping>
+    <class name="model.Classify" table="tb_classify">
+    	<id name="cid" column="CID" type="java.lang.Integer" length="8">
+    		<generator class="native"/>
+    	</id>
+    	<property name="classifyName" column="CNAME" type="java.lang.String" length="50"/>
+    	<property name="ClassifySort" column="CSORT" type="java.lang.Integer" length="8"/>	
+    	
+    </class>
+    </hibernate-mapping>
