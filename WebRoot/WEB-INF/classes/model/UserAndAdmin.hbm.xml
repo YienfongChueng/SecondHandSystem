@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping>
+    <class name="model.UserAndAdmin" table="tb_user_admin">
+    	<id name="id" column="ID" type="java.lang.Integer" length="8">
+    		<generator class="native"/>
+    	</id>
+    	<property name="userId" column="USER_ID" type="java.lang.Integer" length="8"/>
+    	<property name="createTime" column="CREATE_TIME" type="java.util.Date"/>	
+    	<property name="adminId" column="ADMIN_ID" type="java.lang.Integer" length="8"/>
+    	<property name="message" column="MESSAGE" type="java.lang.String" length="100"/>
+    	<property name="status" column="STATUS" type="java.lang.Integer" length="8"/>		
+    </class>
+    </hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping>
+    <class name="model.User" table="tb_user">
+    	<id name="uid" column="UID" type="java.lang.Integer" length="8">
+    		<generator class="native"/>
+    	</id>
+    	<property name="headPic" column="HEADPIC" type="java.lang.String" length="56"/>
+    	<property name="schoolClass" column="SCHOOL_CLASS" type="java.lang.String" length="50"/>	
+    	<property name="phone" column="PHONE" type="java.lang.Integer" length="20"/>
+    	<property name="userName" column="USERNAME" type="java.lang.String" length="50"/>
+    	<property name="address" column="ADDRESS" type="java.lang.String" length="56"/>	
+    	<property name="password" column="PASSWORD" type="java.lang.String" length="20"/>
+    	<property name="qusetion" column="QUESTION" type="java.lang.String" length="50"/>	
+    	<property name="answer" column="ANSWER" type="java.lang.String" length="50"/>	
+    	<property name="message" column="MESSAGE" type="java.lang.String" length="256"/>	
+    	<property name="sex" column="SEX" type="java.lang.Integer" length="6"/>				
+    </class>
+    </hibernate-mapping>

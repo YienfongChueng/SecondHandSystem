@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+        xmlns:tx="http://www.springframework.org/schema/tx"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!-- 引入外部的属性文件 -->
+	<context:property-placeholder location="classpath:jdbc.properties"/>
+
+	<!-- 配置连接池 -->
+	<bean id="dataSource" class=" org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}"/>
+		<property name="url" value="${jdbc.url}"/>
+		<property name="username" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}"/>
+	</bean>
+	
+	<!--配置hibernate相关属性  -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<!-- 注入连接池 -->
+		<property name="dataSource" ref="dataSource"/>
+		<!-- 配置hibernate的属性 -->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.formate_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>	
+			</props>
+		</property>
+		<!-- 加载hibernate中的映射文件 -->
+		<property name="mappingResources">
+			<list>
+				<value>model/Admin.hbm.xml</value>
+				<value>model/Classify.hbm.xml</value>
+				<value>model/Comment.hbm.xml</value>
+				<value>model/Order.hbm.xml</value>
+				<value>model/Product.hbm.xml</value>
+				<value>model/Reply.hbm.xml</value>
+				<value>model/User.hbm.xml</value>
+				<value>model/UserAndAdmin.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- <bean id="productAction" class="action.ProductAction" scope="prototype">
+		<property name="productService" ref="productService" />
+	</bean> -->
+	
+	<!-- <bean id="productService" class="service.ProductService">
+		<property name="productDao" ref="productDao" />
+	</bean> -->
+	
+	<!-- <bean id="productDao" class="dao.ProductDao">
+		 <property name="sessionFactory" ref="sessionFactory" /> 
+	</bean> -->
+	
+	<!-- 事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" /> 
+	</bean>
+	
+	<!-- 开启注解事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>

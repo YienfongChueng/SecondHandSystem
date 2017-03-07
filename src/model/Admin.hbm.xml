@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping>
+    	<class name="model.Admin" table="tb_admin">
+    		<id name="aid" column="AID" type="java.lang.Integer">
+    			<generator class="native" />
+    		</id>
+    		<property name="name" column="NAME" length="50" type="java.lang.String"/>
+    		<property name="password" column="PASSWORD" length="20" type="java.lang.String"/>
+    	</class>
+    </hibernate-mapping>
