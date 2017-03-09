@@ -2,9 +2,9 @@ package model;
 
 public class Admin {
 
-	Integer aid;
-	java.lang.String name;
-	java.lang.String password;
+	private Integer aid;
+	private java.lang.String name;
+	private java.lang.String password;
 	public Integer getAid() {
 		return aid;
 	}

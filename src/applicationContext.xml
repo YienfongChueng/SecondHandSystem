@@ -52,17 +52,22 @@
 		</property>
 	</bean>
 	
-	<!-- <bean id="productAction" class="action.ProductAction" scope="prototype">
-		<property name="productService" ref="productService" />
-	</bean> -->
+	<!-- 用户登录 -->
+	 <bean id="loginAction" class="action.LoginAction" scope="prototype">
+		<property name="iLoginService" ref="iLoginService" />
+	</bean>
+	<!-- 管理员登录 -->
+	 <bean id="adminLoginAction" class="action.AdminLoginAction" scope="prototype">
+		<property name="iLoginService" ref="iLoginService" />
+	</bean> 
 	
-	<!-- <bean id="productService" class="service.ProductService">
-		<property name="productDao" ref="productDao" />
-	</bean> -->
+	 <bean id="iLoginService" class="service.impl.LoginService">
+		<property name="iLoginDao" ref="iLoginDao" />
+	</bean> 
 	
-	<!-- <bean id="productDao" class="dao.ProductDao">
+	 <bean id="iLoginDao" class="dao.impl.LoginDao">
 		 <property name="sessionFactory" ref="sessionFactory" /> 
-	</bean> -->
+	</bean>
 	
 	<!-- 事务管理器 -->
 	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">

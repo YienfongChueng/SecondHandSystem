@@ -1,22 +1,23 @@
 package model;
 
+
 public class User {
 
-	Integer uid;
-	java.lang.String userName;
-	java.lang.String headPic;
-	java.lang.String schoolClass;//班级
-	Integer sex;//性别（男：0   女：1）
-	java.lang.String address;
-	Integer phone;
-	java.lang.String password;
-	java.lang.String qusetion;//密码找回的设置问题
-	java.lang.String answer;//密码找回设置答案
-	java.lang.String message;//密码找回的返回信息
-	public Integer getUid() {
+	private java.lang.Integer uid;
+	private java.lang.String userName;
+	private java.lang.String headPic;
+	private java.lang.String schoolClass;//班级
+	private java.lang.Integer sex;//性别（男：0   女：1）
+	private java.lang.String address;
+	private java.lang.Integer phone;
+	private java.lang.String password;
+	private java.lang.String qusetion;//密码找回的设置问题
+	private java.lang.String answer;//密码找回设置答案
+	private java.lang.String message;//密码找回的返回信息
+	public java.lang.Integer getUid() {
 		return uid;
 	}
-	public void setUid(Integer uid) {
+	public void setUid(java.lang.Integer uid) {
 		this.uid = uid;
 	}
 	public java.lang.String getUserName() {
@@ -37,10 +38,10 @@ public class User {
 	public void setSchoolClass(java.lang.String schoolClass) {
 		this.schoolClass = schoolClass;
 	}
-	public Integer getSex() {
+	public java.lang.Integer getSex() {
 		return sex;
 	}
-	public void setSex(Integer sex) {
+	public void setSex(java.lang.Integer sex) {
 		this.sex = sex;
 	}
 	public java.lang.String getAddress() {
@@ -49,10 +50,10 @@ public class User {
 	public void setAddress(java.lang.String address) {
 		this.address = address;
 	}
-	public Integer getPhone() {
+	public java.lang.Integer getPhone() {
 		return phone;
 	}
-	public void setPhone(Integer phone) {
+	public void setPhone(java.lang.Integer phone) {
 		this.phone = phone;
 	}
 	public java.lang.String getPassword() {

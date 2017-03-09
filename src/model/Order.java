@@ -4,22 +4,22 @@ import java.util.Date;
 
 public class Order {
 
-	Integer id;
-	Integer productId;//商品id
-	Date buyTime;//购买时间
-	Integer buyNum;//购买数量
-	Integer status;//订单状态（0：待付款 1：待发货 2：待收货）
-	java.lang.String receiver;//收件人名称
-	java.lang.String address;//送货地址
-	java.lang.String payWay;//支付方式
-	java.lang.String sendWay;//送货方式
-	Double totalPrice;//总价
-	java.lang.String orderNum;//订单号
-	java.lang.String comment;//简单留言
-	Integer phone;//联系电话
-	java.lang.String email;//邮件
-	Integer creatorId;//商品发布者id
-	Integer buyUserId;//购买用户id
+	private Integer id;
+	private Integer productId;//商品id
+	private Date buyTime;//购买时间
+	private Integer buyNum;//购买数量
+	private Integer status;//订单状态（0：待付款 1：待发货 2：待收货）
+	private java.lang.String receiver;//收件人名称
+	private java.lang.String address;//送货地址
+	private java.lang.String payWay;//支付方式
+	private java.lang.String sendWay;//送货方式
+	private Double totalPrice;//总价
+	private java.lang.String orderNum;//订单号
+	private java.lang.String comment;//简单留言
+	private Integer phone;//联系电话
+	private java.lang.String email;//邮件
+	private Integer creatorId;//商品发布者id
+	private Integer buyUserId;//购买用户id
 	public Integer getId() {
 		return id;
 	}
