@@ -9,7 +9,7 @@
 				<result name="login">/user_jsp/user_login.jsp</result>
 			 </action> 
 			 <action name="adminLogin" class="adminLoginAction" method="AdminLogin">
-				<result name="adminIndex" type="redirect">/admin_jsp/index.jsp</result>
+				<result name="adminIndex" type="redirect">/admin_jsp/admin_frame.jsp</result>
 				<result name="adminLogin">/admin_jsp/admin_login.jsp</result>
 			 </action>
 			

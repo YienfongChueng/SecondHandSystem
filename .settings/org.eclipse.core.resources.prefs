@@ -1,4 +1,11 @@
 eclipse.preferences.version=1
+encoding//WebRoot/admin_jsp/admin_frame.jsp=UTF-8
+encoding//WebRoot/admin_jsp/admin_main.jsp=UTF-8
+encoding//WebRoot/admin_jsp/admin_user_details.jsp=UTF-8
+encoding//WebRoot/admin_jsp/css/content.css=UTF-8
+encoding//WebRoot/admin_jsp/css/login.css=UTF-8
+encoding//WebRoot/admin_jsp/css/public.css=UTF-8
+encoding//WebRoot/admin_jsp/css/reset.css=UTF-8
 encoding//WebRoot/user_jsp/css=UTF-8
 encoding//WebRoot/user_jsp/js=UTF-8
 encoding//WebRoot/user_jsp/user_login.jsp=UTF-8
