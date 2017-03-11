@@ -5,12 +5,12 @@
 	<struts>
 		 <package name="ssh" extends="struts-default" namespace="/">
 			 <action name="userLogin" class="loginAction" method="UserLogin">
-				<result name="index" type="redirect">/index.jsp</result>
-				<result name="login">/user_login.jsp</result>
+				<result name="index" type="redirect">/user_jsp/index.jsp</result>
+				<result name="login">/user_jsp/user_login.jsp</result>
 			 </action> 
 			 <action name="adminLogin" class="adminLoginAction" method="AdminLogin">
-				<result name="adminIndex" type="redirect">/index.jsp</result>
-				<result name="adminLogin">/admin_login.jsp</result>
+				<result name="adminIndex" type="redirect">/admin_jsp/index.jsp</result>
+				<result name="adminLogin">/admin_jsp/admin_login.jsp</result>
 			 </action>
 			
 		</package> 

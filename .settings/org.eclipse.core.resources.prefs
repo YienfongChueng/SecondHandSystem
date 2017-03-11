@@ -1,7 +1,5 @@
 eclipse.preferences.version=1
-encoding//WebRoot/css=UTF-8
-encoding//WebRoot/css/login.css=UTF-8
-encoding//WebRoot/css/reset.css=UTF-8
-encoding//WebRoot/js=UTF-8
-encoding//WebRoot/user_login.jsp=UTF-8
+encoding//WebRoot/user_jsp/css=UTF-8
+encoding//WebRoot/user_jsp/js=UTF-8
+encoding//WebRoot/user_jsp/user_login.jsp=UTF-8
 encoding/<project>=UTF-8
