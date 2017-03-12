@@ -2,9 +2,9 @@ package model;
 
 public class Classify {
 
-	Integer cid;
-	java.lang.String classifyName;//分类名称
-	Integer ClassifySort;//分类排序
+	private Integer cid;
+	private java.lang.String classifyName;//分类名称
+	private Integer ClassifySort;//分类排序
 	public Integer getCid() {
 		return cid;
 	}

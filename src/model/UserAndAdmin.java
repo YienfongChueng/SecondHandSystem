@@ -4,12 +4,12 @@ import java.util.Date;
 
 public class UserAndAdmin {
 
-	Integer id;
-	Integer userId;
-	Integer adminId;
-	java.lang.String message;
-	Date createTime;
-	Integer status;//0未读，1已读
+	private Integer id;
+	private Integer userId;
+	private Integer adminId;
+	private java.lang.String message;
+	private Date createTime;
+	private Integer status;//0未读，1已读
 	public Integer getId() {
 		return id;
 	}

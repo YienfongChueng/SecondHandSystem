@@ -4,12 +4,12 @@ import java.util.Date;
 
 public class Comment {
 
-	Integer id;
-	Integer productId;//商品id
-	Date creatTime;//评论时间
-	Integer userId;//评论者id
-	java.lang.String content;//评论内容
-	Integer status;//0未读，1已读
+	private Integer id;
+	private Integer productId;//商品id
+	private Date creatTime;//评论时间
+	private Integer userId;//评论者id
+	private java.lang.String content;//评论内容
+	private Integer status;//0未读，1已读
 	public Integer getId() {
 		return id;
 	}

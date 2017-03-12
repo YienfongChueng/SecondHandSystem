@@ -4,11 +4,11 @@ import java.util.Date;
 
 public class Reply {
 
-	Integer id;
-	Integer commentId;//评论id
-	Integer userId;//回复者id
-	Date createTime;//回复时间
-	java.lang.String reply;//回复内容
+	private Integer id;
+	private Integer commentId;//评论id
+	private Integer userId;//回复者id
+	private Date createTime;//回复时间
+	private java.lang.String reply;//回复内容
 	public Integer getId() {
 		return id;
 	}

@@ -4,17 +4,17 @@ import java.util.Date;
 
 public class Product {
 
-	Integer id;
-	java.lang.String proName;//商品名称
-	java.lang.String proPicture;//商品图片
-	Date createTime;//发布时间
-	Double proPrice;//商品单价
-	Integer proHassum;//商品剩余量
-	java.lang.String proDesc;//商品描述
-	Integer proClicknum;//商品点击数量
-	Integer creatorId;//发布者id
-	Integer classifyId;//分类id
-	Integer type;//0供信息，1求信息
+	private Integer id;
+	private java.lang.String proName;//商品名称
+	private java.lang.String proPicture;//商品图片
+	private Date createTime;//发布时间
+	private Double proPrice;//商品单价
+	private Integer proHassum;//商品剩余量
+	private java.lang.String proDesc;//商品描述
+	private Integer proClicknum;//商品点击数量
+	private Integer creatorId;//发布者id
+	private Integer classifyId;//分类id
+	private Integer type;//0供信息，1求信息
 	public Integer getId() {
 		return id;
 	}
