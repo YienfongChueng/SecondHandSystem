@@ -44,7 +44,7 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-<s:form action="userLogin" method="post" theme="simple" namespace="/" onsubmit="return validate();">
+<s:form action="userLogin" method="post" theme="simple" namespace="user_jsp/" onsubmit="return validate();">
 	<dl class="admin_login">
  <dt>
   <strong>校园二手物品交易系统</strong>

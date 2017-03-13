@@ -1,11 +1,7 @@
 package dao.impl;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import org.hibernate.Query;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-
 import model.Admin;
 import model.User;
 import dao.ILoginDao;

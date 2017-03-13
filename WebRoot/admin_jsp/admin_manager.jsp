@@ -4,6 +4,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,29 +28,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<th style="width:20%">权限角色</th>
 						<th style="width:20%">操作</th>
 					</tr>
+					<s:iterator var="admin" value="list">
 					<tr>
-						<td>001</td>
-						<td>小张</td>
-						<td>超级管理员</td>
+						<td><s:property value="#admin.aid"/></td>
+						<td><s:property value="#admin.name"/></td>
+						<s:if test="#admin.role==0">
+							<td>超级管理员</td>
+						</s:if>
+						<s:elseif test="#admin.role==1">
+							<td>系统管理员</td>
+						</s:elseif>
 						<td>
 							<div class="table-fun">
-								<a href="admin_update_admin.jsp" target="content">修改</a>
-								<a href="">删除</a>
+								<a href="admin_update_admin.jsp?aid=<s:property value="#admin.aid"/>" target="content">修改</a>
+								<a href="javascript:delectAdminById(<s:property value="#admin.aid"/>);">删除</a>
 							</div>
 						</td>
 					</tr>
+					</s:iterator>
 					
 				</table>
 				<div class="page">
-					<form action="" method="get">
-						<a href="">首页</a>
-						<a href="">上一页</a>
-						<a href="">下一页</a>
-						第<span style="color:red;font-weight:600">12</span>页
-						共<span style="color:red;font-weight:600">120</span>页
-						<input type="text" class="page-input">
-						<input type="submit" class="page-btn" value="跳转">
-					</form>
+					<!-- <form action="" method="get"> -->
+					<s:if test="currPage!=1">
+						<a href="admin_jsp/adminInfoList.action?currPage=1" target="content">首页</a>
+						<a href="admin_jsp/adminInfoList.action?currPage=<s:property value="currPage-1"/>" target="content">上一页</a>
+					</s:if>
+					<s:if test="currPage!=totalPage">
+						<a href="admin_jsp/adminInfoList.action?currPage=<s:property value="currPage+1"/>" target="content">下一页</a>
+						<a href="admin_jsp/adminInfoList.action?currPage=<s:property value="totalPage"/>" target="content">尾页</a>
+					</s:if>
+						第<span style="color:red;font-weight:600"><s:property value="currPage"/></span>页
+						共<span style="color:red;font-weight:600"><s:property value="totalPage"/></span>页
+						<!-- <input type="text" class="page-input">
+						<input type="submit" class="page-btn" value="跳转"> -->
+					<!-- </form> -->
 				</div>
 			</div>
 		</div>
