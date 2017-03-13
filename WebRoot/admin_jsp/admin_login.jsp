@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
         <div class="login_form">
         <span><s:actionerror/></span>
-			<s:form id="Login" method="post" onsubmit="" action="adminLogin" theme="simple" namespace="/">
+			<s:form  method="post" onsubmit="" action="adminLogin" theme="simple" namespace="admin_jsp/">
 				<li class="login-item">
 					<span>用户名：</span>
 					<input type="text" name="name" class="login_input">

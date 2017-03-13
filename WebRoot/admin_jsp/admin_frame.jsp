@@ -1,8 +1,12 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
+<%@ page import="model.Admin" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<%
+	Admin adminLoginInfo=(Admin)request.getSession().getAttribute("Admin");
 %>
 
 <!DOCTYPE html>
@@ -20,9 +24,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="content">
 			<div class="public-header-logo"><a href=""><i>LOGO</i><h3>校园二手物品交易系统</h3></a></div>
 			<div class="public-header-admin fr">
-				<p class="admin-name">XX管理员 您好！</p>
+				<p class="admin-name"><%=adminLoginInfo.getName()%> 管理员 您好！</p>
 				<div class="public-header-fun fr">
-					<a href="" class="public-header-loginout">安全退出</a>	
+					<a href="javascript:exit();" class="public-header-loginout">安全退出</a>	
 				</div>
 			</div>
 		</div>
@@ -46,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<a href="javascript:;">管理员管理</a>
 					<div class="ifame-item-sub">
 						<ul>
-							<li class="active"><a href="admin_manager.jsp" target="content">管理员列表</a></li>
+							<li class="active"><a href="admin_jsp/adminInfoList.action" target="content">管理员列表</a></li>
 							<li><a href="admin_add_admin.jsp" target="content">新增管理员</a></li>
 							
 						</ul>
@@ -109,6 +113,20 @@ $().ready(function(){
 		});
 	}
 });
+
+	function exit(){
+		 $.ajax({
+			 url: "${basePath}/adminLogin!Exitlogin.action",
+			 type: "Post",
+			 dataType: "json",
+			 success: function (result) {
+			  if(result.code==0){
+				  window.location.href="${basePath}/admin_jsp/admin_login.jsp";
+				  }
+			  }
+		 });
+		
+	}
 </script>
 </body>
 </html>

@@ -13,6 +13,9 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+	<!-- 引入外部的xml文件 -->
+	<import resource="applicationContext-ext.xml"/>
+	
 	<!-- 引入外部的属性文件 -->
 	<context:property-placeholder location="classpath:jdbc.properties"/>
 
@@ -52,12 +55,12 @@
 		</property>
 	</bean>
 	
-	<!-- 用户登录 -->
-	 <bean id="loginAction" class="action.LoginAction" scope="prototype">
+	<!-- 用户 -->
+	 <bean id="userAction" class="action.UserAction" scope="prototype">
 		<property name="iLoginService" ref="iLoginService" />
 	</bean>
-	<!-- 管理员登录 -->
-	 <bean id="adminLoginAction" class="action.AdminLoginAction" scope="prototype">
+	<!-- 管理员 -->
+	 <bean id="adminAction" class="action.AdminAction" scope="prototype">
 		<property name="iLoginService" ref="iLoginService" />
 	</bean> 
 	
