@@ -1,0 +1,164 @@
+@charset "gb2312";
+/* CSS Document */
+
+body{
+	margin:0px;
+	padding:0px;
+	font-size:12px;
+	line-height:20px;
+	color:#333;
+   }
+ul,li,ol,h1,dl,dd{
+	list-style:none;
+	margin:0px;
+	padding:0px;
+	}
+a{
+	color:#1965b3;
+    text-decoration: none;
+	}    
+a:hover{
+	color:#CD590C;
+	text-decoration:underline;
+	}
+img{
+	border:0px;
+	vertical-align:middle;
+	}
+#header{
+	height:40px;
+	margin:10px auto 10px auto;
+	width:800px;
+	clear:both;
+	}
+#nav{
+	margin:80px auto 10px auto;
+	width:800px;
+	clear:both;
+	}
+#navlist{
+	width:800px;
+	margin:0px auto 0px auto;
+	height:23px;
+	}
+	#navlist li{
+		float:left;
+		height:23px;
+		line-height:26px;
+	}
+	.navlist_red_left{
+		background-image:url(../images/taobao_bg.png);
+		background-repeat:no-repeat;
+		background-position:-12px -92px;
+		width:3px;
+		}
+	.navlist_red{
+		background-color:#ff6600;
+		text-align:center;
+		font-size:14px;
+		font-weight:bold;
+		color:#FFF;
+		width:130px;
+		}
+	.navlist_red_arrow{
+		background-color:#ff6600;
+		background-image:url(../images/taobao_bg.png);
+		background-repeat:no-repeat;
+		background-position:0px 0px;
+		width:13px;
+		}
+	.navlist_gray{
+		background-color:#e4e4e4;
+		text-align:center;
+		font-size:14px;
+		font-weight:bold;
+		width:150px;
+		}
+	.navlist_gray_arrow{
+		background-color:#e4e4e4;
+		background-image:url(../images/taobao_bg.png);
+		background-repeat:no-repeat;
+		background-position:0px 0px;
+		width:13px;
+		}
+	.navlist_gray_right{
+		background-image:url(../images/taobao_bg.png);
+		background-repeat:no-repeat;
+		background-position:-12px -138px;
+		width:3px;
+		}
+#content{
+	width:800px;
+	margin:10px auto 5px auto;
+	clear:both;
+	}
+	.allselect{
+		text-align:center;
+		width:50px;
+		}
+	.goods{
+		text-align:center;
+		}
+	.prices{
+		text-align:center;
+		width:80px;
+		}
+	.amounts{
+		text-align:center;
+		width:80px;
+		}
+	.status{
+		text-align:center;
+		width:100px;
+		}
+	.delete{
+		text-align:center;
+		width:80px;
+		}
+	.line{
+		background-color:#a7cbff;
+		height:3px;
+		}
+	.shopInfo{
+		padding-left:10px;
+		height:35px;
+		vertical-align:bottom;
+		}
+	.num_input{
+		border:solid 1px #666;
+		width:25px;
+		height:15px;
+		text-align:center;
+		}
+	.order_item_select,.order_logo,.order_describe,.cart_td_4,.order_price,.order_amount,.order_status,.order_delete{
+		background-color:#e2f2ff;
+		border-bottom:solid 1px #d1ecff;
+		border-top:solid 1px #d1ecff;
+		text-align:center;
+		padding:5px;
+		}
+	.order_item_select,.order_describe,.cart_td_4,.order_price,.order_amount,.order_status{
+		border-right:solid 1px #FFF;
+		}
+	.order_describe{
+		text-align:left;
+		}
+	.order_status{
+		font-weight:bold;
+		color:#16a085;
+		font-size:12px;
+		}
+	.hand{
+		cursor:pointer;
+		}
+.shopend{
+	text-align:right;
+	padding-right:10px;
+	padding-bottom:10px;
+	}
+.yellow{
+	font-weight:bold;
+	color:#fe6400;
+	font-size:18px;
+	line-height:40px;
+	}
