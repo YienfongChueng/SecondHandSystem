@@ -1,3 +1,4 @@
+<%@page import="com.opensymphony.xwork2.ActionContext"%>
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%@ page import="model.Admin" %>
@@ -6,7 +7,12 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%
+	request.setCharacterEncoding("utf-8");
+	response.setCharacterEncoding("utf-8");	
 	Admin adminLoginInfo=(Admin)request.getSession().getAttribute("Admin");
+	if(adminLoginInfo==null){
+		response.sendRedirect("admin_login.jsp");
+	}
 %>
 
 <!DOCTYPE html>
@@ -26,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="public-header-admin fr">
 				<p class="admin-name"><%=adminLoginInfo.getName()%> 管理员 您好！</p>
 				<div class="public-header-fun fr">
-					<a href="javascript:exit();" class="public-header-loginout">安全退出</a>	
+					<a href="exitLogin.action" class="public-header-loginout">安全退出</a>	
 				</div>
 			</div>
 		</div>
@@ -50,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<a href="javascript:;">管理员管理</a>
 					<div class="ifame-item-sub">
 						<ul>
-							<li class="active"><a href="admin_jsp/adminInfoList.action" target="content">管理员列表</a></li>
+							<li class="active"><a href="adminInfoList.action" target="content">管理员列表</a></li>
 							<li><a href="admin_add_admin.jsp" target="content">新增管理员</a></li>
 							
 						</ul>
@@ -60,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<a href="javascript:;">用户管理</a>
 					<div class="ifame-item-sub">
 						<ul>
-							<li><a href="admin_user_manager.jsp" target="content">用户列表</a></li>
+							<li><a href="userInfoList.action" target="content">用户列表</a></li>
 							
 						</ul>
 					</div>
@@ -69,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<a href="javascript:;">分类管理</a>
 					<div class="ifame-item-sub">
 						<ul>
-							<li><a href="admin_class_manager.jsp" target="content">分类列表</a></li>
+							<li><a href="cateInfoList.action" target="content">分类列表</a></li>
 							<li><a href="admin_add_class.jsp" target="content">新增分类</a></li>
 						</ul>
 					</div>
@@ -78,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<a href="javascript:;">商品管理</a>
 					<div class="ifame-item-sub">
 						<ul>
-							<li><a href="admin_product_manager.jsp" target="content">商品列表</a></li>
+							<li><a href="productInfoList.action" target="content">商品列表</a></li>
 						</ul>
 					</div>
 				</li>
@@ -114,19 +120,7 @@ $().ready(function(){
 	}
 });
 
-	function exit(){
-		 $.ajax({
-			 url: "${basePath}/adminLogin!Exitlogin.action",
-			 type: "Post",
-			 dataType: "json",
-			 success: function (result) {
-			  if(result.code==0){
-				  window.location.href="${basePath}/admin_jsp/admin_login.jsp";
-				  }
-			  }
-		 });
-		
-	}
+	
 </script>
 </body>
 </html>

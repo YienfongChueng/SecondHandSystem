@@ -27,31 +27,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				<div class="form-group">
 					<label for="">用户名：</label>
-					<input class="form-input-txt" type="text" name="" value="" readonly="true"/>
+					<input class="form-input-txt" type="text" name="" value='<s:property value="#user.userName"/>' readonly="true"/>
 				</div>
 				<div class="form-group">
 					<label for="">密码：</label>
-					<input class="form-input-txt" type="password" name="" value="" readonly="true"/>
+					<input class="form-input-txt" type="password" name="" value="<s:property value="#user.password"/>" readonly="true"/>
 				</div>
 				<div class="form-group">
 					<label for="">班级：</label>
-					<input class="form-input-txt" type="text" name="" value="" readonly="true" />
+					<input class="form-input-txt" type="text" name="" value="<s:property value="#user.schoolClass"/>" readonly="true" />
 				</div>
 				<div class="form-group">
 					<label for="">性别：</label>
-					<input class="form-input-txt" type="text" name="" value="" readonly="true" />
+					<s:if test="#user.sex==0">
+						<input class="form-input-txt" type="text" name="" value="男" readonly="true" />
+					</s:if>
+					<s:elseif test="#user.sex==1">
+						<input class="form-input-txt" type="text" name="" value="女" readonly="true" />
+					</s:elseif>
+					
 				</div>
 				<div class="form-group">
 					<label for="">电话：</label>
-					<input class="form-input-txt" type="text" name="" value="" readonly="true"/>
+					<input class="form-input-txt" type="text" name="" value="<s:property value="#user.phone"/>" readonly="true"/>
 				</div>
 				<div class="form-group">
 					<label for="">地址：</label>
-					<textarea class="form-input-textara" type="text" name="" readonly="true"></textarea>
+					<textarea class="form-input-textara" type="text" name="" readonly="true"><s:property value="#user.address"/></textarea>
 				</div>
 				<div class="form-group">
 					<label for="">问题：</label>
-					<textarea class="form-input-textara" type="text" name="" readonly="true"></textarea>
+					<textarea class="form-input-textara" type="text" name="" readonly="true"><s:property value="#user.qusetion"/></textarea>
 				</div>
 
 				</form>

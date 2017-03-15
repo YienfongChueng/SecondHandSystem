@@ -106,8 +106,8 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">供求 <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">从低到高</a></li>
-            <li><a href="#">从高到低</a></li>
+            <li><a href="#">求购</a></li>
+            <li><a href="#">求售</a></li>
           </ul>
         </li>
       </ul>     

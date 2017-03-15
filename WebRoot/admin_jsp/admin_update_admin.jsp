@@ -22,30 +22,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</h3>
 			</div>
 			<div class="public-content-cont">
-			<form action="" method="post" style="margin:0 auto;width:50%">
+			<s:form action="saveAdmin" method="post" style="margin:0 auto;width:50%">
+			<input type="hidden" name="aid" value="<s:property value="#admin.aid"/>"/>
 				<div class="form-group">
 					<label for="">管理员名称:</label>
-					<input class="form-input-txt" type="text" name="" value="" />
+					<input class="form-input-txt" type="text" name="name" value='<s:property value="#admin.name"/>' />
 				</div>
 				<div class="form-group">
 					<label for="">原密码:</label>
-					<input class="form-input-txt" type="password" name="" value="" />
+					<input class="form-input-txt" type="password" readonly="true" value='<s:property value="#admin.password"/>' />
 				</div>
 				<div class="form-group">
 					<label for="">新密码：</label>
-					<input class="form-input-txt" type="password" name="" value="" />
+					<input class="form-input-txt" type="password" name="password" value="" />
 				</div>
 				<div style="margin-top:10px;">
 					<label for="">权限角色：</label>
-					<label>超级管理员<input style="width:15px;height:15px;" type="radio" name="role" value="0" /></label>
-					<label>系统管理员<input style="width:15px;height:15px;" type="radio" name="role" value="1" /></label>
+					<s:if test="#admin.role==0">
+						<label>超级管理员<input style="width:15px;height:15px;" type="radio" name="role" value="0" checked="checked"/></label>
+						<label>系统管理员<input style="width:15px;height:15px;" type="radio" name="role" value="1" /></label>
+					</s:if>
+					<s:elseif test="#admin.role==1">
+						<label>超级管理员<input style="width:15px;height:15px;" type="radio" name="role" value="0" /></label>
+						<label>系统管理员<input style="width:15px;height:15px;" type="radio" name="role" value="1" checked="checked"/></label>
+					</s:elseif>
+					
 				</div>
 
 				<div class="form-group" style="margin-left:100px;">
 					<input type="submit" class="sub-btn" value="提  交" />
 					<input type="reset" class="sub-btn" value="重  置" />
 				</div>
-			</form>
+			</s:form>
 			</div>
 		</div>
 	</div>

@@ -22,6 +22,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	font-family: "微软雅黑";
 	}
 	</style>
+	<script type="text/javascript">
+    	function login(form){
+        	if(form.name.value == ""){
+        		alert("用户不能为空！");
+        		return false;
+        	}
+        	if(form.password.value == ""){
+        		alert("密码不能为空！");
+        		return false;
+        	}
+    	}
+    </script>
 </head>
 <body>
 
@@ -32,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
         <div class="login_form">
         <span><s:actionerror/></span>
-			<s:form  method="post" onsubmit="" action="adminLogin" theme="simple" namespace="admin_jsp/">
+			<s:form  method="post" onsubmit="return login(this);" action="adminLogin" theme="simple" >
 				<li class="login-item">
 					<span>用户名：</span>
 					<input type="text" name="name" class="login_input">

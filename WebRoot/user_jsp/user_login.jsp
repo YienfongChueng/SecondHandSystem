@@ -40,11 +40,22 @@ $(document).ready(function() {
   //验证码
   createCode();
 });
+function login(form){
+	if(form.userName.value == ""){
+		alert("用户不能为空！");
+		return false;
+	}
+	if(form.password.value == ""){
+		alert("密码不能为空！");
+		return false;
+	}
+	return validate();
+}
 
 </script>
 </head>
 <body>
-<s:form action="userLogin" method="post" theme="simple" namespace="user_jsp/" onsubmit="return validate();">
+<s:form action="userLogin" method="post" theme="simple" namespace="user_jsp/" onsubmit="return login(this);">
 	<dl class="admin_login">
  <dt>
   <strong>校园二手物品交易系统</strong>

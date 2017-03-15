@@ -16,6 +16,13 @@
     	<property name="qusetion" column="QUESTION" type="java.lang.String" length="50"/>	
     	<property name="answer" column="ANSWER" type="java.lang.String" length="50"/>	
     	<property name="message" column="MESSAGE" type="java.lang.String" length="256"/>	
-    	<property name="sex" column="SEX" type="java.lang.Integer" length="6"/>				
+    	<property name="sex" column="SEX" type="java.lang.Integer" length="6"/>	
+    	
+    	<!-- <set name="product" table="tb_product" inverse="false" lazy="true">
+    		<key>
+    			<column name="CREATOR_ID"></column>指定关联的外键列名
+    		</key>
+    		<one-to-many class="model.Product"/>映射关联类
+    	</set>	 -->		
     </class>
     </hibernate-mapping>

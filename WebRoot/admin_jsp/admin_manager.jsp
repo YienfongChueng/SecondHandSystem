@@ -40,8 +40,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</s:elseif>
 						<td>
 							<div class="table-fun">
-								<a href="admin_update_admin.jsp?aid=<s:property value="#admin.aid"/>" target="content">修改</a>
-								<a href="javascript:delectAdminById(<s:property value="#admin.aid"/>);">删除</a>
+								<a href="editAdmin.action?aid=<s:property value="#admin.aid"/>" target="content">修改</a>
+								<a href="delectAdmin.action?id=<s:property value="#admin.aid"/>" target="content" onclick="delcfm();">删除</a>
 							</div>
 						</td>
 					</tr>
@@ -49,23 +49,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 				</table>
 				<div class="page">
-					<!-- <form action="" method="get"> -->
-					<s:if test="currPage!=1">
-						<a href="admin_jsp/adminInfoList.action?currPage=1" target="content">首页</a>
-						<a href="admin_jsp/adminInfoList.action?currPage=<s:property value="currPage-1"/>" target="content">上一页</a>
+					
+					<s:if test="currPage != 1">
+						<a href="adminInfoList.action?currPage=1" target="content">首页</a>
+						<a href="adminInfoList.action?currPage=<s:property value="currPage-1"/>" target="content">上一页</a>
 					</s:if>
-					<s:if test="currPage!=totalPage">
-						<a href="admin_jsp/adminInfoList.action?currPage=<s:property value="currPage+1"/>" target="content">下一页</a>
-						<a href="admin_jsp/adminInfoList.action?currPage=<s:property value="totalPage"/>" target="content">尾页</a>
+					<s:if test="currPage != totalPage">
+						<a href="adminInfoList.action?currPage=<s:property value="currPage+1"/>" target="content">下一页</a>
+						<a href="adminInfoList.action?currPage=<s:property value="totalPage"/>" target="content">尾页</a>
 					</s:if>
 						第<span style="color:red;font-weight:600"><s:property value="currPage"/></span>页
 						共<span style="color:red;font-weight:600"><s:property value="totalPage"/></span>页
 						<!-- <input type="text" class="page-input">
 						<input type="submit" class="page-btn" value="跳转"> -->
-					<!-- </form> -->
+					 
 				</div>
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+	function delcfm() {
+        if (!confirm("确认要删除？")) {
+            window.event.returnValue = false;
+        }
+    }
+	</script>
 </body>
 </html>
