@@ -81,8 +81,8 @@ function login(form){
  <dd>
   <div>
   	<ul class="ulList">
-  	<li class="lione"><a class="aList" href="">忘记密码？</a></li>
-  	<li class="litwo"><a class="aList" href="">去注册</a></li>
+  	<li class="lione"><a class="aList" href="forgetPwd1.jsp">忘记密码？</a></li>
+  	<li class="litwo"><a class="aList" href="user_regster.jsp">去注册</a></li>
   	</ul>
   </div>
   

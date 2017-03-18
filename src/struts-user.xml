@@ -12,5 +12,15 @@
 				<result name="index" type="redirect">/user_jsp/index.jsp</result>
 				<result name="login">/user_jsp/user_login.jsp</result>
 			 </action> 
+			 
+			 <action name="user_*" class="userAction" method="{1}">
+			 	<result name="registerFail">/user_jsp/user_regster.jsp</result>
+			 	<result name="registerSuccess">/user_jsp/user_login.jsp</result>
+			 	<result name="getPwdSuccess" >/user_jsp/forgetPwd2.jsp</result>
+			 	<result name="getPwdFail">/user_jsp/forgetPwd1.jsp</result>
+			 	<result name="answerFalse">/user_jsp/forgetPwd2.jsp</result>
+			 	<result name="answerTrue">/user_jsp/forgetPwd3.jsp</result>
+			 	<result name="updatePwdSuccess">/user_jsp/forgetPwd4.jsp</result>
+			 </action>
 		</package>
 	</struts>

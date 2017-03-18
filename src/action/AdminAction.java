@@ -228,6 +228,11 @@ public class AdminAction extends ActionSupport implements ModelDriven<Admin>{
 	 * 管理员修改
 	 */
 	public String updateAdmin(){
+		/*Admin a=this.iAdminInfoService.findAdminByName(admin.getName());
+		if(a!=null){
+			this.addActionError("该账号已存在!");
+			return "updateAdminFail";
+		}*/
 		this.iAdminInfoService.updateAdmin(admin);
 		return "updateAdminSuccess";
 		
@@ -303,6 +308,11 @@ public class AdminAction extends ActionSupport implements ModelDriven<Admin>{
 	 * 修改分类
 	 */
 	public String updateCate(){
+		/*Classify c=this.iAdminInfoService.findCateByName(classifyName);
+		if(c!=null){
+			this.addActionError("该分类已存在!");
+			return "updateCateFail";
+		}*/
 		cassify.setCid(cid);
 		cassify.setClassifyName(classifyName);
 		cassify.setClassifySort(classifySort);

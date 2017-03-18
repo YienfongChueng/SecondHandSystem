@@ -24,6 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="public-content-cont">
 			<form action="saveCate" method="post" style="margin:0 auto;width:50%">
 				<input type="hidden" name="cid" value='<s:property value="#cate.cid"/>'/>
+				<div><s:actionerror style="color:red;"/></div>
 				<div class="form-group">
 					<label for="">分类名称:</label>
 					<input class="form-input-txt" type="text" name="classifyName" value="<s:property value="#cate.classifyName"/>" />

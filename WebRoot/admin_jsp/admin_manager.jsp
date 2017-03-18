@@ -29,6 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<th style="width:20%">操作</th>
 					</tr>
 					<s:iterator var="admin" value="list">
+					<input type="hidden" name="aid" value="<s:property value="#admin.aid"/>"/>
 					<tr>
 						<td><s:property value="#admin.aid"/></td>
 						<td><s:property value="#admin.name"/></td>

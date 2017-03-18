@@ -24,6 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="public-content-cont">
 			<s:form action="saveAdmin" method="post" style="margin:0 auto;width:50%">
 			<input type="hidden" name="aid" value="<s:property value="#admin.aid"/>"/>
+				<div><s:actionerror style="color:red;"/></div>
 				<div class="form-group">
 					<label for="">管理员名称:</label>
 					<input class="form-input-txt" type="text" name="name" value='<s:property value="#admin.name"/>' />
@@ -46,6 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<label>超级管理员<input style="width:15px;height:15px;" type="radio" name="role" value="0" /></label>
 						<label>系统管理员<input style="width:15px;height:15px;" type="radio" name="role" value="1" checked="checked"/></label>
 					</s:elseif>
+					
 					
 				</div>
 

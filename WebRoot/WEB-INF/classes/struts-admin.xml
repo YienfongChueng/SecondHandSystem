@@ -82,6 +82,7 @@
 			 <!-- 修改管理员 -->
 			 <action name="saveAdmin" class="adminInfoAction" method="updateAdmin">
 			 	<result name="updateAdminSuccess" type="redirectAction">adminInfoList.action</result>
+			 	<!-- <result name="updateAdminFail">/admin_jsp/admin_update_admin.jsp</result> -->
 			 </action>
 			 
 			 <!-- 新增分类-->
@@ -98,6 +99,7 @@
 			 <!-- 修改分类 -->
 			 <action name="saveCate" class="adminInfoAction" method="updateCate">
 			 	<result name="updateCateSuccess" type="redirectAction">cateInfoList.action</result>
+			 	<!-- <result name="updateCateFail" >/admin_jsp/admin_update_class.jsp</result> -->
 			 </action>
 		</package>
 	</struts>

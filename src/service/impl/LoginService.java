@@ -15,16 +15,45 @@ public class LoginService implements ILoginService{
 		this.iLoginDao = iLoginDao;
 	}
 
+	/**
+	 * 通过用户帐户和密码查询用户
+	 */
 	@Override
 	public User findByUser(User user) {
-		
 		return iLoginDao.findByUser(user);
 	}
 
+	/**
+	 * 通过管理员帐户和密码查询管理员
+	 */
 	@Override
 	public Admin findByAdmin(Admin admin) {
-		
 		return iLoginDao.findByAdmin(admin);
+	}
+
+	/**
+	 * 通过用户名查询用户
+	 */
+	@Override
+	public User findUserByName(String userName) {
+		return this.iLoginDao.findUserByName(userName);
+	}
+
+	/**
+	 * 保存用户信息
+	 */
+	@Override
+	public void saveUser(User user) {
+		this.iLoginDao.saveUser(user);
+	}
+
+	/**
+	 * 修改用户密码
+	 */
+	@Override
+	public void updatePed(User user) {
+		this.iLoginDao.updatePed(user);
+		
 	}
 
 	
