@@ -1,5 +1,7 @@
 package model;
 
+import java.util.HashSet;
+import java.util.Set;
 
 public class User {
 
@@ -14,6 +16,7 @@ public class User {
 	private java.lang.String qusetion;//密码找回的设置问题
 	private java.lang.String answer;//密码找回设置答案
 	private java.lang.String message;//密码找回的返回信息
+	
 	public java.lang.Integer getUid() {
 		return uid;
 	}

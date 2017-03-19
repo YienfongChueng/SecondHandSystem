@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	<struts>
+		<constant name="struts.ui.theme" value="simple"></constant>
+		<constant name="struts.i18n.encoding" value="utf-8"></constant>
+		<constant name="struts.devMode" value="false"></constant>
+		<package name="admin" extends="struts-default" namespace="/admin_jsp">
+			<!-- 管理员登录 -->
+			<action name="adminLogin" class="adminAction" method="AdminLogin">
+				<result name="adminIndex" >/admin_jsp/admin_frame.jsp</result>
+				<result name="adminLogin">/admin_jsp/admin_login.jsp</result>
+			 </action>
+			 
+			 <!-- 管理员注销登录 -->
+			<action name="exitLogin" class="adminAction" method="Exitlogin">
+				<result name="adminLogin">/admin_jsp/admin_login.jsp</result>
+			 </action>
+			 
+			 <!-- 管理员列表 -->
+			 <action name="adminInfoList" class="adminInfoAction" method="findAllAdminInfo">
+			 	<result name="adminList">/admin_jsp/admin_manager.jsp</result>
+			 </action>
+			 
+			 <!-- 用户列表 -->
+			 <action name="userInfoList" class="adminInfoAction" method="findAllUserInfo">
+			 	<result name="userList">/admin_jsp/admin_user_manager.jsp</result>
+			 </action>
+			 
+			 <!-- 分类列表 -->
+			 <action name="cateInfoList" class="adminInfoAction" method="findAllCateInfo">
+			 	<result name="cateList">/admin_jsp/admin_class_manager.jsp</result>
+			 </action>
+			 
+			 <!-- 分类列表下拉框选项 -->
+			 <action name="cateList" class="adminInfoAction" method="cateList">
+			 	
+			 </action>
+			 
+			 <!-- 商品列表 -->
+			 <action name="productInfoList" class="adminInfoAction" method="findAllProductInfo">
+			 	<result name="productList">/admin_jsp/admin_product_manager.jsp</result>
+			 </action>
+			 
+			 <!-- 商品详情 -->
+			 <action name="productDetail" class="adminInfoAction" method="searchProductDetail">
+			 	<result name="productDetail">/admin_jsp/admin_product_details.jsp</result>
+			 </action>
+			 
+			 <!-- 根据id删除单个商品 -->
+			 <action name="delectProduct" class="adminInfoAction" method="delectProductById">
+			 	<result name="success" type="redirectAction">productInfoList.action</result>
+			 </action>
+			 
+			 <!-- 用户详情 -->
+			 <action name="userDetail" class="adminInfoAction" method="searchUserDetail">
+			 	<result name="userDetail">/admin_jsp/admin_user_details.jsp</result>
+			 </action>
+			 
+			 <!-- 根据id删除单个管理员 -->
+			 <action name="delectAdmin" class="adminInfoAction" method="delectAdminById">
+			 	<result name="delAdminsuccess" type="redirectAction">adminInfoList.action</result>
+			 </action>
+			 
+			 <!-- 根据id删除单个分类 -->
+			 <action name="delectCate" class="adminInfoAction" method="delectCateById">
+			 	<result name="delCatesuccess" type="redirectAction">cateInfoList.action</result>
+			 </action>
+			 
+			 <!-- 新增管理员 -->
+			 <action name="addAdmin" class="adminInfoAction" method="addAdmin">
+			 	<result name="addAdminSucess" type="redirectAction">adminInfoList.action</result>
+			 	<result name="addAdminFail">/admin_jsp/admin_add_admin.jsp</result>
+			 </action>
+			 
+			 <!-- 修改管理员回显 -->
+			 <action name="editAdmin" class="adminInfoAction" method="findAdminById">
+			 	<result name="findAdminSuccess">/admin_jsp/admin_update_admin.jsp</result>
+			 </action>
+			 
+			 <!-- 修改管理员 -->
+			 <action name="saveAdmin" class="adminInfoAction" method="updateAdmin">
+			 	<result name="updateAdminSuccess" type="redirectAction">adminInfoList.action</result>
+			 	<!-- <result name="updateAdminFail">/admin_jsp/admin_update_admin.jsp</result> -->
+			 </action>
+			 
+			 <!-- 新增分类-->
+			 <action name="addCate" class="adminInfoAction" method="addCate">
+			 	<result name="addCateSucess" type="redirectAction">cateInfoList.action</result>
+			 	<result name="addCateFail">/admin_jsp/admin_add_class.jsp</result>
+			 </action>
+			 
+			 <!-- 修改分类回显 -->
+			 <action name="editCate" class="adminInfoAction" method="findCateByName">
+			 	<result name="findCateSuccess">/admin_jsp/admin_update_class.jsp</result>
+			 </action>
+			 
+			 <!-- 修改分类 -->
+			 <action name="saveCate" class="adminInfoAction" method="updateCate">
+			 	<result name="updateCateSuccess" type="redirectAction">cateInfoList.action</result>
+			 	<!-- <result name="updateCateFail" >/admin_jsp/admin_update_class.jsp</result> -->
+			 </action>
+		</package>
+	</struts>

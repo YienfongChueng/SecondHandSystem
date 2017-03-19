@@ -14,7 +14,7 @@ em,i,h2,h3,h4,h6 {
 }
 
 body {
-	font: 12px/1.2 "Hiragino Sans GB","Microsoft YaHei","å¾®è½¯é›…é»‘",arial,Tahoma,SimSun,sans-serif;
+	font: 12px/1.2 "Hiragino Sans GB","Microsoft YaHei","氓戮庐猫陆炉茅鈥衡�γ┞烩��",arial,Tahoma,SimSun,sans-serif;
 	color: #333;
 	min-width: 1190px;
 	text-rendering: geometricPrecision;
@@ -236,15 +236,16 @@ a:hover.embed02 {
 input.btnal2,input.btnall {
 	-webkit-appearance: none;
 	-webkit-border-radius: 0;
-	height: 42px;
-	line-height: 40px;
+	height: 38px;
+	line-height: 36px;
 	width: 100px;
 	font-size: 16px;
 	border: 0;
 	cursor: pointer;
 	overflow: hidden;
 	text-align: center;
-	color: #fff
+	color: #fff;
+	border-radius: 0 5px 5px 0;
 }
 
 input.btnall {
@@ -680,11 +681,11 @@ input.btnal2 {
 }
 
 .board a,.board h4,.board h2 .AdTilRt a,.board h6 {
-	font-family: "Hiragino Sans GB",arial,Tahoma,SimSun,"å®‹ä½“",sans-serif
+	font-family: "Hiragino Sans GB",arial,Tahoma,SimSun,"氓庐鈥姑ぢ解��",sans-serif
 }
 
 .board h2 a,.board h3 em a,#searchbtn,#keyword {
-	font-family: "Hiragino Sans GB","Microsoft YaHei","å¾®è½¯é›…é»‘"
+	font-family: "Hiragino Sans GB","Microsoft YaHei","氓戮庐猫陆炉茅鈥衡�γ┞烩��"
 }
 
 .board h3 {

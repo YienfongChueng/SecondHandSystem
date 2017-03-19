@@ -20,7 +20,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="public-content-header">
 				<h3>分类列表
 				<span style="float:right;margin-right:15px;">
-					<label style="color:#333">搜索：</label><input type="text" placeholder="搜索分类" name="" style="height:20px"/>
+				<s:form action="cateInfoList" method="post">
+					<label style="color:#333">搜索：</label><input type="text" placeholder="搜索分类" name="classifyName" style="height:20px"/>
+				</s:form>
 				</span>
 				</h3>
 			</div>
@@ -31,28 +33,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<th style="width:30%">分类名称</th>					
 						<th style="width:20%">操作</th>
 					</tr>
+					<s:iterator var="cate" value="list">
 					<tr>
-						<td>1</td>
-						<td>书籍</td>
+						<td><s:property value="#cate.ClassifySort"/></td>
+						<td><s:property value="#cate.classifyName"/></td>
 						<td>
 							<div class="table-fun">
-								<a href="admin_update_class.jsp" target="content">修改</a>
-								<a href="">删除</a>
+								<a href="editCate?cname=<s:property value="#cate.classifyName"/>" target="content">修改</a>
+								<a href="delectCate.action?id=<s:property value="#cate.cid"/>">删除</a>
 							</div>
 						</td>
 					</tr>
+					</s:iterator>
 					
 				</table>
 				<div class="page">
-					<form action="" method="get">
-						<a href="">首页</a>
-						<a href="">上一页</a>
-						<a href="">下一页</a>
-						第<span style="color:red;font-weight:600">12</span>页
-						共<span style="color:red;font-weight:600">120</span>页
-						<input type="text" class="page-input">
-						<input type="submit" class="page-btn" value="跳转">
-					</form>
+					<s:if test="currPage != 1&&currPage <totalPage">
+						<a href="cateInfoList.action?currPage=1" target="content">首页</a>
+						<a href="cateInfoList.action?currPage=<s:property value="currPage-1"/>" target="content">上一页</a>
+					</s:if>
+					<s:if test="currPage != totalPage&&currPage>1">
+						<a href="cateInfoList.action?currPage=<s:property value="currPage+1"/>" target="content">下一页</a>
+						<a href="cateInfoList.action?currPage=<s:property value="totalPage"/>" target="content">尾页</a>
+					</s:if>
+						第<span style="color:red;font-weight:600"><s:property value="currPage"/></span>页
+						共<span style="color:red;font-weight:600"><s:property value="totalPage"/></span>页
 				</div>
 			</div>
 		</div>

@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page import="model.Classify" %>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%
 String path = request.getContextPath();
@@ -20,14 +21,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<h3>新增分类</h3>
 			</div>
 			<div class="public-content-cont">
-			<form action="" method="post" style="margin:0 auto;width:50%">
+			<form action="addCate" method="post" style="margin:0 auto;width:50%">
+				<div><s:actionerror style="color:red;"/></div>
 				<div class="form-group">
 					<label for="">分类名称:</label>
-					<input class="form-input-txt" type="text" name="" value="" />
+					<input class="form-input-txt" type="text" name="classifyName" value="" />
 				</div>
 				<div class="form-group">
 					<label for="">排序:</label>
-					<input class="form-input-txt" type="text" name="" value="" />
+					<input class="form-input-txt" type="text" name="ClassifySort" value="" />
 				</div>
 				<div class="form-group" style="margin-left:100px;">
 					<input type="submit" class="sub-btn" value="提  交" />

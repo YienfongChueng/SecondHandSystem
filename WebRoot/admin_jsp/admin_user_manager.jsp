@@ -19,7 +19,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="public-content-header">
 				<h3>用户列表
 				<span style="float:right;margin-right:15px;">
-					<label style="color:#333">搜索：</label><input type="text" placeholder="搜索用户" name="" style="height:20px"/>
+					<s:form action="userInfoList" method="post">
+						<label style="color:#333">搜索：</label><input type="text" placeholder="搜索用户" name="userName" style="height:20px"/>
+					</s:form>
 				</span>
 				</h3>
 			</div>
@@ -31,28 +33,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<th style="width:20%">性别</th>
 						<th style="width:20%">操作</th>
 					</tr>
+					<s:iterator var="user" value="list">
 					<tr>
-						<td>小刘</td>
-						<td>计科1班</td>
-						<td>女</td>
+						<td><s:property value="#user.userName"/></td>
+						<td><s:property value="#user.schoolClass"/></td>
+						<s:if test="#user.sex==0"><td>男</td></s:if>
+						<s:elseif test="#user.sex==1"><td>女</td></s:elseif>
 						<td>
 							<div class="table-fun">
-								<a href="admin_user_details.jsp" target="content">详情</a>
+								<a href="userDetail.action?uid=<s:property value="#user.uid"/>" target="content">详情</a>
 							</div>
 						</td>
 					</tr>
+					</s:iterator>
 					
 				</table>
 				<div class="page">
-					<form action="" method="get">
-						<a href="">首页</a>
-						<a href="">上一页</a>
-						<a href="">下一页</a>
-						第<span style="color:red;font-weight:600">12</span>页
-						共<span style="color:red;font-weight:600">120</span>页
-						<input type="text" class="page-input">
-						<input type="submit" class="page-btn" value="跳转">
-					</form>
+					<s:if test="currPage != 1&&currPage <totalPage">
+						<a href="userInfoList.action?currPage=1" target="content">首页</a>
+						<a href="userInfoList.action?currPage=<s:property value="currPage-1"/>" target="content">上一页</a>
+					</s:if>
+					<s:if test="currPage != totalPage&&currPage>1">
+						<a href="userInfoList.action?currPage=<s:property value="currPage+1"/>" target="content">下一页</a>
+						<a href="userInfoList.action?currPage=<s:property value="totalPage"/>" target="content">尾页</a>
+					</s:if>
+						第<span style="color:red;font-weight:600"><s:property value="currPage"/></span>页
+						共<span style="color:red;font-weight:600"><s:property value="totalPage"/></span>页
 				</div>
 			</div>
 		</div>

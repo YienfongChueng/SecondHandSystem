@@ -1,3 +1,4 @@
+﻿
 ﻿<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!--首页  -->
@@ -231,5 +232,4 @@
 
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script> 
-</body>
-</html>
+</body></html>

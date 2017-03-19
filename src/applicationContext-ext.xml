@@ -15,9 +15,10 @@
         
         
         
-	 <bean id="adminAction" class="action.AdminAction" scope="prototype">
+     <!-- 后台的注入 -->
+	 <bean id="adminInfoAction" class="action.AdminAction" scope="prototype">
 		<property name="iAdminInfoService" ref="iAdminInfoService" />
-	</bean>
+	 </bean>
 	 
 	 <bean id="iAdminInfoService" class="service.impl.AdminInfoService">
 		<property name="iAdminInfoDao" ref="iAdminInfoDao" />

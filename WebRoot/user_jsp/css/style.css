@@ -75,6 +75,24 @@ small,weak{color:#666}
 .admin_login dd .submit_btn:hover{background:#0c9076;color:#f4f4f4;}
 .admin_login dd p{color:#53c6b0;font-size:12px;text-align:center;margin:5px 0;}
 
+/*注册样式*/
+.admin_login1 dd .login_txtbx1{font-size:14px;height:26px;line-height:26px;padding:8px 5%;width:90%;text-indent:0em;border:none;background:#5cbdaa;color:white;}
+.admin_login1 dd .login_txtbx1::-webkit-input-placeholder {color:#f4f4f4;line-height:inherit;} 
+.admin_login1 dd .login_txtbx1:-moz-placeholder {color:#f4f4f4;line-height:inherit;} 
+.admin_login1 dd .login_txtbx1::-moz-placeholder {color:#f4f4f4;line-height:inherit;}
+.admin_login1 dd .login_txtbx1:focus{background:#55b7a4;}
+
+.admin_login1{width:300px;height:auto;overflow:hidden;margin:5% auto 0 auto;padding:29px;box-shadow:0 -15px 30px #0d957a;border-radius:5px;}
+.admin_login1 dt{font-size:20px;font-weight:bold;text-align:center;color:#45bda6;text-shadow:0 0 1px #0e947a;margin-bottom:15px;}
+.admin_login1 dt strong{display:block;}
+.admin_login1 dt em{display:block;font-size:12px;margin-top:8px;}
+.admin_login1 dd{margin:5px 0;height:42px;overflow:hidden;position:relative;}
+
+.admin_login1 dd .submit_btn{width:100%;height:42px;border:none;font-size:16px;background:#048f74;color:#f8f8f8;}
+.admin_login1 dd .submit_btn:hover{background:#0c9076;color:#f4f4f4;}
+/**/
+
+
 /*header*/
 header{background:#19a97b;overflow:hidden;}
 header h1{margin:0;float:left;margin-left:1%;}

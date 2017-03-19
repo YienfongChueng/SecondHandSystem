@@ -1,9 +1,11 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page import="model.Product" %>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,49 +26,55 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</h3>
 			</div>
 			<div class="public-content-cont">
-			<form action="" method="post" style="margin:0 auto;width:50%">
+			<!-- <form action="" method="post" style="margin:0 auto;width:50%"> -->
 				
 				<div class="form-group">
 					<label for="">商品名称：</label>
-					<input class="form-input-txt" type="text" name="" value="" readonly="true"/>
+					<input class="form-input-txt" type="text" name="" value='<s:property value="#product.proName"/>' readonly="true"/>
 				</div>
 				<div class="form-group">
 					<label for="">商品图片：</label>
-					<input class="form-input-txt" type="text" name="" value="" readonly="true" />
+					<img class="thumb" src="../upload/<s:property value="#product.proPicture"/>" />
 				</div>
 				<div class="form-group">
 					<label for="">商品描述：</label>
-					<textarea class="form-input-textara" type="text" name="" readonly="true"></textarea>
+					<textarea class="form-input-textara" type="text" name="" readonly="true"><s:property value="#product.proDesc"/></textarea>
 				</div>
 				<div class="form-group">
 					<label for="">发布人</label>
-					<input class="form-input-txt" type="text" name="" value="" readonly="true"/>
+					<input class="form-input-txt" type="text" name="" value="<s:property value="#product.user.userName"/>" readonly="true"/>
 				</div>
 				<div class="form-group">
 					<label for="">发布时间：</label>
-					<input class="form-input-txt" type="text" name="" value="" readonly="true"/>
+					<input class="form-input-txt" type="text" name="" value="<s:property value="#product.createTime"/>" readonly="true"/>
 				</div>
 				<div class="form-group">
 					<label for="">商品价格：</label>
-					<input class="form-input-txt" type="text" name="" value="" readonly="true"/>
+					<input class="form-input-txt" type="text" name="" value="<s:property value="#product.proPrice"/>" readonly="true"/>
 				</div>
 				<div class="form-group">
 					<label for="">剩余量：</label>
-					<input class="form-input-txt" type="text" name="" value="" readonly="true"/>
+					<input class="form-input-txt" type="text" name="" value="<s:property value="#product.proHassum"/>" readonly="true"/>
 				</div>
 				<div class="form-group">
 					<label for="">点击量：</label>
-					<input class="form-input-txt" type="text" name="" value="" readonly="true"/>
+					<input class="form-input-txt" type="text" name="" value="<s:property value="#product.proClicknum"/>" readonly="true"/>
 				</div>
 				<div class="form-group">
 					<label for="">所属分类：</label>
-					<input class="form-input-txt" type="text" name="" value="" readonly="true"/>
+					<input class="form-input-txt" type="text" name="" value="<s:property value="#product.classify.classifyName"/>" readonly="true"/>
 				</div>
 				<div class="form-group">
 					<label for="">类型：</label>
-					<input class="form-input-txt" type="text" name="" value="" readonly="true"/>
+					<s:if test="#product.type==0">
+						<input class="form-input-txt" type="text" name="" value="求购" readonly="true"/>
+					</s:if>
+					<s:elseif test="#product.type==1">
+						<input class="form-input-txt" type="text" name="" value="求售" readonly="true"/>
+					</s:elseif>
+					
 				</div>
-				</form>
+				<!-- </form> -->
 			</div>
 		</div>
 	</div>

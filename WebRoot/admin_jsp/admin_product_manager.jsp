@@ -24,21 +24,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="public-content-header">
 				<h3>商品列表
 				<span style="float:right;margin-right:15px;">
-					<label class="label_style">类型：</label>
-					<select name="select" id="select_type" class="form-select">
-						<option value="">选择类型</option>
-						<option value="buy">求购</option>
-						<option value="sell">求售</option>
-					</select>
-					<label class="label_style">分类：</label>
-					<select name="select" id="select_class" class="form-select">
-						<option value="">选择分类</option>
-						<option value="01">书籍</option>
-						<option value="02">生活用品</option>
-						<option value="02">电子产品</option>
-					</select>
-					<label class="label_style">搜索：</label>
-					<input type="text" placeholder="搜索用户" name="" style="height:20px"/>
+					<s:form action="productInfoList" method="post" >
+						<label class="label_style">类型：</label>
+						<select name="select_type" id="select_type" class="form-select">
+							<option value="">选择类型</option>
+							<option value="0">求购</option>
+							<option value="1">求售</option>
+						</select>
+					
+						<label class="label_style">分类：</label>
+						
+						 <select name="select_class" id="select_class" class="form-select">
+							 <option value="">选择分类</option>
+							 <s:iterator var="cl" value="#cateList">
+							 	<option value='<s:property value="#cl.cid"/>'><s:property value="#cl.classifyName"/></option>
+							 </s:iterator> 
+							
+						</select>
+					
+						<label class="label_style">搜索：</label>
+							<input type="text" placeholder="搜索商品" name="proName" style="height:20px"/>
+					</s:form>
 				</span>
 				</h3>
 			</div>
@@ -55,38 +61,53 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<th style="width:7%">类型</th>
 						<th style="width:20%">操作</th>
 					</tr>
+					<s:iterator var="pro" value="list">
 					<tr>
-						
-						<td>java书</td>
-						<td><img class="thumb" src="../../images/thumb.jpg" /></td>
-						<td>2016-6-3</td>
-						<td>小张</td>
-						<td>2</td>
-						<td>33</td>
-						<td>书籍</td>
+						<td><s:property value="#pro.proName"/></td>
+						<td><img class="thumb" src="../upload/<s:property value="#pro.proPicture"/>" /></td>
+						<td><s:date name="#pro.createTime" format="yyyy-MM-dd hh:mm"/></td>
+						<td><s:property value="#pro.user.userName"/></td><!-- 连表查询发布者名称 -->
+						<td><s:property value="#pro.proHassum"/></td>
+						<td><s:property value="#pro.proClicknum"/></td>
+						<td><s:property value="#pro.classify.classifyName"/></td><!-- 连表查询分类名称 -->
+						<s:if test="#pro.type==0">
 						<td>求购</td>
-						
+						</s:if>
+						<s:elseif test="#pro.type==1">
+						<td>求售</td>
+						</s:elseif>
 						<td>
 							<div class="table-fun">
-								<a href="admin_product_details.jsp" target="content">详情</a>
-								<a href="">删除</a>
+								<a href="productDetail.action?id=<s:property value="#pro.id"/>" target="content">详情</a>
+								<a href="delectProduct.action?id=<s:property value="#pro.id"/>" target="content" onclick="delcfm();">删除</a>
 							</div>
 						</td>
 					</tr>
+					</s:iterator>
 				</table>
 				<div class="page">
-					<form action="" method="get">
-						<a href="">首页</a>
-						<a href="">上一页</a>
-						<a href="">下一页</a>
-						第<span style="color:red;font-weight:600">12</span>页
-						共<span style="color:red;font-weight:600">120</span>页
-						<input type="text" class="page-input">
-						<input type="submit" class="page-btn" value="跳转">
-					</form>
+					<s:if test="currPage != 1">
+						<a href="productInfoList.action?currPage=1" target="content">首页</a>
+						<a href="productInfoList.action?currPage=<s:property value="currPage-1"/>" target="content">上一页</a>
+					</s:if>
+					<s:if test="currPage != totalPage">
+						<a href="productInfoList.action?currPage=<s:property value="currPage+1"/>" target="content">下一页</a>
+						<a href="productInfoList.action?currPage=<s:property value="totalPage"/>" target="content">尾页</a>
+					</s:if>
+						第<span style="color:red;font-weight:600"><s:property value="currPage"/></span>页
+						共<span style="color:red;font-weight:600"><s:property value="totalPage"/></span>页
 				</div>
 			</div>
 		</div>
 	</div>
+	<%-- <script src="js/jquery.min.js"></script> --%>
+	<script type="text/javascript">
+	function delcfm() {
+        if (!confirm("确认要删除？")) {
+            window.event.returnValue = false;
+        }
+    }
+	</script>
+	
 </body>
 </html>

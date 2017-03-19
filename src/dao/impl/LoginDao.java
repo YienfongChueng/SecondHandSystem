@@ -8,6 +8,9 @@ import dao.ILoginDao;
 
 public class LoginDao extends HibernateDaoSupport implements ILoginDao {
 
+	/**
+	 * 通过账号和密码查询用户
+	 */
 	@Override
 	public User findByUser(User user) {
 		String hql="from User u where u.userName=? and u.password=?";
@@ -24,6 +27,9 @@ public class LoginDao extends HibernateDaoSupport implements ILoginDao {
 		
 	}
 
+	/**
+	 * 通过账号和密码查询管理员
+	 */
 	@Override
 	public Admin findByAdmin(Admin admin) {
 		String hql="from Admin a where a.name=? and a.password=?";
@@ -34,6 +40,40 @@ public class LoginDao extends HibernateDaoSupport implements ILoginDao {
 		}else{
 			return null;
 		}
+	}
+
+	/**
+	 * 通过用户名查询用户
+	 */
+	@Override
+	public User findUserByName(String userName) {
+		String hql="from User where userName=?";
+		@SuppressWarnings("unchecked")
+		List<User> list=this.getHibernateTemplate().find(hql,userName);
+		if(list.size()>0){
+			return list.get(0);
+		}
+		return null;
+	}
+
+	/**
+	 * 保存用户信息
+	 */
+	@Override
+	public void saveUser(User user) {
+		this.getHibernateTemplate().save(user);
+	}
+
+	/**
+	 * 修改用户密码
+	 */
+	@Override
+	public void updatePed(User user) {
+		//String hql="update User set password='"+user.getPassword()+"'where uid='"+user.getUid()+"'";
+		User u=this.getHibernateTemplate().get(User.class, user.getUid());
+		u.setPassword(user.getPassword());
+		this.getHibernateTemplate().update(u);
+		
 	}
 
 	

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	<struts>
+		<constant name="struts.ui.theme" value="simple"></constant>
+		<constant name="struts.i18n.encoding" value="utf-8"></constant>
+		<constant name="struts.devMode" value="false"></constant>
+		
+		<package name="user" extends="struts-default" namespace="/user_jsp">
+			 <action name="userLogin" class="userAction" method="UserLogin">
+				<result name="index" type="redirect">/user_jsp/index.jsp</result>
+				<result name="login">/user_jsp/user_login.jsp</result>
+			 </action> 
+			 
+			 <action name="user_*" class="userAction" method="{1}">
+			 	<result name="registerFail">/user_jsp/user_regster.jsp</result>
+			 	<result name="registerSuccess">/user_jsp/user_login.jsp</result>
+			 	<result name="getPwdSuccess" >/user_jsp/forgetPwd2.jsp</result>
+			 	<result name="getPwdFail">/user_jsp/forgetPwd1.jsp</result>
+			 	<result name="answerFalse">/user_jsp/forgetPwd2.jsp</result>
+			 	<result name="answerTrue">/user_jsp/forgetPwd3.jsp</result>
+			 	<result name="updatePwdSuccess">/user_jsp/forgetPwd4.jsp</result>
+			 </action>
+		</package>
+	</struts>
