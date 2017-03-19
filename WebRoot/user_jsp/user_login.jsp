@@ -73,7 +73,7 @@ function login(form){
     <input type="text" id="J_codetext" placeholder="验证码" maxlength="4" class="login_txtbx">
     <canvas class="J_codeimg" id="myCanvas" onclick="createCode()">对不起，您的浏览器不支持canvas，请下载最新版浏览器!</canvas>
   </div> 
-  <input type="button" value="点击核验验证码" class="ver_btn" onClick="validate();"> 
+  <!-- <input type="button" value="点击核验验证码" class="ver_btn" onClick="validate();">  -->
  </dd>
  <dd>
   <input type="submit" value="立即登陆" class="submit_btn" />

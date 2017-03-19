@@ -1,6 +1,6 @@
 @charset "UTF-8";
 @import url(jquery.mCustomScrollbar.css);
-html{overflow-y:hidden;}
+/* html{overflow-y:scroll;} */
 body{margin:0;height:100%;}
 a:active,a:hover{outline:0}
 button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}
@@ -69,8 +69,8 @@ small,weak{color:#666}
 .admin_login dd.val_icon:before{content:"n";}
 .admin_login dd .ver_btn{text-align:right;border:none;color:#f4f4f4;height:42px;line-height:42px;margin:0;z-index:1;position:relative;float:right;background:#48bca5;}
 .admin_login dd .checkcode{float:left;width:182px;height:42px;background:#fff}
-.admin_login dd .checkcode input{width:120px;height:36px;line-height:36px;padding:3px;color:white;outline:none;border:none;text-indent:2.8em;}
-.admin_login dd .checkcode canvas{width:85px;height:36px;padding:3px;z-index:0;background:#5cbdaa;}
+.admin_login dd .checkcode input{width:169px;height:36px;line-height:36px;padding:3px;color:white;outline:none;border:none;text-indent:2.8em;}
+.admin_login dd .checkcode canvas{width:118px;height:36px;padding:3px;z-index:0;background:#5cbdaa;}
 .admin_login dd .submit_btn{width:100%;height:42px;border:none;font-size:16px;background:#048f74;color:#f8f8f8;}
 .admin_login dd .submit_btn:hover{background:#0c9076;color:#f4f4f4;}
 .admin_login dd p{color:#53c6b0;font-size:12px;text-align:center;margin:5px 0;}

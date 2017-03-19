@@ -9,10 +9,11 @@
 </head>
 <body marginwidth="0" marginheight="0">
 	<header>
-		 <h1><img src=""/></h1>
+		 <h1><img src="../images/logo-w.png"/></h1>
 		 <ul class="rt_nav">
 			  <li><a href="#" target="_blank" class="website_icon">首页</a></li>
-			  <li><a href="#" class="admin_icon">个人中心</a></li>
+			  <li><a href="#" class="admin_icon">我的二货</a></li>
+  			  <li><a href="#" class="set_icon">账号信息</a></li>
 			  <li><a href="#" class="quit_icon">安全退出</a></li>
 		 </ul>
 	</header>

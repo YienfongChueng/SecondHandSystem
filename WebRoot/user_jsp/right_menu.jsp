@@ -8,24 +8,24 @@
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
 <body>
-	
-	<aside class="lt_aside_nav content mCustomScrollbar">
+	<jsp:include page="top.jsp"/>
+	<aside class="lt_aside_nav content mCustomScrollbar" style="margin-left: 5px;">
 		 <h2><a href="">菜单</a></h2>
 		 <ul>
 		  <li>
 		   <dl>
 			<dt>我的二货</dt>
 			<!--当前链接则添加class:active-->
-			<dd class="public-ifame-item"><a href="#" class="active">我发布的二货</a></dd>
-			<dd class="public-ifame-item"><a href="#" >我购买的二货</a></dd>
-			<dd class="public-ifame-item"><a href="#" >我卖出的二货</a></dd> 
+			<dd class="public-ifame-item"><a href="order_list.jsp" class="active" target="content">我发布的二货</a></dd>
+			<dd class="public-ifame-item"><a href="order_list.jsp" target="content" >我购买的二货</a></dd>
+			<dd class="public-ifame-item"><a href="order_list.jsp" target="content">我卖出的二货</a></dd> 
 		   </dl>
 		  </li>
 		  <li>
 		   <dl>
 			<dt>评论管理</dt>
-			<dd class="public-ifame-item"><a href="#" >发出的评论</a></dd>
-			<dd class="public-ifame-item"><a href="#" >收到的评论</a></dd>
+			<dd class="public-ifame-item"><a href="#" target="content">发出的评论</a></dd>
+			<dd class="public-ifame-item"><a href="#" target="content">收到的评论</a></dd>
 		   </dl>
 		  </li> 
 		   <p class="btm_infor">© 13计科张燕芳 版权所有</p>

@@ -1,7 +1,7 @@
 body{background: #fff;}
 .container{
 	width: 100%;
-    overflow: scroll;
+    overflow: hidden;
     background: #FFFFFF;
 }
 .public-nav{

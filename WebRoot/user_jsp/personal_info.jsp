@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>发布信息</title>
+	<title>个人信息</title>
 	<link rel="stylesheet" href="../admin_jsp/css/reset.css" />
 	<link rel="stylesheet" href="../admin_jsp/css/public.css" />
 	<link rel="stylesheet" href="../admin_jsp/css/content.css" />
@@ -12,54 +12,56 @@
 <body>
   <jsp:include page="top.jsp" flush="true"/>
 	<div class="container">
-		<div class="public-nav">您当前的位置：<a href="">发布信息</a>></div>
+		<div class="public-nav">您当前的位置：<a href="">账号信息</a>></div>
 		<div class="public-content" style="margin-top: 0">
 			<!-- <div class="public-content-header">
 				<h3>发布信息</h3>
 			</div> -->
 			<div class="public-content-cont">
 			<form action="" method="post" style="margin:0 auto;width:50%">
+				
+				
 				<div class="form-group">
-					<label for="">请选择分类</label>
-					<select name="" class="form-select" style="height: 30px;">
-						<option value="">请选择分类</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label for="">请选择类型</label>
-					<select name="" class="form-select" style="height: 30px;">
-						<option value="">求购</option>
-						<option value="">求售</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label for="">商品名称</label>
+					<label for="">用户名</label>
 					<input class="form-input-txt" type="text" name="" value="" />
 				</div>
 				<div class="form-group">
-					<label for="">商品价格</label>
+					<label for="">密码</label>
+					<input class="form-input-txt" type="password" name="" value="" />
+				</div>
+				<div class="form-group">
+					<label for="">班级</label>
 					<input class="form-input-txt" type="text" name="" value="" />
 				</div>
 				<div class="form-group">
-					<label for="">商品描述</label>
-					<textarea class="form-input-textara" type="text" name=""></textarea>
+					<label for="">地址</label>
+					<input class="form-input-txt" type="text" name="" value="" />
 				</div>
 				
 				<div class="form-group">
-					<label for="">剩余量</label>
+					<label for="">电话</label>
 					<input class="form-input-txt" type="text" name="" value="" />
 				</div>
 				<div class="form-group">
-					<label for="">商品图片</label>
+					<label for="">保密问题</label>
 					<input class="form-input-txt" type="text" name="" value="" />
-					<div class="file"><input type="file" class="form-input-file"/>选择文件</div>
-					<div class="file"><input type="submit" class="form-input-file"/>上传</div>
-					<a href="#">预览</a>
 				</div>
+				<div class="form-group">
+					<label for="">保密答案</label>
+					<input class="form-input-txt" type="text" name="" value="" />
+				</div>
+				<div class="form-group">
+					<label for="">性别</label>
+					<span style="height: 6px;margin-left:5px;">
+						男<input class="" type="radio" name="sex" value="0" />&nbsp;&nbsp;&nbsp;
+						女<input class="" type="radio" name="sex" value="1" />
+					</span>
+					
+				</div>
+				
 				
 				<div class="form-group" style="margin-left:150px;">
-					<input type="submit" class="sub-btn" value="提  交" />
-					<input type="reset" class="sub-btn" value="重  置" />
+					<input type="submit" class="sub-btn" value="保  存" />
 				</div>
 				</form>
 			</div>
