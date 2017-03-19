@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>用户登录</title>
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <style>
-body{height:100%;background:#16a085;overflow:hidden;}
+ body{height:100%;background:#16a085;overflow:hidden;} 
 canvas{z-index:-1;position:absolute;}
 .ulList{list-style-type:none;
 width:100%;}

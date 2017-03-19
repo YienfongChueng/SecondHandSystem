@@ -37,7 +37,7 @@ img{ max-width:100%; height:auto;}
 .forget-pwd dd button{width:120px; height:30px; line-height:30px;border:#ddd 1px solid; background:#f1f1f1; text-align:center; cursor:pointer; font-size:14px;color:#666;}
 .forget-pwd .yanzma{ position:absolute;left:200px;top:2px; height:30px; line-height:30px;width:180px;}
 .subtijiao{padding:0 0 0 110px;}
-.subtijiao input{width:85px; height:32px; background:#f60;color:#fff; font-size:14px; cursor:pointer;}
+.subtijiao input{width:85px; height:32px; background:#5CA235;color:#fff; font-size:14px; cursor:pointer;}
 .successs{ text-align:center;padding: 20px 0 60px 0;}
 .successs h3{padding:20px; font-size:25px;color:#A0CD4E;}
 

@@ -8,7 +8,20 @@
 <title>忘记密码</title>
 <link rel="shortcut icon" href="images/favicon.ico" />
 <link type="text/css" href="css/css.css" rel="stylesheet" />
+<script src="js/jquery.js"></script>
+<script src="js/Particleground.js"></script>
+<style type="text/css">
+ body{height:100%;background:#BAE4C1;overflow:hidden;} 
+canvas{z-index:-1;position:absolute;}
+</style>
 <script type="text/javascript">
+$(document).ready(function() {
+	  //粒子背景特效
+	  $('body').particleground({
+	    dotColor: '#5cbdaa',
+	    lineColor: '#5cbdaa'
+	  });
+});
 		var t=5;//设定跳转的时间 
 		setInterval("refer()",2000); //启动2秒定时 
 		function refer(){ 
@@ -38,7 +51,7 @@
      </div><!--for-liucheng/-->
       <div class="successs">
        <h3>恭喜您，修改成功！</h3>
-       <h4 id="show"></h4>
+       <h4 style="color: #fff;font-size:18px;" id="show"></h4>
       </div>
    </div><!--web-width/-->
   </div><!--content/-->

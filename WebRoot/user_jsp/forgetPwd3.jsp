@@ -8,7 +8,20 @@
 <title>忘记密码</title>
 <link rel="shortcut icon" href="images/favicon.ico" />
 <link type="text/css" href="css/css.css" rel="stylesheet" />
+<script src="js/jquery.js"></script>
+<script src="js/Particleground.js"></script>
+<style type="text/css">
+ body{height:100%;background:#BAE4C1;overflow:hidden;} 
+canvas{z-index:-1;position:absolute;}
+</style>
 <script type="text/javascript">
+$(document).ready(function() {
+	  //粒子背景特效
+	  $('body').particleground({
+	    dotColor: '#5cbdaa',
+	    lineColor: '#5cbdaa'
+	  });
+}); 
 	function check(form){
 		if (form.password.value == "") {
 			alert("请输入密码！");
