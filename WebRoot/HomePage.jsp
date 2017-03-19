@@ -8,27 +8,34 @@
 <title>二手网，二货尽在此处！</title>
 <link rel="stylesheet" type="text/css" href="css/homepage.css">
 <link rel="stylesheet" type="text/css" href="css/topbar.css">
-<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap_v3_3.css">
 <style type="text/css">
 </style>
 </head>
 <body>
 <div id="commonTopbar" class="commonTopbar">
-   <div id="commonTopbar_welcome" class="bar_left" style="margin-left:30px">
+   <div id="commonTopbar_welcome" class="bar_left" style="margin-left:50px">
      <label>欢迎来到二手网！</label> 
    </div>
-   <div class="bar_right" style="position:relative">
+   <div class="bar_right" style="position:relative;margin-right:50px">
         <div id="commonTopbar_login">
-           <a href="https://passport.58.com/login/">登录
+           <a href="">登录
            </a>
            <span class="gap">|</span>
-           <a href="https://passport.58.com/reg/">注册
+           <a href="">注册
            </a> 
-        </div>
+        </div>   
+        <div class="shopping_cart">
+           <a href="" target="_blank">购物车
+           </a>
+        </div>   
+        <div class="post_order">
+           <a href="" target="_blank">发布商品
+           </a>
+        </div>        
         <div id="commonTopbar_my58menu" class="haschild">
            <a id="commonTopbar_tomy58" target="_blank" href="http://my.58.com/?pp=topbar">个人中心
            </a>
-           <span class="arrow"></span>
            <span class="mark"></span>
            <div class="hc" id="commonTopbar_loginbox">
               <a id="commonTopbar_tomypost" href="http://my.58.com/index/?pp=topbar" target="_blank">我的发布
@@ -37,13 +44,10 @@
               </a>
               <a id="commonTopbar_tomytradebuy" href="http://my.58.com/buyordermgr/?pp=topbar" target="_blank">买家交易
               </a>
-              <a id="commonTopbar_tomytradesale" href="http://my.58.com/saleordermgr/?pp=topbar" target="_blank">个人卖家
-              </a>
-              <a id="commonTopbar_tohelp" href="http://my.58.com/mycomplain" target="_blank">客户服务
-              </a>  
           </div>
         </div>
-   </div>  
+   </div> 
+  
 </div>
 <div id="headerWrap">
     <div id="homeWrap" class="wrapper">
@@ -109,6 +113,15 @@
           <ul class="dropdown-menu">
             <li><a href="#">从低到高</a></li>
             <li><a href="#">从高到低</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">分类 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">电子产品</a></li>
+            <li><a href="#">书籍</a></li>
+            <li><a href="#">生活用品</a></li>
+            <li><a href="#">二手车</a></li>
           </ul>
         </li>
       </ul>     
@@ -201,7 +214,22 @@
     </div>
   </div>
 </div>
-<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+
+<nav style="text-align: center">
+   <ul class="pagination pagination-lg">
+	<li><a href="#">&laquo;</a></li>
+	<li><a href="#">1</a></li>
+	<li><a href="#">2</a></li>
+	<li><a href="#">3</a></li>
+	<li><a href="#">4</a></li>
+	<li><a href="#">5</a></li>
+	<li><a href="#">6</a></li>
+	<li><a href="#">7</a></li>
+	<li><a href="#">&raquo;</a></li>
+  </ul>
+</nav>>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script> 
 </body>
 </html>

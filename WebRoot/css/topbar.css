@@ -83,12 +83,12 @@ body,.commonTopbar dd,.commonTopbar dl,.commonTopbar dt,.commonTopbar h2,.common
 	color: #00c
 }
 
-.commonTopbar .vip-con a,.commonTopbar .help-con a {
+.commonTopbar .vip-con a,.commonTopbar .shopping_cart a,.commonTopbar .post_order a {
 	color: #666
 }
 
 .commonTopbar a:hover {
-	color: #ff552e
+	color: #16a085
 }
 
 .commonTopbar .bar_left {
@@ -307,14 +307,14 @@ body,.commonTopbar dd,.commonTopbar dl,.commonTopbar dt,.commonTopbar h2,.common
 	cursor: pointer
 }
 
-.commonTopbar #commonTopbar_login,.commonTopbar .help-con,.commonTopbar .vip-con {
+.commonTopbar #commonTopbar_login,.commonTopbar .shopping_cart,.commonTopbar .post_order,.commonTopbar .vip-con {
 	padding: 0 10px;
 	height: 35px;
 	line-height: 35px;
 	float: left
 }
 
-.commonTopbar .n #commonTopbar_login,.commonTopbar .n .help-con,.commonTopbar .n .vip-con {
+.commonTopbar .n #commonTopbar_login,.commonTopbar .n .shopping_cart,.commonTopbar .n .post_order,.commonTopbar .n .vip-con {
 	padding: 0 8px
 }
 
@@ -478,7 +478,7 @@ body,.commonTopbar dd,.commonTopbar dl,.commonTopbar dt,.commonTopbar h2,.common
 	background: 0 0
 }
 
-.commonTopbar.#commonTopbar_myfeetBox #commonTopbar_feet_final li.norecord:hover {
+.commonTopbar.#commonTopbar_myfeetBox #commonTopbar_feet_final li.norecord:config.container.find {
 	background-color: #fff
 }
 
@@ -521,7 +521,7 @@ body,.commonTopbar dd,.commonTopbar dl,.commonTopbar dt,.commonTopbar h2,.common
 	color: #16a085
 }
 
-.commonTopbar .hv .hoverBox,.commonTopbar .hv .mark,.commonTopbar .w_hover .mark,.commonTopbar .hover .mark {
+.commonTopbar .hv .hoverBox,.commonTopbar .hv .mark,.commonTopbar .w_hover .mark,.commonTopbar .hover .mark{
 	display: block
 }
 
@@ -905,7 +905,7 @@ body,.commonTopbar dd,.commonTopbar dl,.commonTopbar dt,.commonTopbar h2,.common
 }
 
 .commonFooter .upWrap a:hover {
-	color: #ff552e
+	color: #16a085
 }
 
 .commonFooter .downWrap em,.commonFooter .downWrap a {
