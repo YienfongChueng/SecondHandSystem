@@ -1,0 +1,1928 @@
+<<<<<<< HEAD
+body,.commonTopbar dd,.commonTopbar dl,.commonTopbar dt,.commonTopbar h2,.commonTopbar h3,.commonTopbar h4,.commonTopbar h6,.commonTopbar li,.commonTopbar ol,.commonTopbar p,.commonTopbar ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	-webkit-text-size-adjust: none
+}
+
+.commonTopbar img {
+	border: 0
+}
+
+.commonTopbar em,.commonTopbar i,.commonTopbar h2,.commonTopbar h3,.commonTopbar h4,.commonTopbar h6 {
+	font-style: normal
+}
+
+.commonTopbar {
+	font: 12px/1.2 "Hiragino Sans GB","Microsoft YaHei","\5FAE\8F6F\96C5\9ED1",arial,Tahoma,SimSun,sans-serif;
+	text-rendering: geometricPrecision;
+	-webkit-font-smoothing: antialiased;
+	position: relative;
+	z-index: 9999;
+	width: 100%;
+	height: 35px;
+	line-height: 35px;
+	background: #fff;
+	color: #555;
+	border-bottom: 1px solid #ddd
+}
+
+.commonTopbar a,.commonTopbar div,.commonTopbar h1,.commonTopbar h2,.commonTopbar h3,.commonTopbar h4,.commonTopbar h5,.commonTopbar h6,.commonTopbar span,.commonTopbar p,.commonTopbar ul,.commonTopbar li {
+	font-family: "Hiragino Sans GB","Microsoft YaHei","\5FAE\8F6F\96C5\9ED1",arial,Tahoma,SimSun,sans-serif!important;
+	font-size: 12px
+}
+
+.commonTopbar a {
+	text-decoration: none;
+	cursor: pointer;
+	color: #555
+}
+
+.commonTopbar a:visited {
+	color: #666
+}
+
+.clear:after {
+	content: "";
+	display: block;
+	clear: both
+}
+
+:focus {
+	outline: 0
+}
+
+.commonTopbar input,.commonTopbar p,.commonTopbar ul {
+	margin: 0;
+	padding: 0
+}
+
+.commonTopbar li {
+	list-style: none
+}
+
+.commonTopbar .hc {
+	display: none
+}
+
+.commonTopbar .sc {
+	display: block
+}
+
+.commonTopbar input {
+	font-family: Tahoma;
+	font-size: 12px
+}
+
+.commonTopbar .w,.commonTopbar .n,.commonTopbar .warp {
+	clear: both;
+	line-height: 27px
+}
+
+.commonTopbar #commonTopbar_myfeet p a,.commonTopbar #commonTopbar_sitemapBox strong a,.commonTopbar .mapfuc a {
+	color: #00c
+}
+
+.commonTopbar .vip-con a,.commonTopbar .shopping_cart a,.commonTopbar .post_order a {
+	color: #666
+}
+
+.commonTopbar a:hover {
+	color: #16a085
+}
+
+.commonTopbar .bar_left {
+	float: left;
+	word-spacing: 1px;
+	height: 35px;
+	line-height: 35px
+}
+
+.commonTopbar .bar_right {
+	float: right
+}
+
+.commonTopbar .bar_left h2 {
+	display: inline;
+	font-size: 12px;
+	color: #ff552e;
+	float: left;
+	line-height: 35px;
+	font-weight: 700
+}
+
+.commonTopbar .bar_left .tuan {
+	display: inline-block;
+	position: relative;
+	padding-right: 30px
+}
+
+.commonTopbar #commonTopbar_login,.commonTopbar .haschild {
+	float: left
+}
+
+.commonTopbar .arrow {
+	margin-left: 8px;
+	background: url(http://img.58cdn.com.cn/ui6/topbar/topbar_icons.png) no-repeat -10px -470px;
+	display: block;
+	position: absolute;
+	width: 7px;
+	height: 4px;
+	overflow: hidden;
+	right: 10px;
+	top: 16px
+}
+
+.commonTopbar.hd_icons .arrow {
+	background: url(http://img.58cdn.com.cn/ui6/topbar/topbar_icons@2x.png) no-repeat -10px -470px;
+	background-size: 18px;
+	background-position: -6px -235px
+}
+
+.commonTopbar .hover .arrow {
+	background-position: -10px -411px
+}
+
+.commonTopbar.hd_icons .hover .arrow {
+	background-position: -6px -205px
+}
+
+.commonTopbar .n .arrow {
+	right: 6px
+}
+
+.commonTopbar .gap {
+	font-style: italic
+}
+
+.commonTopbar .hover .hc {
+	border: 1px solid #eee;
+	display: block;
+	position: absolute;
+	zoom: 1;
+	background: #fff
+}
+
+.commonTopbar .haschild {
+	z-index: 999;
+	position: relative;
+	padding: 0 24px 0 14px;
+	border: 1px solid #fff;
+	border-bottom: none;
+	border-top: none
+}
+
+.commonTopbar .n .haschild {
+	padding: 0 19px 0 8px
+}
+
+.commonTopbar .hover #commonTopbar_tomy58,.commonTopbar .hover .mytxt {
+	color: #16a085
+}
+
+
+.commonTopbar #commonTopbar_my58menu.hover,.commonTopbar #commonTopbar_shopCenter.hover,.commonTopbar #commonTopbar_myfeet.hover,.commonTopbar #commonTopbar_sitemap.hover,.commonTopbar #commonTopbar_appQR.hover {
+	border-color: #eee
+}
+
+.commonTopbar .wt img {
+	margin: -2px 10px 0 0;
+	width: 16px;
+	height: 16px;
+	vertical-align: middle
+}
+
+.commonTopbar .wt em {
+	_zoom: 1;
+	font-style: normal
+}
+
+.commonTopbar .wt .wTemp {
+	position: relative
+}
+
+.commonTopbar .wb {
+	border: 1px solid #e4e1e1;
+	position: absolute;
+	left: -1px;
+	top: 35px;
+	_top: 36px;
+	z-index: 1000;
+	background: #fff;
+	width: 470px;
+	line-height: 20px;
+	display: none;
+	cursor: default
+}
+
+.commonTopbar .w_hover .wb {
+	display: block
+}
+
+.commonTopbar .wb .air {
+	color: #959595;
+	padding: 0 10px;
+	line-height: 30px
+}
+
+.commonTopbar .wb .air .airNum {
+	font-size: 16px;
+	vertical-align: middle;
+	font-style: normal
+}
+
+.commonTopbar .wb .air .airNum_0 {
+	color: #ff552e
+}
+
+.commonTopbar .wb .air .airNum_1 {
+	color: red
+}
+
+.commonTopbar .wb .wsource {
+	position: absolute;
+	right: 10px;
+	top: 0
+}
+
+.commonTopbar .wb .wsource a {
+	color: #0ca2eb!important;
+	background: url(http://img.58cdn.com.cn/ui6/topbar/topbar_icons.png) no-repeat -2px -232px;
+	padding-left: 22px
+}
+
+.commonTopbar.hd_icons .wb .wsource a {
+	background: url(http://img.58cdn.com.cn/ui6/topbar/topbar_icons@2x.png) no-repeat -2px -232px;
+	background-size: 18px;
+	background-position: 2px -116px
+}
+
+.commonTopbar .wb .wDay {
+	padding: 10px 0;
+	overflow: hidden;
+	position: relative;
+	left: -1px;
+	zoom: 1
+}
+
+.commonTopbar .wb .wDay li {
+	float: left;
+	width: 155px;
+	height: 156px;
+	text-align: center;
+	border-left: 1px solid #e4e1e1
+}
+
+.commonTopbar .wb .wDay img {
+	display: block;
+	width: 60px;
+	height: 60px;
+	margin: 10px auto 5px
+}
+
+.commonTopbar .wb .prompt {
+	zoom: 1;
+	background: #f8f8f8;
+	clear: both;
+	border-top: 1px solid #e4e1e1;
+	position: relative;
+	padding: 10px 10px 10px 75px;
+	_zoom: 1
+}
+
+.commonTopbar .wb .prompt b {
+	position: absolute;
+	left: 10px;
+	top: 10px
+}
+
+.commonTopbar .bar_right {
+	z-index: 999;
+	position: relative
+}
+
+.commonTopbar #commonTopbar_my58menu,.commonTopbar #commonTopbar_shopCenter,.commonTopbar #commonTopbar_myfeet,.commonTopbar #commonTopbar_sitemap {
+	height: 35px;
+	line-height: 35px;
+	cursor: pointer
+}
+
+.commonTopbar #commonTopbar_login,.commonTopbar .shopping_cart,.commonTopbar .post_order,.commonTopbar .vip-con {
+	padding: 0 10px;
+	height: 35px;
+	line-height: 35px;
+	float: left
+}
+
+.commonTopbar .n #commonTopbar_login,.commonTopbar .n .shopping_cart,.commonTopbar .n .post_order,.commonTopbar .n .vip-con {
+	padding: 0 8px
+}
+
+.commonTopbar #commonTopbar_login a {
+	color: #666;
+	margin: 0 4px
+}
+
+.commonTopbar #commonTopbar_login a:hover {
+	color: #16a085
+}
+
+.commonTopbar #bangtoptip.msgTips {
+	width: 300px;
+	height: 30px
+}
+
+.commonTopbar #commonTopbar_myfeet_tooltip.msgTips {
+	width: 180px;
+	left: -55px
+}
+
+.commonTopbar .msgTips {
+	position: absolute;
+	z-index: 999;
+	color: #000;
+	top: 36px;
+	_overflow-x: hidden;
+	background: #fff;
+	border: 1px solid #eee;
+	border-top: none
+}
+
+.commonTopbar .msgTips_con {
+	position: absolute;
+	z-index: 999;
+	color: #000;
+	line-height: 20px;
+	padding: 5px 20px 5px 25px;
+	background-color: #fff
+}
+
+.commonTopbar .msgTips_close {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 10px;
+	height: 10px;
+	overflow: hidden;
+	background-position: 0 -229px;
+	cursor: pointer;
+	z-index: 1000
+}
+
+.commonTopbar .pos {
+	z-index: 999
+}
+
+.commonTopbar #commonTopbar_loginbox {
+	right: -1px;
+	width: 86px;
+	_width: 85px;
+	top: 35px;
+	_top: 36px
+}
+
+.commonTopbar .n #commonTopbar_loginbox {
+	width: 75px;
+	_width: 73px
+}
+
+.commonTopbar #commonTopbar_loginbox a {
+	font-size: 12px;
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	text-align: center
+}
+
+.commonTopbar #commonTopbar_loginbox a:hover {
+	color: #16a085;
+	background-color: #f8f8f8;
+	text-decoration: none
+}
+
+.commonTopbar #commonTopbar_ipconfig {
+	*position: relative;
+	*z-index: 999;
+	float: left;
+	margin: 0 10px 0 8px
+}
+
+.commonTopbar .n #commonTopbar_ipconfig {
+	margin: 0 5px
+}
+
+.commonTopbar #commonTopbar_myfeet h4.category {
+	font-size: 12px;
+	margin-left: 10px;
+	color: #555;
+	font-weight: 700;
+	line-height: 35px
+}
+
+.commonTopbar #commonTopbar_myfeet h4.topLine {
+	border-top: 1px solid #eee;
+	_top: 36px
+}
+
+.commonTopbar #commonTopbar_myfeetBox {
+	right: -1px;
+	width: 215px;
+	top: 35px;
+	padding-top: 8px
+}
+
+.commonTopbar #commonTopbar_myfeetBox li {
+	padding-left: 18px;
+	height: 27px;
+	background-position: 10px -427px
+}
+
+.commonTopbar #commonTopbar_myfeetBox li a {
+	height: 27px;
+	line-height: 27px;
+	width: 100%;
+	display: block
+}
+
+.commonTopbar #commonTopbar_myfeetBox #commonTopbar_feet_final li {
+	color: #555;
+	height: 27px;
+	line-height: 27px
+}
+
+.commonTopbar #commonTopbar_myfeetBox li {
+	background: url(http://img.58cdn.com.cn/ui6/topbar/topbar_icons.png) no-repeat -2px -343px
+}
+
+.commonTopbar.hd_icons #commonTopbar_myfeetBox li {
+	background: url(http://img.58cdn.com.cn/ui6/topbar/topbar_icons@2x.png) no-repeat -2px -343px;
+	background-size: 18px;
+	background-position: 2px -166px
+}
+
+.commonTopbar #commonTopbar_myfeetBox li:hover,.commonTopbar #commonTopbar_myfeetBox #commonTopbar_feet_final li:hover {
+	background-color: #f8f8f8;
+	color: #555;
+	background-position: -2px -285px
+}
+
+.commonTopbar.hd_icons #commonTopbar_myfeetBox li:hover,.commonTopbar #commonTopbar_myfeetBox #commonTopbar_feet_final li:hover {
+	background-position: 2px -137px
+}
+
+.commonTopbar #commonTopbar_myfeetBox li:hover a {
+	color: #ff552e
+}
+
+.commonTopbar #commonTopbar_myfeetBox #commonTopbar_feet_final li.norecord {
+	background: 0 0
+}
+
+.commonTopbar.#commonTopbar_myfeetBox #commonTopbar_feet_final li.norecord:config.container.find {
+	background-color: #fff
+}
+
+.commonTopbar #commonTopbar_clearInfo {
+	height: 35px;
+	background-color: #f8f8f8;
+	line-height: 35px;
+	text-align: center;
+	color: #555
+}
+
+.commonTopbar #commonTopbar_myfeetBox .bangbang_pr {
+	+padding: 0;
+	-padding: 8px;
+	padding-left: 20px;
+	height: 30px;
+	display: block
+}
+
+.commonTopbar .w {
+	width: 1190px;
+	margin: 0 auto
+}
+
+.commonTopbar .n {
+	width: 1000px;
+	margin: 0 auto
+}
+
+.commonTopbar #link_city_change {
+	color: #00c;
+	margin-left: 5px
+}
+
+.commonTopbar #commonTopbar_ipconfig a,.commonTopbar .haschild a {
+	color: #666
+}
+
+.commonTopbar #commonTopbar_ipconfig a:hover,.commonTopbar .haschild a:hover {
+	color: #16a085
+}
+
+.commonTopbar .hv .hoverBox,.commonTopbar .hv .mark,.commonTopbar .w_hover .mark,.commonTopbar .hover .mark{
+	display: block
+}
+
+.commonTopbar .mark {
+	position: absolute;
+	right: 0;
+	top: 34px;
+	height: 4px;
+	z-index: 1001;
+	font-size: 0;
+	overflow: hidden;
+	display: none;
+	background-color: #fff;
+	width: 100%
+}
+
+.commonTopbar .w #commonTopbar_my58menu .mark {
+	_width: 76px
+}
+
+.commonTopbar .w #commonTopbar_myfeet .mark {
+	_width: 85px
+}
+
+.commonTopbar .w #commonTopbar_sitemap .mark {
+	_width: 85px
+}
+
+
+.commonTopbar .n #commonTopbar_appQR .mark {
+	_width: 76px
+}
+
+.commonTopbar .n #commonTopbar_my58menu .mark {
+	_width: 64px
+}
+
+.commonTopbar .n #commonTopbar_myfeet .mark {
+	_width: 74px
+}
+
+.commonTopbar .n #commonTopbar_sitemap .mark {
+	_width: 74px
+}
+
+.commonTopbar #commonTopbar_sitemapBox {
+	width: 1188px;
+	right: -1px;
+	border: 1px solid #eee;
+	top: 35px;
+	_top: 36px;
+	padding: 20px 0;
+	cursor: default
+}
+
+.commonTopbar .n #commonTopbar_sitemapBox {
+	width: 998px
+}
+
+.commonTopbar #commonTopbar_sitemapBox .maplist {
+	width: 1188px;
+	overflow: hidden
+}
+
+.commonTopbar .n #commonTopbar_sitemapBox .maplist {
+	width: 998px
+}
+
+.commonTopbar #commonTopbar_sitemapBox p {
+	height: 18px;
+	color: #eee;
+	line-height: 18px;
+	margin-top: 6px
+}
+
+.commonTopbar #commonTopbar_sitemapBox .appicons p {
+	color: #999;
+	height: 12px;
+	line-height: 12px;
+	margin-top: 8px;
+	text-align: center
+}
+
+.commonTopbar #commonTopbar_sitemapBox .appicons a:hover p {
+	color: #ff552e
+}
+
+.commonTopbar #commonTopbar_sitemapBox .maplist li {
+	height: 320px;
+	border-right: 1px solid #eee;
+	float: left
+}
+
+.commonTopbar .w #commonTopbar_sitemapBox .maplist li.list0 {
+	padding-left: 13px;
+	_width: 170px
+}
+
+.commonTopbar .w #commonTopbar_sitemapBox .maplist li.list2 {
+	padding-right: 20px;
+	_width: 223px
+}
+
+.commonTopbar .n #commonTopbar_sitemapBox .maplist li.list0 {
+	padding-left: 6px;
+	_width: 150px
+}
+
+.commonTopbar .n #commonTopbar_sitemapBox .maplist li.list0.huangye {
+	width: 130px;
+	_width: 130px
+}
+
+.commonTopbar .n #commonTopbar_sitemapBox .maplist li.list2 {
+	padding-right: 8px;
+	_width: 215px
+}
+
+.commonTopbar .w #commonTopbar_sitemapBox .maplist li.list0 p {
+	width: 170px
+}
+
+.commonTopbar .n #commonTopbar_sitemapBox .maplist li.list0 p {
+	width: 150px
+}
+
+.commonTopbar .n #commonTopbar_sitemapBox .maplist li.list0.huangye p {
+	width: 130px
+}
+
+.commonTopbar #commonTopbar_sitemapBox .maplist li a:hover {
+	text-decoration: none;
+	color: #ff552e
+}
+
+.commonTopbar #commonTopbar_sitemapBox .maplist h3 {
+	font-size: 14px;
+	color: #ff552e;
+	line-height: 16px;
+	height: 16px;
+	cursor: default;
+	font-weight: 700
+}
+
+.commonTopbar #commonTopbar_sitemapBox .maplist h3 a {
+	color: #ff552e;
+	font-size: 14px;
+	line-height: 16px;
+	height: 16px;
+	font-weight: 700
+}
+
+.commonTopbar #commonTopbar_sitemapBox .maplist a {
+	font-size: 12px;
+	color: #333;
+	line-height: 30px;
+	_line-height: 30px;
+	display: inline-block
+}
+
+.commonTopbar #commonTopbar_sitemapBox .subtitle {
+	margin-top: 20px
+}
+
+.commonTopbar #commonTopbar_sitemapBox .subtitle a {
+	color: #999
+}
+
+.commonTopbar #commonTopbar_sitemapBox .list0 a {
+	padding: 0 7px;
+	height: 14px;
+	line-height: 14px
+}
+
+.commonTopbar .n #commonTopbar_sitemapBox .list0 a {
+	padding: 0 5px
+}
+
+.commonTopbar #commonTopbar_sitemapBox .maplist .list2 {
+	border-right: none;
+	float: right
+}
+
+.commonTopbar #commonTopbar_sitemapBox .list2 em {
+	width: 68px;
+	display: inline-block;
+	position: relative
+}
+
+.commonTopbar #commonTopbar_sitemapBox .huangye .subtitle a {
+	color: #333
+}
+
+.commonTopbar #commonTopbar_sitemapBox .maplist .appicons {
+	line-height: 12px
+}
+
+.commonTopbar #commonTopbar_sitemapBox .maplist .appicons a {
+	width: 50px;
+	text-align: center;
+	margin: 18px 13px 0 -4px;
+	line-height: 16px;
+	color: #999
+}
+
+.commonTopbar .n #commonTopbar_sitemapBox .maplist .appicons a {
+	margin: 18px 10px 0 -4px
+}
+
+.commonTopbar #commonTopbar_sitemapBox .appicons img {
+	width: 40px;
+	height: 40px
+}
+
+.commonTopbar #commonTopbar_sitemapBox .appqr {
+	width: 100px;
+	text-align: center;
+	float: left;
+	margin-top: 20px;
+	line-height: 16px;
+	margin-right: 20px
+}
+
+.commonTopbar .n #commonTopbar_sitemapBox .appqr {
+	margin-right: 10px
+}
+
+.commonTopbar #commonTopbar_sitemapBox .appqr img {
+	width: 100px;
+	height: 100px
+}
+
+.commonTopbar #commonTopbar_sitemapBox .appqr p {
+	margin-top: 0;
+	color: #999;
+	text-align: center
+}
+
+.commonTopbar #commonTopbar_appQR {
+	background: url(http://img.58cdn.com.cn/ui6/topbar/topbar_icons.png) no-repeat;
+	line-height: 35px
+}
+
+.commonTopbar.hd_icons #commonTopbar_appQR {
+	background: url(http://img.58cdn.com.cn/ui6/topbar/topbar_icons@2x.png) no-repeat;
+	background-size: 18px
+}
+
+.commonTopbar .w #commonTopbar_appQR {
+	padding: 0 22px 0 28px;
+	background-position: 1px -48px
+}
+
+.commonTopbar.hd_icons .w #commonTopbar_appQR {
+	background-position: 5px -19px
+}
+
+.commonTopbar .w #commonTopbar_appQR.hover {
+	background-position: 1px 10px
+}
+
+.commonTopbar.hd_icons .w #commonTopbar_appQR.hover {
+	background-position: 5px 10px
+}
+
+.commonTopbar .n #commonTopbar_appQR {
+	padding-left: 20px;
+	background-position: -3px -48px
+}
+
+.commonTopbar.hd_icons .n #commonTopbar_appQR {
+	background-position: 1px -19px
+}
+
+.commonTopbar .n #commonTopbar_appQR.hover {
+	background-position: -3px 10px
+}
+
+.commonTopbar.hd_icons .n #commonTopbar_appQR.hover {
+	background-position: 1px 10px
+}
+
+.commonTopbar #commonTopbar_appQR.hover .appQRbox {
+	display: block
+}
+
+.commonTopbar .w .appQRbox {
+	_right: -2px
+}
+
+.commonTopbar .appQRbox {
+	border: 1px solid #e4e1e1;
+	position: absolute;
+	right: -1px;
+	top: 35px;
+	_top: 36px;
+	z-index: 1000;
+	background: #fff;
+	line-height: 20px;
+	display: none;
+	cursor: default;
+	padding: 20px
+}
+
+.commonTopbar .appQRbox img {
+	width: 100px;
+	height: 100px
+}
+
+.commonTopbar .appQRbox p {
+	text-align: center;
+	line-height: 12px;
+	word-break: keep-all;
+	margin-top: 6px
+}
+
+.commonTopbar #commonTopbar_homepageLink {
+	float: left;
+	padding: 0 10px 0 28px;
+	background: url(http://img.58cdn.com.cn/ui6/topbar/topbar_icons.png) no-repeat 0 -164px;
+	line-height: 35px
+}
+
+.commonTopbar.hd_icons #commonTopbar_homepageLink {
+	background: url(http://img.58cdn.com.cn/ui6/topbar/topbar_icons@2x.png) no-repeat 0 -164px;
+	background-size: 18px;
+	background-position: 4px -76px
+}
+
+.commonTopbar #commonTopbar_homepageLink.hover {
+	background-position: 0 -106px
+}
+
+.commonTopbar.hd_icons #commonTopbar_homepageLink.hover {
+	background-position: 4px -47px
+}
+
+.commonTopbar .n #commonTopbar_homepageLink {
+	padding: 0 5px 0 25px
+}
+
+.commonFooter {
+	width: 100%;
+	background-color: #fff;
+	font-size: 12px
+}
+
+.commonFooter div,.commonFooter a,.commonFooter em,.commonFooter span {
+	font-family: "Hiragino Sans GB","Microsoft YaHei","\5FAE\8F6F\96C5\9ED1",arial,Tahoma,SimSun,sans-serif!important;
+	font-size: 12px
+}
+
+.commonFooter em {
+	font-style: normal
+}
+
+.commonFooter a {
+	text-decoration: none
+}
+
+.commonFooter .footerCon {
+	width: 1190px;
+	margin: 0 auto;
+	border-top: 1px solid #EEE
+}
+
+.commonFooter .upWrap {
+	border-top: 1px solid #eee;
+	padding: 32px 0 20px 0
+}
+
+.commonFooter .downWrap,.commonFooter .upWrap {
+	height: 14px;
+	line-height: 14px;
+	text-align: center
+}
+
+.commonFooter .upWrap a {
+	color: #555;
+	display: inline-block
+}
+
+.commonFooter .upWrap a:hover {
+	color: #16a085
+}
+
+.commonFooter .downWrap em,.commonFooter .downWrap a {
+	color: #999;
+	display: inline-block
+}
+
+.commonFooter .downWrap span,.commonFooter .linkCont span,.commonFooter .upWrap span {
+	margin: 0 10px;
+	color: #eee
+}
+
+.commonFooter .fotBtmIcon {
+	height: 58px;
+	text-align: center;
+	margin-top: 30px
+}
+
+.commonFooter .fotBtmIcon a {
+	display: inline-block;
+	height: 38px;
+	margin-right: 30px;
+	background: url(http://img.58cdn.com.cn/ui8/house/detail/images/zufang-detail-footer.png) no-repeat;
+	background-image: -webkit-image-set(url(http://img.58cdn.com.cn/ui8/house/detail/images/zufang-detail-footer.png) 1x,url(http://img.58cdn.com.cn/ui8/house/detail/images/zufang-detail-footer@2x.png) 2x)
+}
+
+.commonFooter .fotBtmIcon .fotBm_1 {
+	width: 130px;
+	background-position: 0 -96px
+}
+
+.commonFooter .fotBtmIcon .fotBm_2 {
+	width: 160px;
+	background-position: 0 -192px
+}
+
+.commonFooter .fotBtmIcon .fotBm_3 {
+	width: 154px;
+	background-position: 0 0
+}
+
+.commonFooter .fotBtmIcon .fotBm_4 {
+	width: 108px;
+	background-position: 0 -48px
+}
+
+.commonFooter .fotBtmIcon .fotBm_5 {
+	width: 130px;
+	background-position: 0 -144px
+}
+
+.commonFooter .fotBtmIcon .fotBm_6 {
+	width: 120px;
+	background-position: 0 -240px
+=======
+body,.commonTopbar dd,.commonTopbar dl,.commonTopbar dt,.commonTopbar h2,.commonTopbar h3,.commonTopbar h4,.commonTopbar h6,.commonTopbar li,.commonTopbar ol,.commonTopbar p,.commonTopbar ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	-webkit-text-size-adjust: none
+}
+
+.commonTopbar img {
+	border: 0
+}
+
+.commonTopbar em,.commonTopbar i,.commonTopbar h2,.commonTopbar h3,.commonTopbar h4,.commonTopbar h6 {
+	font-style: normal
+}
+
+.commonTopbar {
+	font: 12px/1.2 "Hiragino Sans GB","Microsoft YaHei","\5FAE\8F6F\96C5\9ED1",arial,Tahoma,SimSun,sans-serif;
+	text-rendering: geometricPrecision;
+	-webkit-font-smoothing: antialiased;
+	position: relative;
+	z-index: 9999;
+	width: 100%;
+	height: 35px;
+	line-height: 35px;
+	background: #fff;
+	color: #555;
+	border-bottom: 1px solid #ddd
+}
+
+.commonTopbar a,.commonTopbar div,.commonTopbar h1,.commonTopbar h2,.commonTopbar h3,.commonTopbar h4,.commonTopbar h5,.commonTopbar h6,.commonTopbar span,.commonTopbar p,.commonTopbar ul,.commonTopbar li {
+	font-family: "Hiragino Sans GB","Microsoft YaHei","\5FAE\8F6F\96C5\9ED1",arial,Tahoma,SimSun,sans-serif!important;
+	font-size: 12px
+}
+
+.commonTopbar a {
+	text-decoration: none;
+	cursor: pointer;
+	color: #555
+}
+
+.commonTopbar a:visited {
+	color: #666
+}
+
+.clear:after {
+	content: "";
+	display: block;
+	clear: both
+}
+
+:focus {
+	outline: 0
+}
+
+.commonTopbar input,.commonTopbar p,.commonTopbar ul {
+	margin: 0;
+	padding: 0
+}
+
+.commonTopbar li {
+	list-style: none
+}
+
+.commonTopbar .hc {
+	display: none
+}
+
+.commonTopbar .sc {
+	display: block
+}
+
+.commonTopbar input {
+	font-family: Tahoma;
+	font-size: 12px
+}
+
+.commonTopbar .w,.commonTopbar .n,.commonTopbar .warp {
+	clear: both;
+	line-height: 27px
+}
+
+.commonTopbar #commonTopbar_myfeet p a,.commonTopbar #commonTopbar_sitemapBox strong a,.commonTopbar .mapfuc a {
+	color: #00c
+}
+
+.commonTopbar .vip-con a,.commonTopbar .help-con a {
+	color: #666
+}
+
+.commonTopbar a:hover {
+	color: #ff552e
+}
+
+.commonTopbar .bar_left {
+	float: left;
+	word-spacing: 1px;
+	height: 35px;
+	line-height: 35px
+}
+
+.commonTopbar .bar_right {
+	float: right
+}
+
+.commonTopbar .bar_left h2 {
+	display: inline;
+	font-size: 12px;
+	color: #ff552e;
+	float: left;
+	line-height: 35px;
+	font-weight: 700
+}
+
+.commonTopbar .bar_left .tuan {
+	display: inline-block;
+	position: relative;
+	padding-right: 30px
+}
+
+.commonTopbar #commonTopbar_login,.commonTopbar .haschild {
+	float: left
+}
+
+.commonTopbar .arrow {
+	margin-left: 8px;
+	background: url(http://img.58cdn.com.cn/ui6/topbar/topbar_icons.png) no-repeat -10px -470px;
+	display: block;
+	position: absolute;
+	width: 7px;
+	height: 4px;
+	overflow: hidden;
+	right: 10px;
+	top: 16px
+}
+
+.commonTopbar.hd_icons .arrow {
+	background: url(http://img.58cdn.com.cn/ui6/topbar/topbar_icons@2x.png) no-repeat -10px -470px;
+	background-size: 18px;
+	background-position: -6px -235px
+}
+
+.commonTopbar .hover .arrow {
+	background-position: -10px -411px
+}
+
+.commonTopbar.hd_icons .hover .arrow {
+	background-position: -6px -205px
+}
+
+.commonTopbar .n .arrow {
+	right: 6px
+}
+
+.commonTopbar .gap {
+	font-style: italic
+}
+
+.commonTopbar .hover .hc {
+	border: 1px solid #eee;
+	display: block;
+	position: absolute;
+	zoom: 1;
+	background: #fff
+}
+
+.commonTopbar .haschild {
+	z-index: 999;
+	position: relative;
+	padding: 0 24px 0 14px;
+	border: 1px solid #fff;
+	border-bottom: none;
+	border-top: none
+}
+
+.commonTopbar .n .haschild {
+	padding: 0 19px 0 8px
+}
+
+.commonTopbar .hover #commonTopbar_tomy58,.commonTopbar .hover .mytxt {
+	color: #16a085
+}
+
+
+.commonTopbar #commonTopbar_my58menu.hover,.commonTopbar #commonTopbar_shopCenter.hover,.commonTopbar #commonTopbar_myfeet.hover,.commonTopbar #commonTopbar_sitemap.hover,.commonTopbar #commonTopbar_appQR.hover {
+	border-color: #eee
+}
+
+.commonTopbar .wt img {
+	margin: -2px 10px 0 0;
+	width: 16px;
+	height: 16px;
+	vertical-align: middle
+}
+
+.commonTopbar .wt em {
+	_zoom: 1;
+	font-style: normal
+}
+
+.commonTopbar .wt .wTemp {
+	position: relative
+}
+
+.commonTopbar .wb {
+	border: 1px solid #e4e1e1;
+	position: absolute;
+	left: -1px;
+	top: 35px;
+	_top: 36px;
+	z-index: 1000;
+	background: #fff;
+	width: 470px;
+	line-height: 20px;
+	display: none;
+	cursor: default
+}
+
+.commonTopbar .w_hover .wb {
+	display: block
+}
+
+.commonTopbar .wb .air {
+	color: #959595;
+	padding: 0 10px;
+	line-height: 30px
+}
+
+.commonTopbar .wb .air .airNum {
+	font-size: 16px;
+	vertical-align: middle;
+	font-style: normal
+}
+
+.commonTopbar .wb .air .airNum_0 {
+	color: #ff552e
+}
+
+.commonTopbar .wb .air .airNum_1 {
+	color: red
+}
+
+.commonTopbar .wb .wsource {
+	position: absolute;
+	right: 10px;
+	top: 0
+}
+
+.commonTopbar .wb .wsource a {
+	color: #0ca2eb!important;
+	background: url(http://img.58cdn.com.cn/ui6/topbar/topbar_icons.png) no-repeat -2px -232px;
+	padding-left: 22px
+}
+
+.commonTopbar.hd_icons .wb .wsource a {
+	background: url(http://img.58cdn.com.cn/ui6/topbar/topbar_icons@2x.png) no-repeat -2px -232px;
+	background-size: 18px;
+	background-position: 2px -116px
+}
+
+.commonTopbar .wb .wDay {
+	padding: 10px 0;
+	overflow: hidden;
+	position: relative;
+	left: -1px;
+	zoom: 1
+}
+
+.commonTopbar .wb .wDay li {
+	float: left;
+	width: 155px;
+	height: 156px;
+	text-align: center;
+	border-left: 1px solid #e4e1e1
+}
+
+.commonTopbar .wb .wDay img {
+	display: block;
+	width: 60px;
+	height: 60px;
+	margin: 10px auto 5px
+}
+
+.commonTopbar .wb .prompt {
+	zoom: 1;
+	background: #f8f8f8;
+	clear: both;
+	border-top: 1px solid #e4e1e1;
+	position: relative;
+	padding: 10px 10px 10px 75px;
+	_zoom: 1
+}
+
+.commonTopbar .wb .prompt b {
+	position: absolute;
+	left: 10px;
+	top: 10px
+}
+
+.commonTopbar .bar_right {
+	z-index: 999;
+	position: relative
+}
+
+.commonTopbar #commonTopbar_my58menu,.commonTopbar #commonTopbar_shopCenter,.commonTopbar #commonTopbar_myfeet,.commonTopbar #commonTopbar_sitemap {
+	height: 35px;
+	line-height: 35px;
+	cursor: pointer
+}
+
+.commonTopbar #commonTopbar_login,.commonTopbar .help-con,.commonTopbar .vip-con {
+	padding: 0 10px;
+	height: 35px;
+	line-height: 35px;
+	float: left
+}
+
+.commonTopbar .n #commonTopbar_login,.commonTopbar .n .help-con,.commonTopbar .n .vip-con {
+	padding: 0 8px
+}
+
+.commonTopbar #commonTopbar_login a {
+	color: #666;
+	margin: 0 4px
+}
+
+.commonTopbar #commonTopbar_login a:hover {
+	color: #16a085
+}
+
+.commonTopbar #bangtoptip.msgTips {
+	width: 300px;
+	height: 30px
+}
+
+.commonTopbar #commonTopbar_myfeet_tooltip.msgTips {
+	width: 180px;
+	left: -55px
+}
+
+.commonTopbar .msgTips {
+	position: absolute;
+	z-index: 999;
+	color: #000;
+	top: 36px;
+	_overflow-x: hidden;
+	background: #fff;
+	border: 1px solid #eee;
+	border-top: none
+}
+
+.commonTopbar .msgTips_con {
+	position: absolute;
+	z-index: 999;
+	color: #000;
+	line-height: 20px;
+	padding: 5px 20px 5px 25px;
+	background-color: #fff
+}
+
+.commonTopbar .msgTips_close {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 10px;
+	height: 10px;
+	overflow: hidden;
+	background-position: 0 -229px;
+	cursor: pointer;
+	z-index: 1000
+}
+
+.commonTopbar .pos {
+	z-index: 999
+}
+
+.commonTopbar #commonTopbar_loginbox {
+	right: -1px;
+	width: 86px;
+	_width: 85px;
+	top: 35px;
+	_top: 36px
+}
+
+.commonTopbar .n #commonTopbar_loginbox {
+	width: 75px;
+	_width: 73px
+}
+
+.commonTopbar #commonTopbar_loginbox a {
+	font-size: 12px;
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	text-align: center
+}
+
+.commonTopbar #commonTopbar_loginbox a:hover {
+	color: #16a085;
+	background-color: #f8f8f8;
+	text-decoration: none
+}
+
+.commonTopbar #commonTopbar_ipconfig {
+	*position: relative;
+	*z-index: 999;
+	float: left;
+	margin: 0 10px 0 8px
+}
+
+.commonTopbar .n #commonTopbar_ipconfig {
+	margin: 0 5px
+}
+
+.commonTopbar #commonTopbar_myfeet h4.category {
+	font-size: 12px;
+	margin-left: 10px;
+	color: #555;
+	font-weight: 700;
+	line-height: 35px
+}
+
+.commonTopbar #commonTopbar_myfeet h4.topLine {
+	border-top: 1px solid #eee;
+	_top: 36px
+}
+
+.commonTopbar #commonTopbar_myfeetBox {
+	right: -1px;
+	width: 215px;
+	top: 35px;
+	padding-top: 8px
+}
+
+.commonTopbar #commonTopbar_myfeetBox li {
+	padding-left: 18px;
+	height: 27px;
+	background-position: 10px -427px
+}
+
+.commonTopbar #commonTopbar_myfeetBox li a {
+	height: 27px;
+	line-height: 27px;
+	width: 100%;
+	display: block
+}
+
+.commonTopbar #commonTopbar_myfeetBox #commonTopbar_feet_final li {
+	color: #555;
+	height: 27px;
+	line-height: 27px
+}
+
+.commonTopbar #commonTopbar_myfeetBox li {
+	background: url(http://img.58cdn.com.cn/ui6/topbar/topbar_icons.png) no-repeat -2px -343px
+}
+
+.commonTopbar.hd_icons #commonTopbar_myfeetBox li {
+	background: url(http://img.58cdn.com.cn/ui6/topbar/topbar_icons@2x.png) no-repeat -2px -343px;
+	background-size: 18px;
+	background-position: 2px -166px
+}
+
+.commonTopbar #commonTopbar_myfeetBox li:hover,.commonTopbar #commonTopbar_myfeetBox #commonTopbar_feet_final li:hover {
+	background-color: #f8f8f8;
+	color: #555;
+	background-position: -2px -285px
+}
+
+.commonTopbar.hd_icons #commonTopbar_myfeetBox li:hover,.commonTopbar #commonTopbar_myfeetBox #commonTopbar_feet_final li:hover {
+	background-position: 2px -137px
+}
+
+.commonTopbar #commonTopbar_myfeetBox li:hover a {
+	color: #ff552e
+}
+
+.commonTopbar #commonTopbar_myfeetBox #commonTopbar_feet_final li.norecord {
+	background: 0 0
+}
+
+.commonTopbar.#commonTopbar_myfeetBox #commonTopbar_feet_final li.norecord:hover {
+	background-color: #fff
+}
+
+.commonTopbar #commonTopbar_clearInfo {
+	height: 35px;
+	background-color: #f8f8f8;
+	line-height: 35px;
+	text-align: center;
+	color: #555
+}
+
+.commonTopbar #commonTopbar_myfeetBox .bangbang_pr {
+	+padding: 0;
+	-padding: 8px;
+	padding-left: 20px;
+	height: 30px;
+	display: block
+}
+
+.commonTopbar .w {
+	width: 1190px;
+	margin: 0 auto
+}
+
+.commonTopbar .n {
+	width: 1000px;
+	margin: 0 auto
+}
+
+.commonTopbar #link_city_change {
+	color: #00c;
+	margin-left: 5px
+}
+
+.commonTopbar #commonTopbar_ipconfig a,.commonTopbar .haschild a {
+	color: #666
+}
+
+.commonTopbar #commonTopbar_ipconfig a:hover,.commonTopbar .haschild a:hover {
+	color: #16a085
+}
+
+.commonTopbar .hv .hoverBox,.commonTopbar .hv .mark,.commonTopbar .w_hover .mark,.commonTopbar .hover .mark {
+	display: block
+}
+
+.commonTopbar .mark {
+	position: absolute;
+	right: 0;
+	top: 34px;
+	height: 4px;
+	z-index: 1001;
+	font-size: 0;
+	overflow: hidden;
+	display: none;
+	background-color: #fff;
+	width: 100%
+}
+
+.commonTopbar .w #commonTopbar_my58menu .mark {
+	_width: 76px
+}
+
+.commonTopbar .w #commonTopbar_myfeet .mark {
+	_width: 85px
+}
+
+.commonTopbar .w #commonTopbar_sitemap .mark {
+	_width: 85px
+}
+
+
+.commonTopbar .n #commonTopbar_appQR .mark {
+	_width: 76px
+}
+
+.commonTopbar .n #commonTopbar_my58menu .mark {
+	_width: 64px
+}
+
+.commonTopbar .n #commonTopbar_myfeet .mark {
+	_width: 74px
+}
+
+.commonTopbar .n #commonTopbar_sitemap .mark {
+	_width: 74px
+}
+
+.commonTopbar #commonTopbar_sitemapBox {
+	width: 1188px;
+	right: -1px;
+	border: 1px solid #eee;
+	top: 35px;
+	_top: 36px;
+	padding: 20px 0;
+	cursor: default
+}
+
+.commonTopbar .n #commonTopbar_sitemapBox {
+	width: 998px
+}
+
+.commonTopbar #commonTopbar_sitemapBox .maplist {
+	width: 1188px;
+	overflow: hidden
+}
+
+.commonTopbar .n #commonTopbar_sitemapBox .maplist {
+	width: 998px
+}
+
+.commonTopbar #commonTopbar_sitemapBox p {
+	height: 18px;
+	color: #eee;
+	line-height: 18px;
+	margin-top: 6px
+}
+
+.commonTopbar #commonTopbar_sitemapBox .appicons p {
+	color: #999;
+	height: 12px;
+	line-height: 12px;
+	margin-top: 8px;
+	text-align: center
+}
+
+.commonTopbar #commonTopbar_sitemapBox .appicons a:hover p {
+	color: #ff552e
+}
+
+.commonTopbar #commonTopbar_sitemapBox .maplist li {
+	height: 320px;
+	border-right: 1px solid #eee;
+	float: left
+}
+
+.commonTopbar .w #commonTopbar_sitemapBox .maplist li.list0 {
+	padding-left: 13px;
+	_width: 170px
+}
+
+.commonTopbar .w #commonTopbar_sitemapBox .maplist li.list2 {
+	padding-right: 20px;
+	_width: 223px
+}
+
+.commonTopbar .n #commonTopbar_sitemapBox .maplist li.list0 {
+	padding-left: 6px;
+	_width: 150px
+}
+
+.commonTopbar .n #commonTopbar_sitemapBox .maplist li.list0.huangye {
+	width: 130px;
+	_width: 130px
+}
+
+.commonTopbar .n #commonTopbar_sitemapBox .maplist li.list2 {
+	padding-right: 8px;
+	_width: 215px
+}
+
+.commonTopbar .w #commonTopbar_sitemapBox .maplist li.list0 p {
+	width: 170px
+}
+
+.commonTopbar .n #commonTopbar_sitemapBox .maplist li.list0 p {
+	width: 150px
+}
+
+.commonTopbar .n #commonTopbar_sitemapBox .maplist li.list0.huangye p {
+	width: 130px
+}
+
+.commonTopbar #commonTopbar_sitemapBox .maplist li a:hover {
+	text-decoration: none;
+	color: #ff552e
+}
+
+.commonTopbar #commonTopbar_sitemapBox .maplist h3 {
+	font-size: 14px;
+	color: #ff552e;
+	line-height: 16px;
+	height: 16px;
+	cursor: default;
+	font-weight: 700
+}
+
+.commonTopbar #commonTopbar_sitemapBox .maplist h3 a {
+	color: #ff552e;
+	font-size: 14px;
+	line-height: 16px;
+	height: 16px;
+	font-weight: 700
+}
+
+.commonTopbar #commonTopbar_sitemapBox .maplist a {
+	font-size: 12px;
+	color: #333;
+	line-height: 30px;
+	_line-height: 30px;
+	display: inline-block
+}
+
+.commonTopbar #commonTopbar_sitemapBox .subtitle {
+	margin-top: 20px
+}
+
+.commonTopbar #commonTopbar_sitemapBox .subtitle a {
+	color: #999
+}
+
+.commonTopbar #commonTopbar_sitemapBox .list0 a {
+	padding: 0 7px;
+	height: 14px;
+	line-height: 14px
+}
+
+.commonTopbar .n #commonTopbar_sitemapBox .list0 a {
+	padding: 0 5px
+}
+
+.commonTopbar #commonTopbar_sitemapBox .maplist .list2 {
+	border-right: none;
+	float: right
+}
+
+.commonTopbar #commonTopbar_sitemapBox .list2 em {
+	width: 68px;
+	display: inline-block;
+	position: relative
+}
+
+.commonTopbar #commonTopbar_sitemapBox .huangye .subtitle a {
+	color: #333
+}
+
+.commonTopbar #commonTopbar_sitemapBox .maplist .appicons {
+	line-height: 12px
+}
+
+.commonTopbar #commonTopbar_sitemapBox .maplist .appicons a {
+	width: 50px;
+	text-align: center;
+	margin: 18px 13px 0 -4px;
+	line-height: 16px;
+	color: #999
+}
+
+.commonTopbar .n #commonTopbar_sitemapBox .maplist .appicons a {
+	margin: 18px 10px 0 -4px
+}
+
+.commonTopbar #commonTopbar_sitemapBox .appicons img {
+	width: 40px;
+	height: 40px
+}
+
+.commonTopbar #commonTopbar_sitemapBox .appqr {
+	width: 100px;
+	text-align: center;
+	float: left;
+	margin-top: 20px;
+	line-height: 16px;
+	margin-right: 20px
+}
+
+.commonTopbar .n #commonTopbar_sitemapBox .appqr {
+	margin-right: 10px
+}
+
+.commonTopbar #commonTopbar_sitemapBox .appqr img {
+	width: 100px;
+	height: 100px
+}
+
+.commonTopbar #commonTopbar_sitemapBox .appqr p {
+	margin-top: 0;
+	color: #999;
+	text-align: center
+}
+
+.commonTopbar #commonTopbar_appQR {
+	background: url(http://img.58cdn.com.cn/ui6/topbar/topbar_icons.png) no-repeat;
+	line-height: 35px
+}
+
+.commonTopbar.hd_icons #commonTopbar_appQR {
+	background: url(http://img.58cdn.com.cn/ui6/topbar/topbar_icons@2x.png) no-repeat;
+	background-size: 18px
+}
+
+.commonTopbar .w #commonTopbar_appQR {
+	padding: 0 22px 0 28px;
+	background-position: 1px -48px
+}
+
+.commonTopbar.hd_icons .w #commonTopbar_appQR {
+	background-position: 5px -19px
+}
+
+.commonTopbar .w #commonTopbar_appQR.hover {
+	background-position: 1px 10px
+}
+
+.commonTopbar.hd_icons .w #commonTopbar_appQR.hover {
+	background-position: 5px 10px
+}
+
+.commonTopbar .n #commonTopbar_appQR {
+	padding-left: 20px;
+	background-position: -3px -48px
+}
+
+.commonTopbar.hd_icons .n #commonTopbar_appQR {
+	background-position: 1px -19px
+}
+
+.commonTopbar .n #commonTopbar_appQR.hover {
+	background-position: -3px 10px
+}
+
+.commonTopbar.hd_icons .n #commonTopbar_appQR.hover {
+	background-position: 1px 10px
+}
+
+.commonTopbar #commonTopbar_appQR.hover .appQRbox {
+	display: block
+}
+
+.commonTopbar .w .appQRbox {
+	_right: -2px
+}
+
+.commonTopbar .appQRbox {
+	border: 1px solid #e4e1e1;
+	position: absolute;
+	right: -1px;
+	top: 35px;
+	_top: 36px;
+	z-index: 1000;
+	background: #fff;
+	line-height: 20px;
+	display: none;
+	cursor: default;
+	padding: 20px
+}
+
+.commonTopbar .appQRbox img {
+	width: 100px;
+	height: 100px
+}
+
+.commonTopbar .appQRbox p {
+	text-align: center;
+	line-height: 12px;
+	word-break: keep-all;
+	margin-top: 6px
+}
+
+.commonTopbar #commonTopbar_homepageLink {
+	float: left;
+	padding: 0 10px 0 28px;
+	background: url(http://img.58cdn.com.cn/ui6/topbar/topbar_icons.png) no-repeat 0 -164px;
+	line-height: 35px
+}
+
+.commonTopbar.hd_icons #commonTopbar_homepageLink {
+	background: url(http://img.58cdn.com.cn/ui6/topbar/topbar_icons@2x.png) no-repeat 0 -164px;
+	background-size: 18px;
+	background-position: 4px -76px
+}
+
+.commonTopbar #commonTopbar_homepageLink.hover {
+	background-position: 0 -106px
+}
+
+.commonTopbar.hd_icons #commonTopbar_homepageLink.hover {
+	background-position: 4px -47px
+}
+
+.commonTopbar .n #commonTopbar_homepageLink {
+	padding: 0 5px 0 25px
+}
+
+.commonFooter {
+	width: 100%;
+	background-color: #fff;
+	font-size: 12px
+}
+
+.commonFooter div,.commonFooter a,.commonFooter em,.commonFooter span {
+	font-family: "Hiragino Sans GB","Microsoft YaHei","\5FAE\8F6F\96C5\9ED1",arial,Tahoma,SimSun,sans-serif!important;
+	font-size: 12px
+}
+
+.commonFooter em {
+	font-style: normal
+}
+
+.commonFooter a {
+	text-decoration: none
+}
+
+.commonFooter .footerCon {
+	width: 1190px;
+	margin: 0 auto;
+	border-top: 1px solid #EEE
+}
+
+.commonFooter .upWrap {
+	border-top: 1px solid #eee;
+	padding: 32px 0 20px 0
+}
+
+.commonFooter .downWrap,.commonFooter .upWrap {
+	height: 14px;
+	line-height: 14px;
+	text-align: center
+}
+
+.commonFooter .upWrap a {
+	color: #555;
+	display: inline-block
+}
+
+.commonFooter .upWrap a:hover {
+	color: #ff552e
+}
+
+.commonFooter .downWrap em,.commonFooter .downWrap a {
+	color: #999;
+	display: inline-block
+}
+
+.commonFooter .downWrap span,.commonFooter .linkCont span,.commonFooter .upWrap span {
+	margin: 0 10px;
+	color: #eee
+}
+
+.commonFooter .fotBtmIcon {
+	height: 58px;
+	text-align: center;
+	margin-top: 30px
+}
+
+.commonFooter .fotBtmIcon a {
+	display: inline-block;
+	height: 38px;
+	margin-right: 30px;
+	background: url(http://img.58cdn.com.cn/ui8/house/detail/images/zufang-detail-footer.png) no-repeat;
+	background-image: -webkit-image-set(url(http://img.58cdn.com.cn/ui8/house/detail/images/zufang-detail-footer.png) 1x,url(http://img.58cdn.com.cn/ui8/house/detail/images/zufang-detail-footer@2x.png) 2x)
+}
+
+.commonFooter .fotBtmIcon .fotBm_1 {
+	width: 130px;
+	background-position: 0 -96px
+}
+
+.commonFooter .fotBtmIcon .fotBm_2 {
+	width: 160px;
+	background-position: 0 -192px
+}
+
+.commonFooter .fotBtmIcon .fotBm_3 {
+	width: 154px;
+	background-position: 0 0
+}
+
+.commonFooter .fotBtmIcon .fotBm_4 {
+	width: 108px;
+	background-position: 0 -48px
+}
+
+.commonFooter .fotBtmIcon .fotBm_5 {
+	width: 130px;
+	background-position: 0 -144px
+}
+
+.commonFooter .fotBtmIcon .fotBm_6 {
+	width: 120px;
+	background-position: 0 -240px
+>>>>>>> 802d8b7bb061d4ad8fd33487d9a3f70d1172dd63
+}

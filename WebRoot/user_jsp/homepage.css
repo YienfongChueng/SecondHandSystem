@@ -1,0 +1,2095 @@
+body,dd,dl,dt,h2,h3,h4,h6,li,ol,p,ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	-webkit-text-size-adjust: none
+}
+
+img {
+	border: 0
+}
+
+em,i,h2,h3,h4,h6 {
+	font-style: normal
+}
+
+body {
+	font: 12px/1.2 "Hiragino Sans GB","Microsoft YaHei","氓戮庐猫陆炉茅鈥衡�γ┞烩��",arial,Tahoma,SimSun,sans-serif;
+	color: #333;
+	min-width: 1190px;
+	text-rendering: geometricPrecision;
+	-webkit-font-smoothing: antialiased;
+	_background-image: url(about:blank);
+	_background-attachment: fixed;
+	background-color: #f8f8f8
+}
+
+a {
+	text-decoration: none;
+	cursor: pointer
+}
+
+.clear:after {
+	content: "";
+	display: block;
+	clear: both
+}
+
+:focus {
+	outline: 0
+}
+
+#logo {
+	display: inline-block;
+	position: absolute;
+	left: 38px;
+	top: 8px
+}
+
+#bigLogo {
+	display: inline-block
+}
+
+#miniLogo {
+	display: none
+}
+
+.article {
+	width: 1190px;
+	margin: 0 auto;
+	overflow: hidden
+}
+
+.swipeDot li,.swpipeLf,.swpipeRt,.arrow,#saerkey,#guahaoIco,#meinvIco,#shuaigeIco,.navcon li i,.phoneIcon,#feedBack,#goTop,.appIco em,.r_jiao,#myfeetBox li,.wx_jiao,.wb .wsource a {
+	background: url(http://img.58cdn.com.cn/ui6/index/minico.png?v=6) no-repeat
+}
+
+.mark {
+	position: absolute;
+	right: 0;
+	top: 34px;
+	height: 4px;
+	z-index: 1001;
+	display: none;
+	font-size: 0;
+	overflow: hidden;
+	display: none;
+	background-color: #fff;
+	width: 100%
+}
+
+#headerinside {
+	height: 84px;
+	position: relative;
+	z-index: 90
+}
+
+.embed02 {
+	position: absolute;
+	left: 222px;
+	top: 5px;
+	width: 130px;
+	height: 60px;
+	display: block;
+	background: url(http://img.58cdn.com.cn/ui6/index/hsjbj_mini.gif) no-repeat 0 0
+}
+
+a:hover.embed02 {
+	background-position: -130px 0
+}
+
+.embed03 {
+	position: absolute;
+	left: 184px;
+	top: 8px;
+	width: 130px;
+	height: 60px;
+	display: block;
+	background: url(http://img.58cdn.com.cn/ui6/index/zpminibanner.png) no-repeat 0 0
+}
+
+.embed04 {
+	position: absolute;
+	left: 184px;
+	top: 8px;
+	width: 150px;
+	height: 50px;
+	display: block
+}
+
+#headerWrap {
+	margin-bottom: 8px
+}
+
+#homeWrap {
+	width: auto;
+	margin: 0 auto;
+	background-color: #fff
+}
+
+#searchbar {
+	position: absolute;
+	left: 366px
+}
+
+#searchbar,#fabu {
+	top: 10px
+}
+
+#searchbar i {
+	font-style: normal
+}
+
+.keyword {
+	color: #c8c8c8
+}
+
+#keyword.keyword2 {
+	background-position: 0 50px;
+	color: #292929
+}
+
+.inputcon input:active {
+	background: #048f74
+}
+
+#fabu,#delinfo {
+	position: absolute;
+	text-align: center;
+	cursor: pointer
+}
+
+#fabu {
+	right: 32px;
+	font-size: 16px;
+	width: 140px;
+	height: 42px;
+	line-height: 42px;
+	color: #fff;
+	background-color: #16a085
+}
+
+#delinfo {
+	right: 50px;
+	top: 58px;
+	font-size: 12px;
+	width: 100px;
+	color: #aaa;
+	height: 16px;
+	line-height: 16px
+}
+
+#fabu:hover,#searchbtn:hover {
+	background-color: #048f74
+}
+
+#fabu i {
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	top: 9px;
+	left: 20px;
+	background-position: 0 -34px;
+	display: inline-block;
+	overflow: hidden
+}
+
+#hotwords {
+	position: absolute;
+	top: 40px;
+	left: 0;
+	height: 32px;
+	width: 620px;
+	overflow: hidden;
+	line-height: 32px
+}
+
+#hotwords a {
+	margin-right: 10px;
+	color: #aaa;
+	float: left
+}
+
+#saerkey {
+	height: 38px;
+	width: 484px;
+	line-height: 38px;
+	padding-left: 34px;
+	float: left;
+	overflow: hidden;
+	border: 2px solid #16a085;
+	border-right: 0;
+	background-position: 10px -105px;
+	background-color: #fff
+}
+
+#keyword {
+	width: 100%;
+	font-size: 14px;
+	color: #ccc;
+	border: 0;
+	height: 38px;
+	line-height: 38px;
+	overflow: hidden
+}
+
+input.btnal2,input.btnall {
+	-webkit-appearance: none;
+	-webkit-border-radius: 0;
+	height: 38px;
+	line-height: 36px;
+	width: 100px;
+	font-size: 16px;
+	border: 0;
+	cursor: pointer;
+	overflow: hidden;
+	text-align: center;
+	color: #fff;
+	border-radius: 0 5px 5px 0;
+}
+
+input.btnall {
+	background: #16a085
+}
+
+input.btnal2 {
+	background: #048f74
+}
+
+.inputcon {
+	float: left
+}
+
+.tooltip {
+	padding: 1px;
+	border: 1px solid #dcdadc;
+	background: #fff;
+	margin-top: -4px;
+	margin-left: -36px;
+	*margin-left: -34px;
+	overflow: hidden;
+	width: 517px
+}
+
+.tooltip ul {
+	padding: 0;
+	margin: 0
+}
+
+.tooltip li {
+	line-height: 28px;
+	overflow: hidden;
+	padding: 0 12px;
+	list-style: none
+}
+
+.tooltip li a {
+	text-decoration: none;
+	color: #e50;
+	font-size: 14px;
+	font-weight: 400
+}
+
+.tooltip li a b {
+	color: #292929;
+	font-weight: lighter
+}
+
+.tooltip li a i {
+	font-style: normal;
+	color: #adabac
+}
+
+.tooltip li a em {
+	font-style: normal;
+	color: #e50
+}
+
+.tooltip li .tool_r {
+	float: right;
+	color: #a8a8a8;
+	font-size: 12px
+}
+
+.tooltip li.selected {
+	background: #f0f0f0;
+	cursor: pointer
+}
+
+.search-fix #header {
+	position: fixed;
+	width: 100%;
+	z-index: 999;
+	top: 0;
+	left: 0;
+	height: 50px;
+	background: rgba(255,85,46,.9)!important;
+	background: #ff552e;
+	filter: alpha(opacity=90);
+	_position: absolute;
+	_bottom: auto;
+	_top: expression(eval(document.documentElement.scrollTop))
+}
+
+.search-fix #headerinside {
+	width: 1200px;
+	margin: 0 auto;
+	height: 50px;
+	top: 0
+}
+
+.search-fix .search-no {
+	display: none;
+	visibility: hidden
+}
+
+.search-fix #bigLogo {
+	display: none
+}
+
+.search-fix #miniLogo {
+	top: 2px;
+	height: 28px;
+	display: inline-block;
+	position: relative
+}
+
+.search-fix #fabu {
+	right: 0;
+	color: #FF7459;
+	background-color: #fff;
+	height: 30px;
+	line-height: 30px;
+	top: 10px;
+	font-size: 14px
+}
+
+.search-fix input.btnall,.search-fix input.btnal2 {
+	background-color: #ff7150;
+	height: 28px;
+	line-height: 28px;
+	font-size: 14px;
+	font-weight: 700
+}
+
+.search-fix .inputcon {
+	border: 1px solid #fff
+}
+
+.search-fix #searchbar {
+	left: 340px;
+	top: 10px
+}
+
+.search-fix #keyword {
+	line-height: 26px;
+	height: 26px;
+	font-size: 12px
+}
+
+.search-fix #saerkey {
+	border-color: #fff;
+	height: 26px;
+	line-height: 26px;
+	background-position: 10px -112px
+}
+
+.search-fix .hShadow {
+	display: block
+}
+
+.navcon {
+	width: auto;
+	height: 34px;
+	margin-left:50px;
+	margin-right:50px;
+	margin-top: 5px;
+	font-size: 16px;
+	line-height: 34px;
+	border-bottom: 2px solid #16a085
+}
+
+.navcon .navRed {
+	color: #16a085;
+	font-weight: 700
+}
+
+.navcon .navGrey {
+	color: #888;
+	font-weight: 700
+}
+
+.navcon .navWit {
+	color: #fff;
+	font-weight: 700
+}
+
+.navHov {
+	margin: 0 15px;
+	padding: 0 15px
+}
+
+#homeNav {
+	margin-left:0px;
+	padding: 0 36px
+}
+
+.navBg {
+	background-color: #16a085;
+	border-radius: 2px 2px 0 0;
+	border-color: #048f74
+}
+
+.navBg .navRed,.navBg .navGrey {
+	color: #fff
+}
+
+#myfeet:hover,#sitemap:hover,#guahaoIco:hover {
+	color: #16a085
+}
+
+.navcon #wubaApp,.navcon #sellerApp,.navcon #publicNum {
+	position: relative;
+	margin-left: 10px;
+	z-index: 100
+}
+
+#publicNum {
+	cursor: default
+}
+
+.hasBox {
+	display: block;
+	height: 33px;
+	line-height: 32px;
+	border: 1px solid #fff;
+	border-bottom: none;
+	text-align: center;
+	padding-right: 6px;
+	width: 100px
+}
+
+#wubaApp .hasBox {
+	padding-left: 14px
+}
+
+#mobIco {
+	width: 30px;
+	height: 30px;
+	top: 0;
+	left: 12px;
+	position: absolute;
+	background: url(http://img.58cdn.com.cn/ui6/index/58app.gif?v=1) no-repeat
+}
+
+.navcon li i {
+	width: 10px;
+	height: 6px;
+	top: 14px;
+	right: 8px;
+	position: absolute;
+	font-size: 0;
+	overflow: hidden;
+	background-position: -20px -6px
+}
+
+.navcon li.hv i {
+	background-position: 0 -6px
+}
+
+.navHovRt {
+	margin-right: 20px
+}
+
+.navHovRt .conGrey_m {
+	color: #16a085;
+	font-size: 12px;
+	font-weight: 700
+}
+
+.conGrey_m:hover {
+	color: #16a085;
+	border-bottom: 1px solid
+}
+
+.barCode,.hovbg,#rtHvBg,.wxBg,.barCode58 {
+	background: url(http://img.58cdn.com.cn/ui6/index/2barcode.png?v=22) no-repeat
+}
+
+.navcon .barCode {
+	float: left;
+	width: 100px;
+	height: 100px;
+	margin-right: 20px
+}
+
+#ico_58tc .hovbg {
+	background-position: 0 0
+}
+
+#wubaApp_li1 .barCode {
+	background-position: 0 0
+}
+
+#wubaApp_li2 .barCode {
+	background-position: -400px 0
+}
+
+#selApp_li1 .barCode {
+	background-position: -400px -265px
+}
+
+#selApp_li2 .barCode {
+	background-position: -148px -138px
+}
+
+#selApp_li3 .barCode {
+	background-position: -521px -265px
+}
+
+#pubNum_li1 .barCode,#wxHover .wxHvTp .wxBg {
+	background-position: -130px 0
+}
+
+#pubNum_li2 .barCode {
+	background-position: -266px 0
+}
+
+#pubNum_li3,#selApp_li3 {
+	margin-top: 20px
+}
+
+#pubNum_li3 .barCode {
+	background-position: -520px -130px
+}
+
+.hoverBox {
+	border: 1px solid #ff552e;
+	position: absolute;
+	left: 0;
+	background-color: #fff;
+	padding: 16px 0 14px 20px;
+	top: 34px;
+	overflow: hidden;
+	display: none
+}
+
+.hoverBox .boxlist {
+	float: left;
+	height: 100px;
+	overflow: hidden;
+	width: 215px;
+	margin-right: 10px;
+	display: block
+}
+
+.boxlist .boxtxt {
+	float: left;
+	overflow: hidden;
+	display: inline;
+	height: 100px;
+	font-size: 12px;
+	color: #aaa;
+	line-height: 20px;
+	width: 95px
+}
+
+.boxlist .boxtxt p {
+	font-size: 14px;
+	color: #ff552e;
+	margin: 15px 0 8px 0
+}
+
+#sellist {
+	width: 230px
+}
+
+#sellist .boxtxt {
+	width: 110px
+}
+
+#wubaApp .mark {
+	width: 120px;
+	right: 1px;
+	top: 32px
+}
+
+#sellerApp .mark,#publicNum .mark {
+	width: 106px;
+	right: 1px;
+	top: 32px
+}
+
+#wubaApp.hv .hasBox,#sellerApp.hv .hasBox,#publicNum.hv .hasBox {
+	border-color: #ff552e
+}
+
+.hv .hoverBox,.hv .mark,.w_hover .mark,.hover .mark {
+	display: block
+}
+
+.mainWrap {
+	overflow: hidden;
+	width: 1190px
+}
+
+.leftSide {
+	float: left
+}
+
+.leftSide,.colWrap {
+	overflow: hidden;
+	width: 844px
+}
+
+.rightSide {
+	width: 338px;
+	float: right;
+	position: relative;
+	overflow: hidden
+}
+
+.mainWrap .board {
+	border-bottom: 8px solid #f8f8f8;
+	padding: 0 0 12px 20px
+}
+
+.mainWrap .line {
+	border-top: 1px solid #f3f3f3;
+	font-size: 0;
+	height: 0;
+	margin: 6px 20px 6px 0;
+	overflow: hidden
+}
+
+.board h2 {
+	border-bottom: 1px solid #f3f3f3;
+	height: 37px;
+	padding-top: 8px;
+	margin: 2px 20px 4px 0;
+	font-size: 16px;
+	color: #ff552e;
+	font-weight: 700;
+	overflow: hidden;
+	white-space: nowrap
+}
+
+.board h2 a,#wubaDaojia h2 a {
+	font-size: 16px;
+	color: #ff552e;
+	font-weight: 700
+}
+
+.board a,.board h4,.board h2 .AdTilRt a,.board h6 {
+	font-family: "Hiragino Sans GB",arial,Tahoma,SimSun,"氓庐鈥姑ぢ解��",sans-serif
+}
+
+.board h2 a,.board h3 em a,#searchbtn,#keyword {
+	font-family: "Hiragino Sans GB","Microsoft YaHei","氓戮庐猫陆炉茅鈥衡�γ┞烩��"
+}
+
+.board h3 {
+	height: 37px;
+	padding-top: 8px
+}
+
+.board h3 em a {
+	font-size: 16px;
+	color: #ff552e;
+	font-weight: 700
+}
+
+.board h3 span a {
+	font-size: 14px;
+	line-height: 30px;
+	font-weight: 400
+}
+
+.icoNav {
+	background-color: #fff;
+	overflow: hidden;
+	width: 848px;
+	margin-bottom: 8px;
+	height: 122px
+}
+
+.icoNav li {
+	float: left;
+	text-align: center;
+	width: 118px;
+	margin-top: 16px;
+	border-right: 1px solid #f8f8f8
+}
+
+.topIco {
+	display: block;
+	width: 100%;
+	height: 64px;
+	font-size: 14px;
+	color: #555
+}
+
+.icoNav .noBordRt {
+	border-right: none
+}
+
+.topIco i,.appIco i {
+	background-image: url(http://img.58cdn.com.cn/ui6/index/NavIcon.png?v=15);
+	background-repeat: no-repeat
+}
+
+.topIco i {
+	height: 42px;
+	width: 42px;
+	margin: 0 auto;
+	margin-bottom: 8px;
+	display: block;
+	position: relative
+}
+
+#zpNav .job_icon_hot {
+	display: block;
+	position: absolute;
+	right: -26px;
+	top: -6px;
+	height: 16px;
+	width: 28px;
+	font-size: 0;
+	background-repeat: no-repeat
+}
+
+.topIco .icoHD,.appIco .icoHD {
+	background-image: url(http://img.58cdn.com.cn/ui6/index/NavIcon_HD.png?v=15);
+	background-size: 50px
+}
+
+.icoNav li em {
+	display: block;
+	height: 28px;
+	line-height: 38px
+}
+
+.icoNav li em a {
+	font-size: 12px;
+	color: #0E8ED8
+}
+
+.icoNav li em span {
+	color: #eee
+}
+
+#fcNav i {
+	background-position: 0 3px
+}
+
+#escNav i {
+	background-position: 0 -54px
+}
+
+#esNav i {
+	background-position: 0 -111px
+}
+
+#cwNav i {
+	background-position: 0 -168px
+}
+
+#zpNav i {
+	background-position: 0 -224px
+}
+
+#bdswNav i {
+	background-position: 0 -338px
+}
+
+#bdfwNav i {
+	background-position: 0 -280px
+}
+
+.fl {
+	float: left
+}
+
+.fr {
+	float: right
+}
+
+.mainWrap .board em {
+	display: inline-block;
+	white-space: nowrap
+}
+
+.cbp1 {
+	width: 224px
+}
+
+.cbp2 {
+	width: 240px
+}
+
+.cbp3 {
+	width: 364px
+}
+
+.cbp1,.cbp2,.cbp3,.cbp4 {
+	background-color: #fff
+}
+
+.cbp1 .board em {
+	width: 50%
+}
+
+.cbp2 .board em {
+	width: 45%
+}
+
+.col2 em {
+	width: 50%
+}
+
+.col3 em {
+	width: 33%
+}
+
+.col4 em {
+	width: 25%
+}
+
+#zp_brand_wrap em {
+	width: 33%
+}
+
+#gameCenter .line {
+	margin: 0 20px 4px 0
+}
+
+.board a {
+	line-height: 30px;
+	font-size: 14px;
+	display: inline-block;
+	color: #0E8ED8
+}
+
+.mainWrap .board i {
+	font-size: 12px;
+	display: inline-block;
+	color: #DEE3E7;
+	margin: 0 3px 0 2px
+}
+
+.mainWrap .board i.more {
+	color: #0E8ED8;
+	font-size: 14px
+}
+
+.cbp1,.cbp2 {
+	margin-right: 8px;
+	display: inline
+}
+
+.board b.board_hot {
+	display: inline-block;
+	height: 10px;
+	width: 20px;
+	position: relative;
+	top: -10px;
+	right: 0;
+	font-size: 0;
+	background-repeat: no-repeat
+}
+
+#guahaoIco {
+	background-position: 0 -144px;
+	padding-left: 18px;
+	font-size: 12px;
+	color: #aaa;
+	font-weight: 400;
+	position: absolute;
+	right: 20px
+}
+
+#meinvIco {
+	background-position: right -26px;
+	padding-right: 20px
+}
+
+#shuaigeIco {
+	background-position: right -58px;
+	padding-right: 20px
+}
+
+.board h4,.board h6 {
+	font-size: 12px;
+	font-weight: 400;
+	height: 26px;
+	line-height: 26px;
+	margin-top: 4px;
+	overflow: hidden;
+	white-space: nowrap
+}
+
+.board h6 {
+	color: #aaa
+}
+
+.board h4 a {
+	color: #aaa;
+	font-size: 12px
+}
+
+.rightSideTop {
+	margin-bottom: 8px;
+	height: 122px;
+	background-color: #fff;
+	position: relative
+}
+
+#appDown,#wubaDaojia {
+	position: relative;
+	margin: 0 19px;
+	width: 300px
+}
+
+.appIcoWrap,#wubaDaojia {
+	overflow: hidden;
+	z-index: 100
+}
+
+.appIcoWrap {
+	width: 300px;
+	height: 72px;
+	position: relative
+}
+
+.appTil {
+	height: 44px;
+	line-height: 44px;
+	margin-bottom: 5px;
+	font-size: 16px;
+	color: #ff552e
+}
+
+.appIco {
+	width: 600px;
+	height: 72px;
+	position: relative;
+	left: 0
+}
+
+.appIco li {
+	float: left;
+	height: 64px;
+	width: 60px;
+	color: #aaa;
+	text-align: center;
+	cursor: default;
+	position: relative
+}
+
+.appIco i {
+	display: block;
+	width: 40px;
+	height: 38px;
+	margin: 0 10px 6px 10px
+}
+
+.hovbg {
+	width: 100px;
+	height: 100px;
+	margin: 10px
+}
+
+#appIco58_1 i {
+	background-position: 2px -398px
+}
+
+#appIco58_2 i {
+	background-position: 2px -566px
+}
+
+#appIco58_3 i {
+	background-position: 2px -454px
+}
+
+#appIco58_4 i {
+	background-position: 2px -510px
+}
+
+#appIco58_5 i {
+	background-position: 2px -623px
+}
+
+#appIco58_6 i {
+	background-position: 2px -678px
+}
+
+#appIco58_7 i {
+	background-position: 2px -734px
+}
+
+#appIco58_8 i {
+	background-position: 2px -789px
+}
+
+#appHov_1 .hovbg {
+	background-position: 0 0
+}
+
+#appHov_2 .hovbg {
+	background-position: -400px -265px
+}
+
+#appHov_3 .hovbg {
+	background-position: 0 -265px
+}
+
+#appHov_4 .hovbg {
+	background-position: -130px -265px
+}
+
+#appHov_5 .hovbg {
+	background-position: -266px -265px
+}
+
+#appHov_6 .hovbg {
+	background-position: -266px -138px
+}
+
+#appHov_7 .hovbg {
+	background-position: -400px -138px
+}
+
+#appHov_8 .hovbg {
+	background-position: -520px 0
+}
+
+.appHovers li {
+	background-color: #fff;
+	border: 1px solid #ff552e;
+	position: absolute;
+	width: 120px;
+	height: 140px;
+	top: 120px;
+	left: -19px;
+	display: none;
+	z-index: 99
+}
+
+.appHovers p {
+	height: 20px;
+	text-align: center
+}
+
+.appIco em {
+	width: 24px;
+	height: 14px;
+	background-position: 0 -366px;
+	position: absolute;
+	top: 58px;
+	left: 18px;
+	display: none
+}
+
+.hv .appIcoHov,.hv .hov_jiao {
+	display: block
+}
+
+#wubaDaojiaList a {
+	background: url(http://img.58cdn.com.cn/ui6/index/DaojiaNavIcon.png?v=10) no-repeat
+}
+
+#wubaDaojiaList.djIcoHD a {
+	background-image: url(http://img.58cdn.com.cn/ui6/index/DaojiaNavIconHD.png?v=10);
+	background-size: 30px
+}
+
+#wubaDaojia h2 {
+	border-bottom: 1px solid #f3f3f3;
+	height: 42px;
+	margin-bottom: 10px;
+	font-size: 16px;
+	color: #ff552e;
+	font-weight: 700;
+	line-height: 42px;
+	position: relative
+}
+
+#wubaDaojia h2 img {
+	width: 124px;
+	position: absolute;
+	top: 12px
+}
+
+.swipeDot {
+	position: absolute;
+	top: 20px;
+	right: 0
+}
+
+.swipeDot li {
+	float: left;
+	width: 12px;
+	margin: 0 2px;
+	height: 12px;
+	background-position: 0 -936px;
+	cursor: pointer
+}
+
+.swipeDot li.active {
+	background-position: 0 -877px
+}
+
+.swipeBtn {
+	display: none
+}
+
+.active .swipeBtn {
+	display: block
+}
+
+.swpipeLf,.swpipeRt {
+	position: absolute;
+	top: 43px;
+	height: 45px;
+	width: 19px;
+	cursor: pointer
+}
+
+.swpipeLf {
+	left: 0;
+	background-position: 0 -722px
+}
+
+.swpipeRt {
+	right: 0;
+	background-position: 0 -781px
+}
+
+#swplf.active {
+	background-position: 0 -604px
+}
+
+#swprt.active {
+	background-position: 0 -663px
+}
+
+#wubaDaojiaList {
+	overflow: hidden;
+	width: 950px;
+	position: relative;
+	left: 0;
+	height: 54px;
+	display: none
+}
+
+#wubaDaojiaList em {
+	width: 58px;
+	display: inline-block;
+	height: 54px;
+	text-align: center;
+	white-space: nowrap
+}
+
+#wubaDaojiaList em a {
+	display: inline-block;
+	height: 54px;
+	width: 50px;
+	line-height: 88px;
+	color: #0E8ED8
+}
+
+#wubaDaojiaList .baojie {
+	background-position: 10px -208px
+}
+
+#wubaDaojiaList .yuesao {
+	background-position: -85px -208px
+}
+
+#wubaDaojiaList .baomu {
+	background-position: 10px -267px
+}
+
+#wubaDaojiaList .meijia {
+	background-position: -83px -267px
+}
+
+#wubaDaojiaList .banjia {
+	background-position: 10px -325px
+}
+
+#wubaDaojiaList .yuersao {
+	background-position: -85px -325px
+}
+
+#wubaDaojiaList .duigong {
+	background-position: 10px -384px
+}
+
+#wubaDaojiaList .peilian {
+	background-position: -85px -441px
+}
+
+#wubaDaojiaList .anmo {
+	background-position: 10px -441px
+}
+
+#wubaDaojiaList .jiajuwx {
+	background-position: -85px -384px
+}
+
+#wubaDaojiaList.djIcoHD .baojie {
+	background-position: 10px 0
+}
+
+#wubaDaojiaList.djIcoHD .yuesao {
+	background-position: 10px -58px
+}
+
+#wubaDaojiaList.djIcoHD .baomu {
+	background-position: 10px -118px
+}
+
+#wubaDaojiaList.djIcoHD .meijia {
+	background-position: 10px -176px
+}
+
+#wubaDaojiaList.djIcoHD .banjia {
+	background-position: 10px -235px
+}
+
+#wubaDaojiaList.djIcoHD .yuersao {
+	background-position: 10px -294px
+}
+
+#wubaDaojiaList.djIcoHD .duigong {
+	background-position: 10px -354px
+}
+
+#wubaDaojiaList.djIcoHD .peilian {
+	background-position: 10px -413px
+}
+
+#wubaDaojiaList.djIcoHD .anmo {
+	background-position: 10px -472px
+}
+
+#wubaDaojiaList.djIcoHD .jiajuwx {
+	background-position: 10px -530px
+}
+
+#bdService {
+	border-bottom: none;
+	margin: 0 20px 0 0;
+	height: 36px
+}
+
+.minBodA {
+	width: 140px;
+	float: left
+}
+
+.minBodB {
+	width: 160px;
+	float: right
+}
+
+.mainWrap h2 .AdTilRt a,.miniAdTilRt a {
+	font-size: 12px;
+	margin-left: 12px;
+	display: inline-block;
+	font-weight: 200
+}
+
+.mainWrap h2 .AdTilRt a,#backOld:hover {
+	color: #ff6356
+}
+
+.miniAdTilRt a {
+	color: #aaa
+}
+
+.insideWrap {
+	width: 318px;
+	overflow: hidden
+}
+
+.mainWrap .margR0 {
+	margin-right: 0
+}
+
+.mainWrap .margT0 {
+	margin-top: 0
+}
+
+.mainWrap .noBorder {
+	border: none
+}
+
+.board .red,#hotwords .red {
+	color: #16a085
+}
+
+.icoNav .topIco:hover {
+	color: #16a085;
+	text-decoration: none
+}
+
+.mainWrap a:hover,#hotwords a:hover,#delinfo:hover,#wubaDaojiaList em a:hover {
+	color: #16a085;
+	text-decoration: underline
+}
+
+#zp_brand_chinaHR {
+	display: none
+}
+
+.toolKits {
+	width: 1200px;
+	height: 246px;
+	margin: 10px 0;
+	background-color: #fff;
+	overflow: hidden
+}
+
+.toolKits h2 {
+	height: 44px;
+	line-height: 44px;
+	font-size: 16px;
+	color: #ff552e;
+	padding-left: 18px;
+	border-bottom: 1px solid #f3f3f3;
+	margin-bottom: 20px
+}
+
+.toolCol {
+	float: left;
+	width: 217px;
+	height: 168px;
+	border-right: 1px solid #f3f3f3;
+	padding: 0 10px
+}
+
+.toolCol h6 {
+	font-size: 14px;
+	font-weight: 400;
+	padding-left: 10px;
+	color: #555;
+	margin-bottom: 16px
+}
+
+.toolCol a {
+	display: inline-block;
+	text-align: center;
+	font-size: 12px;
+	background-image: url(http://img.58cdn.com.cn/ui6/index/ToolsIcon.png?v=16);
+	background-repeat: no-repeat;
+	width: 72px;
+	height: 20px;
+	padding-top: 42px;
+	color: #aaa
+}
+
+.toolCol .toIcoHD {
+	background-image: url(http://img.58cdn.com.cn/ui6/index/ToolsIcon_HD.png?v=16);
+	background-size: 24px
+}
+
+.toolUp {
+	margin-bottom: 12px
+}
+
+.toolKits a:hover {
+	color: #ff552e;
+	background-color: #f8f8f8
+}
+
+#ico1_1 {
+	background-position: 24px 8px
+}
+
+#ico1_2 {
+	background-position: 24px -51px
+}
+
+#ico1_3 {
+	background-position: 24px -110px
+}
+
+#ico1_4 {
+	background-position: 24px -168px
+}
+
+#ico1_5 {
+	background-position: 24px -226px
+}
+
+#ico1_6 {
+	background-position: 24px -285px
+}
+
+#ico2_1 {
+	background-position: 24px -345px
+}
+
+#ico2_2 {
+	background-position: 24px -404px
+}
+
+#ico2_3 {
+	background-position: 24px -464px
+}
+
+#ico2_4 {
+	background-position: 24px -520px
+}
+
+#ico2_5 {
+	background-position: 24px -579px
+}
+
+#ico2_6 {
+	background-position: 24px -638px
+}
+
+#ico3_1 {
+	background-position: 24px -700px
+}
+
+#ico3_1_bj {
+	background-position: 24px -1998px
+}
+
+#ico3_2 {
+	background-position: 24px -759px
+}
+
+#ico3_3 {
+	background-position: 24px -818px
+}
+
+#ico3_3_bj {
+	background-position: 24px -1170px
+}
+
+#ico3_4 {
+	background-position: 24px -1227px
+}
+
+#ico3_5 {
+	background-position: 24px -934px
+}
+
+#ico3_6 {
+	background-position: 24px -992px
+}
+
+#ico4_1 {
+	background-position: 24px -1288px
+}
+
+#ico4_2 {
+	background-position: 24px -1522px
+}
+
+#ico4_3 {
+	background-position: 24px -1406px
+}
+
+#ico4_4 {
+	background-position: 24px -1463px
+}
+
+#ico4_5 {
+	background-position: 24px -1935px
+}
+
+#ico4_6 {
+	background-position: 24px -1582px
+}
+
+#ico5_1 {
+	background-position: 24px -1641px
+}
+
+#ico5_2 {
+	background-position: 24px -1701px
+}
+
+#ico5_3 {
+	background-position: 24px -1759px
+}
+
+#ico5_4 {
+	background-position: 24px -1818px
+}
+
+#ico5_5 {
+	background-position: 24px -1877px
+}
+
+#ico5_6 {
+	background-position: 24px -1347px
+}
+
+#rightSusp {
+	position: fixed;
+	z-index: 100;
+	bottom: 36px;
+	right: 0;
+	width: 50px;
+	background-color: #fff;
+	border: 1px solid #eee;
+	display: none;
+	_position: absolute;
+	_bottom: auto;
+	_margin-bottom: 36px;
+	_top: expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop, 10)||0)-(parseInt(this.currentStyle.marginBottom, 10)||0)))
+}
+
+#rightHov {
+	position: absolute;
+	left: -170px;
+	top: 0;
+	background-color: #fff;
+	text-align: center;
+	display: none;
+	width: 160px;
+	border: 1px solid #ff552e
+}
+
+#rightSusp .r_jiao {
+	height: 50px;
+	width: 10px;
+	position: absolute;
+	top: 22px;
+	right: -10px;
+	background-position: 0 -382px
+}
+
+#rightHov p {
+	font-size: 12px;
+	color: #aaa;
+	height: 30px;
+	line-height: 30px
+}
+
+#rtHvBg {
+	background-position: 0 -119px;
+	width: 120px;
+	height: 120px;
+	margin: 0 auto
+}
+
+#micoNew {
+	height: 80px;
+	text-align: center
+}
+
+.micoNewTxt {
+	font-size: 14px;
+	color: #ff552e;
+	font-weight: 400;
+	height: 30px;
+	line-height: 30px
+}
+
+.phoneIcon {
+	background-position: 14px -190px;
+	width: 50px;
+	height: 45px
+}
+
+.hv #rightHov {
+	display: block
+}
+
+#feedBack,#goTop,#backOld {
+	display: block;
+	border-top: 1px solid #eee;
+	text-align: center;
+	height: 34px
+}
+
+#backOld {
+	font-size: 14px;
+	padding: 10px;
+	color: #9A9A9A
+}
+
+#feedBack,#goTop {
+	color: #fff;
+	padding: 8px 10px
+}
+
+#feedBack {
+	background-position: 14px -287px
+}
+
+#goTop {
+	background-position: 14px -242px;
+	cursor: pointer
+}
+
+#feedBack.hv1,#goTop.hv1 {
+	background: url() #ff552e;
+	text-decoration: none
+}
+
+.footer {
+	width: 100%;
+	background-color: #fff
+}
+
+#upWrap {
+	width: 1190px;
+	margin: 0 auto;
+	position: relative;
+	padding-bottom: 32px;
+	border-bottom: 1px solid #eee
+}
+
+#fotLogo {
+	display: block;
+	float: left;
+	width: 200px;
+	height: 150px;
+	margin-top: 40px
+}
+
+#fotLogo img {
+	margin: 24px 0 0 20px;
+	width: 148px
+}
+
+#upWrap ul {
+	float: left;
+	width: 146px;
+	height: 150px;
+	padding-left: 50px;
+	margin-top: 40px
+}
+
+#upWrap .infoTil {
+	font-size: 16px;
+	margin-bottom: 20px
+}
+
+#upWrap li a,#wxfoot span {
+	font-size: 12px;
+	color: #aaa;
+	line-height: 30px
+}
+
+#downWrap {
+	height: 14px;
+	line-height: 14px;
+	text-align: center;
+	margin: 16px 0 24px 0
+}
+
+#downWrap em,#downWrap a,#downWrap span {
+	font-size: 12px;
+	color: #5c5c5c;
+	display: inline-block
+}
+
+#downWrap span,#linkCont span {
+	margin: 0 4px;
+	color: #eee
+}
+
+#upWrap a:hover,#downWrap a:hover,#flink a:hover,#wxfoot.hv span {
+	color: #ff8e7b;
+	text-decoration: none
+}
+
+#wxfoot {
+	position: relative
+}
+
+#wxfoot span {
+	cursor: pointer
+}
+
+#wxHover {
+	position: absolute;
+	left: 64px;
+	top: -124px;
+	*top: -132px;
+	background-color: #fff;
+	border: 1px solid #eee;
+	display: block;
+	padding: 20px;
+	padding-bottom: 0;
+	display: none;
+	color: #555
+}
+
+.wx_jiao {
+	position: absolute;
+	left: -18px;
+	top: 124px;
+	height: 30px;
+	width: 18px;
+	background-position: -12px -454px
+}
+
+.wxHvTp {
+	width: 274px;
+	height: 120px;
+	overflow: hidden;
+	border-bottom: 1px solid #eee
+}
+
+.wxBg {
+	width: 110px;
+	height: 110px;
+	margin-right: 20px;
+	float: left
+}
+
+.wxJoin {
+	float: left
+}
+
+.wxJoin div {
+	font-size: 14px;
+	height: 25px;
+	font-weight: 700
+}
+
+.wxJoin p {
+	height: 20px;
+	font-size: 12px;
+	color: #aaa
+}
+
+.wxHvBm {
+	height: 40px;
+	line-height: 40px;
+	width: 274px;
+	overflow: hidden
+}
+
+.wxHvBm em {
+	float: left
+}
+
+.wxHvBm span {
+	color: #ff552e
+}
+
+#leftInfo {
+	width: 130px
+}
+
+#wxfoot.hv #wxHover {
+	display: block
+}
+
+.fotBtmIcon {
+	height: 58px;
+	text-align: center
+}
+
+.fotBtmIcon a {
+	display: inline-block;
+	height: 38px;
+	margin-right: 30px;
+	background: url(http://img.58cdn.com.cn/ui6/index/footbtmicon.png?v=3) no-repeat
+}
+
+#fotBm_0 {
+	width: 144px;
+	background-position: 0 -295px
+}
+
+#fotBm_1 {
+	width: 173px;
+	background-position: 0 0
+}
+
+#fotBm_2 {
+	width: 168px;
+	background-position: 0 -59px
+}
+
+#fotBm_3 {
+	width: 118px;
+	background-position: 0 -118px
+}
+
+#fotBm_4 {
+	width: 141px;
+	background-position: 0 -177px
+}
+
+#fotBm_5 {
+	width: 129px;
+	background-position: 0 -236px
+}
+
+#flink {
+	width: 1146px;
+	margin: 0 auto;
+	position: relative;
+	margin-top: 20px;
+	height: 20px;
+	line-height: 20px;
+	overflow: hidden;
+	color: #aaa
+}
+
+#flink strong {
+	font-weight: 400
+}
+
+#linkCont {
+	position: absolute;
+	top: 0;
+	left: 66px;
+	display: none
+}
+
+#linkCont li {
+	width: 1080px;
+	height: 20px;
+	overflow: hidden
+}
+
+#flink a {
+	color: #aaa
+}
+
+#seaTipTg {
+	height: 42px;
+	padding: 8px 0 8px 12px
+}
+
+.jr_lf,.jr_rt {
+	float: left;
+	height: 100%
+}
+
+.jr_rt {
+	width: 426px;
+	overflow: hidden
+}
+
+.jr_lf {
+	width: 60px;
+	height: 100%;
+	margin-right: 10px;
+	display: block
+}
+
+.jr_lf img {
+	width: 60px;
+	height: 42px
+}
+
+.jr_title {
+	font-size: 16px;
+	color: #333;
+	display: block;
+	height: 22px;
+	line-height: 22px;
+	margin-bottom: 6px;
+	width: 192px;
+	overflow: hidden
+}
+
+.jr_con {
+	height: 12px;
+	line-height: 12px;
+	white-space: nowrap
+}
+
+.jr_con em,.jr_con i {
+	color: #aaa;
+	font-size: 12px
+}
+
+.jr_con i {
+	display: inline-block;
+	margin: 0 8px
+}
+
+.qcfw_new {
+	width: 20%!important
+}
+
+#qcfw_mc_right {
+	display: inline-block;
+	width: 80%;
+	vertical-align: top
+}
+
+.board em.esc_col5 {
+	width: 18%
+}
+
+.board em.esc_col3 {
+	width: 38%
+}
+
+.board em.esc_col2 {
+	width: 44%
+}
+
+#newsBtnWrap {
+	position: absolute;
+	right: 102px;
+	top: 2px;
+	background-color: #fff;
+	height: 38px;
+	width: 42px
+}
+
+#newsBtn {
+	height: 18px;
+	width: 18px;
+	background-image: url(http://img.58cdn.com.cn/ui6/index/pc_hotnews_icon.png);
+	background-size: 18px;
+	text-align: center;
+	cursor: pointer;
+	line-height: 18px;
+	position: absolute;
+	left: 16px;
+	top: 12px
+}
+
+#searchbar .defpic {
+	color: #16a085;
+	background-position: 0 -218px
+}
+
+#searchbar .defpic:hover {
+	color: #fff;
+	background-position: 0 -256px
+}
+
+#searchbar .arrowpic {
+	color: transparent;
+	background-position: 0 -294px
+}
+
+#searchbar .defpic_hd {
+	color: #16a085;
+	background-position: 0 0
+}
+
+#searchbar .defpic_hd:hover {
+	color: #fff;
+	background-position: 0 -28px
+}
+
+#searchbar .arrowpic_hd {
+	color: transparent;
+	background-position: 0 -56px
+}
+
+#newsBox {
+	margin-left: 0;
+	margin-top: 0
+}
+
+#newsBox ul {
+	width: 320px;
+	overflow: hidden;
+	color: #555;
+	margin-bottom: 12px;
+	margin-left: 22px
+}
+
+#newsBox p {
+	line-height: 12px;
+	height: 12px
+}
+
+#newsBox .hotnews {
+	margin-top: 9px;
+	margin-left: 20px;
+	margin-bottom: 7px
+}
+
+#newsBox li a {
+	display: inline-block;
+	color: #999;
+	font-size: 12px;
+	white-space: nowrap;
+	width: 296px;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	overflow: hidden
+}
+
+#newsBox li a:hover {
+	text-decoration: underline
+}
+
+#newsBox li {
+	line-height: 30px;
+	list-style: none;
+	padding: 0;
+	padding-left: 15px;
+	height: 30px;
+	position: relative
+}
+
+#newsBox li i {
+	color: #999;
+	position: absolute;
+	top: 0;
+	left: 0
+}
+
+#newsBox a span {
+	display: inline-block;
+	height: 13px;
+	width: 13px;
+	font-size: 0;
+	overflow: hidden;
+	top: 2px;
+	left: 4px;
+	position: relative;
+	background-image: url(http://img.58cdn.com.cn/ui6/index/pc_hotnews_icon.png);
+	background-position: 0 -84px;
+	background-size: 18px
+}
+
+#newsBox span.norpic {
+	background-position: 0 -332px
+}
+
+#newsBox li i.red {
+	color: #ff552e
+}
+
+#newsBox .downapp {
+	position: absolute;
+	top: 35px;
+	right: 20px;
+	padding: 20px;
+	background-color: #fafafa
+}
+
+#newsBox .appCode {
+	height: 100px;
+	background-image: url(http://img.58cdn.com.cn/ui6/index/pc_hotnews_ecode.png);
+	width: 100px;
+	margin-bottom: 8px;
+	background-repeat: no-repeat
+}
+
+#newsBox div.hdcode {
+	background-size: 100px;
+	background-position: 0 -73px
+}
+
+#newsBox p.lh32 {
+	line-height: 32px;
+	height: 32px;
+	text-align: center
+}
