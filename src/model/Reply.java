@@ -9,6 +9,10 @@ public class Reply {
 	private Integer userId;//回复者id
 	private Date createTime;//回复时间
 	private java.lang.String reply;//回复内容
+	
+	public Reply() {
+
+	}
 	public Integer getId() {
 		return id;
 	}

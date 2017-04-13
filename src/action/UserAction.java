@@ -1,8 +1,12 @@
 package action;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 import service.ILoginService;
+import service.IUserService;
+import util.AddJson;
 import model.User;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -22,12 +26,15 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 		this.iLoginService = iLoginService;
 	}
 	
+
+	HttpServletRequest req=ServletActionContext.getRequest();
+	
 	/**
 	 * 用户登录
 	 * @return
 	 */
 	public String UserLogin(){
-		HttpServletRequest req=ServletActionContext.getRequest();
+		//HttpServletRequest req=ServletActionContext.getRequest();
 		if(user==null){
 			this.addActionError("请输入账号和密码!");
 			return "login";
@@ -62,7 +69,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 	 * 通过账号找回密码步骤1
 	 */
 	public String forgetPwd(){
-		HttpServletRequest req=ServletActionContext.getRequest();
+		//HttpServletRequest req=ServletActionContext.getRequest();
 		String userName=req.getParameter("userName");
 		User u=this.iLoginService.findUserByName(userName);
 		if(u==null){
@@ -81,7 +88,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 	 * 提交问题2
 	 */
 	public String checkAnswer(){
-		HttpServletRequest req=ServletActionContext.getRequest();
+		//HttpServletRequest req=ServletActionContext.getRequest();
 		String answertext=req.getParameter("answer");
 		User u=this.iLoginService.findUserByName(user.getUserName());
 		if(u!=null){
@@ -105,8 +112,55 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 		
 	}
 	
+	/**
+	 * 查询用户账号信息
+	 * @throws IOException 
+	 */
+	public void searchPersonalInfo() throws IOException{
+		//HttpServletRequest req=ServletActionContext.getRequest();
+		int uid=Integer.parseInt(req.getParameter("uid"));
+		user=this.iLoginService.searchUserInfoById(uid);
+		AddJson json=new AddJson();
+		json.toJson(user);
+		//return "findUserInfoSuccess";
+		
+	}
 	
+	/**
+	 * 修改用户信息
+	 */
+	public void updateUserInfoById(){
+		int uid=Integer.parseInt(req.getParameter("uid"));
+		String uname=req.getParameter("userName");
+		String pass=req.getParameter("password");
+		String uclass=req.getParameter("schoolClass");
+		String address=req.getParameter("address");
+		int phone=Integer.parseInt(req.getParameter("phone"));
+		String qusetion=req.getParameter("qusetion");
+		String answer=req.getParameter("answer");
+		int sex=Integer.parseInt(req.getParameter("sex"));
+		User uu=new User();
+		uu.setAddress(address);
+		uu.setAnswer(answer);
+		uu.setPassword(pass);
+		uu.setPhone(phone);
+		uu.setSchoolClass(uclass);
+		uu.setUid(uid);
+		uu.setUserName(uname);
+		uu.setQusetion(qusetion);
+		uu.setSex(sex);
+		this.iLoginService.updateUser(uu);
+		
+	}
 
+	/**
+	 * 用户退出的登录
+	 */
+	public String userExitLogin(){
+		req.getSession().removeAttribute("User");
+		return "UserexitSuccess";
+	}
+	
 	
 	
 

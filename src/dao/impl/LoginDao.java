@@ -23,8 +23,6 @@ public class LoginDao extends HibernateDaoSupport implements ILoginDao {
 		}else{
 			return null;
 		}
-		
-		
 	}
 
 	/**
@@ -69,10 +67,27 @@ public class LoginDao extends HibernateDaoSupport implements ILoginDao {
 	 */
 	@Override
 	public void updatePed(User user) {
-		//String hql="update User set password='"+user.getPassword()+"'where uid='"+user.getUid()+"'";
 		User u=this.getHibernateTemplate().get(User.class, user.getUid());
 		u.setPassword(user.getPassword());
 		this.getHibernateTemplate().update(u);
+		
+	}
+
+	/**
+	 * 通过用户id查询用户信息
+	 */
+	@Override
+	public User searchUserInfoById(int uid) {
+		User u=this.getHibernateTemplate().get(User.class, uid);
+		return u;
+	}
+
+	/**
+	 * 修改用户信息
+	 */
+	@Override
+	public void updateUser(User user) {
+		this.getHibernateTemplate().update(user);
 		
 	}
 

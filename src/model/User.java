@@ -15,8 +15,10 @@ public class User {
 	private java.lang.String password;
 	private java.lang.String qusetion;//密码找回的设置问题
 	private java.lang.String answer;//密码找回设置答案
-	private java.lang.String message;//密码找回的返回信息
 	
+	
+	public User() {
+	}
 	public java.lang.Integer getUid() {
 		return uid;
 	}
@@ -77,12 +79,7 @@ public class User {
 	public void setAnswer(java.lang.String answer) {
 		this.answer = answer;
 	}
-	public java.lang.String getMessage() {
-		return message;
-	}
-	public void setMessage(java.lang.String message) {
-		this.message = message;
-	}
+	
 	
 	
 }

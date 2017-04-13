@@ -10,6 +10,9 @@ public class Comment {
 	private Integer userId;//评论者id
 	private java.lang.String content;//评论内容
 	private Integer status;//0未读，1已读
+	
+	public Comment() {
+	}
 	public Integer getId() {
 		return id;
 	}

@@ -21,6 +21,8 @@ public class Product {
 	private User user;//关联实体类
 
 	
+	public Product() {
+	}
 	public Classify getClassify() {
 		return classify;
 	}

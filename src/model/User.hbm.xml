@@ -15,7 +15,6 @@
     	<property name="password" column="PASSWORD" type="java.lang.String" length="20"/>
     	<property name="qusetion" column="QUESTION" type="java.lang.String" length="50"/>	
     	<property name="answer" column="ANSWER" type="java.lang.String" length="50"/>	
-    	<property name="message" column="MESSAGE" type="java.lang.String" length="256"/>	
     	<property name="sex" column="SEX" type="java.lang.Integer" length="6"/>	
     	
     	<!-- <set name="product" table="tb_product" inverse="false" lazy="true">

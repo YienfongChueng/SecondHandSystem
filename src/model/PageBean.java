@@ -8,6 +8,9 @@ public class PageBean<T> {
 	private int totalCount;//总记录数
 	private int totalPage;//总页数
 	List<T> list;//每页显示的数据
+	
+	public PageBean() {
+	}
 	public int getCurrPage() {
 		return currPage;
 	}

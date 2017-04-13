@@ -37,4 +37,17 @@ public interface ILoginDao {
 	 * @param user
 	 */
 	void updatePed(User user);
+
+	/**
+	 * 通过用户id查询用户信息
+	 * @param uid
+	 * @return
+	 */
+	User searchUserInfoById(int uid);
+
+	/**
+	 * 修改用户信息
+	 * @param user
+	 */
+	void updateUser(User user);
 }

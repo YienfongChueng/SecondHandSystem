@@ -6,6 +6,10 @@ public class Admin {
 	private java.lang.String name;
 	private java.lang.String password;
 	private java.lang.Integer role;//角色，0超级管理员  1系统管理员
+	
+	
+	public Admin() {
+	}
 	public Integer getAid() {
 		return aid;
 	}

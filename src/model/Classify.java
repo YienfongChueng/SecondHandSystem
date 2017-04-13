@@ -5,6 +5,9 @@ public class Classify {
 	private Integer cid;
 	private java.lang.String classifyName;//分类名称
 	private Integer ClassifySort;//分类排序
+	
+	public Classify() {
+	}
 	public Integer getCid() {
 		return cid;
 	}

@@ -1,123 +1,98 @@
 package model;
 
-import java.util.Date;
-
 public class Order {
 
 	private Integer id;
-	private Integer productId;//商品id
-	private Date buyTime;//购买时间
-	private Integer buyNum;//购买数量
 	private Integer status;//订单状态（0：待付款 1：待发货 2：待收货）
-	private java.lang.String receiver;//收件人名称
+	private java.util.Date createTime;//订单生成时间
 	private java.lang.String address;//送货地址
-	private java.lang.String payWay;//支付方式
-	private java.lang.String sendWay;//送货方式
-	private Double totalPrice;//总价
-	private java.lang.String orderNum;//订单号
-	private java.lang.String comment;//简单留言
+	private java.lang.String personName;//收货人
+	private Integer userId;//用户id
 	private Integer phone;//联系电话
-	private java.lang.String email;//邮件
-	private Integer creatorId;//商品发布者id
-	private Integer buyUserId;//购买用户id
+	private Double amount;//订单金额
+	
+	
+	public Order() {
+	}
+
+
 	public Integer getId() {
 		return id;
 	}
+
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Integer getProductId() {
-		return productId;
-	}
-	public void setProductId(Integer productId) {
-		this.productId = productId;
-	}
-	public Date getBuyTime() {
-		return buyTime;
-	}
-	public void setBuyTime(Date buyTime) {
-		this.buyTime = buyTime;
-	}
-	public Integer getBuyNum() {
-		return buyNum;
-	}
-	public void setBuyNum(Integer buyNum) {
-		this.buyNum = buyNum;
-	}
+
+
 	public Integer getStatus() {
 		return status;
 	}
+
+
 	public void setStatus(Integer status) {
 		this.status = status;
 	}
-	public java.lang.String getReceiver() {
-		return receiver;
+
+
+	public java.util.Date getCreateTime() {
+		return createTime;
 	}
-	public void setReceiver(java.lang.String receiver) {
-		this.receiver = receiver;
+
+
+	public void setCreateTime(java.util.Date createTime) {
+		this.createTime = createTime;
 	}
+
+
 	public java.lang.String getAddress() {
 		return address;
 	}
+
+
 	public void setAddress(java.lang.String address) {
 		this.address = address;
 	}
-	public java.lang.String getPayWay() {
-		return payWay;
+
+
+	public java.lang.String getPersonName() {
+		return personName;
 	}
-	public void setPayWay(java.lang.String payWay) {
-		this.payWay = payWay;
+
+
+	public void setPersonName(java.lang.String personName) {
+		this.personName = personName;
 	}
-	public java.lang.String getSendWay() {
-		return sendWay;
+
+
+	public Integer getUserId() {
+		return userId;
 	}
-	public void setSendWay(java.lang.String sendWay) {
-		this.sendWay = sendWay;
+
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
-	public Double getTotalPrice() {
-		return totalPrice;
-	}
-	public void setTotalPrice(Double totalPrice) {
-		this.totalPrice = totalPrice;
-	}
-	public java.lang.String getOrderNum() {
-		return orderNum;
-	}
-	public void setOrderNum(java.lang.String orderNum) {
-		this.orderNum = orderNum;
-	}
-	public java.lang.String getComment() {
-		return comment;
-	}
-	public void setComment(java.lang.String comment) {
-		this.comment = comment;
-	}
+
+
 	public Integer getPhone() {
 		return phone;
 	}
+
+
 	public void setPhone(Integer phone) {
 		this.phone = phone;
 	}
-	public java.lang.String getEmail() {
-		return email;
+
+
+	public Double getAmount() {
+		return amount;
 	}
-	public void setEmail(java.lang.String email) {
-		this.email = email;
+
+
+	public void setAmount(Double amount) {
+		this.amount = amount;
 	}
-	public Integer getCreatorId() {
-		return creatorId;
-	}
-	public void setCreatorId(Integer creatorId) {
-		this.creatorId = creatorId;
-	}
-	public Integer getBuyUserId() {
-		return buyUserId;
-	}
-	public void setBuyUserId(Integer buyUserId) {
-		this.buyUserId = buyUserId;
-	}
-	
-	
-	
 	
 }

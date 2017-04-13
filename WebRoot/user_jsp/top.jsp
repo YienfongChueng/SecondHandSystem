@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ page import="model.User" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,14 +8,22 @@
 <title>二手网，你要的二货在此！</title>
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
+<%
+	request.setCharacterEncoding("utf-8");
+	response.setCharacterEncoding("utf-8");	
+	User userLoginInfo=(User)request.getSession().getAttribute("User");
+	if(userLoginInfo==null){
+		response.sendRedirect("user_login.jsp");
+	}
+%>
 <body marginwidth="0" marginheight="0">
 	<header>
 		 <h1><img src="../images/logo-w.png"/></h1>
 		 <ul class="rt_nav">
-			  <li><a href="#" target="_blank" class="website_icon">首页</a></li>
-			  <li><a href="#" class="admin_icon">我的二货</a></li>
-  			  <li><a href="#" class="set_icon">账号信息</a></li>
-			  <li><a href="#" class="quit_icon">安全退出</a></li>
+			  <li><a href="index.jsp" target="_blank" class="website_icon">首页</a></li>
+			  <li><a href="right_menu.jsp?uid=<%=userLoginInfo.getUid() %>" class="admin_icon">我的二货</a></li>
+  			  <li><a href="personal_info.jsp?uid=<%=userLoginInfo.getUid() %>" class="set_icon">账号信息</a></li>
+			  <li><a href="user_userExitLogin.action" class="quit_icon">安全退出</a></li>
 		 </ul>
 	</header>
 </body>

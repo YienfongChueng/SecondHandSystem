@@ -27,6 +27,11 @@
 			<dd class="public-ifame-item"><a href="#" target="content">发出的评论</a></dd>
 			<dd class="public-ifame-item"><a href="#" target="content">收到的评论</a></dd>
 		   </dl>
+		   <dl>
+			<dt>消息管理</dt>
+			<dd class="public-ifame-item"><a href="#" target="content">用户消息</a></dd>
+			<dd class="public-ifame-item"><a href="#" target="content">系统消息</a></dd>
+		   </dl>
 		  </li> 
 		   <p class="btm_infor">© 13计科张燕芳 版权所有</p>
 		 </ul>
@@ -34,7 +39,7 @@
    <!--主体内容-->
    <section class="rt_wrap content mCustomScrollbar">
 		<div class="rt_content">
-		<iframe name="content" src="" frameborder="0" id="mainframe" scrolling="yes" marginheight="0" marginwidth="0" width="100%" style="height: 700px;"></iframe>
+		<iframe name="content" src="order_list.jsp" frameborder="0" id="mainframe" scrolling="yes" marginheight="0" marginwidth="0" width="100%" style="height: 700px;"></iframe>
      
 		</div>
 	</section>

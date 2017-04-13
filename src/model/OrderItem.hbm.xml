@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping>
+    <class name="model.Order" table="tb_order">
+    	<id name="id" column="id" type="java.lang.Integer" length="8">
+    		<generator class="native"/>
+    	</id>
+    	<property name="proId" column="PRO_ID" type="java.lang.Integer" length="8"/>
+    	<property name="orderId" column="ORDER_ID" type="java.lang.Integer" length="8"/>
+    	<property name="count" column="COUNT" type="java.lang.Double" length="50"/>
+    	<property name="num" column="NUM" type="java.lang.Integer" length="20"/>		
+    </class>
+    </hibernate-mapping>

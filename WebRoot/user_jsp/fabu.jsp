@@ -14,22 +14,20 @@
 	<div class="container">
 		<div class="public-nav">您当前的位置：<a href="">发布信息</a>></div>
 		<div class="public-content" style="margin-top: 0">
-			<!-- <div class="public-content-header">
-				<h3>发布信息</h3>
-			</div> -->
+			
 			<div class="public-content-cont">
 			<form action="" method="post" style="margin:0 auto;width:50%">
 				<div class="form-group">
 					<label for="">请选择分类</label>
-					<select name="" class="form-select" style="height: 30px;">
+					<select name="classify" class="form-select" style="height: 30px;">
 						<option value="">请选择分类</option>
 					</select>
 				</div>
 				<div class="form-group">
 					<label for="">请选择类型</label>
-					<select name="" class="form-select" style="height: 30px;">
-						<option value="">求购</option>
-						<option value="">求售</option>
+					<select name="type" class="form-select" style="height: 30px;">
+						<option value="0">求购</option>
+						<option value="1">求售</option>
 					</select>
 				</div>
 				<div class="form-group">

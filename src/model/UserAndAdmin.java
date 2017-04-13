@@ -10,6 +10,9 @@ public class UserAndAdmin {
 	private java.lang.String message;
 	private Date createTime;
 	private Integer status;//0未读，1已读
+	
+	public UserAndAdmin() {
+	}
 	public Integer getId() {
 		return id;
 	}

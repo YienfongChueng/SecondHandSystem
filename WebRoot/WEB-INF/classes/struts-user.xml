@@ -21,6 +21,10 @@
 			 	<result name="answerFalse">/user_jsp/forgetPwd2.jsp</result>
 			 	<result name="answerTrue">/user_jsp/forgetPwd3.jsp</result>
 			 	<result name="updatePwdSuccess">/user_jsp/forgetPwd4.jsp</result>
+			 	 <result name="UserexitSuccess">/user_jsp/index.jsp</result> 
+			 </action>
+			 
+			 <action name="product_*" class="productAction" method="{1}">
 			 </action>
 		</package>
 	</struts>

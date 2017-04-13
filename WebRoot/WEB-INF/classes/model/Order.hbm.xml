@@ -7,20 +7,13 @@
     	<id name="id" column="id" type="java.lang.Integer" length="8">
     		<generator class="native"/>
     	</id>
-    	<property name="productId" column="PRODUCT_ID" type="java.lang.Integer" length="8"/>
-    	<property name="email" column="EMAIL" type="java.lang.String" length="50"/>	
-    	<property name="buyTime" column="BUY_TIME" type="java.util.Date"/>	
+    	<property name="createTime" column="CREATE_TIME" type="java.util.Date"/>	
     	<property name="status" column="STATUS" type="java.lang.Integer" length="8"/>
-    	<property name="buyNum" column="BUY_NUM" type="java.lang.Integer" length="8"/>
-    	<property name="creatorId" column="CREATOR_ID" type="java.lang.Integer" length="8"/>
-    	<property name="buyUserId" column="BUY_USER_ID" type="java.lang.Integer" length="8"/>
+    	<property name="userId" column="USER_ID" type="java.lang.Integer" length="8"/>
+    	<property name="personName" column="PERSON_NAME" type="java.lang.String" length="50"/>
     	<property name="phone" column="PHONE" type="java.lang.Integer" length="20"/>
-    	<property name="comment" column="COMMENT" type="java.lang.String" length="50"/>	
-    	<property name="totalPrice" column="TOTAL_PRICE" type="java.lang.Double" length="16"/>
-    	<property name="sendWay" column="SEND_WAY" type="java.lang.String" length="50"/>	
-    	<property name="payWay" column="PAY_WAY" type="java.lang.String" length="50"/>	
+    	<property name="amount" column="AMOUNT" type="java.lang.Double" length="16"/>
     	<property name="address" column="ADDRESS" type="java.lang.String" length="50"/>	
-    	<property name="receiver" column="RECEIVER" type="java.lang.String" length="50"/>
-    	<property name="orderNum" column="ORDER_NUM" type="java.lang.String" length="50"/>		
+    	
     </class>
     </hibernate-mapping>

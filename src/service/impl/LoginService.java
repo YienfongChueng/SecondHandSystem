@@ -56,6 +56,24 @@ public class LoginService implements ILoginService{
 		
 	}
 
+	/**
+	 * 通过用户id查询用户信息
+	 */
+	@Override
+	public User searchUserInfoById(int uid) {
+		
+		return this.iLoginDao.searchUserInfoById(uid);
+	}
+
+	/**
+	 * 修改用户信息
+	 */
+	@Override
+	public void updateUser(User user) {
+		this.iLoginDao.updateUser(user);
+		
+	}
+
 	
 
 }
