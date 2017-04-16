@@ -10,65 +10,56 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>二手网，二货尽在此处！</title>
 <link rel="stylesheet" type="text/css" href="css/homepage.css">
-<link rel="stylesheet" type="text/css" href="css/topbar.css">
 <link rel="stylesheet" href="css/bootstrap_v3_3.css">
 <style type="text/css">
+.page-input{
+	width:40px;
+	height: 20px;
+	line-height: 20px;
+	padding-left: 5px;
+	border-radius: 5px;
+	border:1px solid #ccc;
+	outline: none;
+}
+.page-btn{
+	width:40px;
+	height: 28px;
+	line-height: 20px;
+	padding-left: 5px;
+	border-radius: 5px;
+	border: none;
+	color:#fff;
+	background: #6CB98F;
+}
 </style>
 </head>
 <body>
-<div id="commonTopbar" class="commonTopbar">
-   <div id="commonTopbar_welcome" class="bar_left" style="margin-left:50px">
-     <label>欢迎来到二手网！</label> 
-   </div>
-   <div class="bar_right" style="position:relative;margin-right:50px">
-        <div id="commonTopbar_login">
-           <a href="user_login.jsp">登录
-           </a>
-           <span class="gap">|</span>
-           <a href="user_regster.jsp">注册
-           </a> 
-        </div>   
-        <div class="shopping_cart">
-           <a href="shop_cart.jsp" target="_blank">购物车
-           </a>
-        </div>   
-        <div class="post_order">
-           <a href="" target="_blank">发布商品
-           </a>
-        </div>        
-        <div id="commonTopbar_my58menu" class="haschild">
-           <a id="commonTopbar_tomy58" target="_blank" href="http://my.58.com/?pp=topbar">个人中心
-           </a>
-           <span class="mark"></span>
-           <div class="hc" id="commonTopbar_loginbox">
-              <a id="commonTopbar_tomypost" href="http://my.58.com/index/?pp=topbar" target="_blank">我的发布
-              </a>
-              <a id="commonTopbar_tozhaopinqiuzhi" href="http://my.58.com/zhaopinqiuzhi/?pp=topbar" target="_blank">招聘/简历
-              </a>
-              <a id="commonTopbar_tomytradebuy" href="http://my.58.com/buyordermgr/?pp=topbar" target="_blank">买家交易
-              </a>
-          </div>
-        </div>
-   </div> 
-  
-</div>
+<jsp:include page="topbar.jsp"></jsp:include>
 <div id="headerWrap">
     <div id="homeWrap" class="wrapper">
         <div id="brand_top_banner" style="display:none"></div>
         <div id="header">
             <div id="headerinside">
-                <a href="http://gz.58.com" target="_self" id="logo"><img id="bigLogo" src="http://139.199.206.70/pic/logo.jpg" style="width:70px;" alt="" title="" /><img id="miniLogo" src="http://139.199.206.70/pic/logo.jpg" style="width:40px;height:20pxx"alt="" title="" /></a><div id="brand_mini_banner" class="search-no" style="display:none"></div>
-                <form onsubmit='_gaq.push(["pageTracker._trackEvent", "home", "search_top_click", "/gz/index/"]);var r=true;try{b_query(); r=false;}catch(e){};return r;' action="/sou/" target="_self">
+                <a href="index.jsp" target="_self" id="logo">
+	                <img id="bigLogo" src="../images/logo-l.png" style="width:70px;" alt="" title="logo" />
+	                <img id="miniLogo" src="../images/logo-l.png" style="width:40px;height:20px"alt="" title="logo" />
+                </a><div id="brand_mini_banner" class="search-no" style="display:none"></div>
+                <form onsubmit="" action="" method="post" target="_self">
                 <div id="searchbar" style="margin-top:15px">
                      <div id="saerkey">
-                        <span id="key"><input type="text" id="keyword" name="key" class="keyword" value="找你要的二货" onBlur="win.closeToolTipWindow();if(this.value=='')this.value='找你要的二货',this.className='keyword'" onKeyUp="win.GetContentData();" onFocus="if(this.value=='找你要的二货')this.value='',this.className='keyword2'" autocomplete="off"/></span>
+                        <span id="key">
+                        	<input type="text" id="keyword" name="proName" class="keyword2" placeholder="找你要的二货" />
+                        </span>
                     </div>
                     <div class="inputcon">
-                        <input  type="submit" name="button" id="searchbtn" class="btnall"  value="搜&nbsp;索" onMouseMove="this.className='btnal2'" onMouseOut="this.className='btnall'" tongji_tag="pc_home_search" onclick="if(document.getElementById('keyword').value=='找工作 找房子 找服务')return false;" />
+                        <input  type="submit" name="button" id="searchbtn" class="btnall"  value="搜&nbsp;索" onMouseMove="this.className='btnal2'" onMouseOut="this.className='btnall'" tongji_tag="pc_home_search" onclick="loadData();return false;" />
                     </div>
                     <div id="hotwords" class="search-no clear">
                         <span id="hot"></span>
-                        <span id="hot2"><a href="/yewu/" class="null">自行车</a><a href="http://pic2.58.com/ds/biandang/gzl/pc_gzl_index.html?from=pc_home_sousuo_hot_guzhanglv" tongji_tag="pc_home_sousuo_hot_guzhanglv" class="null">手机</a><a href="http://zhaobiao.58.com/pc/quickpost/index?cateid3=4063&from=pc_zhaobiao_zhuangxiu_home_sousuo_wyzx&qc=pc_kuaisufabu" class="null">电脑</a><a href="http://xueyuan.58.com/list/gz" class="null">书籍</a><a href="http://j1.58cdn.com.cn/ds/chongwu/topic/topic_pet-dog.html" class="null">耳机</a></span>
+                        <span id="hot2">
+                        <!-- <a href="" class="null">自行车</a>
+                        <a href="" class="null">手机</a>
+                        <a href="" class="null">耳机</a> --></span>
                     </div>
                 </div>
                 </form>
@@ -76,7 +67,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
         </div>
         <ul class="navcon" id="nav" style="margin-top:20px">
-            <li id="homeNav" class="navBg fl"><a class="navWit" href="/" target="_self">首页</a></li>
+            <li id="homeNav" class="navBg fl">
+            	<a class="navWit" href="/" target="_self">首页</a>
+            </li>
         </ul>
     </div>
 </div>
@@ -90,41 +83,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#" style="font-size:15px">综合</a>
+      <a class="navbar-brand" href="javascript:loadData();" style="font-size:15px">综合</a>
       
     </div>
-
+	<input type="hidden" id="condition"/>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">人气 <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">从低到高</a></li>
-            <li><a href="#">从高到低</a></li>
+            <li><a href="javascript:loadData();" onclick="selectWhat(1);">从高到低</a></li>
           </ul>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">价格 <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">从低到高</a></li>
-            <li><a href="#">从高到低</a></li>
+            <li><a href="javascript:loadData();" onclick="selectWhat(2);">从低到高</a></li>
+            <li><a href="javascript:loadData();" onclick="selectWhat(3);">从高到低</a></li>
           </ul>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">供求 <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">从低到高</a></li>
-            <li><a href="#">从高到低</a></li>
+            <li><a href="javascript:loadData();" onclick="selectWhat(4);">求购</a></li>
+            <li><a href="javascript:loadData();" onclick="selectWhat(5);">求售</a></li>
           </ul>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">分类 <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">电子产品</a></li>
-            <li><a href="#">书籍</a></li>
-            <li><a href="#">生活用品</a></li>
-            <li><a href="#">二手车</a></li>
+          <input type="hidden" id="cid"/>
+          <ul class="dropdown-menu" id="classify">
+            
           </ul>
         </li>
       </ul>     
@@ -132,107 +122,151 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </div>
 </nav>
 
-<div class="row" style="margin-left:34px;margin-right:34px;">
-  <div class="col-sm-6 col-md-3">
-    <div class="thumbnail">
-      <img src="http://139.199.206.70/pic/logo.jpg" alt="pic1">
-      <div class="caption">
-        <h3 style="color:#16a085">¥&nbsp59.00</h3>
-        <p style="color:#808080">春季2017新款白衬衫，男女通用</p>
-        <p><a href="#" class="btn btn-primary" style="background:#16a085" role="button">详情</a> <a href="#" class="btn btn-default" role="button">客服</a></p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6 col-md-3">
-    <div class="thumbnail">
-      <img src="http://139.199.206.70/pic/logo.jpg" alt="pic1">
-      <div class="caption">
-        <h3 style="color:#16a085">¥&nbsp59.00</h3>
-        <p style="color:#808080">春季2017新款白衬衫，男女通用</p>
-        <p><a href="#" class="btn btn-primary" style="background:#16a085" role="button">详情</a> <a href="#" class="btn btn-default" role="button">客服</a></p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6 col-md-3">
-    <div class="thumbnail">
-      <img src="http://139.199.206.70/pic/logo.jpg" alt="pic1">
-      <div class="caption">
-        <h3 style="color:#16a085">¥&nbsp59.00</h3>
-        <p style="color:#808080">春季2017新款白衬衫，男女通用</p>
-        <p><a href="#" class="btn btn-primary" style="background:#16a085" role="button">详情</a> <a href="#" class="btn btn-default" role="button">客服</a></p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6 col-md-3">
-    <div class="thumbnail">
-      <img src="http://139.199.206.70/pic/logo.jpg" alt="pic1">
-      <div class="caption">
-        <h3 style="color:#16a085">¥&nbsp59.00</h3>
-        <p style="color:#808080">春季2017新款白衬衫，男女通用</p>
-        <p><a href="#" class="btn btn-primary" style="background:#16a085" role="button">详情</a> <a href="#" class="btn btn-default" role="button">客服</a></p>
-      </div>
-    </div>
-  </div>
+<div class="row" style="margin-left:34px;margin-right:34px;" id="dataList">
+  
 </div>
 
-<div class="row" style="margin-left:34px;margin-right:34px;">
-  <div class="col-sm-6 col-md-3">
-    <div class="thumbnail">
-      <img src="http://139.199.206.70/pic/logo.jpg" alt="pic1">
-      <div class="caption">
-        <h3 style="color:#16a085">¥&nbsp59.00</h3>
-        <p style="color:#808080">春季2017新款白衬衫，男女通用</p>
-        <p><a href="#" class="btn btn-primary" style="background:#16a085" role="button">详情</a> <a href="#" class="btn btn-default" role="button">客服</a></p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6 col-md-3">
-    <div class="thumbnail">
-      <img src="http://139.199.206.70/pic/logo.jpg" alt="pic1">
-      <div class="caption">
-        <h3 style="color:#16a085">¥&nbsp59.00</h3>
-        <p style="color:#808080">春季2017新款白衬衫，男女通用</p>
-        <p><a href="#" class="btn btn-primary" style="background:#16a085" role="button">详情</a> <a href="#" class="btn btn-default" role="button">客服</a></p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6 col-md-3">
-    <div class="thumbnail">
-      <img src="http://139.199.206.70/pic/logo.jpg" alt="pic1">
-      <div class="caption">
-        <h3 style="color:#16a085">¥&nbsp59.00</h3>
-        <p style="color:#808080">春季2017新款白衬衫，男女通用</p>
-        <p><a href="#" class="btn btn-primary" style="background:#16a085" role="button">详情</a> <a href="#" class="btn btn-default" role="button">客服</a></p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6 col-md-3">
-    <div class="thumbnail">
-      <img src="http://139.199.206.70/pic/logo.jpg" alt="pic1">
-      <div class="caption">
-        <h3 style="color:#16a085">¥&nbsp59.00</h3>
-        <p style="color:#808080">春季2017新款白衬衫，男女通用</p>
-        <p><a href="#" class="btn btn-primary" style="background:#16a085" role="button">详情</a> <a href="#" class="btn btn-default" role="button">客服</a></p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<nav style="text-align: center">
-   <ul class="pagination pagination-lg">
-	<li><a href="#">&laquo;</a></li>
-	<li><a href="#">1</a></li>
-	<li><a href="#">2</a></li>
-	<li><a href="#">3</a></li>
-	<li><a href="#">4</a></li>
-	<li><a href="#">5</a></li>
-	<li><a href="#">6</a></li>
-	<li><a href="#">7</a></li>
-	<li><a href="#">&raquo;</a></li>
-  </ul>
-</nav>>
+<nav style="text-align: center" id="pageShow">
+	<input type="hidden" id="turnPage"/>
+		<a id="first" href="javascript:loadData();" onclick="turnPage(1);">首页</a>
+		<a id="pre" href="javascript:loadData();" onclick="turnPage(2);">上一页</a>
+		<a id="next" href="javascript:loadData();" onclick="turnPage(3);">下一页</a> 
+		<a id="last" href="javascript:loadData();" onclick="turnPage(4);">尾页</a>  
+		第<span style="color:red;font-weight:600" id="curr"></span>页
+		共<span style="color:red;font-weight:600" id="total"></span>页
+		<input type="text" class="page-input" id="input_page">
+		<input type="submit" class="page-btn" value="跳转" onclick="loadData();return false;">
+</nav>
 
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script> 
+<script type="text/javascript">
+var currPage;
+var totalPage;
+
+	$(document).ready(function(){
+		loadData();
+		loadClassify();
+		});
+	function turnPage(obj){
+		switch(obj){
+		case 1:
+			$("#turnPage").val(1);
+			break;
+		case 2:
+			$("#turnPage").val(currPage-1);
+			break;
+		case 3:
+			$("#turnPage").val(currPage+1);
+			break;
+		case 4:
+			$("#turnPage").val(totalPage);
+			break;
+		}
+	}
+	function selectWhat(obj){
+		switch(obj){
+		case 1:
+			$("#condition").val(1);
+			break;
+		case 2:
+			$("#condition").val(2);
+			break;
+		case 3:
+			$("#condition").val(3);
+			break;
+		case 4:
+			$("#condition").val(4);
+			break;
+		case 5:
+			$("#condition").val(5);
+			break;
+		}
+	}
+	function loadData(){
+		$("#dataList").html("");
+		var keyword=$("#keyword").val();
+		var cid=$("#cid").val();
+		var condition=$("#condition").val();
+		var currPage2=$("#input_page").val();
+		var currPage3=$("#turnPage").val();
+		 if(currPage2!=null&&currPage2!=""){
+			currPage1=currPage2;
+		}else{
+			currPage1=currPage3;
+		}
+		 
+		$.ajax({
+			   url: "product_searchProductList.action",
+			   type: "POST",
+			   async: false,
+			   dataType:"json",
+			   data:{"keyword":keyword,"currPage":currPage1,"cid":cid,"condition":condition},
+			   success: function(result){
+			     var len=0;
+			     if(result.totalCount>result.pageSize){
+				     len=result.pageSize
+				     }else{
+				     len=result.totalCount;   
+					 }
+			     var data=result.list;
+			     var temp='';
+			     var ptype='';
+			     var page='';
+			     currPage=result.currPage;
+			     totalPage=result.totalPage;
+			     $("#curr").html(currPage);
+			     $("#total").html(totalPage);
+			     for(var i=0;i<len;i++){
+			    	var ty= data[i].type;
+			    	var time=data[i].time;
+			    	if(ty==0){
+			    		ptype='求购';
+				    	}else{
+				    	ptype='求售';
+					    	}
+				    
+			    	  temp='<div class="col-sm-6 col-md-3">'+
+			    		'    <a href="goods_detail.jsp?id='+data[i].id+'"><div class="thumbnail">'+
+			    		'      <img src="../upload/'+data[i].proPicture+'" alt="pic1">'+
+			    		'      <div class="caption">'+
+			    		'        <h3 style="color:#16a085">￥'+data[i].proPrice+'</h3>'+
+			    		'        <p style="color:#808080">'+data[i].proName+'</p>'+
+			    		'        <p>'+
+			    		'			<a href="" class="btn btn-primary" style="background:#16a085" role="button">加入购物车</a> '+
+			    		'			<a class="btn btn-default" role="button">'+data[i].classify.classifyName+'</a>'+
+			    		'			<p><span>&nbsp;&nbsp;浏览：'+data[i].proClicknum+' 人</span>'	+
+			    		'			<span>&nbsp;&nbsp;类型：'+ptype+' </span>'	+
+			    		'			<span>&nbsp;&nbsp;'+time+' </span></p>'	+
+			    		'		</p>'+
+			    		'      </div>'+
+			    		'    </div></a>'+
+			    		'  </div>';
+				   $("#dataList").append(temp);
+			   }
+			   }
+			});
+		}
+	function loadClassify(){
+		$("#classify").html("");
+		$.ajax({
+			   url: "product_searchClassifyList.action",
+			   type: "POST",
+			   dataType:"json",
+			   success: function(result){
+			     var len=result.length;
+			     var data=result.data;
+			     var temp='';
+			     for(var i=0;i<len;i++){
+				     temp='<li><a href="javascript:loadData();" onclick="getCid('+data[i].cid+')">'+data[i].classifyName+'</a></li>';
+				     $("#classify").append(temp);
+				     }
+			   }
+			});
+		}
+	function getCid(cid){
+		$("#cid").val(cid);
+		}
+</script>
 </body>
 </html>

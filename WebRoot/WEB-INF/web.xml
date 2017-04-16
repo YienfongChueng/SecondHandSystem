@@ -26,6 +26,6 @@
   </filter-mapping>
   
   <welcome-file-list>
-    <welcome-file>HomePage.jsp</welcome-file>
+    <welcome-file>/user_jsp/index.jsp</welcome-file>
   </welcome-file-list>
 </web-app>

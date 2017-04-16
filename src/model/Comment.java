@@ -1,6 +1,8 @@
 package model;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Comment {
 
@@ -10,9 +12,39 @@ public class Comment {
 	private Integer userId;//评论者id
 	private java.lang.String content;//评论内容
 	private Integer status;//0未读，1已读
-	
+	private User user;
+	private Product product;
+	private Set<Reply> reply=new HashSet<Reply>();
 	public Comment() {
 	}
+	
+	public Set<Reply> getReply() {
+		return reply;
+	}
+
+
+	public void setReply(Set<Reply> reply) {
+		this.reply = reply;
+	}
+
+
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	public Integer getId() {
 		return id;
 	}

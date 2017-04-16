@@ -19,10 +19,20 @@ public class Product {
 */	private Integer type;//0供信息，1求信息
 	private Classify classify;//关联实体类
 	private User user;//关联实体类
+	private String time;
 
 	
 	public Product() {
 	}
+	
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
 	public Classify getClassify() {
 		return classify;
 	}

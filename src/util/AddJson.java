@@ -2,6 +2,7 @@ package util;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -29,6 +30,11 @@ public class AddJson extends ActionSupport{
             return v;
         }
     };
+    /**
+     * 将JavaBean序列化为JSON文本
+     * @param str
+     * @throws IOException
+     */
 	public void toJson(Object str) throws IOException{
 		HttpServletResponse response=ServletActionContext.getResponse();
 		response.setHeader("Cache-Control", "no-cache");  
@@ -39,6 +45,41 @@ public class AddJson extends ActionSupport{
 		String responseStr = JSON.toJSONString(str,filter,SerializerFeature.WriteNullStringAsEmpty);
 		Writer writer = response.getWriter();
 		writer.write(responseStr);
+		writer.flush();
+	}
+	/**
+	 * 将JavaBean转换为JSONObject
+	 * @param str
+	 * @throws IOException
+	 */
+	public void toJsonObj(Object str) throws IOException{
+		HttpServletResponse response=ServletActionContext.getResponse();
+		response.setHeader("Cache-Control", "no-cache");  
+		response.setHeader("Pragma", "no-cache");  
+		response.setDateHeader("Expires", 0);  
+		response.setContentType("text/html;charset=utf-8");
+		
+		Object responseStr = JSON.toJSON(str);
+		Writer writer = response.getWriter();
+		writer.write(responseStr.toString());
+		writer.flush();
+	}
+	/**
+	 * 将JavaBean转换为JSONArray
+	 * @param list
+	 * @throws IOException
+	 */
+	public <T> void toJsonArray(List<T> list) throws IOException{
+		HttpServletResponse response=ServletActionContext.getResponse();
+		response.setHeader("Cache-Control", "no-cache");  
+		response.setHeader("Pragma", "no-cache");  
+		response.setDateHeader("Expires", 0);  
+		response.setContentType("text/html;charset=utf-8");
+		
+		Object obj = JSON.toJSON(list);
+		Writer writer = response.getWriter();
+		writer.write("{\"length\":"+list.size()+" ,");
+		writer.write("\"data\":"+obj.toString()+"}");
 		writer.flush();
 	}
 }

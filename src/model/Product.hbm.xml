@@ -19,7 +19,7 @@
     	<property name="type" column="TYPE" type="java.lang.Integer" length="8"/>
     	
     	
-    	  <many-to-one name="classify" class="model.Classify" lazy="false" fetch="join">
+    	 <many-to-one name="classify" class="model.Classify" lazy="false" fetch="join">
     		<column name="CLASSIFY_ID"></column>
     	</many-to-one> 
     	<many-to-one name="user" class="model.User" lazy="false" fetch="join">

@@ -1,15 +1,11 @@
 package action;
 
-import java.io.IOException;
-
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 import service.ILoginService;
-import service.IUserService;
 import util.AddJson;
 import model.User;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -114,11 +110,14 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 	
 	/**
 	 * 查询用户账号信息
-	 * @throws IOException 
+	 * @throws Exception 
 	 */
-	public void searchPersonalInfo() throws IOException{
+	public void searchPersonalInfo() throws Exception{
 		//HttpServletRequest req=ServletActionContext.getRequest();
 		int uid=Integer.parseInt(req.getParameter("uid"));
+		if(uid==0){
+			throw new Exception("用户不存在！");
+		}
 		user=this.iLoginService.searchUserInfoById(uid);
 		AddJson json=new AddJson();
 		json.toJson(user);

@@ -9,10 +9,28 @@ public class Reply {
 	private Integer userId;//回复者id
 	private Date createTime;//回复时间
 	private java.lang.String reply;//回复内容
-	
+	private User user;
+	private Comment comment;
 	public Reply() {
 
 	}
+	
+	public Comment getComment() {
+		return comment;
+	}
+
+	public void setComment(Comment comment) {
+		this.comment = comment;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	public Integer getId() {
 		return id;
 	}
