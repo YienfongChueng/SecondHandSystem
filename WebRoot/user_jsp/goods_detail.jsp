@@ -6,8 +6,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>商品详情-页面</title>
-<link rel="stylesheet" href="css/product_detail.css">
 <script type="text/javascript" src="js/jquery.min.js"></script>
+ 
+<!--引入Css样式类库文件-->  
+<link rel="stylesheet" href="css/product_detail.css">
 </head>
 <body>
    <jsp:include page="topbar.jsp"></jsp:include>   
@@ -57,25 +59,37 @@
 		</ul>
 		<!-- 评论区域 -->
 		<div class="div_div">
-		<ul class="div_ul">
-		<p class="div_p">大家说</p>
-		</ul>
+		
+			<span class="div_p">大家说</span>
 		</div>
 		<hr style="background-color: #16a085;height:2px;">
-		<ul class="goodsphotos">
-		<li class="comment_li">
-			<p class="comment_p"><label class="comment_label">人名说：</label>哈哈哈哈</p>
-			<span class="comment_span">时间</span>
-			<ul>
-				<li>
-					<p class="comment_p"><label class="comment_label">回复说：</label>哈哈哈哈</p>
-					<span class="comment_span">时间</span>
-				</li>
-			</ul>
-		<li>
+		<ul class="goodsphotos" id="mydata">
+			<!-- <li style="margin-top:5px;">
+                <section style="margin:15px;">
+                    <div >
+                        <time class="time" >12:00</time>
+                        <span class="person_name" >李峰</span>
+                    </div>
+                    <div class="comment_content">不错，很精彩，实用性很强，值得一看推荐阅读！</div>
+                    <div >
+                        <a href="javascript:void(0);" class="reply_btn" id="dialog_link" >回复</a>
+                    </div>
+                    <ul style="margin-top:20px;">
+                        <li class="comment_reply_li" ><label class="comment_reply_label">小鱼：</label><span class="comment_reply_label">谢谢大家的点赞与好评！</span></li>
+                    </ul>
+                    
+                </section>  
+            </li>
+			<li style="margin-top:5px;">
+			<textarea style="width:590px;height:225px;margin-left:20px;" placeholder="我来评论"></textarea>
+			<div>
+			<button style="width:65px;height:40px;margin:10px 0 0 20px;background-color:#16a085;color:#fff;font-size:17px;" >提交</button>
+			</div>
+			</li> -->
 		</ul>
 		
 	</div>
+	
 </body>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -109,6 +123,22 @@ function loadData(){
 		});
 	}
 
+var template='<li style="margin-top:5px;">'+
+'                <section style="margin:15px;">'+
+'                    <div >'+
+'                        <time class="time" >@time</time>'+
+'                        <span class="person_name" >@userName</span>'+
+'                    </div>'+
+'                    <div class="comment_content">@commentContent</div>'+
+'                    <div >'+
+'                        <a href="javascript:void(0);" class="reply_btn" id="dialog_link" >回复</a>'+
+'                    </div>'+
+'                    <ul style="margin-top:20px;">'+
+'                        <li class="comment_reply_li" ><label class="comment_reply_label">@louzhu</label><span class="comment_reply_label">@replyContent</span></li>'+
+'                    </ul>'+
+'                    '+
+'                </section>  '+
+'            </li>';
 function loadComment(){
 	$.ajax({
 		   url: "product_getCommentList.action",
@@ -116,9 +146,36 @@ function loadComment(){
 		   dataType:"json",
 		   data:{"id":id},
 		   success: function(result){
-			   
+			   var temp=template;
+			   var len=0;
+			     if(result.totalCount>result.pageSize){
+				     len=result.pageSize
+				 }else{
+				     len=result.totalCount;   
+				}
+				var data=result.list;
+				var replyData=result.list.reply;
+				for(var i=0;i<len;i++){
+					temp+=temp.replace("@time",data.creatTime);
+					temp+=temp.replace("@userName",data.user.userName);
+					temp+=temp.replace("@commentContent",data.content);
+					$.each(replyData, function(){     
+						temp+=temp.replace("@louzhu",replyData.user.userName);
+						temp+=temp.replace("@replyContent",replyData.reply);
+					});
+					
+				}
+				$("#mydata").append(temp);
+				var temp2='<li style="margin-top:5px;">'+
+				'			<textarea style="width:590px;height:225px;margin-left:20px;" placeholder="我来评论"></textarea>'+
+				'			<div>'+
+				'			<button style="width:65px;height:40px;margin:10px 0 0 20px;background-color:#16a085;color:#fff;font-size:17px;" >提交</button>'+
+				'			</div>'+
+				'			</li>';
+				$("#mydata").append(temp2);
 		}
 	});
 }
 </script>
+
 </html>
