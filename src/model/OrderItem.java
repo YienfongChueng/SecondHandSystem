@@ -3,28 +3,26 @@ package model;
 public class OrderItem {
 
 	private Integer id;
-	private Integer proId;//商品id
-	private Integer orderId;//订单id
+	//private Integer proId;//商品id
+	//private Integer orderId;//订单id
 	private Integer num;//数量
 	private Double count;//小计
+	private Product product;
+	
+	
+	public Product getProduct() {
+		return product;
+	}
+	public void setProduct(Product product) {
+		this.product = product;
+	}
 	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Integer getProId() {
-		return proId;
-	}
-	public void setProId(Integer proId) {
-		this.proId = proId;
-	}
-	public Integer getOrderId() {
-		return orderId;
-	}
-	public void setOrderId(Integer orderId) {
-		this.orderId = orderId;
-	}
+	
 	public Integer getNum() {
 		return num;
 	}

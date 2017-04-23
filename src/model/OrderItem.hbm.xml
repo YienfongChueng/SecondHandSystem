@@ -8,8 +8,11 @@
     		<generator class="native"/>
     	</id>
     	<property name="proId" column="PRO_ID" type="java.lang.Integer" length="8"/>
-    	<property name="orderId" column="ORDER_ID" type="java.lang.Integer" length="8"/>
+    	<!-- <property name="orderId" column="ORDER_ID" type="java.lang.Integer" length="8"/> -->
     	<property name="count" column="COUNT" type="java.lang.Double" length="50"/>
-    	<property name="num" column="NUM" type="java.lang.Integer" length="20"/>		
+    	<property name="num" column="NUM" type="java.lang.Integer" length="20"/>
+    	<many-to-one name="product" class="model.Product" lazy="false" fetch="join">
+    		<column name="PROID"></column>
+    	</many-to-one>		
     </class>
     </hibernate-mapping>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,13 +15,14 @@
 	<div class="container">
 		<div class="public-nav">您当前的位置：<a href="">发布信息</a>></div>
 		<div class="public-content" style="margin-top: 0">
-			
 			<div class="public-content-cont">
-			<form action="" method="post" style="margin:0 auto;width:50%">
+			<form action="product_addProduct.action" method="post" enctype="multipart/form-data" style="margin:0 auto;width:50%">
+				<s:actionmessage style="font-size:18px;color:#000"/>
+				<input type="hidden" id="uuid" value="" name="creatorId"/>
 				<div class="form-group">
 					<label for="">请选择分类</label>
-					<select name="classify" class="form-select" style="height: 30px;">
-						<option value="">请选择分类</option>
+					<select name="classifyId" class="form-select" style="height: 30px;"id="classify">
+						
 					</select>
 				</div>
 				<div class="form-group">
@@ -32,31 +34,31 @@
 				</div>
 				<div class="form-group">
 					<label for="">商品名称</label>
-					<input class="form-input-txt" type="text" name="" value="" />
+					<input class="form-input-txt" type="text" name="proName" value="" />
 				</div>
 				<div class="form-group">
 					<label for="">商品价格</label>
-					<input class="form-input-txt" type="text" name="" value="" />
+					<input class="form-input-txt" type="text" name="proPrice" value="" />
 				</div>
 				<div class="form-group">
 					<label for="">商品描述</label>
-					<textarea class="form-input-textara" type="text" name=""></textarea>
+					<textarea class="form-input-textara" type="text" name="proDesc"></textarea>
 				</div>
 				
 				<div class="form-group">
 					<label for="">剩余量</label>
-					<input class="form-input-txt" type="text" name="" value="" />
+					<input class="form-input-txt" type="text" name="proHassum" value="" />
 				</div>
 				<div class="form-group">
 					<label for="">商品图片</label>
-					<input class="form-input-txt" type="text" name="" value="" />
-					<div class="file"><input type="file" class="form-input-file"/>选择文件</div>
-					<div class="file"><input type="submit" class="form-input-file"/>上传</div>
-					<a href="#">预览</a>
+					
+					<input class="" type="file" id="myfile" name="proPictureFile" value="" />
+					
 				</div>
 				
+				<div id="large"></div>
 				<div class="form-group" style="margin-left:150px;">
-					<input type="submit" class="sub-btn" value="提  交" />
+					<input type="submit" class="sub-btn" id="btn" value="提  交" />
 					<input type="reset" class="sub-btn" value="重  置" />
 				</div>
 				</form>
@@ -64,4 +66,31 @@
 		</div>
 	</div>
 </body>
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		loadClassify();
+		var uid=${param.uid};
+		if(uid!=0){
+			$("#uuid").val(uid);
+		}
+		});
+	
+	 
+	
+	function loadClassify(){
+		$("#classify").html("");
+		$.get("product_searchClassifyList.action",function(result){
+			var data=result.data;
+			var len=result.length;
+			var temp='<option value="">请选择分类</option>';
+			for(var i=0;i<len;i++){
+				temp+='<option value="'+data[i].cid+'">'+data[i].classifyName+'</option>';
+			}
+				$("#classify").append(temp);
+			
+			},"json");
+	}
+	 
+</script>
 </html>

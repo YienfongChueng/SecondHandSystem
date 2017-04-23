@@ -10,6 +10,7 @@ import model.Classify;
 import model.Comment;
 import model.PageBean;
 import model.Product;
+import model.User;
 import service.IUserService;
 @Transactional
 public class UserService implements IUserService {
@@ -108,6 +109,24 @@ public class UserService implements IUserService {
 		List<Comment> list=this.iUserDao.getCommentList(id,map);
 		pageBean.setList(list);
 		return pageBean;
+	}
+
+	@Override
+	public Classify getClassifyById(Integer classifyId) {
+		return this.iUserDao.getClassifyById(classifyId);
+		
+	}
+
+	@Override
+	public User getUserById(Integer creatorId) {
+		
+		return this.iUserDao.getUserById(creatorId);
+	}
+
+	@Override
+	public void updateProduct(Product product) {
+		this.iUserDao.updateProduct(product);
+		
 	}
 	
 }

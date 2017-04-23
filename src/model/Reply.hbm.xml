@@ -7,9 +7,9 @@
     	<id name="id" column="ID" type="java.lang.Integer" length="8">
     		<generator class="native"/>
     	</id>
-    	<!-- <property name="commentId" column="COMMENT_ID" type="java.lang.String" length="50"/> -->
+    	 
     	<property name="createTime" column="CREATE_TIME" type="java.util.Date"/>	
-    	<!-- <property name="userId" column="USER_ID" type="java.lang.Integer" length="8"/> -->
+    	
     	<property name="reply" column="REPLY" type="java.lang.String" length="100"/>
     	<many-to-one name="user" class="model.User" lazy="false" fetch="join">
     		<column name="USER_ID"></column>

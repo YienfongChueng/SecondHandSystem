@@ -1,5 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@ page import="model.User" %>
 <!--商品详情页面 -->
 <!DOCTYPE html >
 <html>
@@ -12,7 +13,17 @@
 <link rel="stylesheet" href="css/product_detail.css">
 </head>
 <body>
-   <jsp:include page="topbar.jsp"></jsp:include>   
+<%
+	request.setCharacterEncoding("utf-8");
+	response.setCharacterEncoding("utf-8");	
+	User u=(User)request.getSession().getAttribute("User");
+	int uid=0;
+	if(u!=null){
+		uid=u.getUid();
+	}
+%>
+   <jsp:include page="topbar.jsp"></jsp:include> 
+   <input type="hidden" value="${uid }" id="uuid"/>  
    <div class="Detailspage"> 
 		<ul class="goodsphotos">
 			
@@ -46,13 +57,14 @@
 					
 					<div class="amount">
 						<p class="count">数量</p>
-						<div class="reduce"><img src="../images/jian.jpg"></div>
+						<div class="reduce"><img src="../images/jian.jpg" onclick="sub()"  />
+						</div>
 						<form>	
-                        <input class="input" value="1"></form>
-						<div class="add"><img src="../images/jia.jpg"></div>
+                        <input class="input" value="1" id="needNum"></form>
+						<div class="add"><img src="../images/jia.jpg" onclick="add()" /></div>
 
 					</div>
-					<div class="purchase"><a href="#"><img src="../images/addtocart.png"></a></div>
+					<div class="purchase"><a href="javascript:selflog_show();"><img src="../images/addtocart.png"></a></div>
 				
 			</ol>	
 			
@@ -64,28 +76,7 @@
 		</div>
 		<hr style="background-color: #16a085;height:2px;">
 		<ul class="goodsphotos" id="mydata">
-			<!-- <li style="margin-top:5px;">
-                <section style="margin:15px;">
-                    <div >
-                        <time class="time" >12:00</time>
-                        <span class="person_name" >李峰</span>
-                    </div>
-                    <div class="comment_content">不错，很精彩，实用性很强，值得一看推荐阅读！</div>
-                    <div >
-                        <a href="javascript:void(0);" class="reply_btn" id="dialog_link" >回复</a>
-                    </div>
-                    <ul style="margin-top:20px;">
-                        <li class="comment_reply_li" ><label class="comment_reply_label">小鱼：</label><span class="comment_reply_label">谢谢大家的点赞与好评！</span></li>
-                    </ul>
-                    
-                </section>  
-            </li>
-			<li style="margin-top:5px;">
-			<textarea style="width:590px;height:225px;margin-left:20px;" placeholder="我来评论"></textarea>
-			<div>
-			<button style="width:65px;height:40px;margin:10px 0 0 20px;background-color:#16a085;color:#fff;font-size:17px;" >提交</button>
-			</div>
-			</li> -->
+			
 		</ul>
 		
 	</div>
@@ -94,7 +85,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	loadData();
-	loadComment();
+	//loadComment();
 	});
 var id=${param.id};
 var hassum;
@@ -122,6 +113,26 @@ function loadData(){
 		   }
 		});
 	}
+	function selflog_show()
+	{ 
+		var num = parseInt($("#needNum").val());
+		alert("添加成功!");
+	}
+
+	function add(){
+	   var num = parseInt($("#needNum").val());
+	   if(num<hassum)
+	   {
+		   $("#needNum").val(++num);
+	   }
+	}
+	function sub(){
+	   var num = parseInt($("#needNum").val());
+	   if(num>1)
+	   {
+	      $("#needNum").val(--num);
+	   }
+	}
 
 var template='<li style="margin-top:5px;">'+
 '                <section style="margin:15px;">'+
@@ -147,6 +158,7 @@ function loadComment(){
 		   data:{"id":id},
 		   success: function(result){
 			   var temp=template;
+			   var temp1='';
 			   var len=0;
 			     if(result.totalCount>result.pageSize){
 				     len=result.pageSize
@@ -154,18 +166,23 @@ function loadComment(){
 				     len=result.totalCount;   
 				}
 				var data=result.list;
-				var replyData=result.list.reply;
+				
+				if($("#uuid").val()!=data[0].product.user.uid){
+					$("#dialog_link").html("");
+					}
 				for(var i=0;i<len;i++){
-					temp+=temp.replace("@time",data.creatTime);
-					temp+=temp.replace("@userName",data.user.userName);
-					temp+=temp.replace("@commentContent",data.content);
+					debugger;
+					var replyData=data[i].reply;
+					temp1+=temp.replace("@time",data[i].creatTime);
+					temp1+=temp.replace("@userName",data[i].user.userName);
+					temp1+=temp.replace("@commentContent",data[i].content);
 					$.each(replyData, function(){     
-						temp+=temp.replace("@louzhu",replyData.user.userName);
-						temp+=temp.replace("@replyContent",replyData.reply);
+						temp1+=temp.replace("@louzhu",data[0].product.user.userName);
+						temp1+=temp.replace("@replyContent",replyData.reply);
 					});
 					
 				}
-				$("#mydata").append(temp);
+				$("#mydata").append(temp1);
 				var temp2='<li style="margin-top:5px;">'+
 				'			<textarea style="width:590px;height:225px;margin-left:20px;" placeholder="我来评论"></textarea>'+
 				'			<div>'+

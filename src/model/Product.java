@@ -14,9 +14,9 @@ public class Product {
 	private Integer proHassum;//商品剩余量
 	private java.lang.String proDesc;//商品描述
 	private Integer proClicknum;//商品点击数量
-	/*private Integer creatorId;//发布者id
+	private Integer creatorId;//发布者id
 	private Integer classifyId;//分类id
-*/	private Integer type;//0供信息，1求信息
+	private Integer type;//0供信息，1求信息
 	private Classify classify;//关联实体类
 	private User user;//关联实体类
 	private String time;
@@ -25,6 +25,22 @@ public class Product {
 	public Product() {
 	}
 	
+	public Integer getCreatorId() {
+		return creatorId;
+	}
+
+	public void setCreatorId(Integer creatorId) {
+		this.creatorId = creatorId;
+	}
+
+	public Integer getClassifyId() {
+		return classifyId;
+	}
+
+	public void setClassifyId(Integer classifyId) {
+		this.classifyId = classifyId;
+	}
+
 	public String getTime() {
 		return time;
 	}

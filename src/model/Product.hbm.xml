@@ -14,15 +14,15 @@
     	<property name="proHassum" column="PRO_HASSUM" type="java.lang.Integer" length="8"/>
     	<property name="proClicknum" column="PRO_CLICKNUM" type="java.lang.Integer" length="8"/>
     	<!-- <property name="creatorId" column="CREATOR_ID" type="java.lang.Integer" length="8"/>
-    	<property name="classifyId" column="CLASSIFY_ID" type="java.lang.Integer" length="8"/> -->
+    	<property name="classifyId" column="CLASSIFY_ID" type="java.lang.Integer" length="8"/>  -->
     	<property name="proDesc" column="PRO_DESC" type="java.lang.String" length="200"/>	
     	<property name="type" column="TYPE" type="java.lang.Integer" length="8"/>
     	
     	
-    	 <many-to-one name="classify" class="model.Classify" lazy="false" fetch="join">
+    	 <many-to-one name="classify" class="model.Classify" cascade="save-update" lazy="false" fetch="join">
     		<column name="CLASSIFY_ID"></column>
     	</many-to-one> 
-    	<many-to-one name="user" class="model.User" lazy="false" fetch="join">
+    	<many-to-one name="user" class="model.User" cascade="save-update" lazy="false" fetch="join">
     		<column name="CREATOR_ID"></column>
     	</many-to-one> 
     		

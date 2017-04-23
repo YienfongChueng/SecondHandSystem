@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -34,7 +35,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </style>
 </head>
 <body>
+
 <jsp:include page="topbar.jsp"></jsp:include>
+
 <div id="headerWrap">
     <div id="homeWrap" class="wrapper">
         <div id="brand_top_banner" style="display:none"></div>
@@ -228,7 +231,7 @@ var totalPage;
 				    
 			    	  temp='<div class="col-sm-6 col-md-3">'+
 			    		'    <a href="goods_detail.jsp?id='+data[i].id+'"><div class="thumbnail">'+
-			    		'      <img src="../upload/'+data[i].proPicture+'" alt="pic1">'+
+			    		'      <img style="width:147px;height:150px;" src="../upload/'+data[i].proPicture+'" alt="pic1">'+
 			    		'      <div class="caption">'+
 			    		'        <h3 style="color:#16a085">￥'+data[i].proPrice+'</h3>'+
 			    		'        <p style="color:#808080">'+data[i].proName+'</p>'+

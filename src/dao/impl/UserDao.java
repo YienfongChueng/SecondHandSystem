@@ -23,7 +23,7 @@ public class UserDao extends HibernateDaoSupport implements IUserDao {
 	 */
 	@Override
 	public void saveProduct(Product product) {
-		
+		this.getHibernateTemplate().saveOrUpdate (product);
 		
 	}
 
@@ -177,6 +177,36 @@ public class UserDao extends HibernateDaoSupport implements IUserDao {
 			return list.get(0).intValue();
 		}
 		return 0;
+	}
+
+	@Override
+	public Classify getClassifyById(Integer classifyId) {
+		String hql="from Classify where cid=?";
+		@SuppressWarnings("unchecked")
+		List<Classify> c=this.getHibernateTemplate().find(hql, classifyId);
+		if(c.size()>0){
+			Classify cla=c.get(0);
+			return cla;
+		}
+		return null;
+	}
+
+	@Override
+	public User getUserById(Integer creatorId) {
+		String hql="from User where uid=?";
+		@SuppressWarnings("unchecked")
+		List<User> u=this.getHibernateTemplate().find(hql, creatorId);
+		if(u.size()>0){
+			User user=u.get(0);
+			return user;
+		}
+		return null;
+	}
+
+	@Override
+	public void updateProduct(Product product) {
+		this.getHibernateTemplate().update(product);
+		
 	}
 
 }

@@ -18,7 +18,7 @@
     	<many-to-one name="product" class="model.Product" lazy="false" fetch="join">
     		<column name="PRODUCT_ID"></column>
     	</many-to-one>
-    	<set name="reply" table="tb_reply" inverse="false" lazy="false" fetch="join">
+    	<set name="reply" table="tb_reply"  lazy="false" fetch="join">
     		<key>
     			<column name="COMMENT_ID"></column>
     		</key>

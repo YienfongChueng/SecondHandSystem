@@ -7,6 +7,7 @@ import model.Classify;
 import model.Comment;
 import model.PageBean;
 import model.Product;
+import model.User;
 
 public interface IUserDao {
 
@@ -56,5 +57,15 @@ public interface IUserDao {
 	 * @return
 	 */
 	int searchCommentCount(String id);
+
+	/**
+	 * 通过分类id获取分类信息
+	 * @param classifyId
+	 */
+	Classify getClassifyById(Integer classifyId);
+
+	User getUserById(Integer creatorId);
+
+	void updateProduct(Product product);
 
 }

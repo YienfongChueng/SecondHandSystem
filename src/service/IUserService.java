@@ -3,6 +3,7 @@ package service;
 import java.util.List;
 import java.util.Map;
 
+import model.User;
 import model.Classify;
 import model.Comment;
 import model.PageBean;
@@ -42,5 +43,15 @@ public interface IUserService {
 	 * @return
 	 */
 	PageBean<Comment> getCommentList(String id,Map<Object, String> map);
+
+	/**
+	 * 通过分类id获取分类信息
+	 * @param classifyId
+	 */
+	Classify getClassifyById(Integer classifyId);
+
+	User getUserById(Integer creatorId);
+
+	void updateProduct(Product product);
 
 }

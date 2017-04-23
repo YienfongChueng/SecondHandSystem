@@ -16,7 +16,7 @@ $(document).ready(function () {
 	$(".allselect").click(function () {
 		$(".gwc_tb2 input[name=newslist]").each(function () {
 			$(this).attr("checked", true);
-			// $(this).next().css({ "background-color": "#3366cc", "color": "#ffffff" });
+			
 		});
 		GetCount();
 	});
@@ -26,10 +26,10 @@ $(document).ready(function () {
 		$(".gwc_tb2 input[name=newslist]").each(function () {
 			if ($(this).attr("checked")) {
 				$(this).attr("checked", false);
-				//$(this).next().css({ "background-color": "#ffffff", "color": "#000000" });
+				
 			} else {
 				$(this).attr("checked", true);
-				//$(this).next().css({ "background-color": "#3366cc", "color": "#000000" });
+				
 			} 
 		});
 		GetCount();
@@ -39,7 +39,6 @@ $(document).ready(function () {
 	$("#cancel").click(function () {
 		$(".gwc_tb2 input[name=newslist]").each(function () {
 			$(this).attr("checked", false);
-			// $(this).next().css({ "background-color": "#ffffff", "color": "#000000" });
 		});
 		GetCount();
 	});
@@ -47,17 +46,13 @@ $(document).ready(function () {
 	// 所有复选(:checkbox)框点击事件
 	$(".gwc_tb2 input[name=newslist]").click(function () {
 		if ($(this).attr("checked")) {
-			//$(this).next().css({ "background-color": "#3366cc", "color": "#ffffff" });
 		} else {
-			// $(this).next().css({ "background-color": "#ffffff", "color": "#000000" });
 		}
 	});
 
 	// 输出
 	$(".gwc_tb2 input[name=newslist]").click(function () {
-		// $("#total2").html() = GetCount($(this));
 		GetCount();
-		//alert(conts);
 	});
 });
 //******************
@@ -95,27 +90,6 @@ function GetCount() {
 			<td class="tb1_td7">操作</td>
 		</tr>
 	</table>
-		   
-	<!---商品加减算总数---->
-	<script type="text/javascript">
-	$(function () {
-		var t = $("#text_box1");
-		$("#add1").click(function () {
-			t.val(parseInt(t.val()) + 1)
-			setTotal(); GetCount();
-		})
-		$("#min1").click(function () {
-			t.val(parseInt(t.val()) - 1)
-			setTotal(); GetCount();
-		})
-		function setTotal() {
-
-			$("#total1").html((parseInt(t.val()) * 9).toFixed(2));
-			$("#newslist-1").val(parseInt(t.val()) * 9);
-		}
-		setTotal();
-	})
-	</script>
 	
 	<table cellpadding="0" cellspacing="0" class="gwc_tb2">
 		<tr>
@@ -123,52 +97,12 @@ function GetCount() {
 			<td class="tb2_td2"><a href="#"><img src="../images/logo-m.png"/></a></td>
 			<td class="tb2_td3"><a href="#">产品标题</a></td>
 			<td class="tb1_td4">一件</td>
-			<td class="tb1_td5">
-				<input id="min1" name=""  style=" width:20px; height:18px;border:1px solid #ccc;" type="button" value="-" />
-				<input id="text_box1" name="" type="text" value="1" style=" width:30px; text-align:center; border:1px solid #ccc;" />
-				<input id="add1" name="" style=" width:20px; height:18px;border:1px solid #ccc;" type="button" value="+" />
-			</td>
-			<td class="tb1_td6"><label id="total1" class="tot" style="color:#ff5500;font-size:14px; font-weight:bold;"></label></td>
+			<td class="tb1_td5">1</td>
+			<td class="tb1_td6"><label id="total1" class="tot" style="color:#ff5500;font-size:14px; font-weight:bold;">10.00</label></td>
 			<td class="tb1_td7"><a href="#">删除</a></td>
 		</tr>
 	</table>
-	
-	<!---商品加减算总数---->
-	<script type="text/javascript">
-	$(function () {
-		var t = $("#text_box2");
-		$("#add2").click(function () {
-			t.val(parseInt(t.val()) + 1)
-			setTotal(); GetCount();
-		})
-		$("#min2").click(function () {
-			t.val(parseInt(t.val()) - 1)
-			setTotal(); GetCount();
-		})
-		function setTotal() {
 
-			$("#total2").html((parseInt(t.val()) * 8).toFixed(2));
-			$("#newslist-2").val(parseInt(t.val()) * 8);
-		}
-		setTotal();
-	})
-	</script>
-	<table cellpadding="0" cellspacing="0" class="gwc_tb2">
-		<tr>
-			<td class="tb2_td1"><input type="checkbox" value="1" name="newslist" id="newslist-2" /></td>
-			<td class="tb2_td2"><a href="#"><img src="../images/logo-m.png"/></a></td>
-			<td class="tb2_td3"><a href="#">产品标题</a></td>
-			<td class="tb1_td4">一件</td>
-			<td class="tb1_td5">
-				<input id="min2" name=""  style=" width:20px; height:18px;border:1px solid #ccc;" type="button" value="-" />
-				<input id="text_box2" name="" type="text" value="1" style=" width:30px; text-align:center; border:1px solid #ccc;" />
-				<input id="add2" name="" style=" width:20px; height:18px;border:1px solid #ccc;" type="button" value="+" />
-			</td>
-			<td class="tb1_td6"><label id="total2" class="tot" style="color:#ff5500;font-size:14px; font-weight:bold;"></label></td>
-			<td class="tb1_td7"><a href="#">删除</a></td>
-		</tr>
-	</table>
-	
 	<!---总数---->
 	<script type="text/javascript">
 	$(function () {

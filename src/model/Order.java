@@ -1,5 +1,8 @@
 package model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Order {
 
 	private Integer id;
@@ -7,12 +10,55 @@ public class Order {
 	private java.util.Date createTime;//订单生成时间
 	private java.lang.String address;//送货地址
 	private java.lang.String personName;//收货人
-	private Integer userId;//用户id
+	//private Integer userId;//用户id
 	private Integer phone;//联系电话
 	private Double amount;//订单金额
-	
-	
+	private java.lang.String payWay;//付款方式
+	private Integer creatorId;//发布者id
+	private Set<OrderItem> orderItem=new HashSet<OrderItem>();
+	private User user;
+
 	public Order() {
+	}
+
+	public Set<OrderItem> getOrderItem() {
+		return orderItem;
+	}
+
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public void setOrderItem(Set<OrderItem> orderItem) {
+		this.orderItem = orderItem;
+	}
+
+
+
+
+
+	public Integer getCreatorId() {
+		return creatorId;
+	}
+
+
+	public void setCreatorId(Integer creatorId) {
+		this.creatorId = creatorId;
+	}
+
+
+	public java.lang.String getPayWay() {
+		return payWay;
+	}
+
+
+	public void setPayWay(java.lang.String payWay) {
+		this.payWay = payWay;
 	}
 
 
@@ -63,16 +109,6 @@ public class Order {
 
 	public void setPersonName(java.lang.String personName) {
 		this.personName = personName;
-	}
-
-
-	public Integer getUserId() {
-		return userId;
-	}
-
-
-	public void setUserId(Integer userId) {
-		this.userId = userId;
 	}
 
 
