@@ -14,7 +14,7 @@
     	<many-to-one name="user" class="model.User" lazy="false" fetch="join">
     		<column name="USER_ID"></column>
     	</many-to-one>
-    	<many-to-one name="comment" class="model.Comment" lazy="false" fetch="join">
+    	<many-to-one name="comment" class="model.Comment" lazy="false" fetch="join" cascade="save-update">
     		<column name="COMMENT_ID"></column>
     	</many-to-one>	
     </class>

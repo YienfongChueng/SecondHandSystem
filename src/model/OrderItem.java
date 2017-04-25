@@ -8,8 +8,14 @@ public class OrderItem {
 	private Integer num;//数量
 	private Double count;//小计
 	private Product product;
-	
-	
+	private Order order;
+
+	public Order getOrder() {
+		return order;
+	}
+	public void setOrder(Order order) {
+		this.order = order;
+	}
 	public Product getProduct() {
 		return product;
 	}

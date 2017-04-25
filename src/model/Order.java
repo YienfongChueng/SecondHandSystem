@@ -6,11 +6,10 @@ import java.util.Set;
 public class Order {
 
 	private Integer id;
-	private Integer status;//订单状态（0：待付款 1：待发货 2：待收货）
+	private Integer status;//订单状态（0：待付款 1：待发货 2：待收货  3:待完成  4:购物车）
 	private java.util.Date createTime;//订单生成时间
 	private java.lang.String address;//送货地址
 	private java.lang.String personName;//收货人
-	//private Integer userId;//用户id
 	private Integer phone;//联系电话
 	private Double amount;//订单金额
 	private java.lang.String payWay;//付款方式

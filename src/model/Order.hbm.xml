@@ -9,15 +9,14 @@
     	</id>
     	<property name="createTime" column="CREATE_TIME" type="java.util.Date"/>	
     	<property name="status" column="STATUS" type="java.lang.Integer" length="8"/>
-    	<!-- <property name="userId" column="USER_ID" type="java.lang.Integer" length="8"/> -->
     	<property name="personName" column="PERSON_NAME" type="java.lang.String" length="50"/>
     	<property name="phone" column="PHONE" type="java.lang.Integer" length="20"/>
     	<property name="amount" column="AMOUNT" type="java.lang.Double" length="16"/>
     	<property name="address" column="ADDRESS" type="java.lang.String" length="50"/>	
     	<property name="payWay" column="PAYWAY" type="java.lang.String" length="50"/>
-    	<property name="creatorId" column="CREATORID"  type="java.lang.Integer" length="8"></property>	
-    	<set name="orderItem" table="tb_order_item"  lazy="false" fetch="join">
-    		<key><column name="ORDERID"></column></key>
+    	<property name="creatorId" column="CREATOR"  type="java.lang.Integer" length="8"></property>	
+    	<set name="orderItem" table="tb_order_item" inverse="true" lazy="false" fetch="join">
+    		<key><column name="ORDER_ID"></column></key>
     		<one-to-many class="model.OrderItem"/>
     	</set>
     	<many-to-one name="user" class="model.User" lazy="false" fetch="join">
