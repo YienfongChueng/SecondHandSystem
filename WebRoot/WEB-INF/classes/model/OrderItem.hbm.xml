@@ -3,7 +3,7 @@
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
     <hibernate-mapping>
-    <class name="model.OrderItem" table="tb_order">
+    <class name="model.OrderItem" table="tb_order_item">
     	<id name="id" column="id" type="java.lang.Integer" length="8">
     		<generator class="native"/>
     	</id>
