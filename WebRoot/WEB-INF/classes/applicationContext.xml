@@ -52,6 +52,9 @@
 				<value>model/Reply.hbm.xml</value>
 				<value>model/User.hbm.xml</value>
 				<value>model/UserAndAdmin.hbm.xml</value>
+				<value>model/MyCart.hbm.xml</value>
+				<!-- <value>model/CartPO.hbm.xml</value>
+				<value>model/CartItemPO.hbm.xml</value> -->
 			</list>
 		</property>
 	</bean>

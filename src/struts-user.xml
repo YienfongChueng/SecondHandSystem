@@ -26,7 +26,7 @@
 			 </action>
 			 
 			 <action name="product_*" class="productAction" method="{1}">
-			 	 <result name="uploadSuccess">/user_jsp/fabu.jsp</result>
+			 	 <result name="uploadSuccess" type="redirect">/user_jsp/index.jsp</result>
 			 	 <result name="input">/user_jsp/error.jsp</result>
 				<!--  拦截器 -->
 			 <interceptor-ref name="fileUpload">

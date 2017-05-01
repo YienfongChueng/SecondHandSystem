@@ -1,30 +1,44 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC 
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-    <hibernate-mapping>
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-4-30 11:48:46 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
     <class name="model.Product" table="tb_product">
-    	<id name="id" column="ID" type="java.lang.Integer" length="8">
-    		<generator class="native"/>
-    	</id>
-    	<property name="proName" column="PRO_NAME" type="java.lang.String" length="50"/>
-    	<property name="proPicture" column="PRO_PICTURE" type="java.lang.String" length="256"/>	
-    	<property name="proPrice" column="PRO_PRICE" type="java.lang.Double" length="16"/>	
-    	<property name="createTime" column="CREATE_TIME" type="java.util.Date"/>	
-    	<property name="proHassum" column="PRO_HASSUM" type="java.lang.Integer" length="8"/>
-    	<property name="proClicknum" column="PRO_CLICKNUM" type="java.lang.Integer" length="8"/>
-    	<!-- <property name="creatorId" column="CREATOR_ID" type="java.lang.Integer" length="8"/>
-    	<property name="classifyId" column="CLASSIFY_ID" type="java.lang.Integer" length="8"/>  -->
-    	<property name="proDesc" column="PRO_DESC" type="java.lang.String" length="200"/>	
-    	<property name="type" column="TYPE" type="java.lang.Integer" length="8"/>
-    	
-    	
-    	 <many-to-one name="classify" class="model.Classify" cascade="save-update" lazy="false" fetch="join">
-    		<column name="CLASSIFY_ID"></column>
-    	</many-to-one> 
-    	<many-to-one name="user" class="model.User" cascade="save-update" lazy="false" fetch="join">
-    		<column name="CREATOR_ID"></column>
-    	</many-to-one> 
-    		
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="proName" type="java.lang.String">
+            <column name="PRO_NAME" />
+        </property>
+        <property name="proPicture" type="java.lang.String">
+            <column name="PRO_PICTURE" />
+        </property>
+        <property name="createTime" type="java.util.Date">
+            <column name="CREATE_TIME" />
+        </property>
+        <property name="proPrice" type="java.lang.Double">
+            <column name="PRO_PRICE" />
+        </property>
+        <property name="proHassum" type="java.lang.Integer">
+            <column name="PRO_HASSUM" />
+        </property>
+        <property name="proDesc" type="java.lang.String">
+            <column name="PRO_DESC" />
+        </property>
+        <property name="proClicknum" type="java.lang.Integer">
+            <column name="PRO_CLICKNUM" />
+        </property>
+        
+        <property name="type" type="java.lang.Integer">
+            <column name="TYPE" />
+        </property>
+        <many-to-one name="classify" class="model.Classify" lazy="false" fetch="join">
+            <column name="CLASSIFY_ID" />
+        </many-to-one>
+        <many-to-one name="user" class="model.User" lazy="false" fetch="join">
+            <column name="CREATOR_ID" />
+        </many-to-one>
+        
     </class>
-    </hibernate-mapping>
+</hibernate-mapping>

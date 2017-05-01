@@ -86,7 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="javascript:loadData();" style="font-size:15px">综合</a>
+      <a class="navbar-brand" href="javascript:loadData();" onclick="selectWhat(6);" style="font-size:15px">综合</a>
       
     </div>
 	<input type="hidden" id="condition"/>
@@ -184,6 +184,9 @@ var totalPage;
 		case 5:
 			$("#condition").val(5);
 			break;
+		case 6:
+			$("#condition").val('');
+			break;
 		}
 	}
 	function loadData(){
@@ -222,7 +225,11 @@ var totalPage;
 			     $("#total").html(totalPage);
 			     for(var i=0;i<len;i++){
 			    	var ty= data[i].type;
-			    	var time=data[i].time;
+			    	var date=new Date(data[i].createTime);
+			    	var year=date.getFullYear();
+			    	var month=date.getMonth()+1;
+			    	var day=date.getDate();
+			    	var time=year+"-"+month+"-"+day;
 			    	if(ty==0){
 			    		ptype='求购';
 				    	}else{
@@ -236,7 +243,7 @@ var totalPage;
 			    		'        <h3 style="color:#16a085">￥'+data[i].proPrice+'</h3>'+
 			    		'        <p style="color:#808080">'+data[i].proName+'</p>'+
 			    		'        <p>'+
-			    		'			<a href="" class="btn btn-primary" style="background:#16a085" role="button">加入购物车</a> '+
+			    		'			<a href="javascript:selflog_show('+data[i].id+');" class="btn btn-primary" style="background:#16a085" role="button">加入购物车</a> '+
 			    		'			<a class="btn btn-default" role="button">'+data[i].classify.classifyName+'</a>'+
 			    		'			<p><span>&nbsp;&nbsp;浏览：'+data[i].proClicknum+' 人</span>'	+
 			    		'			<span>&nbsp;&nbsp;类型：'+ptype+' </span>'	+
@@ -270,6 +277,25 @@ var totalPage;
 	function getCid(cid){
 		$("#cid").val(cid);
 		}
+	function selflog_show(id){ 
+		var num =1;
+		$.ajax({
+			url:"product_addToCart.action",
+			type: "post",
+			data:{"id":id,"num":num},
+			success:function(msg){
+				alert("添加成功!");
+				},
+			error:function(msg){
+				if(confirm("您尚未登录。是否现在去登录？")){
+					window.location.href="user_login.jsp";
+					}
+				}
+			});
+		
+	}
+
+	
 </script>
 </body>
 </html>

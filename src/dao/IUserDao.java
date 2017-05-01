@@ -2,9 +2,11 @@ package dao;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import model.Classify;
 import model.Comment;
+import model.MyCart;
 import model.PageBean;
 import model.Product;
 import model.User;
@@ -66,6 +68,41 @@ public interface IUserDao {
 
 	User getUserById(Integer creatorId);
 
-	void updateProduct(Product product);
+    void updateProduct(Product product);
+
+    /**
+     * 获取我的购物车数量
+     * @param uid
+     * @return
+     */
+	int searchMyCartCount(int uid);
+
+	/**
+	 * 获取我的购物车
+	 * @param map
+	 * @return
+	 */
+	List<MyCart> getMyCartList(Map<Object, String> map);
+
+	/**
+	 * 获取购物车列表，不分页
+	 * @param uid
+	 * @return
+	 */
+	List<MyCart> getMyCartList(Integer uid);
+
+	/**
+	 * 保存或更新购物车
+	 * @param cart
+	 */
+	void saveOrUpdate(MyCart cart);
+
+
+	/**
+	 * 清空或删除某一购物车
+	 * @param id
+	 * @param uid
+	 */
+	void deleteCart(String id, Integer uid);
 
 }

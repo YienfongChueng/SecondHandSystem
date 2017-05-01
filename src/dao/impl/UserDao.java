@@ -2,7 +2,11 @@ package dao.impl;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
@@ -12,6 +16,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import dao.IUserDao;
 import model.Classify;
 import model.Comment;
+import model.MyCart;
 import model.PageBean;
 import model.Product;
 import model.User;
@@ -47,6 +52,7 @@ public class UserDao extends HibernateDaoSupport implements IUserDao {
 		String cid=map.get("cid");
 		String condition=map.get("conditon");
 		DetachedCriteria dc=DetachedCriteria.forClass(Product.class);
+		dc.addOrder(Order.desc("createTime"));
 		if(proName!=null){
 			proName="%"+map.get("keyword")+"%";
 			dc.add(Restrictions.like("proName",proName, MatchMode.ANYWHERE));
@@ -115,6 +121,7 @@ public class UserDao extends HibernateDaoSupport implements IUserDao {
 			case "5":
 				br.append(" and type=1");
 				break;
+			
 			}
 		}
 		List<Long> list=this.getHibernateTemplate().find(count_hql+br.toString()+order.toString());
@@ -206,6 +213,68 @@ public class UserDao extends HibernateDaoSupport implements IUserDao {
 	@Override
 	public void updateProduct(Product product) {
 		this.getHibernateTemplate().update(product);
+		
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public int searchMyCartCount(int uid) {
+		String hql="select count(*) from MyCart where userId=?";
+		List<Long> list=this.getHibernateTemplate().find(hql,uid);
+		if(list.size()>0){
+			return list.get(0).intValue();
+		}
+		return 0;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<MyCart> getMyCartList(Map<Object, String> map) {
+		DetachedCriteria dc=DetachedCriteria.forClass(MyCart.class);
+		dc.add(Restrictions.eq("userId",Integer.parseInt(map.get("userId"))));
+		List<MyCart> list=this.getHibernateTemplate().findByCriteria(dc,Integer.parseInt(map.get("begin")),Integer.parseInt(map.get("pageSize")));
+		return list;
+	}
+
+	/**
+	 * 获取购物车列表，不分页
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<MyCart> getMyCartList(Integer uid) {
+		String hql="from MyCart where userId=?";
+		return  this.getHibernateTemplate().find(hql,uid);
+		
+	}
+
+	/**
+	 * 保存或更新购物车
+	 */
+	@Override
+	public void saveOrUpdate(MyCart cart) {
+		this.getHibernateTemplate().saveOrUpdate(cart);
+	}
+
+
+	/**
+	 * 清空或删除某一购物车
+	 * @param id
+	 * @param uid
+	 */
+	@Override
+	public void deleteCart(String id, Integer uid) {
+		StringBuffer sb=new StringBuffer();
+		if(id!=""&&id!=null){
+			sb.append(" and id='"+Integer.parseInt(id)+"'");
+		}else{
+			sb.append(" and userId='"+uid+"'");
+		}
+		String hql="delete from MyCart where 1=1"+sb.toString();
+		SessionFactory factory=this.getHibernateTemplate().getSessionFactory();
+		Session session=factory.openSession();
+		Query query=session.createQuery(hql);
+		query.executeUpdate();
+		session.close();
 		
 	}
 

@@ -14,19 +14,21 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 import org.aspectj.util.FileUtil;
-
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
-
 import model.Comment;
+import model.MyCart;
 import model.Classify;
 import model.PageBean;
 import model.Product;
+import model.ShoppingCart;
 import model.User;
 import service.IUserService;
 import util.AddJson;
@@ -86,7 +88,6 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 	public String addProduct() throws Exception{
 		String newFileName=new Date().getTime()+getExtention(proPictureFileFileName);
 		String path=ServletActionContext.getServletContext().getRealPath("/upload");
-		//String path=ProductAction.class.getResource("/upload").getPath();
 		File picFile=new File(path);
 		if(!picFile.exists()){
 			picFile.mkdir();
@@ -105,6 +106,12 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 		return "uploadSuccess";
 		
 	}
+	/**
+	 * 上传文件（io流实现）
+	 * @param src
+	 * @param dst
+	 * @throws IOException
+	 */
 	private void copy(File src, File dst)throws IOException {
 		InputStream in=null;
 		OutputStream out=null;
@@ -131,6 +138,11 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 		}
 		
 	}
+	/**
+	 * 截图文件后缀名称
+	 * @param filename
+	 * @return
+	 */
 	private String getExtention(String filename) {
 		int pos=filename.lastIndexOf(".");
 		return filename.substring(pos);
@@ -164,14 +176,6 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 		map.put("currPage", currPage+"");
 		PageBean<Product> proList=this.iUserService.searchProductList(map);
 		List<Product> list=new ArrayList<Product>();
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-		if(proList!=null){
-			list=proList.getList();
-			for(Product p:list){
-				p.setTime(sdf.format(p.getCreateTime()));
-			}
-		}
-		
 		this.json.toJsonObj(proList);
 	}
 	
@@ -197,9 +201,96 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 		this.json.toJson(comment);
 	}
 	
-	public void addToCart(){
+	/**
+	 * 添加进购物车
+	 * @throws Exception
+	 */
+	public void addToCart() throws Exception {
+		String id=req.getParameter("id");
+		int num=Integer.parseInt(req.getParameter("num"));
+		User user=(User) req.getSession().getAttribute("User");
+		if(user==null){
+			throw new Exception("用户帐户为空，请重新登录！");
+		}else{
+			boolean same=false;
+			List<MyCart> cart=this.iUserService.getMyCartList(user.getUid());
+			Product product=this.iUserService.getProductDetail(id);
+			for(MyCart mycart:cart){
+				if(mycart.getProductId()==Integer.parseInt(id)){
+					mycart.setNum(mycart.getNum()+1);
+					mycart.setCount(mycart.getCount()+product.getProPrice());
+					mycart.setTotal(mycart.getTotal()+mycart.getCount());
+					same=true;
+					this.iUserService.saveOrUpdate(mycart);
+				}
+			}
+			if(!same){
+				MyCart myCart=new MyCart();
+				myCart.setCreateTime(new Date());
+				myCart.setProductId(product.getId());
+				myCart.setProductName(product.getProName());
+				myCart.setProductDesc(product.getProDesc());
+				myCart.setProductPic(product.getProPicture());
+				myCart.setUserId(user.getUid());
+				myCart.setNum(num);
+				myCart.setCount(product.getProPrice()*num);
+				myCart.setTotal(product.getProPrice()*num);
+				this.iUserService.saveOrUpdate(myCart);
+			}
+			
+			
+		}
 		
 	}
+	
+	/**
+	 * 通过id删除购物车
+	 * @throws Exception 
+	 */
+	public void deleteCartById() throws Exception{
+		String id=req.getParameter("id");
+		User user=(User) req.getSession().getAttribute("User");
+		if(user==null){
+			throw new Exception("用户帐户为空，请重新登录！");
+		}else{
+			this.iUserService.deleteCart(id,user.getUid());
+		}
+	}
+	
+	/**
+	 * 清空购物车
+	 * @throws Exception 
+	 */
+	public void deleteCartAll() throws Exception{
+		User user=(User) req.getSession().getAttribute("User");
+		if(user==null){
+			throw new Exception("用户帐户为空，请重新登录！");
+		}else{
+			this.iUserService.deleteCart("",user.getUid());
+		}
+	}
+	
+	/**
+	 * 分页查询购物车
+	 * @throws Exception 
+	 */
+	public void searchCartByPage() throws Exception{
+		User user=(User) req.getSession().getAttribute("User");
+		if(user==null){
+			throw new Exception("用户帐户为空，请重新登录！");
+		}else{
+			Map<Object, String> map=new HashMap<Object, String>();
+			map.put("currPage", currPage+"");
+			map.put("userId", user.getUid()+"");
+			PageBean<MyCart> cart=this.iUserService.getMyCart(map);
+			this.json.toJson(cart);
+		}
+	}
+	
+	/**
+	 * 
+	 */
+	
 	
 	
 	

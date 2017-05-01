@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!--提交订单页面 -->
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html >
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>订单处理 - 提交</title>
 <link  rel="stylesheet" href="css/order_confirm.css"/>
+<style type="text/css">
+.info{margin:5px;width:50%;height:30px;}
+</style>
 </head>
 <body>
    <jsp:include page="top.jsp"/>
@@ -14,26 +17,29 @@
 	<div id="content" class="grid-c">
 		<div id="address" class="address" style="margin-top: 20px;" data-spm="2">
 			<form name="addrForm" id="addrForm" action="#">
-				<h3>确认交易地址</h3>
+				<h3>填写个人信息</h3>
 				<ul id="address-list" class="address-list">
-					<li class="J_Addr J_MakePoint clearfix J_DefaultAddr " data-point-url="http://log.mmstat.com/buy.1.20">
+					<li class="J_Addr J_MakePoint clearfix J_DefaultAddr " >
 					<div class="address-info">
-						<input name="address" class="J_MakePoint " type="radio" value="674944241" id="addrId_674944241" data-point-url="http://log.mmstat.com/buy.1.20" ah:params="id=674944241^^stationId=0^^address=湖北民族学院（信息工程学院） 男生宿舍楼5栋102^^postCode=445000^^addressee=朱万雄^^phone=^^mobile=18727717260^^areaCode=422801" checked="checked">
-						<label for="addrId_674944241" class="user-address">
-                                                             广东省广州市某镇某街某道 (马仔 收) 
-						  <em>135****7031</em>
-						</label>
+						<label id="label-1">收货人:&nbsp;&nbsp;&nbsp;</label><input class="info" type="text" name="personName"/>
 					</div>
 					</li>
+					<li class="J_Addr J_MakePoint clearfix J_DefaultAddr ">
+					<div class="address-info">
+						<label id="label-2">交易地址:</label><input class="info" type="text" name="address" />
+					</div>
+					</li>
+					<li class="J_Addr J_MakePoint clearfix J_DefaultAddr ">
+					<div class="address-info">
+						<label id="label-3">联系电话:</label><input class="info" type="text" name="phone" /> 
+					</div>
+					</li>
+					
 				</ul>
-				<ul id="J_MoreAddress" class="address-list hidden">
-				</ul>
-				<div class="address-bar">
-					<a href="#" class="new J_MakePoint" id="J_NewAddressBtn">添加地址</a>
-				</div>
+				
 			</form>
 		</div>
-		<form id="J_Form" name="J_Form" action="/auction/order/unity_order_confirm.html" method="post">
+		<form id="J_Form" name="J_Form" action="" method="post">
 			<div>
 				<h3 class="dib">确认订单信息</h3>
 				<table cellspacing="0" cellpadding="0" class="order-table" id="J_OrderTable" summary="统一下单订单信息区域">
@@ -60,10 +66,10 @@
 				       </tr>
 				       <tr class="shop blue-line">
 					      <td colspan="3">
-                                                                 卖家：
+                                                                                    卖家：
 						    <a class="J_ShopName J_MakePoint" style="color:#5cbdaa" data-point-url="" href="" target="_blank" title="大佬">大佬</a>
 						    <span class="seller">联系卖家：<a href="" style="color:#5cbdaa" target="_blank" class="J_MakePoint" data-point-url="">188****4815</a></span>
-						    <span class="J_WangWang" data-nick="淘米魅" data-display="inline"></span>
+						    <span class="J_WangWang" data-nick="" data-display="inline"></span>
 					      </td>
 					     <td colspan="2" class="promo">
 						    <div>
@@ -112,7 +118,7 @@
 				        <tr class="other other-line">
 					        <td colspan="5">
 						       <ul class="dib-wrap">
-							      <li class="dib user-info">
+							      <!-- <li class="dib user-info">
 							        <ul class="wrap">
 								      <li>
 								        <div class="field gbook">
@@ -122,7 +128,7 @@
 								        </div>
 								      </li>
 							        </ul>
-							      </li>
+							      </li> -->
 							      <li class="dib extra-info">
 							        <div class="extra-area">
 								      <ul class="dib-wrap">
@@ -199,5 +205,6 @@
 			 </div>
 		</form>
 	</div>
+  </div>
 </body>
 </html>

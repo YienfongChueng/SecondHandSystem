@@ -134,7 +134,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 		String pass=req.getParameter("password");
 		String uclass=req.getParameter("schoolClass");
 		String address=req.getParameter("address");
-		int phone=Integer.parseInt(req.getParameter("phone"));
+		String phone=req.getParameter("phone");
 		String qusetion=req.getParameter("qusetion");
 		String answer=req.getParameter("answer");
 		int sex=Integer.parseInt(req.getParameter("sex"));

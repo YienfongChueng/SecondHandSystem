@@ -58,7 +58,7 @@
 	var uuname=$("#uuname").val();
 	if(uuname!=null&&uuname!=""){
 		$("#commonTopbar_login").hide();
-		temp='<span style="color:green">欢迎：'+uuname+'  登录本系统！</span>';
+		temp='<span style="color:#00A33B">欢迎：<strong>'+uuname+' </strong> 登录本系统！</span>';
 		$("#info").append(temp);
 	}
 </script>

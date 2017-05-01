@@ -40,7 +40,7 @@ function check(form){
 </script>
 </head>
 <body>
- <s:form action="user_userRegister.action" namespace="user_jsp/" method="post" onsubmit="return check(this);">
+ <s:form action="user_userRegister"  method="post" onsubmit="return check(this);">
 <dl class="admin_login1">
  <dt>
   <strong>用户注册</strong>

@@ -7,8 +7,7 @@
     	<id name="id" column="id" type="java.lang.Integer" length="8">
     		<generator class="native"/>
     	</id>
-    	<!-- <property name="productId" column="PRODUCT_ID" type="java.lang.Integer" length="8"/> -->
-    	<!-- <property name="userId" column="USER_ID" type="java.lang.Integer" length="8"/>	 -->
+    	
     	<property name="content" column="CONTENT" type="java.lang.String" length="50"/>	
     	<property name="creatTime" column="CREATE_TIME" type="java.util.Date"/>	
     	<property name="status" column="STATUS" type="java.lang.Integer" length="8"/>

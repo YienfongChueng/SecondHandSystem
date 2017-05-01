@@ -11,6 +11,11 @@
   	<param-value>classpath:applicationContext.xml</param-value>
   </context-param>
   
+  <!-- session有效时长 -->
+  <session-config>
+	  <session-timeout>720</session-timeout>
+  </session-config>
+  
   <!-- 配置Struts2框架的核心Filter -->
   <filter>
   	<filter-name>struts2</filter-name>                    

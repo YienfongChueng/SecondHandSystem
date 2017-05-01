@@ -4,11 +4,14 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 public class Product {
 
 	private Integer id;
 	private java.lang.String proName;//商品名称
 	private java.lang.String proPicture;//商品图片
+	@JSONField(format = "yyyy-MM-dd")
 	private Date createTime;//发布时间
 	private Double proPrice;//商品单价
 	private Integer proHassum;//商品剩余量
@@ -19,7 +22,6 @@ public class Product {
 	private Integer type;//0供信息，1求信息
 	private Classify classify;//关联实体类
 	private User user;//关联实体类
-	private String time;
 
 	
 	public Product() {
@@ -41,14 +43,7 @@ public class Product {
 		this.classifyId = classifyId;
 	}
 
-	public String getTime() {
-		return time;
-	}
-
-	public void setTime(String time) {
-		this.time = time;
-	}
-
+	
 	public Classify getClassify() {
 		return classify;
 	}

@@ -1,14 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC 
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-    <hibernate-mapping>
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-4-30 11:48:46 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
     <class name="model.Classify" table="tb_classify">
-    	<id name="cid" column="CID" type="java.lang.Integer" length="8">
-    		<generator class="native"/>
-    	</id>
-    	<property name="classifyName" column="CNAME" type="java.lang.String" length="50"/>
-    	<property name="ClassifySort" column="CSORT" type="java.lang.Integer" length="8"/>	
-    	
+        <id name="cid" type="java.lang.Integer">
+            <column name="CID" />
+            <generator class="native" />
+        </id>
+        <property name="classifyName" type="java.lang.String">
+            <column name="CNAME" />
+        </property>
+        <property name="ClassifySort" type="java.lang.Integer">
+            <column name="CSORT" />
+        </property>
     </class>
-    </hibernate-mapping>
+</hibernate-mapping>

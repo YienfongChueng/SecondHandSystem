@@ -4,17 +4,17 @@
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
     <hibernate-mapping>
     <class name="model.Order" table="tb_order">
-    	<id name="id" column="id" type="java.lang.Integer" length="20">
+    	<id name="id" column="id" type="java.lang.Integer" >
     		<generator class="assigned"/>
     	</id>
     	<property name="createTime" column="CREATE_TIME" type="java.util.Date"/>	
-    	<property name="status" column="STATUS" type="java.lang.Integer" length="8"/>
-    	<property name="personName" column="PERSON_NAME" type="java.lang.String" length="50"/>
-    	<property name="phone" column="PHONE" type="java.lang.Integer" length="20"/>
-    	<property name="amount" column="AMOUNT" type="java.lang.Double" length="16"/>
-    	<property name="address" column="ADDRESS" type="java.lang.String" length="50"/>	
-    	<property name="payWay" column="PAYWAY" type="java.lang.String" length="50"/>
-    	<property name="creatorId" column="CREATOR"  type="java.lang.Integer" length="8"></property>	
+    	<property name="status" column="STATUS" type="java.lang.Integer" />
+    	<property name="personName" column="PERSON_NAME" type="java.lang.String" />
+    	<property name="phone" column="PHONE" type="java.lang.String" />
+    	<property name="amount" column="AMOUNT" type="java.lang.Double" />
+    	<property name="address" column="ADDRESS" type="java.lang.String" />	
+    	<property name="payWay" column="PAYWAY" type="java.lang.String" />
+    	<property name="creatorId" column="CREATOR"  type="java.lang.Integer" ></property>	
     	<set name="orderItem" table="tb_order_item" inverse="true" cascade="save-update" lazy="false" fetch="join">
     		<key><column name="ORDER_ID"></column></key>
     		<one-to-many class="model.OrderItem"/>

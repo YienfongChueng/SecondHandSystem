@@ -2,12 +2,14 @@ package service.impl;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.transaction.annotation.Transactional;
 
 import dao.IUserDao;
 import model.Classify;
 import model.Comment;
+import model.MyCart;
 import model.PageBean;
 import model.Product;
 import model.User;
@@ -128,5 +130,65 @@ public class UserService implements IUserService {
 		this.iUserDao.updateProduct(product);
 		
 	}
+
+	/**
+	 * 获取我的购物车列表
+	 */
+	@Override
+	public PageBean<MyCart> getMyCart(Map<Object, String> map) {
+		PageBean<MyCart> pageBean=new PageBean<MyCart>();
+		//封装当前页
+		currPage=Integer.parseInt(map.get("currPage"));
+		pageBean.setCurrPage(currPage);
+		//封装每页记录数
+		int pageSize=5;
+		pageBean.setPageSize(pageSize);
+		//封装总记录数
+		int totalCount=this.iUserDao.searchMyCartCount(Integer.parseInt(map.get("userId")));
+		pageBean.setTotalCount(totalCount);
+		//封装总页数
+		double tc=totalCount;
+		Double num=Math.ceil(tc/pageSize);
+		if(num==0){
+			num=(double) 1;
+		}
+		pageBean.setTotalPage(num.intValue());
+		//封装每页显示的数据
+		int begin=(currPage-1)*pageSize;
+		map.put("begin", begin+"");
+		map.put("pageSize", pageSize+"");
+		List<MyCart> list=this.iUserDao.getMyCartList(map);
+		pageBean.setList(list);
+		return pageBean;
+	}
+
+	@Override
+	public List<MyCart> getMyCartList(Integer uid) {
+		
+		return this.iUserDao.getMyCartList(uid);
+	}
+
+	/**
+	 * 保存或更新购物车
+	 */
+	@Override
+	public void saveOrUpdate(MyCart cart) {
+		this.iUserDao.saveOrUpdate(cart);
+		
+	}
+	
+	/**
+	 * 清空或删除某一购物车
+	 * @param id
+	 * @param uid
+	 */
+	@Override
+	public void deleteCart(String id, Integer uid) {
+		this.iUserDao.deleteCart(id,uid);
+		
+	}
+
+	
+	
 	
 }

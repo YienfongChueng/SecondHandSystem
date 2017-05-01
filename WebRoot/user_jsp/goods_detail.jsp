@@ -116,9 +116,24 @@ function loadData(){
 	function selflog_show()
 	{ 
 		var num = parseInt($("#needNum").val());
-		alert("添加成功!");
+		$.ajax({
+			url:"product_addToCart.action",
+			type: "post",
+			data:{"id":id,"num":num},
+			success:function(msg){
+				alert("添加成功!");
+				},
+			error:function(msg){
+				alert("您尚未登录！");
+				setTimeout("linkToLogin();",2000);
+				}
+			});
+		
 	}
 
+	function linkToLogin(){
+		window.location.href="user_login.jsp";
+		}
 	function add(){
 	   var num = parseInt($("#needNum").val());
 	   if(num<hassum)

@@ -29,15 +29,14 @@ public class ShoppingCart {
 		this.totalPrice = totalPrice;
 	}
 	//添加商品进购物车的方法
-	public boolean addGoodsInCart(Product item,int num){
-		if(goods.containsKey(item)){
+	public void addGoodsInCart(Product item,int num){
+		if(goods.containsKey(item)){//有相同名称的key
 			goods.put(item, goods.get(item)+num);
 		}else{
 			goods.put(item, num);
 			
 		}
 		calTotalPrice();//重新计算购物车的总金额
-		return true;
 	}
 	//统计购物车的总金额
 	public double calTotalPrice(){
@@ -53,9 +52,8 @@ public class ShoppingCart {
 	}
 	
 	//删除商品的方法
-	public boolean removeGoodsFromCart(Product item){
+	public void removeGoodsFromCart(Product item){
 		goods.remove(item);
 		calTotalPrice();//重新计算购物车的总金额
-		return true;
 	}
 }

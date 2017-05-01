@@ -1,7 +1,5 @@
 package model;
 
-import java.util.HashSet;
-import java.util.Set;
 
 public class User {
 
@@ -11,7 +9,7 @@ public class User {
 	private java.lang.String schoolClass;//班级
 	private java.lang.Integer sex;//性别（男：0   女：1）
 	private java.lang.String address;
-	private java.lang.Integer phone;
+	private java.lang.String phone;
 	private java.lang.String password;
 	private java.lang.String qusetion;//密码找回的设置问题
 	private java.lang.String answer;//密码找回设置答案
@@ -55,10 +53,10 @@ public class User {
 	public void setAddress(java.lang.String address) {
 		this.address = address;
 	}
-	public java.lang.Integer getPhone() {
+	public java.lang.String getPhone() {
 		return phone;
 	}
-	public void setPhone(java.lang.Integer phone) {
+	public void setPhone(java.lang.String phone) {
 		this.phone = phone;
 	}
 	public java.lang.String getPassword() {

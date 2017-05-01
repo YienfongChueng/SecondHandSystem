@@ -48,11 +48,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 				</table>
 				<div class="page">
-					<s:if test="currPage != 1&&currPage <totalPage">
+					<s:if test="currPage != 1">
 						<a href="cateInfoList.action?currPage=1" target="content">首页</a>
 						<a href="cateInfoList.action?currPage=<s:property value="currPage-1"/>" target="content">上一页</a>
 					</s:if>
-					<s:if test="currPage != totalPage&&currPage>1">
+					<s:if test="currPage != totalPage">
 						<a href="cateInfoList.action?currPage=<s:property value="currPage+1"/>" target="content">下一页</a>
 						<a href="cateInfoList.action?currPage=<s:property value="totalPage"/>" target="content">尾页</a>
 					</s:if>

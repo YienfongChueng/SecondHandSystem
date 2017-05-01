@@ -1,27 +1,39 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC 
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-    <hibernate-mapping>
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-4-30 11:48:46 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
     <class name="model.User" table="tb_user">
-    	<id name="uid" column="UID" type="java.lang.Integer" length="8">
-    		<generator class="native"/>
-    	</id>
-    	<property name="headPic" column="HEADPIC" type="java.lang.String" length="56"/>
-    	<property name="schoolClass" column="SCHOOL_CLASS" type="java.lang.String" length="50"/>	
-    	<property name="phone" column="PHONE" type="java.lang.Integer" length="20"/>
-    	<property name="userName" column="USERNAME" type="java.lang.String" length="50"/>
-    	<property name="address" column="ADDRESS" type="java.lang.String" length="56"/>	
-    	<property name="password" column="PASSWORD" type="java.lang.String" length="20"/>
-    	<property name="qusetion" column="QUESTION" type="java.lang.String" length="50"/>	
-    	<property name="answer" column="ANSWER" type="java.lang.String" length="50"/>	
-    	<property name="sex" column="SEX" type="java.lang.Integer" length="6"/>	
-    	
-    	<!-- <set name="product" table="tb_product" inverse="false" lazy="true">
-    		<key>
-    			<column name="CREATOR_ID"></column>指定关联的外键列名
-    		</key>
-    		<one-to-many class="model.Product"/>映射关联类
-    	</set>	 -->		
+        <id name="uid" type="java.lang.Integer">
+            <column name="UID" />
+            <generator class="native" />
+        </id>
+        <property name="userName" type="java.lang.String">
+            <column name="USERNAME" />
+        </property>
+        <property name="headPic" type="java.lang.String">
+            <column name="HEADPIC" />
+        </property>
+        <property name="schoolClass" type="java.lang.String">
+            <column name="SCHOOLCLASS" />
+        </property>
+        <property name="sex" type="java.lang.Integer">
+            <column name="SEX" />
+        </property>
+        <property name="address" type="java.lang.String">
+            <column name="ADDRESS" />
+        </property>
+        <property name="phone" type="java.lang.String">
+            <column name="PHONE" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="PASSWORD" />
+        </property>
+        <property name="qusetion" type="java.lang.String">
+            <column name="QUSETION" />
+        </property>
+        <property name="answer" type="java.lang.String">
+            <column name="ANSWER" />
+        </property>
     </class>
-    </hibernate-mapping>
+</hibernate-mapping>

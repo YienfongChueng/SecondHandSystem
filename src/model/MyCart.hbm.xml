@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-4-30 11:48:46 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="model.MyCart" table="tb_mycart">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="userId" type="java.lang.Integer">
+            <column name="USER_ID" />
+        </property>
+        <property name="productId" type="java.lang.Integer">
+            <column name="PRODUCT_ID" />
+        </property>
+        <property name="createTime" type="java.util.Date">
+            <column name="CREATE_TIME" />
+        </property>
+        <property name="num" type="java.lang.Integer">
+            <column name="NUM" />
+        </property>
+        <property name="count" type="java.lang.Double">
+            <column name="COUNT" />
+        </property>
+        <property name="productName" type="java.lang.String">
+            <column name="PRODUCT_NAME" />
+        </property>
+        <property name="productPic" type="java.lang.String">
+            <column name="PRODUCT_PIC" />
+        </property>
+        <property name="productDesc" type="java.lang.String">
+            <column name="PRODUCT_DESC" />
+        </property>
+        <property name="total" type="java.lang.Double">
+            <column name="TOTAL" />
+        </property>
+        
+    </class>
+</hibernate-mapping>
