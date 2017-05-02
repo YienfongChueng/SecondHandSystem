@@ -1,15 +1,96 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    
 <!--提交订单页面 -->
 <!DOCTYPE html >
 <html>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>订单处理 - 提交</title>
 <link  rel="stylesheet" href="css/order_confirm.css"/>
+<script type="text/javascript" src="js/jquery.js"></script>
 <style type="text/css">
 .info{margin:5px;width:50%;height:30px;}
 </style>
+<script type="text/javascript">
+	var template='<tr class="shop blue-line">'+
+	'<td colspan="3">'+
+	' 卖家：'+
+	'<a class="J_ShopName J_MakePoint" style="color:#5cbdaa" href="#" id="seller">@seller</a>'+
+	'<span class="seller">联系卖家：<a href="#" style="color:#5cbdaa" class="J_MakePoint" id="phone">@phone</a></span>'+
+	'<span class="J_WangWang" data-display="inline"></span>'+
+	'</td>'+
+	'<td colspan="2" class="promo">'+
+	'<div>'+
+	'<ul class="scrolling-promo-hint J_ScrollingPromoHint">'+
+	'</ul>'+
+	'</div>'+
+	'</td>'+
+	'</tr>'+
+	'<tr class="item">'+
+	'<td class="s-title">'+
+	'<a href="@detailurl" target="_blank" style="color:#5cbdaa" class="J_MakePoint" data-point-url="">'+
+	'<img src="@proPic" class="itempic">'+
+	'<span class="title J_MakePoint" style="color:#5cbdaa">@title</span>'+
+	'</a>'+
+	'<div style="margin-top:2px">'+
+	'<span style="color:gray;">确认订单后立刻通知卖家</span>'+
+	'</div>'+
+	'</td>'+
+	'<td class="s-price">'+
+	'<span class=\'price \'>'+
+	'<em class="style-normal-small-black J_ItemPrice">@singlePrice</em>'+
+	'</span>'+
+	'</td>'+
+	'<td class="s-amount">@num</td>'+
+	'<td class="s-total">'+
+	'<span class=\'price \'>'+
+	'<em class="style-normal-bold-red J_ItemTotal ">@count</em>'+
+	'</span>'+
+	'</td>'+
+	'</tr>';
+	$(document).ready(function(){
+		loadData();
+	});
+	function loadData(){
+		$("#preData").html('');
+		var ids="${param.ids}";
+		$.ajax({
+			type: "POST",
+			url: "product_getComfirmProductList.action",
+			data: {"ids":ids},
+			dataType:"json",
+			success: function(data){
+				var result=data.data;
+				/* $.each(function(){
+					
+					}); */
+				var len=data.length;
+				var temp=template;
+				for(var i=0;i<len;i++){
+					
+					temp+=temp.replace("@seller",result[i].user.userName);
+					temp+=temp.replace("@phone",result[i].user.phone);
+					temp+=temp.replace("@detailurl","goods_detail.jsp?id="+result[i].id);
+					temp+=temp.replace("@proPic","${basePath}/upload/"+result[i].proPicture);
+					temp+=temp.replace("@title",result[i].proName);
+					temp+=temp.replace("@singlePrice",result[i].proPrice);
+					temp+=temp.replace("@num","1");
+					temp+=temp.replace("@count",result[i].proPrice);
+					}
+					$("#preData").prepend(temp);
+			},
+			error: function(){
+				alert("登录已过期，请重新登录！");
+				}
+						
+			});
+	}
+</script>
 </head>
 <body>
    <jsp:include page="top.jsp"/>
@@ -64,12 +145,12 @@
 					      <td colspan="5">
 					      </td>
 				       </tr>
-				       <tr class="shop blue-line">
+				       <!-- <tr class="shop blue-line">
 					      <td colspan="3">
                                                                                     卖家：
-						    <a class="J_ShopName J_MakePoint" style="color:#5cbdaa" data-point-url="" href="" target="_blank" title="大佬">大佬</a>
-						    <span class="seller">联系卖家：<a href="" style="color:#5cbdaa" target="_blank" class="J_MakePoint" data-point-url="">188****4815</a></span>
-						    <span class="J_WangWang" data-nick="" data-display="inline"></span>
+						    <a class="J_ShopName J_MakePoint" style="color:#5cbdaa" href="#" id="seller"></a>
+						    <span class="seller">联系卖家：<a href="#" style="color:#5cbdaa" class="J_MakePoint" id="phone"></a></span>
+						    <span class="J_WangWang" data-display="inline"></span>
 					      </td>
 					     <td colspan="2" class="promo">
 						    <div>
@@ -106,8 +187,8 @@
 						         <em class="style-normal-bold-red J_ItemTotal ">1.00</em>
 						       </span>
 					        </td>
-				        </tr>
-				        <tr class="item-service">
+				        </tr> -->
+				        <tr class="item-service" id="preData">
 					        <td colspan="5" class="servicearea" style="display: none">
 					        </td>
 				        </tr>
@@ -118,17 +199,6 @@
 				        <tr class="other other-line">
 					        <td colspan="5">
 						       <ul class="dib-wrap">
-							      <!-- <li class="dib user-info">
-							        <ul class="wrap">
-								      <li>
-								        <div class="field gbook">
-									       <label class="label">给卖家留言：</label>
-									       <textarea style="width:350px;height:80px;" title="选填：对本次交易的补充说明（建议填写已经和卖家达成一致的说明）" name="">
-									       </textarea>
-								        </div>
-								      </li>
-							        </ul>
-							      </li> -->
 							      <li class="dib extra-info">
 							        <div class="extra-area">
 								      <ul class="dib-wrap">

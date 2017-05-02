@@ -188,6 +188,17 @@ public class UserService implements IUserService {
 		
 	}
 
+	/**
+	 * 查询用户勾选的商品信息列表
+	 * @param ids
+	 * @return
+	 */
+	@Override
+	public List<Product> getComfirmProductList(String ids) {
+		
+		return this.iUserDao.getComfirmProductList(ids);
+	}
+
 	
 	
 	

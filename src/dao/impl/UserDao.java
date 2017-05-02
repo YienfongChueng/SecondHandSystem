@@ -278,4 +278,16 @@ public class UserDao extends HibernateDaoSupport implements IUserDao {
 		
 	}
 
+	/**
+	 * 查询用户勾选的商品信息列表
+	 * @param ids
+	 * @return  
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Product> getComfirmProductList(String ids) {
+		String hql="from Product where id IN ("+ids+")";
+		return this.getHibernateTemplate().find(hql);
+	}
+
 }

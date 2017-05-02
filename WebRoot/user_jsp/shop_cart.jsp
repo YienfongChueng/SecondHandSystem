@@ -84,7 +84,7 @@ var totalPage;
 			     var temp='';
 			     for(var i=0;i<len;i++){
 				     temp='<tr>'+
-				     '<td class="tb2_td1"><input type="checkbox" value="'+data[i].id+'"  name="'+data[i].id+'"/></td>'+
+				     '<td class="tb2_td1"><input type="checkbox" value="'+data[i].productId+'"  name="'+data[i].productId+'"/></td>'+
 				     '<td class="tb2_td2"><a href="goods_detail.jsp?id='+data[i].productId+'"><img src="../upload/'+data[i].productPic+'"/></a></td>'+
 				     '<td class="tb2_td3"><a href="goods_detail.jsp?id='+data[i].productId+'">'+data[i].productName+'</a></td>'+
 				     '<td class="tb1_td4">'+data[i].productDesc+'</td>'+
@@ -189,6 +189,7 @@ var totalPage;
 	
 	});
 
+	var idStr;
 	//总价
 	function getCount(){
 		var count = 0;
@@ -201,7 +202,18 @@ var totalPage;
 	    });
 		$("#sumprice").text(count.toFixed(2));
 		$("#shuliang").text(numbers);
+		//获取复选框的id值
+		var id_arr=new Array();
+		$('#mydata input[type="checkbox"]:checked').each(function(){
+			id_arr.push($(this).val());//向数组中添加元素
+			});
+		idStr=id_arr.join(',');
 	}
+
+	function payMoney(){
+		window.location.href="order_comfirm.jsp?ids="+idStr;
+	}
+	
 	</script>
 	
 	<table cellpadding="0" cellspacing="0" class="gwc_tb3">
@@ -209,7 +221,7 @@ var totalPage;
 			<td class="tb1_td1"><input type="button" value="清空购物车" onclick="clearChart();"/></td>
 			<td class="tb3_td2">已选商品 <label id="shuliang" style="color:#ff5500;font-size:14px; font-weight:bold;">0</label> 件</td>
 			<td class="tb3_td3">合计(不含运费):<span>￥</span><span style=" color:#ff5500;"><label id="sumprice" style="color:#ff5500;font-size:14px; font-weight:bold;">0.00</label></span></td>
-			<td class="tb3_td4"><span id="jz1">结算</span><a href="#" style="display:none;"  class="jz2" id="jz2">结算</a></td>
+			<td class="tb3_td4"><span id="jz1">结算</span><a href="javascript:payMoney();" style="display:none;"  class="jz2" id="jz2">结算</a></td>
 		</tr>
 	</table>
 	<br>

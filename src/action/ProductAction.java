@@ -175,7 +175,7 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 		}
 		map.put("currPage", currPage+"");
 		PageBean<Product> proList=this.iUserService.searchProductList(map);
-		List<Product> list=new ArrayList<Product>();
+		//List<Product> list=new ArrayList<Product>();
 		this.json.toJsonObj(proList);
 	}
 	
@@ -288,8 +288,19 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 	}
 	
 	/**
-	 * 
+	 * 订单确认--首先查询用户选择要付款的商品列表信息
 	 */
+	public void getComfirmProductList() throws Exception{
+		User user=(User) req.getSession().getAttribute("User");
+		if(user==null){
+			throw new Exception("用户帐户为空，请重新登录！");
+		}else{
+			String ids=req.getParameter("ids");
+			List<Product> list=this.iUserService.getComfirmProductList(ids);
+			this.json.toJsonArray(list);
+		}
+	}
+	
 	
 	
 	

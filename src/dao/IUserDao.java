@@ -105,4 +105,11 @@ public interface IUserDao {
 	 */
 	void deleteCart(String id, Integer uid);
 
+	/**
+	 * 查询用户勾选的商品信息列表
+	 * @param ids
+	 * @return
+	 */
+	List<Product> getComfirmProductList(String ids);
+
 }
