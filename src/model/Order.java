@@ -13,7 +13,7 @@ public class Order {
 	private String phone;//联系电话
 	private Double amount;//订单金额
 	private java.lang.String payWay;//付款方式
-	private Integer creatorId;//发布者id
+	private String creatorId;//发布者id
 	private Set<OrderItem> orderItem=new HashSet<OrderItem>();
 	private User user;
 
@@ -37,19 +37,13 @@ public class Order {
 		this.orderItem = orderItem;
 	}
 
-
-
-
-
-	public Integer getCreatorId() {
+	public String getCreatorId() {
 		return creatorId;
 	}
 
-
-	public void setCreatorId(Integer creatorId) {
+	public void setCreatorId(String creatorId) {
 		this.creatorId = creatorId;
 	}
-
 
 	public java.lang.String getPayWay() {
 		return payWay;

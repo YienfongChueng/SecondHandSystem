@@ -56,6 +56,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	$(document).ready(function(){
 		loadData();
 	});
+	var sumMoney=0;
+	var creator_arr=new Array();
+	var creatorStr;
 	function loadData(){
 		$("#preData").html('');
 		var ids="${param.ids}";
@@ -64,25 +67,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			url: "product_getComfirmProductList.action",
 			data: {"ids":ids},
 			dataType:"json",
+			asyc:false,
 			success: function(data){
 				var result=data.data;
-				/* $.each(function(){
-					
-					}); */
 				var len=data.length;
-				var temp=template;
+				debugger;
 				for(var i=0;i<len;i++){
-					
-					temp+=temp.replace("@seller",result[i].user.userName);
-					temp+=temp.replace("@phone",result[i].user.phone);
-					temp+=temp.replace("@detailurl","goods_detail.jsp?id="+result[i].id);
-					temp+=temp.replace("@proPic","${basePath}/upload/"+result[i].proPicture);
-					temp+=temp.replace("@title",result[i].proName);
-					temp+=temp.replace("@singlePrice",result[i].proPrice);
-					temp+=temp.replace("@num","1");
-					temp+=temp.replace("@count",result[i].proPrice);
-					}
+					var temp=template;
+					temp=temp.replace("@seller",result[i].user.userName);
+					temp=temp.replace("@phone",result[i].user.phone);
+					temp=temp.replace("@detailurl","goods_detail.jsp?id="+result[i].id);
+					temp=temp.replace("@proPic","../upload/"+result[i].proPicture);
+					temp=temp.replace("@title",result[i].proName);
+					temp=temp.replace("@singlePrice",result[i].proPrice);
+					temp=temp.replace("@num","1");
+					temp=temp.replace("@count",result[i].proPrice);
 					$("#preData").prepend(temp);
+					sumMoney+=result[i].proPrice;
+					creator_arr.push(result[i].user.uid);
+					}
+				creatorStr=creator_arr.join(",");
+				$("#J_ActualFee").html(sumMoney);
+				$("#sum1").html(sumMoney);
 			},
 			error: function(){
 				alert("登录已过期，请重新登录！");
@@ -90,6 +96,47 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						
 			});
 	}
+	
+	var name='';
+	var addr='';
+	var call='';
+	function getinfo(){
+		 name=$("#personName1").val();
+		 addr=$("#address1").val();
+		 call=$("#phone1").val();
+		$("#consumer").html(name+":"+call);
+		$("#J_AddrConfirm").html(addr);
+		if(name!=""&&addr!=""&&call!=""){
+			$("#personName1").attr({readonly:'true'});
+			$("#address1").attr({readonly:'true'});
+			$("#phone1").attr({readonly:'true'});
+			$("#save").hide();
+			}
+		}
+
+	$("#addrForm").submit( function () {
+		  return false;
+	} );
+
+	$("#J_Go").click(function(){
+		if(name==''||name==null){
+			alert("收货人不能为空！");
+			return false;
+			}
+		if(addr==''||addr==null){
+			alert("收货地址不能为空！");
+			return false;
+			}
+		if(call==''||call==null){
+			alert("联系电话不能为空！");
+			return false;
+			}
+		$("#amount1").val(sumMoney);
+		$("#creatorIds").val(creatorStr);
+		$("#addrForm").submit();
+		});
+
+	
 </script>
 </head>
 <body>
@@ -98,22 +145,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div id="content" class="grid-c">
 		<div id="address" class="address" style="margin-top: 20px;" data-spm="2">
 			<form name="addrForm" id="addrForm" action="#">
+			<input type="hidden" name="ids" value="${param.ids}" />
+			<input type="hidden" name="amount" id="amount1" />
+			<input type="hidden" name="creatorIds" id="creatorIds" />
 				<h3>填写个人信息</h3>
 				<ul id="address-list" class="address-list">
 					<li class="J_Addr J_MakePoint clearfix J_DefaultAddr " >
 					<div class="address-info">
-						<label id="label-1">收货人:&nbsp;&nbsp;&nbsp;</label><input class="info" type="text" name="personName"/>
+						<label id="label-1">收货人:&nbsp;&nbsp;&nbsp;</label><input class="info" type="text" name="personName" id="personName1"/>
 					</div>
 					</li>
 					<li class="J_Addr J_MakePoint clearfix J_DefaultAddr ">
 					<div class="address-info">
-						<label id="label-2">交易地址:</label><input class="info" type="text" name="address" />
+						<label id="label-2">交易地址:</label><input class="info" type="text" name="address" id="address1" />
 					</div>
 					</li>
 					<li class="J_Addr J_MakePoint clearfix J_DefaultAddr ">
 					<div class="address-info">
-						<label id="label-3">联系电话:</label><input class="info" type="text" name="phone" /> 
+						<label id="label-3">联系电话:</label><input class="info" type="text" name="phone" id="phone1" /> 
 					</div>
+					</li >
+					<li class="J_Addr J_MakePoint clearfix J_DefaultAddr ">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="button" class="info" value="保存" onclick="getinfo();" id="save"/>
 					</li>
 					
 				</ul>
@@ -140,55 +194,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					   </th>
 				     </tr>
 				    </thead>
-				    <tbody data-spm="3" class="J_Shop">
-				       <tr class="first">
-					      <td colspan="5">
-					      </td>
-				       </tr>
-				       <!-- <tr class="shop blue-line">
-					      <td colspan="3">
-                                                                                    卖家：
-						    <a class="J_ShopName J_MakePoint" style="color:#5cbdaa" href="#" id="seller"></a>
-						    <span class="seller">联系卖家：<a href="#" style="color:#5cbdaa" class="J_MakePoint" id="phone"></a></span>
-						    <span class="J_WangWang" data-display="inline"></span>
-					      </td>
-					     <td colspan="2" class="promo">
-						    <div>
-							  <ul class="scrolling-promo-hint J_ScrollingPromoHint">
-						      </ul>
-						    </div>
-					     </td>
-				        </tr>
-				       <tr class="item">
-					        <td class="s-title">
-						       <a href="#" target="_blank" style="color:#5cbdaa" title="大佬牌名牌限量版logo你值得拥有" class="J_MakePoint" data-point-url="">
-						         <img src="http://139.199.206.70/pic/logo.jpg" class="itempic">
-						         <span class="title J_MakePoint" style="color:#5cbdaa" data-point-url="">大佬牌名牌限量版logo你值得拥有</span>
-					           </a>
-						       <div class="props">
-							     <span>颜色: 白绿 </span>
-							     <span>信仰: 白绿精神 </span>
-							     <span>保质期: 永久 </span>
-							     <span>品牌: 值得信赖 </span>
-						       </div>
-						       <div style="margin-top:2px">
-							     <span style="color:gray;">确认订单后立刻通知卖家</span>
-						       </div>
-					        </td>
-					        <td class="s-price">
-						       <span class='price '>
-						         <em class="style-normal-small-black J_ItemPrice">1.00</em>
-						       </span>
-						       <input type="hidden" name="costprice" value="1.00" class="J_CostPrice"/>
-					        </td>
-					        <td class="s-amount" data-point-url="">1</td>
-					        <td class="s-total">
-						       <span class='price '>
-						         <em class="style-normal-bold-red J_ItemTotal ">1.00</em>
-						       </span>
-					        </td>
-				        </tr> -->
-				        <tr class="item-service" id="preData">
+				    <tbody data-spm="3" class="J_Shop" id="preData">
+				       <!-- 动态拼接html数据 -->
+				       
+				        <tr class="item-service" >
 					        <td colspan="5" class="servicearea" style="display: none">
 					        </td>
 				        </tr>
@@ -225,7 +234,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						             费用合计：
 						      <span class='price g_price '>
 						      <span>&yen;</span>
-						        <em class="style-middle-bold-red J_ShopTotal">1.00</em>
+						        <em class="style-middle-bold-red J_ShopTotal" id="sum1">1.00</em>
 						      </span>
 					       </td>
 			           </tr>
@@ -256,11 +265,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												      <span id="consumer">马仔 135****7031 
 												      </span>
 											      </li>
-												  <li>
+												  <!-- <li>
 												      <em>卖家:</em>
 												      <span id="seller">大佬 188****4815 
 												     </span>
-											      </li>
+											      </li> -->
 											    </ul>
 										    </div>
 									    </div>

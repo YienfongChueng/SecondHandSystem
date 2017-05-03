@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,6 +26,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import model.Comment;
 import model.MyCart;
+import model.Order;
 import model.Classify;
 import model.PageBean;
 import model.Product;
@@ -301,12 +303,64 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 		}
 	}
 	
+	/**
+	 * 提交订单
+	 */
+	private String personName;
+	private String address;
+	private String phone;
+	private String totalMoney;
+	private String creatorIds;
+	public void addOrder()throws Exception{
+		User user=(User) req.getSession().getAttribute("User");
+		if(user==null){
+			throw new Exception("用户帐户为空，请重新登录！");
+		}else{
+			Order order=new Order();
+			order.setId(Integer.parseInt(new Date().toString()));
+			order.setCreateTime(new Date());
+			order.setUser(user);
+			order.setPersonName(personName);
+			order.setAddress(address);
+			order.setPhone(phone);
+			order.setAmount(Double.parseDouble(totalMoney));
+			order.setStatus(0);//默认待付款
+			order.setPayWay("校内见面交易");
+			order.setCreatorId(creatorIds);
+			order.setOrderItem(orderItem);
+			
+		}
+	}
 	
-	
-	
-	
-	
-	
-	
+	public String getCreatorIds() {
+		return creatorIds;
+	}
+	public void setCreatorIds(String creatorIds) {
+		this.creatorIds = creatorIds;
+	}
+	public String getPersonName() {
+		return personName;
+	}
+	public void setPersonName(String personName) {
+		this.personName = personName;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getTotalMoney() {
+		return totalMoney;
+	}
+	public void setTotalMoney(String totalMoney) {
+		this.totalMoney = totalMoney;
+	}
 	
 }
