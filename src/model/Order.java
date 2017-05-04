@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class Order {
 
-	private Integer id;
+	private String id;
 	private Integer status;//订单状态（0：待付款 1:已完成  ）
 	private java.util.Date createTime;//订单生成时间
 	private java.lang.String address;//送货地址
@@ -20,10 +20,6 @@ public class Order {
 	public Order() {
 	}
 
-	public Set<OrderItem> getOrderItem() {
-		return orderItem;
-	}
-
 
 	public User getUser() {
 		return user;
@@ -33,9 +29,6 @@ public class Order {
 		this.user = user;
 	}
 
-	public void setOrderItem(Set<OrderItem> orderItem) {
-		this.orderItem = orderItem;
-	}
 
 	public String getCreatorId() {
 		return creatorId;
@@ -55,17 +48,16 @@ public class Order {
 	}
 
 
-	public Integer getId() {
-		return id;
-	}
+	public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-
-	public Integer getStatus() {
+    public Integer getStatus() {
 		return status;
 	}
 
@@ -123,5 +115,18 @@ public class Order {
 	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
+
+
+    public Set<OrderItem> getOrderItem() {
+        return orderItem;
+    }
+
+
+    public void setOrderItem(Set<OrderItem> orderItem) {
+        this.orderItem = orderItem;
+    }
+
+
+   
 	
 }

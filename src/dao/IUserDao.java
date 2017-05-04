@@ -2,12 +2,11 @@ package dao;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import model.Classify;
 import model.Comment;
 import model.MyCart;
-import model.PageBean;
+import model.Order;
 import model.Product;
 import model.User;
 
@@ -111,5 +110,24 @@ public interface IUserDao {
 	 * @return
 	 */
 	List<Product> getComfirmProductList(String ids);
+
+    /**
+     * <p>Description: 查询用户勾选购物车里的商品信息</p>
+     * @param ids
+     * @return
+     */
+    List<MyCart> getMyCartChooseList(String ids);
+
+    /**
+     * <p>Description: 保存订单信息</p>
+     * @param order
+     */
+    void saveOrder(Order order,String ids);
+
+    /**
+     * <p>Description: 清除购物车选中的商品</p>
+     * @param ids
+     */
+    void deleteChooseFromCart(String ids);
 
 }

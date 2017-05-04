@@ -4,10 +4,6 @@
 <!--提交订单页面 -->
 <!DOCTYPE html >
 <html>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>订单处理 - 提交</title>
@@ -64,27 +60,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		var ids="${param.ids}";
 		$.ajax({
 			type: "POST",
-			url: "product_getComfirmProductList.action",
+			url: "product_getMyCartChooseList.action",
 			data: {"ids":ids},
 			dataType:"json",
 			asyc:false,
 			success: function(data){
 				var result=data.data;
 				var len=data.length;
-				debugger;
 				for(var i=0;i<len;i++){
 					var temp=template;
-					temp=temp.replace("@seller",result[i].user.userName);
-					temp=temp.replace("@phone",result[i].user.phone);
-					temp=temp.replace("@detailurl","goods_detail.jsp?id="+result[i].id);
-					temp=temp.replace("@proPic","../upload/"+result[i].proPicture);
-					temp=temp.replace("@title",result[i].proName);
-					temp=temp.replace("@singlePrice",result[i].proPrice);
-					temp=temp.replace("@num","1");
-					temp=temp.replace("@count",result[i].proPrice);
+					temp=temp.replace("@seller",result[i].creatorName);
+					temp=temp.replace("@phone",result[i].creatorPhone);
+					temp=temp.replace("@detailurl","goods_detail.jsp?id="+result[i].productId);
+					temp=temp.replace("@proPic","../upload/"+result[i].productPic);
+					temp=temp.replace("@title",result[i].productName);
+					temp=temp.replace("@singlePrice",result[i].singlePrice);
+					temp=temp.replace("@num",result[i].num);
+					temp=temp.replace("@count",result[i].total);
 					$("#preData").prepend(temp);
-					sumMoney+=result[i].proPrice;
-					creator_arr.push(result[i].user.uid);
+					sumMoney+=result[i].total;
+					creator_arr.push(result[i].creatorId);
 					}
 				creatorStr=creator_arr.join(",");
 				$("#J_ActualFee").html(sumMoney);
@@ -104,7 +99,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 name=$("#personName1").val();
 		 addr=$("#address1").val();
 		 call=$("#phone1").val();
-		$("#consumer").html(name+":"+call);
+		 $("#linkphone").html(call);
+		$("#consumer").html(name);
 		$("#J_AddrConfirm").html(addr);
 		if(name!=""&&addr!=""&&call!=""){
 			$("#personName1").attr({readonly:'true'});
@@ -114,11 +110,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}
 		}
 
-	$("#addrForm").submit( function () {
-		  return false;
-	} );
+	
 
-	$("#J_Go").click(function(){
+	function addOrder(){
 		if(name==''||name==null){
 			alert("收货人不能为空！");
 			return false;
@@ -134,7 +128,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		$("#amount1").val(sumMoney);
 		$("#creatorIds").val(creatorStr);
 		$("#addrForm").submit();
-		});
+		};
 
 	
 </script>
@@ -144,7 +138,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <div id="page">
 	<div id="content" class="grid-c">
 		<div id="address" class="address" style="margin-top: 20px;" data-spm="2">
-			<form name="addrForm" id="addrForm" action="#">
+			<form name="addrForm" id="addrForm" action="product_addOrder">
 			<input type="hidden" name="ids" value="${param.ids}" />
 			<input type="hidden" name="amount" id="amount1" />
 			<input type="hidden" name="creatorIds" id="creatorIds" />
@@ -167,7 +161,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</li >
 					<li class="J_Addr J_MakePoint clearfix J_DefaultAddr ">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="button" class="info" value="保存" onclick="getinfo();" id="save"/>
+					<input type="button" class="info" style="color:#19a97b" value="保存" onclick="getinfo();" id="save"/>
 					</li>
 					
 				</ul>
@@ -248,7 +242,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									    <div class="box">
 										   <div class="bd">
 											   <div class="point-in">
-												  <em class="t" style="color:#5cbdaa">实付款：</em>
+												  <em class="t" style="color:#5cbdaa" >实付款：</em>
 												  <span class='price g_price '>
 												     <span>&yen;</span><em class="style-large-bold-red" id="J_ActualFee">1.00</em>
 												  </span>
@@ -265,15 +259,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												      <span id="consumer">马仔 135****7031 
 												      </span>
 											      </li>
-												  <!-- <li>
-												      <em>卖家:</em>
-												      <span id="seller">大佬 188****4815 
+												   <li>
+												      <em>联系电话:</em>
+												      <span id="linkphone">大佬 188****4815 
 												     </span>
-											      </li> -->
+											      </li> 
 											    </ul>
 										    </div>
 									    </div>
-									    <a id="J_Go" class=" btn-go" data-point-url="" tabindex="0" title="点击此按钮，提交订单。">提交订单<b class="dpl-button"></b></a>
+									    <a id="J_Go" class=" btn-go" onclick="addOrder();" tabindex="0">提交订单<b class="dpl-button"></b></a>
 								     </div>
 							    </div>
 						     </div>

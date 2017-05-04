@@ -2,7 +2,12 @@ package dao.impl;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+
+import model.Classify;
+import model.Comment;
+import model.MyCart;
+import model.Product;
+import model.User;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -14,12 +19,6 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import dao.IUserDao;
-import model.Classify;
-import model.Comment;
-import model.MyCart;
-import model.PageBean;
-import model.Product;
-import model.User;
 
 public class UserDao extends HibernateDaoSupport implements IUserDao {
 
@@ -227,6 +226,9 @@ public class UserDao extends HibernateDaoSupport implements IUserDao {
 		return 0;
 	}
 
+	/**
+	 * 分页查询我的购物车列表
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<MyCart> getMyCartList(Map<Object, String> map) {
@@ -289,5 +291,40 @@ public class UserDao extends HibernateDaoSupport implements IUserDao {
 		String hql="from Product where id IN ("+ids+")";
 		return this.getHibernateTemplate().find(hql);
 	}
+
+	 /**
+     * <p>Description: 查询用户勾选购物车里的商品信息</p>
+     * @param ids
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<MyCart> getMyCartChooseList(String ids) {
+        String hql="from MyCart where product_id IN ("+ids+")";
+        return this.getHibernateTemplate().find(hql);
+    }
+
+    /**
+     * 保存订单信息
+     */
+    @Override
+    public void saveOrder(model.Order order,String ids) {
+       this.getHibernateTemplate().save(order);
+       String hql="delete from MyCart where productId IN ("+ids+")";
+       SessionFactory factory=this.getHibernateTemplate().getSessionFactory();
+       Session session=factory.openSession();
+       Query query=session.createQuery(hql);
+       query.executeUpdate();
+       session.close();
+    }
+
+   /**
+    * 清除购物车已购买的商品
+    */
+    @Override
+    public void deleteChooseFromCart(String ids) {
+      
+        
+    }
 
 }

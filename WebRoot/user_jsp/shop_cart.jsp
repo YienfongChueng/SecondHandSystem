@@ -82,6 +82,7 @@ var totalPage;
 			     $("#curr").html(currPage);
 			     $("#total").html(totalPage);
 			     var temp='';
+
 			     for(var i=0;i<len;i++){
 				     temp='<tr>'+
 				     '<td class="tb2_td1"><input type="checkbox" value="'+data[i].productId+'"  name="'+data[i].productId+'"/></td>'+
@@ -162,13 +163,6 @@ var totalPage;
 	//选中单个checkbox
 	$("#mydata input[type='checkbox']").click(function(){
 			getCount();
-			if($(this).is(":checked")){
-				$("#jz1").css("display", "none");
-				$("#jz2").css("display", "block");
-			}else{
-				$("#jz1").css("display", "block");
-				$("#jz2").css("display", "none");
-			}
 	});
 	
 	//checkbox 全选反选
@@ -177,13 +171,9 @@ var totalPage;
 		if($(this).is(":checked")){
 			t.prop("checked",true);
 			getCount();
-			$("#jz1").css("display", "none");
-			$("#jz2").css("display", "block");
 		}else{
 			t.prop("checked",false);
 			getCount();
-			$("#jz1").css("display", "block");
-			$("#jz2").css("display", "none");
 		}
 	});
 	
@@ -208,6 +198,13 @@ var totalPage;
 			id_arr.push($(this).val());//向数组中添加元素
 			});
 		idStr=id_arr.join(',');
+		if(count!=0){
+			$("#jz1").css("display", "none");
+			$("#jz2").css("display", "block");
+		}else{
+			$("#jz1").css("display", "block");
+			$("#jz2").css("display", "none");
+		}
 	}
 
 	function payMoney(){

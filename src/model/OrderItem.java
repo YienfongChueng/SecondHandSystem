@@ -3,8 +3,7 @@ package model;
 public class OrderItem {
 
 	private Integer id;
-	//private Integer proId;//商品id
-	//private Integer orderId;//订单id
+
 	private Integer num;//数量
 	private Double count;//小计
 	private Product product;

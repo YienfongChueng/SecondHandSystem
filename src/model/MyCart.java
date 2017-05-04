@@ -14,7 +14,10 @@ public class MyCart {
 	private Double total;
 	private String productPic;
 	private String productDesc;
-	
+	private String creatorName;
+	private String creatorPhone;
+	private Integer creatorId;
+	private Double singlePrice;
 	
 	public String getProductPic() {
 		return productPic;
@@ -76,5 +79,30 @@ public class MyCart {
 	public void setTotal(Double total) {
 		this.total = total;
 	}
+    public String getCreatorName() {
+        return creatorName;
+    }
+    public void setCreatorName(String creatorName) {
+        this.creatorName = creatorName;
+    }
+    public String getCreatorPhone() {
+        return creatorPhone;
+    }
+    public void setCreatorPhone(String creatorPhone) {
+        this.creatorPhone = creatorPhone;
+    }
+    public Integer getCreatorId() {
+        return creatorId;
+    }
+    public void setCreatorId(Integer creatorId) {
+        this.creatorId = creatorId;
+    }
+    public Double getSinglePrice() {
+        return singlePrice;
+    }
+    public void setSinglePrice(Double singlePrice) {
+        this.singlePrice = singlePrice;
+    }
+    
 	
 }

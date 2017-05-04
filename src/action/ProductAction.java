@@ -8,32 +8,33 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import org.apache.struts2.ServletActionContext;
-import org.aspectj.util.FileUtil;
-import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.ModelDriven;
+import model.Classify;
 import model.Comment;
 import model.MyCart;
 import model.Order;
-import model.Classify;
+import model.OrderItem;
 import model.PageBean;
 import model.Product;
-import model.ShoppingCart;
 import model.User;
+
+import org.apache.struts2.ServletActionContext;
+import org.aspectj.util.FileUtil;
+
 import service.IUserService;
 import util.AddJson;
+
+import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 
 public class ProductAction extends ActionSupport implements ModelDriven<Product>{
 
@@ -112,9 +113,9 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 	 * 上传文件（io流实现）
 	 * @param src
 	 * @param dst
-	 * @throws IOException
+	 * @throws Exception 
 	 */
-	private void copy(File src, File dst)throws IOException {
+	private void copy(File src, File dst)throws Exception {
 		InputStream in=null;
 		OutputStream out=null;
 		try {
@@ -292,14 +293,15 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 	/**
 	 * 订单确认--首先查询用户选择要付款的商品列表信息
 	 */
-	public void getComfirmProductList() throws Exception{
+	public void getMyCartChooseList() throws Exception{
 		User user=(User) req.getSession().getAttribute("User");
 		if(user==null){
 			throw new Exception("用户帐户为空，请重新登录！");
 		}else{
 			String ids=req.getParameter("ids");
-			List<Product> list=this.iUserService.getComfirmProductList(ids);
-			this.json.toJsonArray(list);
+			//List<Product> list=this.iUserService.getComfirmProductList(ids);
+			List<MyCart> mycartList=this.iUserService.getMyCartChooseList(ids);
+			this.json.toJsonArray(mycartList);
 		}
 	}
 	
@@ -311,23 +313,39 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 	private String phone;
 	private String totalMoney;
 	private String creatorIds;
+	private String ids;
+	private String amount;
 	public void addOrder()throws Exception{
 		User user=(User) req.getSession().getAttribute("User");
 		if(user==null){
 			throw new Exception("用户帐户为空，请重新登录！");
 		}else{
 			Order order=new Order();
-			order.setId(Integer.parseInt(new Date().toString()));
+			order.setId(UUID.randomUUID().toString());
 			order.setCreateTime(new Date());
 			order.setUser(user);
 			order.setPersonName(personName);
 			order.setAddress(address);
 			order.setPhone(phone);
-			order.setAmount(Double.parseDouble(totalMoney));
+			order.setAmount(Double.parseDouble(amount));
 			order.setStatus(0);//默认待付款
 			order.setPayWay("校内见面交易");
 			order.setCreatorId(creatorIds);
-			order.setOrderItem(orderItem);
+			List<MyCart> mycartList=this.iUserService.getMyCartChooseList(ids);
+			Set<OrderItem> orderItemList=new HashSet<OrderItem>();
+			for(MyCart c:mycartList){
+			    int pid=c.getProductId();
+			    Product product=this.iUserService.getProductDetail(pid+"");
+			    OrderItem orderItem=new OrderItem();
+			    orderItem.setCount(c.getCount());
+			    orderItem.setNum(c.getNum());
+			    orderItem.setProduct(product);
+			    orderItem.setOrder(order);
+			    orderItemList.add(orderItem);
+			}
+			order.setOrderItem(orderItemList);
+			this.iUserService.saveOrder(order,ids);
+			
 			
 		}
 	}
@@ -362,5 +380,17 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 	public void setTotalMoney(String totalMoney) {
 		this.totalMoney = totalMoney;
 	}
+    public String getIds() {
+        return ids;
+    }
+    public void setIds(String ids) {
+        this.ids = ids;
+    }
+    public String getAmount() {
+        return amount;
+    }
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
 	
 }

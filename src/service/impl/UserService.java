@@ -2,18 +2,19 @@ package service.impl;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
-import org.springframework.transaction.annotation.Transactional;
-
-import dao.IUserDao;
 import model.Classify;
 import model.Comment;
 import model.MyCart;
+import model.Order;
 import model.PageBean;
 import model.Product;
 import model.User;
+
+import org.springframework.transaction.annotation.Transactional;
+
 import service.IUserService;
+import dao.IUserDao;
 @Transactional
 public class UserService implements IUserService {
 
@@ -198,6 +199,37 @@ public class UserService implements IUserService {
 		
 		return this.iUserDao.getComfirmProductList(ids);
 	}
+
+	 /**
+     * <p>Description: 查询用户勾选购物车里的商品信息</p>
+     * @param ids
+     * @return
+     */
+    @Override
+    public List<MyCart> getMyCartChooseList(String ids) {
+        List<MyCart> cartlist=this.iUserDao.getMyCartChooseList(ids);
+        if(cartlist!=null){
+            for(MyCart cart:cartlist){
+                Product p=this.iUserDao.getProductDetail(cart.getProductId().toString());
+                cart.setCreatorId(p.getUser().getUid());
+                cart.setCreatorName(p.getUser().getUserName());
+                cart.setCreatorPhone(p.getUser().getPhone());
+                cart.setSinglePrice(p.getProPrice());
+            }
+        }
+        return cartlist;
+    }
+
+    /**
+     * <p>Description: 级联保存订单和订单子表</p>
+     * @param order
+     */
+    @Override
+    public void saveOrder(Order order,String ids) {
+       this.iUserDao.saveOrder(order,ids);
+       //this.iUserDao.deleteChooseFromCart(ids);
+        
+    }
 
 	
 	

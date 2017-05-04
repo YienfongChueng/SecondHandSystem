@@ -33,7 +33,7 @@
 	height: 35px;
 	top: 0;
 	left: 0;
-	background: url(http://a.tbcdn.cn/tbsp/img/header/logo.png);
+	background: url();
 }
 .dib-wrap {
 	font-size:0;
@@ -233,7 +233,7 @@ input[type=text]:focus,textarea:focus {
 	font:700 18px/36px arial
 }
 .btn-go b {
-	background:url(http://img04.taobaocdn.com/tps/i4/T1OF12XbxrXXXXXXXX-128-36.png) no-repeat scroll 0 1px transparent;
+	background:url(../../images/addorder.png) no-repeat scroll 0 1px transparent;
 	width:127px;
 	height:36px;
 	float:left;
@@ -524,7 +524,7 @@ input[type=text]:focus,textarea:focus {
 	border:1px solid #5cbdaa
 }
 .address .marker {
-	background:url(http://img04.taobaocdn.com/tps/i4/T1sGyVXmlfXXXXXXXX-14-23.gif) no-repeat transparent;
+	background:url() no-repeat transparent;
 	position:absolute;
 	top:6px;
 	_top:1px;

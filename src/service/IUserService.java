@@ -2,14 +2,14 @@ package service;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
-import model.User;
 import model.Classify;
 import model.Comment;
 import model.MyCart;
+import model.Order;
 import model.PageBean;
 import model.Product;
+import model.User;
 
 public interface IUserService {
 
@@ -87,6 +87,19 @@ public interface IUserService {
 	 * @return
 	 */
 	List<Product> getComfirmProductList(String ids);
+
+    /**
+     * <p>Description: 查询用户勾选购物车里的商品信息</p>
+     * @param ids
+     * @return
+     */
+    List<MyCart> getMyCartChooseList(String ids);
+
+    /**
+     * <p>Description: 级联保存订单和订单子表</p>
+     * @param order
+     */
+    void saveOrder(Order order,String ids);
 
 	
 	

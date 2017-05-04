@@ -4,7 +4,7 @@
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
     <hibernate-mapping>
     <class name="model.Order" table="tb_order">
-    	<id name="id" column="id" type="java.lang.Integer" >
+    	<id name="id" column="id" type="java.lang.String" >
     		<generator class="assigned"/>
     	</id>
     	<property name="createTime" column="CREATE_TIME" type="java.util.Date"/>	
