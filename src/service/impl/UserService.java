@@ -9,6 +9,7 @@ import model.MyCart;
 import model.Order;
 import model.PageBean;
 import model.Product;
+import model.Reply;
 import model.User;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -227,11 +228,138 @@ public class UserService implements IUserService {
     @Override
     public void saveOrder(Order order,String ids) {
        this.iUserDao.saveOrder(order,ids);
-       //this.iUserDao.deleteChooseFromCart(ids);
+    }
+
+    /**
+     * <p>Description: 分页查询我卖出的订单</p>
+     * @param map
+     * @return
+     */
+    @Override
+    public PageBean<Order> searchMySellOrderByPage(Map<Object, String> map) {
+        PageBean<Order> pageBean=new PageBean<Order>();
+        //封装当前页
+        currPage=Integer.parseInt(map.get("currPage"));
+        pageBean.setCurrPage(currPage);
+        //封装每页记录数
+        int pageSize=5;
+        pageBean.setPageSize(pageSize);
+        //封装总记录数
+        int totalCount=this.iUserDao.searchMyOrderCount(map.get("userId"));
+        pageBean.setTotalCount(totalCount);
+        //封装总页数
+        double tc=totalCount;
+        Double num=Math.ceil(tc/pageSize);
+        if(num==0){
+            num=(double) 1;
+        }
+        pageBean.setTotalPage(num.intValue());
+        //封装每页显示的数据
+        int begin=(currPage-1)*pageSize;
+        map.put("begin", begin+"");
+        map.put("pageSize", pageSize+"");
+        List<Order> list=this.iUserDao.getMyOrderList(map);
+        pageBean.setList(list);
+        return pageBean;
+    }
+
+    /**
+     * <p>Description: 分页查询我卖出的订单</p>
+     * @param map
+     * @return
+     */
+    @Override
+    public PageBean<Order> searchMyBuyOrderByPage(Map<Object, String> map) {
+        PageBean<Order> pageBean=new PageBean<Order>();
+        //封装当前页
+        currPage=Integer.parseInt(map.get("currPage"));
+        pageBean.setCurrPage(currPage);
+        //封装每页记录数
+        int pageSize=5;
+        pageBean.setPageSize(pageSize);
+        //封装总记录数
+        int totalCount=this.iUserDao.searchBuyOrderCount(Integer.parseInt(map.get("userId")));
+        pageBean.setTotalCount(totalCount);
+        //封装总页数
+        double tc=totalCount;
+        Double num=Math.ceil(tc/pageSize);
+        if(num==0){
+            num=(double) 1;
+        }
+        pageBean.setTotalPage(num.intValue());
+        //封装每页显示的数据
+        int begin=(currPage-1)*pageSize;
+        map.put("begin", begin+"");
+        map.put("pageSize", pageSize+"");
+        List<Order> list=this.iUserDao.getBuyOrderList(map);
+        pageBean.setList(list);
+        return pageBean;
+    }
+
+    /**
+     * <p>Description: 查询我发布的商品列表信息</p>
+     * @param map
+     * @return
+     */
+    @Override
+    public PageBean<Product> searchMyProductByPage(Map<Object, String> map) {
+        PageBean<Product> pageBean=new PageBean<Product>();
+        //封装当前页
+        currPage=Integer.parseInt(map.get("currPage"));
+        pageBean.setCurrPage(currPage);
+        //封装每页记录数
+        int pageSize=5;
+        pageBean.setPageSize(pageSize);
+        //封装总记录数
+        int totalCount=this.iUserDao.searchMyProductCount(Integer.parseInt(map.get("userId")));
+        pageBean.setTotalCount(totalCount);
+        //封装总页数
+        double tc=totalCount;
+        Double num=Math.ceil(tc/pageSize);
+        if(num==0){
+            num=(double) 1;
+        }
+        pageBean.setTotalPage(num.intValue());
+        //封装每页显示的数据
+        int begin=(currPage-1)*pageSize;
+        map.put("begin", begin+"");
+        map.put("pageSize", pageSize+"");
+        List<Product> list=this.iUserDao.getMyProductList(map);
+        pageBean.setList(list);
+        return pageBean;
+    }
+
+    /**
+     * <p>Description: 新增一条评论</p>
+     * @param comm
+     */
+    @Override
+    public void saveComment(Comment comm) {
+       this.iUserDao.saveComment(comm);
         
     }
 
-	
+    /**
+     * <p>Description: 查询评论详情</p>
+     * @param cid
+     * @return
+     */
+    @Override
+    public Comment searchCommentDetail(String cid) {
+      int id=Integer.parseInt(cid);
+        return this.iUserDao.searchCommentDetail(id);
+    }
+
+    
+    /**
+     * <p>Description: 新增一条回复</p>
+     * @param r
+     */
+    @Override
+    public void saveReply(Reply r) {
+     this.iUserDao.saveReply(r);
+        
+    }
 	
 	
 }

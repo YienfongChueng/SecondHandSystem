@@ -6,7 +6,7 @@ public class Reply {
 
 	private Integer id;
 	private Date createTime;//回复时间
-	private java.lang.String reply;//回复内容
+	private java.lang.String replyContent;//回复内容
 	private User user;
 	private Comment comment;
 	public Reply() {
@@ -47,13 +47,16 @@ public class Reply {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
+
+    public java.lang.String getReplyContent() {
+        return replyContent;
+    }
+
+    public void setReplyContent(java.lang.String replyContent) {
+        this.replyContent = replyContent;
+    }
 	
-	public java.lang.String getReply() {
-		return reply;
-	}
-	public void setReply(java.lang.String reply) {
-		this.reply = reply;
-	}
+	
 	
 	
 }

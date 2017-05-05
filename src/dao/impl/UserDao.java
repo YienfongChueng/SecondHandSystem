@@ -7,6 +7,7 @@ import model.Classify;
 import model.Comment;
 import model.MyCart;
 import model.Product;
+import model.Reply;
 import model.User;
 
 import org.hibernate.Query;
@@ -52,6 +53,7 @@ public class UserDao extends HibernateDaoSupport implements IUserDao {
 		String condition=map.get("conditon");
 		DetachedCriteria dc=DetachedCriteria.forClass(Product.class);
 		dc.addOrder(Order.desc("createTime"));
+		dc.add(Restrictions.ne("proHassum", 0));
 		if(proName!=null){
 			proName="%"+map.get("keyword")+"%";
 			dc.add(Restrictions.like("proName",proName, MatchMode.ANYWHERE));
@@ -94,7 +96,7 @@ public class UserDao extends HibernateDaoSupport implements IUserDao {
 		String proName=map.get("keyword");
 		String cid=map.get("cid");
 		String condition=map.get("conditon");
-		String count_hql="select count(*) from Product where 1=1";
+		String count_hql="select count(*) from Product where 1=1 and proHassum!='0'";
 		if(proName!=null){
 			proName="%"+map.get("keyword")+"%";
 			br.append(" and proName like '"+proName+"'");
@@ -300,7 +302,7 @@ public class UserDao extends HibernateDaoSupport implements IUserDao {
     @SuppressWarnings("unchecked")
     @Override
     public List<MyCart> getMyCartChooseList(String ids) {
-        String hql="from MyCart where product_id IN ("+ids+")";
+        String hql="from MyCart where productId IN ("+ids+")";
         return this.getHibernateTemplate().find(hql);
     }
 
@@ -324,7 +326,125 @@ public class UserDao extends HibernateDaoSupport implements IUserDao {
     @Override
     public void deleteChooseFromCart(String ids) {
       
-        
     }
+
+    /**
+     * <p>Description: 查询我的订单数量(卖出的)</p>
+     * @param parseInt
+     * @return
+     */
+@Override
+public int searchMyOrderCount(String uid) {
+    String hql="select count(*) from Order where creatorId LIKE ?";
+    List<Long> list=this.getHibernateTemplate().find(hql,"%"+uid+"%");
+    if(list.size()>0){
+        return list.get(0).intValue();
+    }
+    return 0;
+}
+
+/**
+ * <p>Description: 查询我的订单列表(卖出的)</p>
+ * @param map
+ * @return
+ */
+@Override
+public List<model.Order> getMyOrderList(Map<Object, String> map) {
+    DetachedCriteria dc=DetachedCriteria.forClass(model.Order.class);
+    dc.add(Restrictions.like("creatorId",map.get("userId")));
+    List<model.Order> list=this.getHibernateTemplate().findByCriteria(dc,Integer.parseInt(map.get("begin")),Integer.parseInt(map.get("pageSize")));
+    return list;
+}
+
+/**
+ * <p>Description: 买入的订单数量</p>
+ * @param parseInt
+ * @return
+ */
+@Override
+public int searchBuyOrderCount(int uid) {
+    String hql="select count(*) from Order where user.uid = ?";
+    List<Long> list=this.getHibernateTemplate().find(hql,uid);
+    if(list.size()>0){
+        return list.get(0).intValue();
+    }
+    return 0;
+}
+
+/**
+ * <p>Description: 买入的订单列表</p>
+ * @param map
+ * @return
+ */
+@Override
+public List<model.Order> getBuyOrderList(Map<Object, String> map) {
+    DetachedCriteria dc=DetachedCriteria.forClass(model.Order.class);
+    dc.add(Restrictions.eq("user.uid",Integer.parseInt(map.get("userId"))));
+    List<model.Order> list=this.getHibernateTemplate().findByCriteria(dc,Integer.parseInt(map.get("begin")),Integer.parseInt(map.get("pageSize")));
+    return list;
+}
+
+/**
+ * <p>Description: 查询我发布的商品列表数量</p>
+ * @param parseInt
+ * @return
+ */
+@Override
+public int searchMyProductCount(int uid) {
+    String hql="select count(*) from Product where user.uid = ?";
+    List<Long> list=this.getHibernateTemplate().find(hql,uid);
+    if(list.size()>0){
+        return list.get(0).intValue();
+    }
+    return 0;
+}
+
+/**
+ * <p>Description: 查询我发布的商品列表信息</p>
+ * @param map
+ * @return
+ */
+@Override
+public List<Product> getMyProductList(Map<Object, String> map) {
+    DetachedCriteria dc=DetachedCriteria.forClass(model.Product.class);
+    dc.add(Restrictions.eq("user.uid",Integer.parseInt(map.get("userId"))));
+    List<model.Product> list=this.getHibernateTemplate().findByCriteria(dc,Integer.parseInt(map.get("begin")),Integer.parseInt(map.get("pageSize")));
+    return list;
+}
+
+/**
+ * <p>Description: 新增一条评论</p>
+ * @param comm
+ */
+@Override
+public void saveComment(Comment comm) {
+   this.getHibernateTemplate().save(comm);
+    
+}
+
+/**
+ * <p>Description: 查询评论详情</p>
+ * @param id
+ * @return
+ */
+@Override
+public Comment searchCommentDetail(int id) {
+    String hql="from Comment where id=?";
+    List<Comment> list=this.getHibernateTemplate().find(hql,id);
+    if(list.size()>0){
+        Comment c=list.get(0);
+        return c;
+    }
+    return null;
+}
+
+/**
+ * <p>Description: 新增一条评论</p>
+ * @param r
+ */
+@Override
+public void saveReply(Reply r) {
+    this.getHibernateTemplate().save(r);
+}
 
 }

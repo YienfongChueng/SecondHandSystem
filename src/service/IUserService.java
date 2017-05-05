@@ -9,6 +9,7 @@ import model.MyCart;
 import model.Order;
 import model.PageBean;
 import model.Product;
+import model.Reply;
 import model.User;
 
 public interface IUserService {
@@ -100,6 +101,46 @@ public interface IUserService {
      * @param order
      */
     void saveOrder(Order order,String ids);
+
+    /**
+     * <p>Description: 分页查询我卖出的订单</p>
+     * @param map
+     * @return
+     */
+    PageBean<Order> searchMySellOrderByPage(Map<Object, String> map);
+
+    /**
+     * <p>Description: 分页查询我买到的订单</p>
+     * @param map
+     * @return
+     */
+    PageBean<Order> searchMyBuyOrderByPage(Map<Object, String> map);
+
+    /**
+     * <p>Description: 查询我发布的商品列表信息</p>
+     * @param map
+     * @return
+     */
+    PageBean<Product> searchMyProductByPage(Map<Object, String> map);
+
+    /**
+     * <p>Description: 新增一条评论</p>
+     * @param comm
+     */
+    void saveComment(Comment comm);
+
+    /**
+     * <p>Description: 查询评论详情</p>
+     * @param cid
+     * @return
+     */
+    Comment searchCommentDetail(String cid);
+
+    /**
+     * <p>Description: 新增一条回复</p>
+     * @param r
+     */
+    void saveReply(Reply r);
 
 	
 	

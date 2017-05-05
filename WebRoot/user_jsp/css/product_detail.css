@@ -1228,9 +1228,9 @@ area{outline: none;}
 }
 .goodsphotos{
 	width: 1200px;
-	height: 596px;;
+	height: 100%;
 	margin: auto;
-	overflow: hidden;
+	overflow: flow;
 }
 .Xcontent02>a>p{
 	font-family: "微软雅黑";

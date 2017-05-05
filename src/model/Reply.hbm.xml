@@ -10,7 +10,7 @@
     	 
     	<property name="createTime" column="CREATE_TIME" type="java.util.Date"/>	
     	
-    	<property name="reply" column="REPLY" type="java.lang.String" length="100"/>
+    	<property name="replyContent" column="REPLY" type="java.lang.String" length="100"/>
     	<many-to-one name="user" class="model.User" lazy="false" fetch="join">
     		<column name="USER_ID"></column>
     	</many-to-one>

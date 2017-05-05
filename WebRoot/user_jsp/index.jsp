@@ -117,7 +117,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">分类 <span class="caret"></span></a>
           <input type="hidden" id="cid"/>
           <ul class="dropdown-menu" id="classify">
-            
+            <!-- 数据 -->
           </ul>
         </li>
       </ul>     
@@ -130,7 +130,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 
 <nav style="text-align: center" id="pageShow">
-	<input type="hidden" id="turnPage"/>
+		<input type="hidden" id="turnPage"/>
 		<a id="first" href="javascript:loadData();" onclick="turnPage(1);">首页</a>
 		<a id="pre" href="javascript:loadData();" onclick="turnPage(2);">上一页</a>
 		<a id="next" href="javascript:loadData();" onclick="turnPage(3);">下一页</a> 
@@ -243,7 +243,7 @@ var totalPage;
 			    		'        <h3 style="color:#16a085">￥'+data[i].proPrice+'</h3>'+
 			    		'        <p style="color:#808080">'+data[i].proName+'</p>'+
 			    		'        <p>'+
-			    		'			<a href="javascript:selflog_show('+data[i].id+');" class="btn btn-primary" style="background:#16a085" role="button">加入购物车</a> '+
+						'			<a href="javascript:selflog_show('+data[i].id+');" class="btn btn-primary" style="background:#16a085" role="button">加入购物车</a> '+
 			    		'			<a class="btn btn-default" role="button">'+data[i].classify.classifyName+'</a>'+
 			    		'			<p><span>&nbsp;&nbsp;浏览：'+data[i].proClicknum+' 人</span>'	+
 			    		'			<span>&nbsp;&nbsp;类型：'+ptype+' </span>'	+

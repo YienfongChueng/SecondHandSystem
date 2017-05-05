@@ -11,19 +11,11 @@
  
 <!--引入Css样式类库文件-->  
 <link rel="stylesheet" href="css/product_detail.css">
+
 </head>
 <body>
-<%
-	request.setCharacterEncoding("utf-8");
-	response.setCharacterEncoding("utf-8");	
-	User u=(User)request.getSession().getAttribute("User");
-	int uid=0;
-	if(u!=null){
-		uid=u.getUid();
-	}
-%>
-   <jsp:include page="topbar.jsp"></jsp:include> 
-   <input type="hidden" value="${uid }" id="uuid"/>  
+
+   <jsp:include page="topbar.jsp"></jsp:include>  
    <div class="Detailspage"> 
 		<ul class="goodsphotos">
 			
@@ -71,13 +63,27 @@
 		</ul>
 		<!-- 评论区域 -->
 		<div class="div_div">
-		
 			<span class="div_p">大家说</span>
 		</div>
 		<hr style="background-color: #16a085;height:2px;">
 		<ul class="goodsphotos" id="mydata">
-			
+		
+		<!--遮罩弹窗 display: none-->
+        <div id="mask" style="display: none"></div>
+        <div class="pop_up" id="pop_up" style="width:50%;margin:0 auto;display: none">
+          <form action="">
+            <header style="font-size:20px;color:green;font-weight:bold;">
+               	 回复               
+            </header>
+            <section class="p10-p15 bgfff">
+                <textarea style="width:60%;border:2px solid green;" placeholder="回复内容..." rows="10" id="reasonText"></textarea>
+            </section>
+            <footer>
+              <input type="button" value="提交" onclick="showDialog(false,'#mask, #pop_up');" style="width:65px;height:40px;margin:10px 0 0 20px;background-color:#16a085;color:#fff;font-size:17px;" ></footer>
+          </form>
+        </div>	
 		</ul>
+		
 		
 	</div>
 	
@@ -85,7 +91,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	loadData();
-	//loadComment();
+	loadComment();
 	});
 var id=${param.id};
 var hassum;
@@ -157,7 +163,9 @@ var template='<li style="margin-top:5px;">'+
 '                    </div>'+
 '                    <div class="comment_content">@commentContent</div>'+
 '                    <div >'+
-'                        <a href="javascript:void(0);" class="reply_btn" id="dialog_link" >回复</a>'+
+'                        <a href="javascript:void(0);" class="reply_btn" id="dialog_link" onclick="showDialog(true,\'#mask, #pop_up\')" >'+
+'						<input type="hidden" id="commId" value="@commentId" />'+
+'						回复</a>'+
 '                    </div>'+
 '                    <ul style="margin-top:20px;">'+
 '                        <li class="comment_reply_li" ><label class="comment_reply_label">@louzhu</label><span class="comment_reply_label">@replyContent</span></li>'+
@@ -172,8 +180,6 @@ function loadComment(){
 		   dataType:"json",
 		   data:{"id":id},
 		   success: function(result){
-			   var temp=template;
-			   var temp1='';
 			   var len=0;
 			     if(result.totalCount>result.pageSize){
 				     len=result.pageSize
@@ -181,33 +187,55 @@ function loadComment(){
 				     len=result.totalCount;   
 				}
 				var data=result.list;
-				
-				if($("#uuid").val()!=data[0].product.user.uid){
-					$("#dialog_link").html("");
-					}
 				for(var i=0;i<len;i++){
-					debugger;
-					var replyData=data[i].reply;
-					temp1+=temp.replace("@time",data[i].creatTime);
-					temp1+=temp.replace("@userName",data[i].user.userName);
-					temp1+=temp.replace("@commentContent",data[i].content);
-					$.each(replyData, function(){     
-						temp1+=temp.replace("@louzhu",data[0].product.user.userName);
-						temp1+=temp.replace("@replyContent",replyData.reply);
-					});
+					var temp=template;
+					temp=temp.replace("@time",data[i].creatTime);
+					temp=temp.replace("@userName",data[i].user.userName);
+					temp=temp.replace("@commentContent",data[i].content);
+					temp=temp.replace("@commentId",data[i].id);
+						for(var j=0;j<data[i].reply.length;j++){
+						temp=temp.replace("@louzhu",data[0].product.user.userName+":");
+						temp=temp.replace("@replyContent",data[i].reply[j].replyContent);
+						}
 					
+				$("#mydata").append(temp);
 				}
-				$("#mydata").append(temp1);
 				var temp2='<li style="margin-top:5px;">'+
-				'			<textarea style="width:590px;height:225px;margin-left:20px;" placeholder="我来评论"></textarea>'+
+				'			<textarea id="toCommentContent" style="width:590px;height:100px;margin-left:20px;" placeholder="我来评论"></textarea>'+
 				'			<div>'+
-				'			<button style="width:65px;height:40px;margin:10px 0 0 20px;background-color:#16a085;color:#fff;font-size:17px;" >提交</button>'+
+				'			<button style="width:65px;height:40px;margin:10px 0 0 20px;background-color:#16a085;color:#fff;font-size:17px;" onclick="toComment();" >提交</button>'+
 				'			</div>'+
 				'			</li>';
 				$("#mydata").append(temp2);
 		}
 	});
 }
+//弹窗
+function showDialog(flag,el){
+    if(flag){
+        $(el).show();
+    }else if(flag == false){
+        var cid=$("#commId").val();
+        var repContent=$("#reasonText").val();
+        toReply(cid,repContent);
+        $(el).hide();
+    }
+}
+function toComment(){
+	var content=$("#toCommentContent").val();
+	$.post("product_addComment.action",{"id":id,"content":content},function(data){
+		   alert("评论成功！");
+		   window.location.reload();
+	});
+}
+
+function toReply(cid,repContent){
+	$.post("product_addReply.action",{"cid":cid,"repContent":repContent},function(data){
+		   alert("评论成功！");
+		   window.location.reload();
+	});
+}
+
 </script>
 
 </html>

@@ -138,7 +138,7 @@
    <div id="page">
 	<div id="content" class="grid-c">
 		<div id="address" class="address" style="margin-top: 20px;" data-spm="2">
-			<form name="addrForm" id="addrForm" action="product_addOrder">
+			<form name="addrForm" id="addrForm" action="product_addOrder" method="post">
 			<input type="hidden" name="ids" value="${param.ids}" />
 			<input type="hidden" name="amount" id="amount1" />
 			<input type="hidden" name="creatorIds" id="creatorIds" />

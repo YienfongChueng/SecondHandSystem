@@ -8,13 +8,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -25,6 +25,7 @@ import model.Order;
 import model.OrderItem;
 import model.PageBean;
 import model.Product;
+import model.Reply;
 import model.User;
 
 import org.apache.struts2.ServletActionContext;
@@ -178,7 +179,6 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 		}
 		map.put("currPage", currPage+"");
 		PageBean<Product> proList=this.iUserService.searchProductList(map);
-		//List<Product> list=new ArrayList<Product>();
 		this.json.toJsonObj(proList);
 	}
 	
@@ -320,8 +320,10 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 		if(user==null){
 			throw new Exception("用户帐户为空，请重新登录！");
 		}else{
+		    SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+            String orderNum = format.format(new Date())+String.valueOf(System.currentTimeMillis());
 			Order order=new Order();
-			order.setId(UUID.randomUUID().toString());
+			order.setId(orderNum);
 			order.setCreateTime(new Date());
 			order.setUser(user);
 			order.setPersonName(personName);
@@ -342,14 +344,119 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 			    orderItem.setProduct(product);
 			    orderItem.setOrder(order);
 			    orderItemList.add(orderItem);
+			    int hassum=product.getProHassum()-c.getNum();
+			    if(hassum==0){
+			        product.setProHassum(0);
+			    }else{
+			        product.setProHassum(hassum);
+			    }
+			    this.iUserService.updateProduct(product);
 			}
 			order.setOrderItem(orderItemList);
 			this.iUserService.saveOrder(order,ids);
-			
-			
 		}
 	}
+
+	/**
+     * 分页查询我卖出的订单
+     * @throws Exception 
+     */
+    public void searchMySellOrderByPage() throws Exception{
+        User user=(User) req.getSession().getAttribute("User");
+        if(user==null){
+            throw new Exception("用户帐户为空，请重新登录！");
+        }else{
+            Map<Object, String> map=new HashMap<Object, String>();
+            map.put("currPage", currPage+"");
+            map.put("userId", user.getUid()+"");
+            PageBean<Order> order=this.iUserService.searchMySellOrderByPage(map);
+            this.json.toJson(order);
+        }
+    }
 	
+    /**
+     * 分页查询我买到的订单
+     * @throws Exception 
+     */
+    public void searchMyBuyOrderByPage() throws Exception{
+        User user=(User) req.getSession().getAttribute("User");
+        if(user==null){
+            throw new Exception("用户帐户为空，请重新登录！");
+        }else{
+            Map<Object, String> map=new HashMap<Object, String>();
+            map.put("currPage", currPage+"");
+            map.put("userId", user.getUid()+"");
+            PageBean<Order> order=this.iUserService.searchMyBuyOrderByPage(map);
+            this.json.toJson(order);
+        }
+    }
+    
+    /**
+     * 分页查询我发布的商品列表信息
+     * @throws Exception 
+     */
+    public void searchMyProductByPage() throws Exception{
+        User user=(User) req.getSession().getAttribute("User");
+        if(user==null){
+            throw new Exception("用户帐户为空，请重新登录！");
+        }else{
+            Map<Object, String> map=new HashMap<Object, String>();
+            map.put("currPage", currPage+"");
+            map.put("userId", user.getUid()+"");
+            PageBean<Product> myproList=this.iUserService.searchMyProductByPage(map);
+            this.json.toJson(myproList);
+        }
+    }
+    
+    /**
+     * 
+     * <p>Description: 新增评论数据</p>
+     * @return
+     * @throws Exception 
+     */
+    public void addComment() throws Exception{
+        User user=(User) req.getSession().getAttribute("User");
+        if(user==null){
+            throw new Exception("用户帐户为空，请重新登录！");
+        }else{
+            String content=req.getParameter("content");
+            String id=req.getParameter("id");
+            Product pro=this.iUserService.getProductDetail(id);
+            Comment comm=new Comment();
+            comm.setContent(content);
+            comm.setCreatTime(new Date());
+            comm.setProduct(pro);
+            comm.setUser(user);
+            comm.setStatus(0);
+            this.iUserService.saveComment(comm);
+        }
+    }
+    
+    /**
+     * 
+     * <p>Description: 新增一条回复</p>
+     * @return
+     * @throws Exception 
+     */
+    public void addReply() throws Exception{
+        User user=(User) req.getSession().getAttribute("User");
+        if(user==null){
+            throw new Exception("用户帐户为空，请重新登录！");
+        }else{
+            String cid=req.getParameter("cid");
+            String rcontent=req.getParameter("repContent");
+            Comment comment=this.iUserService.searchCommentDetail(cid);
+            Reply r=new Reply();
+            r.setCreateTime(new Date());
+            r.setReplyContent(rcontent);
+            r.setUser(user);
+            r.setComment(comment);
+            this.iUserService.saveReply(r);
+        }
+    }
+    
+    
+    
 	public String getCreatorIds() {
 		return creatorIds;
 	}

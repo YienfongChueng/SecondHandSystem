@@ -8,6 +8,7 @@ import model.Comment;
 import model.MyCart;
 import model.Order;
 import model.Product;
+import model.Reply;
 import model.User;
 
 public interface IUserDao {
@@ -129,5 +130,66 @@ public interface IUserDao {
      * @param ids
      */
     void deleteChooseFromCart(String ids);
+
+    /**
+     * <p>Description: 查询我的订单数量(卖出的)</p>
+     * @param uid
+     * @return
+     */
+    int searchMyOrderCount(String uid);
+
+    /**
+     * <p>Description: 查询我的订单列表(卖出的)</p>
+     * @param map
+     * @return
+     */
+    List<Order> getMyOrderList(Map<Object, String> map);
+
+    /**
+     * <p>Description: 买入的订单数量</p>
+     * @param parseInt
+     * @return
+     */
+    int searchBuyOrderCount(int parseInt);
+
+    /**
+     * <p>Description: 买入的订单列表</p>
+     * @param map
+     * @return
+     */
+    List<Order> getBuyOrderList(Map<Object, String> map);
+
+    /**
+     * <p>Description: 查询我发布的商品列表数量</p>
+     * @param parseInt
+     * @return
+     */
+    int searchMyProductCount(int parseInt);
+
+    /**
+     * <p>Description: 查询我发布的商品列表信息</p>
+     * @param map
+     * @return
+     */
+    List<Product> getMyProductList(Map<Object, String> map);
+
+    /**
+     * <p>Description: 新增一条评论</p>
+     * @param comm
+     */
+    void saveComment(Comment comm);
+
+    /**
+     * <p>Description: 查询评论详情</p>
+     * @param id
+     * @return
+     */
+    Comment searchCommentDetail(int id);
+
+    /**
+     * <p>Description: 新增一条评论</p>
+     * @param r
+     */
+    void saveReply(Reply r);
 
 }
