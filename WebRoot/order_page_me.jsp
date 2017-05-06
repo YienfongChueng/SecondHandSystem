@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>我的订单 - 二手网</title>
-<link href="css/order_mime.css" rel="stylesheet" type="text/css" />
+<link href="css/order_my.css" rel="stylesheet" type="text/css" />
 <link href="css/topbar.css" rel="stylesheet" type="text/css" />
 </head>
 <body>

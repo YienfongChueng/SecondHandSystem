@@ -15,7 +15,7 @@
     	<property name="address" column="ADDRESS" type="java.lang.String" />	
     	<property name="payWay" column="PAYWAY" type="java.lang.String" />
     	<property name="creatorId" column="CREATOR"  type="java.lang.String" ></property>	
-    	<set name="orderItem" table="tb_order_item" inverse="true" cascade="save-update" lazy="false" fetch="join">
+    	<set name="orderItem" table="tb_order_item" inverse="true" cascade="all" lazy="false" fetch="join">
     		<key><column name="ORDER_ID"></column></key>
     		<one-to-many class="model.OrderItem"/>
     	</set>

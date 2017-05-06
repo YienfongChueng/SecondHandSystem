@@ -360,6 +360,63 @@ public class UserService implements IUserService {
      this.iUserDao.saveReply(r);
         
     }
+
+    /**
+     * <p>Description: 通过oid删除我卖出的订单</p>
+     * @param oid
+     */
+    @Override
+    public void deleteMySellOrder(String oid) {
+      this.iUserDao.deleteMySellOrder(oid);
+        
+    }
+
+    /**
+     * <p>Description: 删除我发布的商品</p>
+     * @param pid
+     */
+    @Override
+    public void delectProductById(int pid) {
+        this.iUserDao.delectProductById(pid);
+        
+    }
+
+    /**
+     * <p>Description: 分页查询评论</p>
+     * @param map
+     * @return
+     */
+    @Override
+    public PageBean<Comment> searchCommentByPage(Map<Object, String> map) {
+        PageBean<Comment> pageBean=new PageBean<Comment>();
+        //封装当前页
+        currPage=Integer.parseInt(map.get("currPage"));
+        pageBean.setCurrPage(currPage);
+        //封装每页记录数
+        int pageSize=5;
+        pageBean.setPageSize(pageSize);
+        //封装总记录数
+        int totalCount=this.iUserDao.searchCommentCount(Integer.parseInt(map.get("userId")),map.get("flag"));
+        pageBean.setTotalCount(totalCount);
+        //封装总页数
+        double tc=totalCount;
+        Double num=Math.ceil(tc/pageSize);
+        if(num==0){
+            num=(double) 1;
+        }
+        pageBean.setTotalPage(num.intValue());
+        //封装每页显示的数据
+        int begin=(currPage-1)*pageSize;
+        map.put("begin", begin+"");
+        map.put("pageSize", pageSize+"");
+        List<Comment> list=this.iUserDao.getCommentList(map);
+        pageBean.setList(list);
+        return pageBean;
+    }
+
+    
+
+ 
 	
 	
 }

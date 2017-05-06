@@ -15,7 +15,7 @@ public class Order {
 	private java.lang.String payWay;//付款方式
 	private String creatorId;//发布者id
 	private Set<OrderItem> orderItem=new HashSet<OrderItem>();
-	private User user;
+	private User user;//购买者
 
 	public Order() {
 	}

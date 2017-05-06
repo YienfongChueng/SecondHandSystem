@@ -16,8 +16,8 @@
 		   <dl>
 			<dt>我的二货</dt>
 			<!--当前链接则添加class:active-->
-			<dd class="public-ifame-item"><a href="order_list.jsp" class="active" target="content">我发布的二货</a></dd>
-			<dd class="public-ifame-item"><a href="order_list.jsp" target="content" >我购买的二货</a></dd>
+			<dd class="public-ifame-item"><a href="myproduct_list.jsp" class="active" target="content">我发布的二货</a></dd>
+			<dd class="public-ifame-item"><a href="buy_order_list.jsp" target="content" >我购买的二货</a></dd>
 			<dd class="public-ifame-item"><a href="order_list.jsp" target="content">我卖出的二货</a></dd> 
 		   </dl>
 		  </li>
@@ -39,7 +39,7 @@
    <!--主体内容-->
    <section class="rt_wrap content mCustomScrollbar">
 		<div class="rt_content">
-		<iframe name="content" src="order_list.jsp" frameborder="0" id="mainframe" scrolling="yes" marginheight="0" marginwidth="0" width="100%" style="height: 700px;"></iframe>
+		<iframe name="content" src="myproduct_list.jsp" frameborder="0" id="mainframe" scrolling="yes" marginheight="0" marginwidth="0" width="100%" style="height: 700px;"></iframe>
      
 		</div>
 	</section>

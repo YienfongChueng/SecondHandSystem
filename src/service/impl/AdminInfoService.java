@@ -2,15 +2,17 @@ package service.impl;
 
 import java.util.List;
 
-import org.springframework.transaction.annotation.Transactional;
-
-import dao.IAdminInfoDao;
 import model.Admin;
 import model.Classify;
 import model.PageBean;
 import model.Product;
 import model.User;
+import model.UserAndAdmin;
+
+import org.springframework.transaction.annotation.Transactional;
+
 import service.IAdminInfoService;
+import dao.IAdminInfoDao;
 @Transactional
 public class AdminInfoService implements IAdminInfoService {
 
@@ -262,6 +264,15 @@ public class AdminInfoService implements IAdminInfoService {
 		this.iAdminInfoDao.updateCate(cassify);
 		
 	}
+	/**
+     * <p>Description: 后台删除商品发送通知给用户</p>
+     * @param uaa
+     */
+    @Override
+    public void saveSystemMessage(UserAndAdmin uaa) {
+       this.iAdminInfoDao.saveSystemMessage(uaa);
+        
+    }
 
 	
 

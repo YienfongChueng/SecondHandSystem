@@ -33,16 +33,18 @@
   
   <div id="nav">
      <span>您的位置： </span>
-     <span style="color:#16a085">我的订单</span>
+     <span style="color:#16a085">我的订单--卖出的二货</span>
   </div>
   <div id="content">
  <table width="100%" border="0" cellspacing="0" cellpadding="0" id="shopping">
   <tr>
-    <td class="goods" colspan="2">商品</td>
-    <td class="prices">单价（元）</td>
-    <td class="amounts">数量</td>
-    <td class="status">交易状态</td>
-    <td class="delete">操作</td>
+    <td class="goods">买家</td>
+    <td class="goods">交易金额（元）</td>
+    <td class="goods">交易地点</td>
+    <td class="goods">联系电话</td>
+    <td class="goods">交易时间</td>
+    <td class="goods">交易状态</td>
+    <!-- <td class="goods">操作</td> -->
   </tr>
   <tr>
     <td colspan="8" class="line"></td>
@@ -72,13 +74,16 @@
 	//'    <td colspan="8" class="shopInfo">卖家：<a href="#" style="color:#16a085">@sellerName</a> </td>'+
 	'  </tr>'+
 	'   <tr>'+
-	'    <td class="order_logo" ><img style="width:74px;height:70px" src="@logopic" alt="shopping"/></td>'+
-	'    <td class="order_describe"><a href="@url" target="_blank" style="color:#16a085">@title</a><br />'+
-	'        @proDesc</td>'+
-	'    <td class="order_price">@sum</td>'+
-	'    <td class="order_amount"> <label id="count">@num</label> </td>'+
-	'    <td class="order_status">@status</td>'+
-	'    <td class="order_delete "><a style="color:#5cbdaa" href="javascript:deleteRow(\'@oid\');">删除</a></td>'+
+	'    <td class="goods order_item_select" >@buyer</td>'+
+	'    <td class="goods order_item_select">@amout</td>'+
+	'    <td class="goods order_item_select">@address</td>'+
+	'    <td class="goods order_item_select">@phone</td>'+
+	'    <td class="goods order_item_select">@time</td>'+
+	'    <td class="goods order_item_select order_status">@status</td>'+
+	//'    <td class="goods order_item_select">'+
+	//'		<a style="color:#5cbdaa" href="javascript:deleteRow(\'@oid\');">删除</a>'+
+	//'		<a style="color:#5cbdaa" href="javascript:detailRow(\'@oid1\');">详情</a>'+
+	//'	 </td>'+
 	'  </tr>';
 	
 	var currPage;
@@ -119,22 +124,32 @@
 			dataType:"json",
 			data:{"currPage":currPage1},
 			success: function(result){
+				var len=0;
+			     if(result.totalCount>result.pageSize){
+				     len=result.pageSize
+				     }else{
+				     len=result.totalCount;   
+					 }
 			     var data=result.list;
 			     currPage=result.currPage;
 			     totalPage=result.totalPage;
 			     $("#curr").html(currPage);
 			     $("#total").html(totalPage);
-			     for(var i=0;i<result.list.length;i++){
+			     for(var i=0;i<len;i++){
 				     var temp=template;
-				     //temp=temp.replace("@sellerName",);
-				     temp=temp.replace("@logopic","../upload/"+data[i].orderItem[i].product.proPicture);
-				     temp=temp.replace("@url","goods_detail.jsp?id="+data[i].orderItem[i].product.id);
-				     temp=temp.replace("@title",data[i].orderItem[i].product.proName);
-				     temp=temp.replace("@proDesc",data[i].orderItem[i].product.proDesc);
-				     temp=temp.replace("@sum",data[i].orderItem[i].count);
-				     temp=temp.replace("@num",data[i].orderItem[i].num);
-				     temp=temp.replace("@status",data[i].status);
-				     temp=temp.replace("@oid",data[i].id);
+				     if(data[i].status==0){
+				    	 temp=temp.replace("@status","待付款");
+				     }else{
+				    	 temp=temp.replace("@status","已完成");
+				     }
+				     temp=temp.replace("@buyer",data[i].personName);
+				     temp=temp.replace("@amout",data[i].amount);
+				     temp=temp.replace("@address",data[i].address);
+				     temp=temp.replace("@phone",data[i].phone);
+				     temp=temp.replace("@time",data[i].createTime);
+				     //temp=temp.replace("@oid",data[i].id);
+				     //temp=temp.replace("@oid1",data[i].id);
+				     $("#shopping1").append(temp);
 				   }
 				},
 			error:function(){
@@ -144,6 +159,16 @@
 				}
 			
 			});
+	}
+	
+	function deleteRow(oid){
+		$.post("product_deleteMySellOrder.action", { "oid": oid},function(data){
+			alert("订单删除成功！");
+		});
+	}
+	
+	function detailRow(oid){
+		window.location.href="sellorder_detail.jsp?oid="+oid;
 	}
 </script>
 </html>

@@ -98,7 +98,11 @@ img{
 		}
 	.goods{
 		text-align:center;
+		width:100px;
 		}
+	.goods1{
+	text-align:center;
+	}
 	.prices{
 		text-align:center;
 		width:80px;

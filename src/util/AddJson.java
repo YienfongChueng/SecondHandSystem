@@ -82,4 +82,19 @@ public class AddJson extends ActionSupport{
 		writer.write("\"data\":"+obj.toString()+"}");
 		writer.flush();
 	}
+	
+	public <T> void  toJsonList(int len,List<T> list) throws IOException{
+        HttpServletResponse response=ServletActionContext.getResponse();
+        response.setHeader("Cache-Control", "no-cache");  
+        response.setHeader("Pragma", "no-cache");  
+        response.setDateHeader("Expires", 0);  
+        response.setContentType("text/html;charset=utf-8");
+        
+        String responseStr = JSON.toJSONString(list,filter);
+        Writer writer = response.getWriter();
+        //writer.write(responseStr);
+        writer.write("{\"length\":"+len+" ,");
+        writer.write("\"data\":"+responseStr+"}");
+        writer.flush();
+    }
 }

@@ -2,19 +2,18 @@ package dao.impl;
 
 import java.util.List;
 
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import model.Admin;
+import model.Classify;
+import model.Product;
+import model.User;
+import model.UserAndAdmin;
+
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import model.Admin;
-import model.Classify;
-import model.Product;
-import model.User;
 import dao.IAdminInfoDao;
 
 public class AdminInfoDao extends HibernateDaoSupport implements IAdminInfoDao {
@@ -255,6 +254,15 @@ public class AdminInfoDao extends HibernateDaoSupport implements IAdminInfoDao {
 	public void updateCate(Classify cassify) {
 		this.getHibernateTemplate().update(cassify);
 	}
+
+	/**
+     * <p>Description: 后台删除商品发送通知给用户</p>
+     * @param uaa
+     */
+    @Override
+    public void saveSystemMessage(UserAndAdmin uaa) {
+       this.getHibernateTemplate().save(uaa);
+    }
 
 	
 

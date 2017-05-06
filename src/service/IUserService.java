@@ -142,6 +142,28 @@ public interface IUserService {
      */
     void saveReply(Reply r);
 
+    /**
+     * <p>Description: 通过oid删除我卖出的订单</p>
+     * @param oid
+     */
+    void deleteMySellOrder(String oid);
+
+    /**
+     * <p>Description: 删除我发布的商品</p>
+     * @param pid
+     */
+    void delectProductById(int pid);
+
+    /**
+     * <p>Description: 分页查询评论</p>
+     * @param map
+     * @return
+     */
+    PageBean<Comment> searchCommentByPage(Map<Object, String> map);
+
+   
+
+   
 	
 	
 

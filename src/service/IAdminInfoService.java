@@ -6,6 +6,7 @@ import model.Classify;
 import model.PageBean;
 import model.Product;
 import model.User;
+import model.UserAndAdmin;
 
 public interface IAdminInfoService {
 
@@ -124,5 +125,11 @@ public interface IAdminInfoService {
 	 * @param cassify
 	 */
 	void updateCate(Classify cassify);
+
+    /**
+     * <p>Description: 后台删除商品发送通知给用户</p>
+     * @param uaa
+     */
+    void saveSystemMessage(UserAndAdmin uaa);
 
 }

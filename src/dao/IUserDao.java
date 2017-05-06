@@ -192,4 +192,33 @@ public interface IUserDao {
      */
     void saveReply(Reply r);
 
+    /**
+     * <p>Description: 通过oid删除我卖出的订单</p>
+     * @param oid
+     */
+    void deleteMySellOrder(String oid);
+
+    /**
+     * <p>Description: 删除我发布的商品</p>
+     * @param pid
+     */
+    void delectProductById(int pid);
+
+    /**
+     * <p>Description: 评论数量</p>
+     * @param parseInt
+     * @param string
+     * @return
+     */
+    int searchCommentCount(int uid, String flag);
+
+    /**
+     * <p>Description: 评论列表查询</p>
+     * @param map
+     * @return
+     */
+    List<Comment> getCommentList(Map<Object, String> map);
+
+
+    
 }

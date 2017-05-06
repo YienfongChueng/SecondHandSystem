@@ -351,7 +351,7 @@ public int searchMyOrderCount(String uid) {
 @Override
 public List<model.Order> getMyOrderList(Map<Object, String> map) {
     DetachedCriteria dc=DetachedCriteria.forClass(model.Order.class);
-    dc.add(Restrictions.like("creatorId",map.get("userId")));
+    dc.add(Restrictions.like("creatorId","%"+map.get("userId")+"%",MatchMode.ANYWHERE));
     List<model.Order> list=this.getHibernateTemplate().findByCriteria(dc,Integer.parseInt(map.get("begin")),Integer.parseInt(map.get("pageSize")));
     return list;
 }
@@ -446,5 +446,74 @@ public Comment searchCommentDetail(int id) {
 public void saveReply(Reply r) {
     this.getHibernateTemplate().save(r);
 }
+
+/**
+ * <p>Description: 通过oid删除我卖出的订单</p>
+ * @param oid
+ */
+@Override
+public void deleteMySellOrder(String oid) {
+   String hql="delete from Order where id='"+oid+"'";
+   SessionFactory factory=this.getHibernateTemplate().getSessionFactory();
+   Session session=factory.openSession();
+   Query query=session.createQuery(hql);
+   query.executeUpdate();
+   session.close();
+    
+}
+
+/**
+ * <p>Description: 删除我发布的商品</p>
+ * @param pid
+ */
+@Override
+public void delectProductById(int pid) {
+    Product product=this.getHibernateTemplate().get(Product.class, pid);
+    if(product!=null){
+        this.getHibernateTemplate().delete(product);
+    }
+    
+}
+
+/**
+ * <p>Description: 评论数量</p>
+ * @param parseInt
+ * @param string
+ * @return
+ */
+@Override
+public int searchCommentCount(int uid, String flag) {
+    StringBuffer sb=new StringBuffer();
+    String hql="select count(*) from Comment where 1=1 ";
+    if(flag=="0"||"0".equals(flag)){
+       sb.append(" and user.uid="+uid);
+    }else{
+        sb.append(" and product.user.uid="+uid);
+    }
+    List<Long> list=this.getHibernateTemplate().find(hql+sb.toString());
+    if(list.size()>0){
+        return list.get(0).intValue();
+    }
+    return 0;
+}
+
+/**
+ * <p>Description: 评论列表查询</p>
+ * @param map
+ * @return
+ */
+@Override
+public List<Comment> getCommentList(Map<Object, String> map) {
+    DetachedCriteria dc=DetachedCriteria.forClass(model.Comment.class);
+   String flag=map.get("flag");
+    if(flag=="0"||"0".equals(flag)){
+        dc.add(Restrictions.eq("user.uid",Integer.parseInt( map.get("userId"))));
+    }else{
+        dc.add(Restrictions.eq("product.user.uid", Integer.parseInt(map.get("userId"))));
+    }
+    List<model.Comment> list=this.getHibernateTemplate().findByCriteria(dc,Integer.parseInt(map.get("begin")),Integer.parseInt(map.get("pageSize")));
+    return list;
+}
+
 
 }

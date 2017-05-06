@@ -43,6 +43,8 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 	public void setiUserService(IUserService iUserService) {
 		this.iUserService = iUserService;
 	}
+	
+	
 	Product product=new Product();
 	@Override
 	public Product getModel() {
@@ -455,7 +457,54 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
         }
     }
     
+    /**
+     * 
+     * <p>Description: 删除我卖出的订单</p>
+     * @throws Exception
+     */
+    public void deleteMySellOrder() throws Exception{
+        User user=(User) req.getSession().getAttribute("User");
+        if(user==null){
+            throw new Exception("用户帐户为空，请重新登录！");
+        }else{
+            String oid=req.getParameter("oid");
+            this.iUserService.deleteMySellOrder(oid);
+        }
+    }
     
+    /**
+     * 
+     * <p>Description: 删除我的商品</p>
+     * @throws Exception
+     */
+    public void deleteMyProductById() throws Exception{
+        User user=(User) req.getSession().getAttribute("User");
+        if(user==null){
+            throw new Exception("用户帐户为空，请重新登录！");
+        }else{
+            int pid=Integer.parseInt(req.getParameter("id"));
+            this.iUserService.delectProductById(pid);
+        }
+    }
+    
+    /**
+     * 分页查询评论
+     * @throws Exception 
+     */
+    public void searchCommentByPage() throws Exception{
+        User user=(User) req.getSession().getAttribute("User");
+        if(user==null){
+            throw new Exception("用户帐户为空，请重新登录！");
+        }else{
+            String flag=req.getParameter("flag");//0 代表我发出的评论；1代表我收到的评论
+            Map<Object, String> map=new HashMap<Object, String>();
+            map.put("currPage", currPage+"");
+            map.put("userId", user.getUid()+"");
+            map.put("flag", flag);
+            PageBean<Comment> comm=this.iUserService.searchCommentByPage(map);
+            this.json.toJson(comm);
+        }
+    }
     
 	public String getCreatorIds() {
 		return creatorIds;

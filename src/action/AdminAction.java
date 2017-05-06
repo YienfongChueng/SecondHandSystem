@@ -1,17 +1,22 @@
 package action;
 
 
+import java.util.Date;
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
-import org.apache.struts2.ServletActionContext;
-import service.IAdminInfoService;
-import service.ILoginService;
+
 import model.Admin;
 import model.Classify;
 import model.PageBean;
 import model.Product;
 import model.User;
+import model.UserAndAdmin;
 
+import org.apache.struts2.ServletActionContext;
+
+import service.IAdminInfoService;
+import service.ILoginService;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -166,7 +171,16 @@ public class AdminAction extends ActionSupport implements ModelDriven<Admin>{
 	public String delectProductById(){
 		HttpServletRequest req=ServletActionContext.getRequest();
 		int pid=Integer.parseInt(req.getParameter("id"));
+		Product p=this.iAdminInfoService.searchProductDetail(pid);
 		this.iAdminInfoService.delectProductById(pid);
+		Admin admin=(Admin) req.getAttribute("Admin");
+		UserAndAdmin uaa=new UserAndAdmin();
+		uaa.setAdminId(admin.getAid());
+		uaa.setCreateTime(new Date());
+		uaa.setStatus(0);
+		uaa.setUserId(p.getUser().getUid());
+		uaa.setMessage("您的商品【"+p.getProName()+"】违反本网站的规章制度，已被管理员删除！");
+		this.iAdminInfoService.saveSystemMessage(uaa);
 		return "success";
 	}
 	

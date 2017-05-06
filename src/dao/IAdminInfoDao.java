@@ -6,6 +6,7 @@ import model.Admin;
 import model.Classify;
 import model.Product;
 import model.User;
+import model.UserAndAdmin;
 
 public interface IAdminInfoDao {
 
@@ -157,5 +158,11 @@ public interface IAdminInfoDao {
 	 * @param cassify
 	 */
 	void updateCate(Classify cassify);
+
+	/**
+     * <p>Description: 后台删除商品发送通知给用户</p>
+     * @param uaa
+     */
+    void saveSystemMessage(UserAndAdmin uaa);
 
 }
