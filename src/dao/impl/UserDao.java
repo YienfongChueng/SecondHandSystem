@@ -9,6 +9,7 @@ import model.MyCart;
 import model.Product;
 import model.Reply;
 import model.User;
+import model.UserAndAdmin;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -16,6 +17,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -301,8 +304,8 @@ public class UserDao extends HibernateDaoSupport implements IUserDao {
      */
     @SuppressWarnings("unchecked")
     @Override
-    public List<MyCart> getMyCartChooseList(String ids) {
-        String hql="from MyCart where productId IN ("+ids+")";
+    public List<MyCart> getMyCartChooseList(String ids,int uid) {
+        String hql="from MyCart where productId IN ("+ids+") and userId="+uid;
         return this.getHibernateTemplate().find(hql);
     }
 
@@ -310,9 +313,9 @@ public class UserDao extends HibernateDaoSupport implements IUserDao {
      * 保存订单信息
      */
     @Override
-    public void saveOrder(model.Order order,String ids) {
+    public void saveOrder(model.Order order,String ids,int uid) {
        this.getHibernateTemplate().save(order);
-       String hql="delete from MyCart where productId IN ("+ids+")";
+       String hql="delete from MyCart where productId IN ("+ids+") and userId="+uid;
        SessionFactory factory=this.getHibernateTemplate().getSessionFactory();
        Session session=factory.openSession();
        Query query=session.createQuery(hql);
@@ -335,7 +338,7 @@ public class UserDao extends HibernateDaoSupport implements IUserDao {
      */
 @Override
 public int searchMyOrderCount(String uid) {
-    String hql="select count(*) from Order where creatorId LIKE ?";
+    String hql="select count(distinct id) from Order where creatorId LIKE ?";
     List<Long> list=this.getHibernateTemplate().find(hql,"%"+uid+"%");
     if(list.size()>0){
         return list.get(0).intValue();
@@ -348,10 +351,13 @@ public int searchMyOrderCount(String uid) {
  * @param map
  * @return
  */
+@SuppressWarnings("unchecked")
 @Override
 public List<model.Order> getMyOrderList(Map<Object, String> map) {
     DetachedCriteria dc=DetachedCriteria.forClass(model.Order.class);
-    dc.add(Restrictions.like("creatorId","%"+map.get("userId")+"%",MatchMode.ANYWHERE));
+    dc.add(Restrictions.like("creatorId",map.get("userId"),MatchMode.ANYWHERE));
+    //dc.setProjection(Projections.distinct(Projections.property("id")));
+    dc.setResultTransformer(dc.DISTINCT_ROOT_ENTITY);
     List<model.Order> list=this.getHibernateTemplate().findByCriteria(dc,Integer.parseInt(map.get("begin")),Integer.parseInt(map.get("pageSize")));
     return list;
 }
@@ -363,7 +369,7 @@ public List<model.Order> getMyOrderList(Map<Object, String> map) {
  */
 @Override
 public int searchBuyOrderCount(int uid) {
-    String hql="select count(*) from Order where user.uid = ?";
+    String hql="select count(distinct id) from Order where user.uid = ?";
     List<Long> list=this.getHibernateTemplate().find(hql,uid);
     if(list.size()>0){
         return list.get(0).intValue();
@@ -380,6 +386,7 @@ public int searchBuyOrderCount(int uid) {
 public List<model.Order> getBuyOrderList(Map<Object, String> map) {
     DetachedCriteria dc=DetachedCriteria.forClass(model.Order.class);
     dc.add(Restrictions.eq("user.uid",Integer.parseInt(map.get("userId"))));
+    dc.setResultTransformer(dc.DISTINCT_ROOT_ENTITY);
     List<model.Order> list=this.getHibernateTemplate().findByCriteria(dc,Integer.parseInt(map.get("begin")),Integer.parseInt(map.get("pageSize")));
     return list;
 }
@@ -488,7 +495,7 @@ public int searchCommentCount(int uid, String flag) {
     if(flag=="0"||"0".equals(flag)){
        sb.append(" and user.uid="+uid);
     }else{
-        sb.append(" and product.user.uid="+uid);
+        sb.append(" and receiverId="+uid);
     }
     List<Long> list=this.getHibernateTemplate().find(hql+sb.toString());
     if(list.size()>0){
@@ -505,14 +512,69 @@ public int searchCommentCount(int uid, String flag) {
 @Override
 public List<Comment> getCommentList(Map<Object, String> map) {
     DetachedCriteria dc=DetachedCriteria.forClass(model.Comment.class);
-   String flag=map.get("flag");
+    String flag=map.get("flag");
     if(flag=="0"||"0".equals(flag)){
         dc.add(Restrictions.eq("user.uid",Integer.parseInt( map.get("userId"))));
     }else{
-        dc.add(Restrictions.eq("product.user.uid", Integer.parseInt(map.get("userId"))));
+        dc.add(Restrictions.eq("receiverId", Integer.parseInt(map.get("userId"))));
     }
     List<model.Comment> list=this.getHibernateTemplate().findByCriteria(dc,Integer.parseInt(map.get("begin")),Integer.parseInt(map.get("pageSize")));
     return list;
+}
+
+/**
+ * <p>Description: 保存用户消息</p>
+ * @param map
+ * @return
+ */
+@Override
+public void saveUserMessage(UserAndAdmin uaa) {
+	this.getHibernateTemplate().save(uaa);
+}
+
+@Override
+public int searchMessageCount(int uid, String flag) {
+	StringBuffer sb=new StringBuffer();
+    String hql="select count(*) from UserAndAdmin where 1=1 ";
+    if(flag=="0"||"0".equals(flag)){
+       sb.append(" and status='0' and userId="+uid);
+    }else{
+        sb.append(" and status='1' and userId="+uid);
+    }
+    List<Long> list=this.getHibernateTemplate().find(hql+sb.toString());
+    if(list.size()>0){
+        return list.get(0).intValue();
+    }
+    return 0;
+}
+
+@Override
+public List<UserAndAdmin> getMessageList(Map<Object, String> map) {
+	DetachedCriteria dc=DetachedCriteria.forClass(model.UserAndAdmin.class);
+    String flag=map.get("flag");
+    if(flag=="0"||"0".equals(flag)){
+        dc.add(Restrictions.eq("userId",Integer.parseInt( map.get("userId"))));
+        dc.add(Restrictions.eq("status",0));
+    }else{
+    	dc.add(Restrictions.eq("userId",Integer.parseInt( map.get("userId"))));
+        dc.add(Restrictions.eq("status",1));
+    }
+    List<model.UserAndAdmin> list=this.getHibernateTemplate().findByCriteria(dc,Integer.parseInt(map.get("begin")),Integer.parseInt(map.get("pageSize")));
+    return list;
+}
+
+/**
+ * 通过id删除消息
+ */
+@Override
+public void deleteMessage(int id) {
+   String hql="from UserAndAdmin where id="+id;
+   SessionFactory factory=this.getHibernateTemplate().getSessionFactory();
+   Session session=factory.openSession();
+   Query query=session.createQuery(hql);
+   query.executeUpdate();
+   session.close();
+	
 }
 
 

@@ -11,6 +11,7 @@
     	<property name="content" column="CONTENT" type="java.lang.String" length="50"/>	
     	<property name="creatTime" column="CREATE_TIME" type="java.util.Date"/>	
     	<property name="status" column="STATUS" type="java.lang.Integer" length="8"/>
+    	<property name="receiverId" column="RECEIVER_ID" type="java.lang.Integer" length="11"/>
     	<many-to-one name="user" class="model.User" lazy="false" fetch="join">
     		<column name="USER_ID"></column>
     	</many-to-one>

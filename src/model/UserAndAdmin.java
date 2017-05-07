@@ -5,11 +5,11 @@ import java.util.Date;
 public class UserAndAdmin {
 
 	private Integer id;
-	private Integer userId;
-	private Integer adminId;
+	private Integer userId;//接收消息者
+	private Integer adminId;//发消息者
 	private java.lang.String message;
 	private Date createTime;
-	private Integer status;//0未读，1已读
+	private Integer status;//0系统消息，1用户消息
 	
 	public UserAndAdmin() {
 	}

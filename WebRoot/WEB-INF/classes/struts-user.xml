@@ -28,6 +28,15 @@
 			 <action name="product_*" class="productAction" method="{1}">
 			 	 <result name="uploadSuccess" type="redirect">/user_jsp/index.jsp</result>
 			 	 <result name="input">/user_jsp/error.jsp</result>
+			 	 <result name="buylist">/user_jsp/buy_order_list.jsp</result>
+			 	 <result name="selllist">/user_jsp/order_list.jsp</result>
+			 	 <result name="addOrder">/user_jsp/right_menu.jsp</result>
+			 	 <result name="mycommmentlist">/user_jsp/comment_mine.jsp</result>
+			 	 <result name="rcommmentlist">/user_jsp/comment_received.jsp</result>
+			 	 <result name="sysmessage">/user_jsp/sys_message.jsp</result>
+			 	 <result name="usermessage">/user_jsp/user_message.jsp</result>
+			 	 <result name="commentlist">/user_jsp/commentpage.jsp</result>
+			 	 
 				<!--  拦截器 -->
 			 <interceptor-ref name="fileUpload">
 			 	<param name="allowedType">image/PNG,image/JPG</param>

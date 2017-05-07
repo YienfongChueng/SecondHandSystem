@@ -11,6 +11,7 @@ import model.PageBean;
 import model.Product;
 import model.Reply;
 import model.User;
+import model.UserAndAdmin;
 
 public interface IUserService {
 
@@ -94,13 +95,13 @@ public interface IUserService {
      * @param ids
      * @return
      */
-    List<MyCart> getMyCartChooseList(String ids);
+    List<MyCart> getMyCartChooseList(String ids,int uid);
 
     /**
      * <p>Description: 级联保存订单和订单子表</p>
      * @param order
      */
-    void saveOrder(Order order,String ids);
+    void saveOrder(Order order,String ids,int uid);
 
     /**
      * <p>Description: 分页查询我卖出的订单</p>
@@ -160,6 +161,25 @@ public interface IUserService {
      * @return
      */
     PageBean<Comment> searchCommentByPage(Map<Object, String> map);
+
+    /**
+     * 保存用户消息
+     * @param uaa
+     */
+	void saveUserMessage(UserAndAdmin uaa);
+
+	/**
+     * 分页消息
+     * @throws Exception 
+     * @param flag 0系统消息,1用户消息 
+     */
+	PageBean<UserAndAdmin> searchMessageByPage(Map<Object, String> map);
+
+	/**
+	 * 通过id删除消息
+	 * @param parseInt
+	 */
+	void deleteMessage(int id);
 
    
 

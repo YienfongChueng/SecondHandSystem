@@ -16,8 +16,19 @@ public class Order {
 	private String creatorId;//发布者id
 	private Set<OrderItem> orderItem=new HashSet<OrderItem>();
 	private User user;//购买者
+	private String creatorName;//发布者名称(表没有字段，仅用于页面显示)
 
 	public Order() {
+	}
+
+
+	public String getCreatorName() {
+		return creatorName;
+	}
+
+
+	public void setCreatorName(String creatorName) {
+		this.creatorName = creatorName;
 	}
 
 

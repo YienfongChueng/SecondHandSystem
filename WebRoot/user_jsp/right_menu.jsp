@@ -17,20 +17,20 @@
 			<dt>我的二货</dt>
 			<!--当前链接则添加class:active-->
 			<dd class="public-ifame-item"><a href="myproduct_list.jsp" class="active" target="content">我发布的二货</a></dd>
-			<dd class="public-ifame-item"><a href="buy_order_list.jsp" target="content" >我购买的二货</a></dd>
-			<dd class="public-ifame-item"><a href="order_list.jsp" target="content">我卖出的二货</a></dd> 
+			<dd class="public-ifame-item"><a href="product_searchMyBuyOrderByPage.action" target="content" >我购买的二货</a></dd>
+			<dd class="public-ifame-item"><a href="product_searchMySellOrderByPage.action" target="content">我卖出的二货</a></dd> 
 		   </dl>
 		  </li>
 		  <li>
 		   <dl>
 			<dt>评论管理</dt>
-			<dd class="public-ifame-item"><a href="#" target="content">发出的评论</a></dd>
-			<dd class="public-ifame-item"><a href="#" target="content">收到的评论</a></dd>
+			<dd class="public-ifame-item"><a href="product_searchCommentByPage.action?flag=0" target="content">发出的评论</a></dd>
+			<dd class="public-ifame-item"><a href="product_searchCommentByPage.action?flag=1" target="content">收到的评论</a></dd>
 		   </dl>
 		   <dl>
 			<dt>消息管理</dt>
-			<dd class="public-ifame-item"><a href="#" target="content">用户消息</a></dd>
-			<dd class="public-ifame-item"><a href="#" target="content">系统消息</a></dd>
+			<dd class="public-ifame-item"><a href="product_searchMessageByPage.action?flag=1" target="content">用户消息</a></dd>
+			<dd class="public-ifame-item"><a href="product_searchMessageByPage.action?flag=0" target="content">系统消息</a></dd>
 		   </dl>
 		  </li> 
 		   <p class="btm_infor">© 13计科张燕芳 版权所有</p>

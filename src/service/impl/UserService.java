@@ -7,10 +7,12 @@ import model.Classify;
 import model.Comment;
 import model.MyCart;
 import model.Order;
+import model.OrderItem;
 import model.PageBean;
 import model.Product;
 import model.Reply;
 import model.User;
+import model.UserAndAdmin;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -207,8 +209,8 @@ public class UserService implements IUserService {
      * @return
      */
     @Override
-    public List<MyCart> getMyCartChooseList(String ids) {
-        List<MyCart> cartlist=this.iUserDao.getMyCartChooseList(ids);
+    public List<MyCart> getMyCartChooseList(String ids,int uid) {
+        List<MyCart> cartlist=this.iUserDao.getMyCartChooseList(ids,uid);
         if(cartlist!=null){
             for(MyCart cart:cartlist){
                 Product p=this.iUserDao.getProductDetail(cart.getProductId().toString());
@@ -226,8 +228,8 @@ public class UserService implements IUserService {
      * @param order
      */
     @Override
-    public void saveOrder(Order order,String ids) {
-       this.iUserDao.saveOrder(order,ids);
+    public void saveOrder(Order order,String ids,int uid) {
+       this.iUserDao.saveOrder(order,ids,uid);
     }
 
     /**
@@ -242,7 +244,7 @@ public class UserService implements IUserService {
         currPage=Integer.parseInt(map.get("currPage"));
         pageBean.setCurrPage(currPage);
         //封装每页记录数
-        int pageSize=5;
+        int pageSize=15;
         pageBean.setPageSize(pageSize);
         //封装总记录数
         int totalCount=this.iUserDao.searchMyOrderCount(map.get("userId"));
@@ -264,7 +266,7 @@ public class UserService implements IUserService {
     }
 
     /**
-     * <p>Description: 分页查询我卖出的订单</p>
+     * <p>Description: 分页查询我买到的订单</p>
      * @param map
      * @return
      */
@@ -275,7 +277,7 @@ public class UserService implements IUserService {
         currPage=Integer.parseInt(map.get("currPage"));
         pageBean.setCurrPage(currPage);
         //封装每页记录数
-        int pageSize=5;
+        int pageSize=15;
         pageBean.setPageSize(pageSize);
         //封装总记录数
         int totalCount=this.iUserDao.searchBuyOrderCount(Integer.parseInt(map.get("userId")));
@@ -292,6 +294,11 @@ public class UserService implements IUserService {
         map.put("begin", begin+"");
         map.put("pageSize", pageSize+"");
         List<Order> list=this.iUserDao.getBuyOrderList(map);
+        for(Order o:list){
+        	for(OrderItem oi:o.getOrderItem()){
+        		o.setCreatorName(oi.getProduct().getUser().getUserName());
+        	}
+        }
         pageBean.setList(list);
         return pageBean;
     }
@@ -393,7 +400,7 @@ public class UserService implements IUserService {
         currPage=Integer.parseInt(map.get("currPage"));
         pageBean.setCurrPage(currPage);
         //封装每页记录数
-        int pageSize=5;
+        int pageSize=10;
         pageBean.setPageSize(pageSize);
         //封装总记录数
         int totalCount=this.iUserDao.searchCommentCount(Integer.parseInt(map.get("userId")),map.get("flag"));
@@ -413,6 +420,57 @@ public class UserService implements IUserService {
         pageBean.setList(list);
         return pageBean;
     }
+
+    /**
+     * 保存用户消息
+     * @param uaa
+     */
+	@Override
+	public void saveUserMessage(UserAndAdmin uaa) {
+		this.iUserDao.saveUserMessage(uaa);
+	}
+
+	/**
+     * 分页消息
+     * @throws Exception 
+     * @param flag 0系统消息,1用户消息 
+     */
+	@Override
+	public PageBean<UserAndAdmin> searchMessageByPage(Map<Object, String> map) {
+		PageBean<UserAndAdmin> pageBean=new PageBean<UserAndAdmin>();
+        //封装当前页
+        currPage=Integer.parseInt(map.get("currPage"));
+        pageBean.setCurrPage(currPage);
+        //封装每页记录数
+        int pageSize=10;
+        pageBean.setPageSize(pageSize);
+        //封装总记录数
+        int totalCount=this.iUserDao.searchMessageCount(Integer.parseInt(map.get("userId")),map.get("flag"));
+        pageBean.setTotalCount(totalCount);
+        //封装总页数
+        double tc=totalCount;
+        Double num=Math.ceil(tc/pageSize);
+        if(num==0){
+            num=(double) 1;
+        }
+        pageBean.setTotalPage(num.intValue());
+        //封装每页显示的数据
+        int begin=(currPage-1)*pageSize;
+        map.put("begin", begin+"");
+        map.put("pageSize", pageSize+"");
+        List<UserAndAdmin> list=this.iUserDao.getMessageList(map);
+        pageBean.setList(list);
+        return pageBean;
+	}
+
+	/**
+	 * 通过id删除消息
+	 */
+	@Override
+	public void deleteMessage(int id) {
+		this.iUserDao.deleteMessage(id);
+		
+	}
 
     
 

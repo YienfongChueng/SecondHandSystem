@@ -12,9 +12,9 @@ public class Comment {
 	private Date creatTime;//评论时间
 	private java.lang.String content;//评论内容
 	private Integer status;//0未读，1已读
-	private User user;
+	private User user;//评论者
 	private Product product;
-	//@JSONField(serialize = false) 
+	private Integer receiverId;//被评论者
 	private Set<Reply> reply=new HashSet<Reply>();
 	public Comment() {
 	}
@@ -71,6 +71,14 @@ public class Comment {
 	}
 	public void setStatus(Integer status) {
 		this.status = status;
+	}
+
+	public Integer getReceiverId() {
+		return receiverId;
+	}
+
+	public void setReceiverId(Integer receiverId) {
+		this.receiverId = receiverId;
 	}
 	
 	

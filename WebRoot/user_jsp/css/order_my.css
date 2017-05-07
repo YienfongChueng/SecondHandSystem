@@ -103,6 +103,10 @@ img{
 	.goods1{
 	text-align:center;
 	}
+	.goods2{
+	text-align:center;
+		width:115px;
+	}
 	.prices{
 		text-align:center;
 		width:80px;

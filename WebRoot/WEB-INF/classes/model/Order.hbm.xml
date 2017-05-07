@@ -19,7 +19,7 @@
     		<key><column name="ORDER_ID"></column></key>
     		<one-to-many class="model.OrderItem"/>
     	</set>
-    	<many-to-one name="user" class="model.User" lazy="false" fetch="join">
+    	<many-to-one name="user" class="model.User" lazy="false">
     		<column name="USER_ID"></column>
     	</many-to-one>
     </class>

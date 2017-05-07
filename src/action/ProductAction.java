@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -27,13 +28,16 @@ import model.PageBean;
 import model.Product;
 import model.Reply;
 import model.User;
+import model.UserAndAdmin;
 
+import org.apache.jasper.tagplugins.jstl.core.Param;
 import org.apache.struts2.ServletActionContext;
 import org.aspectj.util.FileUtil;
 
 import service.IUserService;
 import util.AddJson;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -198,12 +202,16 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 	/**
 	 * 通过id查询某商品下的评论
 	 */
-	public void getCommentList() throws Exception{
+	public String getCommentList() throws Exception{
 		String id=req.getParameter("id");
 		Map<Object, String> map=new HashMap<Object, String>();
 		map.put("currPage", currPage+"");
 		PageBean<Comment> comment=this.iUserService.getCommentList(id,map);
-		this.json.toJson(comment);
+		//this.json.toJson(comment);
+		if(comment!=null){
+        	ActionContext.getContext().getValueStack().push(comment);
+        }
+		return "commentlist";
 	}
 	
 	/**
@@ -302,9 +310,22 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 		}else{
 			String ids=req.getParameter("ids");
 			//List<Product> list=this.iUserService.getComfirmProductList(ids);
-			List<MyCart> mycartList=this.iUserService.getMyCartChooseList(ids);
+			int uid=user.getUid();
+			List<MyCart> mycartList=this.iUserService.getMyCartChooseList(ids,uid);
 			this.json.toJsonArray(mycartList);
 		}
+	}
+	private String removeSameCreatorId(String str){
+		String[] array   = str.split(",");  
+		List<String> list =new ArrayList<String>();   
+		  for (int i=0;i<array.length;i++)   
+		  {   
+		          if(!list.contains(array[i]))   
+		          {   
+		             list.add(array[i]);   
+		          }   
+		  }   
+		  return   list.toString();
 	}
 	
 	/**
@@ -317,12 +338,13 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 	private String creatorIds;
 	private String ids;
 	private String amount;
-	public void addOrder()throws Exception{
+	public String addOrder()throws Exception{
 		User user=(User) req.getSession().getAttribute("User");
 		if(user==null){
 			throw new Exception("用户帐户为空，请重新登录！");
 		}else{
 		    SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		    SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String orderNum = format.format(new Date())+String.valueOf(System.currentTimeMillis());
 			Order order=new Order();
 			order.setId(orderNum);
@@ -334,8 +356,8 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 			order.setAmount(Double.parseDouble(amount));
 			order.setStatus(0);//默认待付款
 			order.setPayWay("校内见面交易");
-			order.setCreatorId(creatorIds);
-			List<MyCart> mycartList=this.iUserService.getMyCartChooseList(ids);
+			order.setCreatorId(removeSameCreatorId(creatorIds));
+			List<MyCart> mycartList=this.iUserService.getMyCartChooseList(ids,user.getUid());
 			Set<OrderItem> orderItemList=new HashSet<OrderItem>();
 			for(MyCart c:mycartList){
 			    int pid=c.getProductId();
@@ -353,17 +375,27 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 			        product.setProHassum(hassum);
 			    }
 			    this.iUserService.updateProduct(product);
+			    
+			    //发出用户消息
+			    UserAndAdmin uaa=new UserAndAdmin();
+			    uaa.setAdminId(user.getUid());//发消息者
+			    uaa.setCreateTime(new Date());
+			    uaa.setStatus(1);//0表示系统消息，1表示用户消息
+			    uaa.setUserId(product.getUser().getUid());//接收消息者
+			    uaa.setMessage("您的商品【"+product.getProName()+"】于【"+format1.format(new Date())+"】被【"+user.getUserName()+"】拍下，赶紧联系他/她吧！");
+			    this.iUserService.saveUserMessage(uaa);
 			}
 			order.setOrderItem(orderItemList);
-			this.iUserService.saveOrder(order,ids);
+			this.iUserService.saveOrder(order,ids,user.getUid());
 		}
+		return "addOrder";
 	}
 
 	/**
      * 分页查询我卖出的订单
      * @throws Exception 
      */
-    public void searchMySellOrderByPage() throws Exception{
+    public String searchMySellOrderByPage() throws Exception{
         User user=(User) req.getSession().getAttribute("User");
         if(user==null){
             throw new Exception("用户帐户为空，请重新登录！");
@@ -372,15 +404,19 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
             map.put("currPage", currPage+"");
             map.put("userId", user.getUid()+"");
             PageBean<Order> order=this.iUserService.searchMySellOrderByPage(map);
-            this.json.toJson(order);
+            //this.json.toJson(order);
+            if(order!=null){
+            	ActionContext.getContext().getValueStack().push(order);
+            }
         }
+        return "selllist";
     }
 	
     /**
      * 分页查询我买到的订单
      * @throws Exception 
      */
-    public void searchMyBuyOrderByPage() throws Exception{
+    public String searchMyBuyOrderByPage() throws Exception{
         User user=(User) req.getSession().getAttribute("User");
         if(user==null){
             throw new Exception("用户帐户为空，请重新登录！");
@@ -389,8 +425,12 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
             map.put("currPage", currPage+"");
             map.put("userId", user.getUid()+"");
             PageBean<Order> order=this.iUserService.searchMyBuyOrderByPage(map);
-            this.json.toJson(order);
+            //this.json.toJson(order);
+            if(order!=null){
+            	ActionContext.getContext().getValueStack().push(order);
+            }
         }
+		return "buylist";
     }
     
     /**
@@ -430,6 +470,7 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
             comm.setProduct(pro);
             comm.setUser(user);
             comm.setStatus(0);
+            comm.setReceiverId(pro.getUser().getUid());
             this.iUserService.saveComment(comm);
         }
     }
@@ -491,18 +532,76 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
      * 分页查询评论
      * @throws Exception 
      */
-    public void searchCommentByPage() throws Exception{
+    public String searchCommentByPage() throws Exception{
         User user=(User) req.getSession().getAttribute("User");
+        String flag="";
         if(user==null){
             throw new Exception("用户帐户为空，请重新登录！");
         }else{
-            String flag=req.getParameter("flag");//0 代表我发出的评论；1代表我收到的评论
+            flag=req.getParameter("flag");//0 代表我发出的评论；1代表我收到的评论
             Map<Object, String> map=new HashMap<Object, String>();
             map.put("currPage", currPage+"");
             map.put("userId", user.getUid()+"");
             map.put("flag", flag);
             PageBean<Comment> comm=this.iUserService.searchCommentByPage(map);
-            this.json.toJson(comm);
+            //this.json.toJson(comm);
+            if(comm!=null){
+            	ActionContext.getContext().getValueStack().push(comm);
+            }
+        }
+        if(flag=="0"||"0".equals(flag)){
+        	return "mycommmentlist";
+        }else{
+        	return "rcommmentlist";
+        }
+    }
+    
+    /**
+     * 分页消息
+     * @throws Exception 
+     * @param flag 0系统消息,1用户消息 
+     */
+    public String searchMessageByPage() throws Exception{
+    	User user=(User) req.getSession().getAttribute("User");
+        String flag="";
+        if(user==null){
+            throw new Exception("用户帐户为空，请重新登录！");
+        }else{
+        	flag=req.getParameter("flag");//0系统消息,1用户消息 
+        	Map<Object, String> map=new HashMap<Object, String>();
+            map.put("currPage", currPage+"");
+            map.put("userId", user.getUid()+"");
+            map.put("flag", flag);
+            PageBean<UserAndAdmin> message=this.iUserService.searchMessageByPage(map);
+            if(message!=null){
+            	ActionContext.getContext().getValueStack().push(message);
+            }
+        }
+        if(flag=="0"||"0".equals(flag)){
+        	return "sysmessage";
+        }else{
+        	return "usermessage";
+        }
+    }
+    
+    /**
+     * 删除消息
+     * @return
+     * @throws Exception 
+     */
+    public String deleteMessage() throws Exception{
+    	User user=(User) req.getSession().getAttribute("User");
+    	String flag=req.getParameter("flag");
+        if(user==null){
+            throw new Exception("用户帐户为空，请重新登录！");
+        }else{
+        	String id=req.getParameter("id");
+        	this.iUserService.deleteMessage(Integer.parseInt(id));
+        }
+        if(flag=="0"||"0".equals(flag)){
+        	return "sysmessage";
+        }else{
+        	return "usermessage";
         }
     }
     

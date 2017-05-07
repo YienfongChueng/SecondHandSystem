@@ -1,0 +1,17 @@
+@CHARSET "UTF-8"; 
+* { margin: 0; padding: 0; } 
+.feed { font-family: "微软雅黑"; width: 720px; margin: 8px 0; }
+ .avatar { width: 50px; float: left; margin: 0 8px 0 0; box-shadow: 0 0 3px #e0e0e0; border-radius: 5px; border: 1px solid #e0e0e0; }
+ .feed .avatar img { width: 50px; height: 50px; } 
+ .feed .box1 { width: 640px; float: left; background: #f6f6f6; border: 1px solid #e0e0e0; border-radius: 5px; }
+ .feed .box1 .current { font-size: 14px; margin: 8px; } 
+ .feed .box1 .info { margin: 0 8px; } 
+ .feed .box1 .info span { float: right; }
+ .feed .box1 .line { padding: 8px 0 0 0; border-bottom: 1px solid #e0e0e0; }
+ .feed .box1 .box2 { margin: 8px; padding: 0 0 8px 0; border-bottom: 1px dashed #ccc; }
+ .feed .box1 .box2_comments { width: 560px; overflow: hidden; float: left; } 
+ .feed .box1 .say { margin: 0 0 8px; } 
+ .clear { clear: both; } 
+ .feed .box1 .box2_comments .box3 { margin: 8px 0; } 
+ .feed .box1 .box2_comments .box3_comments { float: left; width: 500px; }
+ .reply_area { border: 1px solid #e0e0e0; height: 30px; line-height: 30px; width: 620px; margin: 8px; color: #666; font-size: 12px; font-family: "微软雅黑"; clear: both; }

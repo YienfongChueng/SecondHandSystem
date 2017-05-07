@@ -57,32 +57,12 @@
 
 					</div>
 					<div class="purchase"><a href="javascript:selflog_show();"><img src="../images/addtocart.png"></a></div>
+					<div class="purchase"><a href="product_getCommentList.action?id=${param.id }"><img src="../images/comment.png"></a></div>
 				
 			</ol>	
 			
 		</ul>
-		<!-- 评论区域 -->
-		<div class="div_div">
-			<span class="div_p">大家说</span>
-		</div>
-		<hr style="background-color: #16a085;height:2px;">
-		<ul class="goodsphotos" id="mydata">
 		
-		<!--遮罩弹窗 display: none-->
-        <div id="mask" style="display: none"></div>
-        <div class="pop_up" id="pop_up" style="width:50%;margin:0 auto;display: none">
-          <form action="">
-            <header style="font-size:20px;color:green;font-weight:bold;">
-               	 回复               
-            </header>
-            <section class="p10-p15 bgfff">
-                <textarea style="width:60%;border:2px solid green;" placeholder="回复内容..." rows="10" id="reasonText"></textarea>
-            </section>
-            <footer>
-              <input type="button" value="提交" onclick="showDialog(false,'#mask, #pop_up');" style="width:65px;height:40px;margin:10px 0 0 20px;background-color:#16a085;color:#fff;font-size:17px;" ></footer>
-          </form>
-        </div>	
-		</ul>
 		
 		
 	</div>
@@ -91,7 +71,6 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	loadData();
-	loadComment();
 	});
 var id=${param.id};
 var hassum;
@@ -154,87 +133,6 @@ function loadData(){
 	      $("#needNum").val(--num);
 	   }
 	}
-
-var template='<li style="margin-top:5px;">'+
-'                <section style="margin:15px;">'+
-'                    <div >'+
-'                        <time class="time" >@time</time>'+
-'                        <span class="person_name" >@userName</span>'+
-'                    </div>'+
-'                    <div class="comment_content">@commentContent</div>'+
-'                    <div >'+
-'                        <a href="javascript:void(0);" class="reply_btn" id="dialog_link" onclick="showDialog(true,\'#mask, #pop_up\')" >'+
-'						<input type="hidden" id="commId" value="@commentId" />'+
-'						回复</a>'+
-'                    </div>'+
-'                    <ul style="margin-top:20px;">'+
-'                        <li class="comment_reply_li" ><label class="comment_reply_label">@louzhu</label><span class="comment_reply_label">@replyContent</span></li>'+
-'                    </ul>'+
-'                    '+
-'                </section>  '+
-'            </li>';
-function loadComment(){
-	$.ajax({
-		   url: "product_getCommentList.action",
-		   type: "POST",
-		   dataType:"json",
-		   data:{"id":id},
-		   success: function(result){
-			   var len=0;
-			     if(result.totalCount>result.pageSize){
-				     len=result.pageSize
-				 }else{
-				     len=result.totalCount;   
-				}
-				var data=result.list;
-				for(var i=0;i<len;i++){
-					var temp=template;
-					temp=temp.replace("@time",data[i].creatTime);
-					temp=temp.replace("@userName",data[i].user.userName);
-					temp=temp.replace("@commentContent",data[i].content);
-					temp=temp.replace("@commentId",data[i].id);
-						for(var j=0;j<data[i].reply.length;j++){
-						temp=temp.replace("@louzhu",data[0].product.user.userName+":");
-						temp=temp.replace("@replyContent",data[i].reply[j].replyContent);
-						}
-					
-				$("#mydata").append(temp);
-				}
-				var temp2='<li style="margin-top:5px;">'+
-				'			<textarea id="toCommentContent" style="width:590px;height:100px;margin-left:20px;" placeholder="我来评论"></textarea>'+
-				'			<div>'+
-				'			<button style="width:65px;height:40px;margin:10px 0 0 20px;background-color:#16a085;color:#fff;font-size:17px;" onclick="toComment();" >提交</button>'+
-				'			</div>'+
-				'			</li>';
-				$("#mydata").append(temp2);
-		}
-	});
-}
-//弹窗
-function showDialog(flag,el){
-    if(flag){
-        $(el).show();
-    }else if(flag == false){
-        var cid=$("#commId").val();
-        var repContent=$("#reasonText").val();
-        toReply(cid,repContent);
-        $(el).hide();
-    }
-}
-function toComment(){
-	var content=$("#toCommentContent").val();
-	$.post("product_addComment.action",{"id":id,"content":content},function(data){
-		   alert("评论成功！");
-		   window.location.reload();
-	});
-}
-
-function toReply(cid,repContent){
-	$.post("product_addReply.action",{"cid":cid,"repContent":repContent},function(data){
-		   alert("评论成功！");
-		   window.location.reload();
-	});
-}
 
 </script>
 

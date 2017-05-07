@@ -10,6 +10,7 @@ import model.Order;
 import model.Product;
 import model.Reply;
 import model.User;
+import model.UserAndAdmin;
 
 public interface IUserDao {
 
@@ -117,13 +118,13 @@ public interface IUserDao {
      * @param ids
      * @return
      */
-    List<MyCart> getMyCartChooseList(String ids);
+    List<MyCart> getMyCartChooseList(String ids,int uid);
 
     /**
      * <p>Description: 保存订单信息</p>
      * @param order
      */
-    void saveOrder(Order order,String ids);
+    void saveOrder(Order order,String ids,int uid);
 
     /**
      * <p>Description: 清除购物车选中的商品</p>
@@ -218,6 +219,32 @@ public interface IUserDao {
      * @return
      */
     List<Comment> getCommentList(Map<Object, String> map);
+
+    /**
+     * <p>Description: 保存用户消息</p>
+     * @param map
+     * @return
+     */
+	void saveUserMessage(UserAndAdmin uaa);
+
+	/**
+     * <p>Description: 保存用户消息数量</p>
+     * @param map
+     * @return
+     */
+	int searchMessageCount(int uid, String flag);
+
+	/**
+     * <p>Description: 保存用户消息</p>
+     * @param map
+     * @return
+     */
+	List<UserAndAdmin> getMessageList(Map<Object, String> map);
+
+	/**
+	 * 通过id删除消息
+	 */
+	void deleteMessage(int id);
 
 
     
