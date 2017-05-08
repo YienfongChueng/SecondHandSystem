@@ -36,6 +36,9 @@
 			 	 <result name="sysmessage">/user_jsp/sys_message.jsp</result>
 			 	 <result name="usermessage">/user_jsp/user_message.jsp</result>
 			 	 <result name="commentlist">/user_jsp/commentpage.jsp</result>
+			 	 <result type="chain" name="commentpage">product_getCommentList</result>
+			 	 <result type="chain" name="sysmsgDelete">product_searchMessageByPage</result> 
+			 	 <result type="chain" name="usermsgDelete">product_searchMessageByPage</result>  
 			 	 
 				<!--  拦截器 -->
 			 <interceptor-ref name="fileUpload">

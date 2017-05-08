@@ -201,7 +201,7 @@ var totalPage;
 		}else{
 			currPage1=currPage3;
 		}
-		 
+		 //debugger;
 		$.ajax({
 			   url: "product_searchProductList.action",
 			   type: "POST",

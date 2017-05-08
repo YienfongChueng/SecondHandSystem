@@ -30,7 +30,6 @@ import model.Reply;
 import model.User;
 import model.UserAndAdmin;
 
-import org.apache.jasper.tagplugins.jstl.core.Param;
 import org.apache.struts2.ServletActionContext;
 import org.aspectj.util.FileUtil;
 
@@ -450,20 +449,43 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
         }
     }
     
+    
+    private String repContent;
+    private String content;
+    
+    public String getRepContent() {
+        return repContent;
+    }
+    public void setRepContent(String repContent) {
+        this.repContent = repContent;
+    }
+    public String getContent() {
+        return content;
+    }
+    public void setContent(String content) {
+        this.content = content;
+    }
     /**
      * 
      * <p>Description: 新增评论数据</p>
      * @return
      * @throws Exception 
      */
-    public void addComment() throws Exception{
+   private String id;
+    public String getId() {
+        return id;
+    }
+    public void setId(String id) {
+        this.id = id;
+    }
+    public String addComment() throws Exception{
         User user=(User) req.getSession().getAttribute("User");
         if(user==null){
             throw new Exception("用户帐户为空，请重新登录！");
         }else{
-            String content=req.getParameter("content");
-            String id=req.getParameter("id");
-            Product pro=this.iUserService.getProductDetail(id);
+            //String content=req.getParameter("content");
+          String  pid=req.getParameter("id");//商品id
+            Product pro=this.iUserService.getProductDetail(pid);
             Comment comm=new Comment();
             comm.setContent(content);
             comm.setCreatTime(new Date());
@@ -472,7 +494,9 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
             comm.setStatus(0);
             comm.setReceiverId(pro.getUser().getUid());
             this.iUserService.saveComment(comm);
+            req.setAttribute("id", id);
         }
+        return "commentpage";
     }
     
     /**
@@ -481,21 +505,23 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
      * @return
      * @throws Exception 
      */
-    public void addReply() throws Exception{
+    public String addReply() throws Exception{
         User user=(User) req.getSession().getAttribute("User");
         if(user==null){
             throw new Exception("用户帐户为空，请重新登录！");
         }else{
             String cid=req.getParameter("cid");
-            String rcontent=req.getParameter("repContent");
+            //String rcontent=req.getParameter("repContent");
             Comment comment=this.iUserService.searchCommentDetail(cid);
             Reply r=new Reply();
             r.setCreateTime(new Date());
-            r.setReplyContent(rcontent);
+            r.setReplyContent(repContent);
             r.setUser(user);
             r.setComment(comment);
             this.iUserService.saveReply(r);
+            req.setAttribute("id", id);
         }
+        return "commentpage";
     }
     
     /**
@@ -583,7 +609,14 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
         	return "usermessage";
         }
     }
+    private String flag;
     
+    public String getFlag() {
+        return flag;
+    }
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }
     /**
      * 删除消息
      * @return
@@ -591,7 +624,7 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
      */
     public String deleteMessage() throws Exception{
     	User user=(User) req.getSession().getAttribute("User");
-    	String flag=req.getParameter("flag");
+    	//String flag=req.getParameter("flag");
         if(user==null){
             throw new Exception("用户帐户为空，请重新登录！");
         }else{
@@ -599,9 +632,9 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
         	this.iUserService.deleteMessage(Integer.parseInt(id));
         }
         if(flag=="0"||"0".equals(flag)){
-        	return "sysmessage";
+        	return "sysmsgDelete";
         }else{
-        	return "usermessage";
+        	return "usermsgDelete";
         }
     }
     

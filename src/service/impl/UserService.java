@@ -96,7 +96,7 @@ public class UserService implements IUserService {
 		currPage=Integer.parseInt(map.get("currPage"));
 		pageBean.setCurrPage(currPage);
 		//封装每页记录数
-		int pageSize=10;
+		int pageSize=3;
 		pageBean.setPageSize(pageSize);
 		//封装总记录数
 		int totalCount=this.iUserDao.searchCommentCount(id);

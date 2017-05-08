@@ -17,8 +17,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Projection;
-import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -55,7 +53,7 @@ public class UserDao extends HibernateDaoSupport implements IUserDao {
 		String cid=map.get("cid");
 		String condition=map.get("conditon");
 		DetachedCriteria dc=DetachedCriteria.forClass(Product.class);
-		dc.addOrder(Order.desc("createTime"));
+		//dc.addOrder(Order.desc("createTime"));
 		dc.add(Restrictions.ne("proHassum", 0));
 		if(proName!=null){
 			proName="%"+map.get("keyword")+"%";
@@ -166,6 +164,8 @@ public class UserDao extends HibernateDaoSupport implements IUserDao {
 		}
 		DetachedCriteria dc=DetachedCriteria.forClass(Comment.class);
 		dc.add(Restrictions.eq("product.id",pid));
+		dc.addOrder(Order.desc("creatTime"));
+		 dc.setResultTransformer(dc.DISTINCT_ROOT_ENTITY);
 		List<Comment> list=this.getHibernateTemplate().findByCriteria(dc,Integer.parseInt(map.get("begin")),Integer.parseInt(map.get("pageSize")));
 		return list;
 	}
@@ -182,7 +182,7 @@ public class UserDao extends HibernateDaoSupport implements IUserDao {
 		if(id!=null&&id!=""){
 			pid=Integer.parseInt(id);
 		}
-		String count_hql="select count(*) from Comment where product.id='"+pid+"'";
+		String count_hql="select count(distinct id) from Comment where product.id='"+pid+"'";
 		List<Long> list=this.getHibernateTemplate().find(count_hql);
 		if(list.size()>0){
 			return list.get(0).intValue();
@@ -223,7 +223,7 @@ public class UserDao extends HibernateDaoSupport implements IUserDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public int searchMyCartCount(int uid) {
-		String hql="select count(*) from MyCart where userId=?";
+		String hql="select count(distinct id) from MyCart where userId=?";
 		List<Long> list=this.getHibernateTemplate().find(hql,uid);
 		if(list.size()>0){
 			return list.get(0).intValue();
@@ -239,6 +239,8 @@ public class UserDao extends HibernateDaoSupport implements IUserDao {
 	public List<MyCart> getMyCartList(Map<Object, String> map) {
 		DetachedCriteria dc=DetachedCriteria.forClass(MyCart.class);
 		dc.add(Restrictions.eq("userId",Integer.parseInt(map.get("userId"))));
+		dc.addOrder(Order.desc("createTime"));
+		dc.setResultTransformer(dc.DISTINCT_ROOT_ENTITY);
 		List<MyCart> list=this.getHibernateTemplate().findByCriteria(dc,Integer.parseInt(map.get("begin")),Integer.parseInt(map.get("pageSize")));
 		return list;
 	}
@@ -357,6 +359,7 @@ public List<model.Order> getMyOrderList(Map<Object, String> map) {
     DetachedCriteria dc=DetachedCriteria.forClass(model.Order.class);
     dc.add(Restrictions.like("creatorId",map.get("userId"),MatchMode.ANYWHERE));
     //dc.setProjection(Projections.distinct(Projections.property("id")));
+    dc.addOrder(Order.desc("createTime"));
     dc.setResultTransformer(dc.DISTINCT_ROOT_ENTITY);
     List<model.Order> list=this.getHibernateTemplate().findByCriteria(dc,Integer.parseInt(map.get("begin")),Integer.parseInt(map.get("pageSize")));
     return list;
@@ -386,6 +389,7 @@ public int searchBuyOrderCount(int uid) {
 public List<model.Order> getBuyOrderList(Map<Object, String> map) {
     DetachedCriteria dc=DetachedCriteria.forClass(model.Order.class);
     dc.add(Restrictions.eq("user.uid",Integer.parseInt(map.get("userId"))));
+    dc.addOrder(Order.desc("createTime"));
     dc.setResultTransformer(dc.DISTINCT_ROOT_ENTITY);
     List<model.Order> list=this.getHibernateTemplate().findByCriteria(dc,Integer.parseInt(map.get("begin")),Integer.parseInt(map.get("pageSize")));
     return list;
@@ -415,6 +419,7 @@ public int searchMyProductCount(int uid) {
 public List<Product> getMyProductList(Map<Object, String> map) {
     DetachedCriteria dc=DetachedCriteria.forClass(model.Product.class);
     dc.add(Restrictions.eq("user.uid",Integer.parseInt(map.get("userId"))));
+    dc.addOrder(Order.desc("createTime"));
     List<model.Product> list=this.getHibernateTemplate().findByCriteria(dc,Integer.parseInt(map.get("begin")),Integer.parseInt(map.get("pageSize")));
     return list;
 }
@@ -491,7 +496,7 @@ public void delectProductById(int pid) {
 @Override
 public int searchCommentCount(int uid, String flag) {
     StringBuffer sb=new StringBuffer();
-    String hql="select count(*) from Comment where 1=1 ";
+    String hql="select count(distinct id) from Comment where 1=1 ";
     if(flag=="0"||"0".equals(flag)){
        sb.append(" and user.uid="+uid);
     }else{
@@ -518,6 +523,7 @@ public List<Comment> getCommentList(Map<Object, String> map) {
     }else{
         dc.add(Restrictions.eq("receiverId", Integer.parseInt(map.get("userId"))));
     }
+    dc.setResultTransformer(dc.DISTINCT_ROOT_ENTITY);
     List<model.Comment> list=this.getHibernateTemplate().findByCriteria(dc,Integer.parseInt(map.get("begin")),Integer.parseInt(map.get("pageSize")));
     return list;
 }
@@ -568,7 +574,7 @@ public List<UserAndAdmin> getMessageList(Map<Object, String> map) {
  */
 @Override
 public void deleteMessage(int id) {
-   String hql="from UserAndAdmin where id="+id;
+   String hql="delete from UserAndAdmin where id="+id;
    SessionFactory factory=this.getHibernateTemplate().getSessionFactory();
    Session session=factory.openSession();
    Query query=session.createQuery(hql);

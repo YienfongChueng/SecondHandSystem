@@ -9,4 +9,17 @@
 		
 		<include file="struts-user.xml" /><!-- 引用前台的struts配置文件 -->
 		<include file="struts-admin.xml" /> <!-- 引用后台的struts配置文件 -->
+		
+		<package name="default" namespace="/user_jsp" extends="struts-default">
+        <default-action-ref name="default-error" />
+		<global-results>
+			<result name="error">../error.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception" />
+		</global-exception-mappings>
+		<action name="default-error">
+			<result>../error.jsp</result>
+		</action>
+</package>
 	</struts>

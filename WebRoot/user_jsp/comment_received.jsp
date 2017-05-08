@@ -49,12 +49,12 @@
 	<!-- 分页 -->
 	<nav style="text-align: center" id="pageShow">
 		<s:if test="currPage != 1">
-			<a href="product_searchMyBuyOrderByPage.action?flag=1&currPage=1" target="content">首页</a>
-			<a href="product_searchMyBuyOrderByPage.action?flag=1&currPage=<s:property value="currPage-1"/>" target="content">上一页</a>
+			<a href="product_searchCommentByPage.action?flag=1&currPage=1" target="content">首页</a>
+			<a href="product_searchCommentByPage.action?flag=1&currPage=<s:property value="currPage-1"/>" target="content">上一页</a>
 		</s:if>
 		<s:if test="currPage != totalPage">
-			<a href="product_searchMyBuyOrderByPage.action?flag=1&currPage=<s:property value="currPage+1"/>" target="content">下一页</a>
-			<a href="product_searchMyBuyOrderByPage.action?flag=1&currPage=<s:property value="totalPage"/>" target="content">尾页</a>
+			<a href="product_searchCommentByPage.action?flag=1&currPage=<s:property value="currPage+1"/>" target="content">下一页</a>
+			<a href="product_searchCommentByPage.action?flag=1&currPage=<s:property value="totalPage"/>" target="content">尾页</a>
 		</s:if>
 			第<span style="color:red;font-weight:600"><s:property value="currPage"/></span>页
 			共<span style="color:red;font-weight:600"><s:property value="totalPage"/></span>页

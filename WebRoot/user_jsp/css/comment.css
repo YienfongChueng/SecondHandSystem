@@ -15,3 +15,12 @@
  .feed .box1 .box2_comments .box3 { margin: 8px 0; } 
  .feed .box1 .box2_comments .box3_comments { float: left; width: 500px; }
  .reply_area { border: 1px solid #e0e0e0; height: 30px; line-height: 30px; width: 620px; margin: 8px; color: #666; font-size: 12px; font-family: "微软雅黑"; clear: both; }
+ .line {
+ 	/* height: 2px; */
+    width: 620px;
+    margin: 8px;
+    clear: both;
+ }
+ .a_color{
+ color:green;
+ }
