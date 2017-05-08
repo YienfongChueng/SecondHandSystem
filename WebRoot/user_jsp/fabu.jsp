@@ -16,7 +16,7 @@
 		<div class="public-nav">您当前的位置：<a href="">发布信息</a>></div>
 		<div class="public-content" style="margin-top: 0">
 			<div class="public-content-cont">
-			<form action="product_addProduct.action" method="post" enctype="multipart/form-data" style="margin:0 auto;width:50%">
+			<form action="product_addProduct.action" method="post" enctype="multipart/form-data" style="margin:0 auto;width:50%" onsubmit="return checkForm(this);">
 				<s:actionmessage style="font-size:18px;color:#000"/>
 				<input type="hidden" id="uuid" value="" name="creatorId"/>
 				<div class="form-group">
@@ -46,7 +46,7 @@
 				</div>
 				
 				<div class="form-group">
-					<label for="">剩余量</label>
+					<label for="">剩余量/需求量</label>
 					<input class="form-input-txt" type="text" name="proHassum" value="" />
 				</div>
 				<div class="form-group">
@@ -76,7 +76,38 @@
 		}
 		});
 	
-	 
+	 function checkForm(form){
+		 if(form.classifyId.value==""){
+			 alert("分类不能为空！");
+			 return false;
+		}
+		if(form.type.value==""){
+			alert("类型不能为空！");
+			return false;
+		}
+		if(form.proName.value==""){
+			alert("商品名称不能为空！");
+			return false;
+		}
+		if(form.proPrice.value==""){
+			alert("商品价格不能为空！");
+			return false;
+		}
+		var re = /^[0-9]+.?[0-9]*$/; 
+		if(!re.test(form.proPrice.value)){
+			alert("请输入数字");
+			return false;
+		}
+		if(form.proHassum.value==""){
+			alert("剩余量或需求量不能为空！");
+			return false;
+		}
+		if(!re.test(form.proHassum.value)){
+			alert("请输入数字");
+			return false;
+		}
+		
+	}
 	
 	function loadClassify(){
 		$("#classify").html("");

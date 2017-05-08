@@ -173,7 +173,7 @@ public class AdminAction extends ActionSupport implements ModelDriven<Admin>{
 		int pid=Integer.parseInt(req.getParameter("id"));
 		Product p=this.iAdminInfoService.searchProductDetail(pid);
 		this.iAdminInfoService.delectProductById(pid);
-		Admin admin=(Admin) req.getAttribute("Admin");
+		Admin admin=(Admin) req.getSession().getAttribute("Admin");
 		UserAndAdmin uaa=new UserAndAdmin();
 		uaa.setAdminId(admin.getAid());
 		uaa.setCreateTime(new Date());
